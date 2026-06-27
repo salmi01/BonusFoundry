@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { LastUpdated } from "@/components/last-updated";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { faqs } from "@/data/faqs";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
@@ -37,12 +38,18 @@ export default function FAQIndexPage() {
         </p>
         <div className="mt-8 grid gap-4">
           {faqs.map((faq) => (
-            <article key={faq.slug} className="rounded-md border bg-card p-5">
-              <h2 className="text-xl font-semibold">
-                <Link href={`/faq/${faq.slug}`}>{faq.question}</Link>
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
-            </article>
+            <Card key={faq.slug} className="transition-colors hover:border-primary/40">
+              <article>
+                <CardHeader>
+                  <CardTitle>
+                    <Link href={`/faq/${faq.slug}`}>{faq.question}</Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm leading-6 text-muted-foreground">{faq.answer}</p>
+                </CardContent>
+              </article>
+            </Card>
           ))}
         </div>
       </Container>

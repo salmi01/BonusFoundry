@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { LastUpdated } from "@/components/last-updated";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { corridors, getCorridorProviders } from "@/data/corridors";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -36,18 +37,27 @@ export default function CorridorsIndexPage() {
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {corridors.map((corridor) => (
-            <article key={corridor.slug} className="rounded-md border bg-card p-5">
-              <h2 className="text-xl font-semibold">
-                {corridor.from} to {corridor.to}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{corridor.summary}</p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Related providers: {getCorridorProviders(corridor).map((provider) => provider.name).join(", ")}
-              </p>
-              <Link href={`/corridors/${corridor.slug}`} className="mt-4 inline-block text-sm font-semibold text-primary">
-                Read corridor guide
-              </Link>
-            </article>
+            <Card key={corridor.slug} className="transition-colors hover:border-primary/40">
+              <article>
+                <CardHeader>
+                  <CardTitle>
+                    {corridor.from} to {corridor.to}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm leading-6 text-muted-foreground">{corridor.summary}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">
+                    Related providers: {getCorridorProviders(corridor).map((provider) => provider.name).join(", ")}
+                  </p>
+                  <Link
+                    href={`/corridors/${corridor.slug}`}
+                    className="mt-4 inline-block text-sm font-semibold text-primary"
+                  >
+                    Read corridor guide
+                  </Link>
+                </CardContent>
+              </article>
+            </Card>
           ))}
         </div>
       </Container>

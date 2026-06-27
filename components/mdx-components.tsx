@@ -8,8 +8,10 @@ export const mdxComponents: MDXComponents = {
   ol: (props) => <ol className="mt-4 list-decimal space-y-2 pl-6 text-muted-foreground" {...props} />,
   a: (props) => <a className="font-medium text-primary underline" {...props} />,
   code: (props) => <code className="rounded bg-muted px-1.5 py-0.5 text-sm" {...props} />,
-  pre: (props) => <pre className="mt-4 overflow-x-auto rounded-md bg-foreground p-4 text-background" {...props} />,
+  pre: (props) => (
+    <pre className="mt-4 overflow-x-auto rounded-lg border bg-foreground p-4 text-sm text-background shadow-sm" {...props} />
+  ),
   blockquote: (props) => (
-    <blockquote className="mt-5 rounded-md border-l-4 border-primary bg-card p-4 text-muted-foreground" {...props} />
+    <blockquote className="mt-5 rounded-lg border-l-4 border-primary bg-card p-4 text-muted-foreground shadow-sm" {...props} />
   )
 };

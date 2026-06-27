@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
 import { LastUpdated } from "@/components/last-updated";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 import { getGuides } from "@/lib/content";
 
@@ -38,12 +39,18 @@ export default async function GuidesIndexPage() {
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {guides.map((guide) => (
-            <article key={guide.slug} className="rounded-md border bg-card p-5">
-              <h2 className="text-xl font-semibold">
-                <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{guide.description}</p>
-            </article>
+            <Card key={guide.slug} className="transition-colors hover:border-primary/40">
+              <article>
+                <CardHeader>
+                  <CardTitle>
+                    <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm leading-6 text-muted-foreground">{guide.description}</p>
+                </CardContent>
+              </article>
+            </Card>
           ))}
         </div>
       </Container>

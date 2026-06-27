@@ -3,17 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: 42 33% 98%;
-  --foreground: 214 32% 13%;
+  --background: 40 38% 97%;
+  --foreground: 222 34% 12%;
   --card: 0 0% 100%;
-  --card-foreground: 214 32% 13%;
-  --muted: 210 25% 94%;
-  --muted-foreground: 216 12% 38%;
-  --primary: 162 74% 28%;
+  --card-foreground: 222 34% 12%;
+  --muted: 215 25% 94%;
+  --muted-foreground: 218 14% 38%;
+  --primary: 168 72% 25%;
   --primary-foreground: 0 0% 100%;
-  --border: 214 20% 86%;
-  --input: 214 20% 86%;
-  --ring: 162 74% 28%;
+  --accent: 45 92% 58%;
+  --accent-foreground: 222 34% 12%;
+  --border: 216 20% 84%;
+  --input: 216 20% 84%;
+  --ring: 168 72% 25%;
 }
 
 * {
@@ -25,12 +27,21 @@ html {
 }
 
 body {
-  background: hsl(var(--background));
+  background:
+    radial-gradient(circle at top left, hsl(var(--primary) / 0.08), transparent 34rem),
+    linear-gradient(180deg, hsl(40 45% 98%), hsl(var(--background)) 24rem);
   color: hsl(var(--foreground));
 }
 
 a {
   text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
 }
 
 ::selection {

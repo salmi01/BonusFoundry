@@ -4,7 +4,7 @@ import { navItems, siteConfig, trustLinks } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t bg-card">
+    <footer className="mt-20 border-t bg-card/90">
       <Container className="grid gap-8 py-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
         <div>
           <p className="font-semibold">{siteConfig.name}</p>
@@ -17,7 +17,9 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <Link className="hover:text-foreground" href={item.href}>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -27,7 +29,9 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             {trustLinks.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <Link className="hover:text-foreground" href={item.href}>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>

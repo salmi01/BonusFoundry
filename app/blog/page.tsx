@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { createMetadata } from "@/lib/seo";
 import { getBlogPosts } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
@@ -21,13 +22,19 @@ export default async function BlogIndexPage() {
       </p>
       <div className="mt-8 grid gap-5">
         {posts.map((post) => (
-          <article key={post.slug} className="rounded-md border bg-card p-5">
-            <p className="text-sm text-muted-foreground">{formatDate(post.publishedAt)}</p>
-            <h2 className="mt-2 text-xl font-semibold">
-              <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{post.description}</p>
-          </article>
+          <Card key={post.slug} className="transition-colors hover:border-primary/40">
+            <article>
+              <CardHeader>
+                <p className="text-sm text-muted-foreground">{formatDate(post.publishedAt)}</p>
+                <CardTitle>
+                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm leading-6 text-muted-foreground">{post.description}</p>
+              </CardContent>
+            </article>
+          </Card>
         ))}
       </div>
     </Container>
