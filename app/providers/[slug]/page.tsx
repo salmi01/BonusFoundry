@@ -6,10 +6,11 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
+import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
 import { ReferralBox } from "@/components/referral-box";
 import { getProvider, providers } from "@/data/providers";
-import { breadcrumbJsonLd, createMetadata, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -44,6 +45,14 @@ export default async function ProviderPage({ params }: PageProps) {
     <>
       <JsonLd data={breadcrumbJsonLd(breadcrumbs)} />
       <JsonLd data={faqJsonLd(provider.faq)} />
+      <JsonLd
+        data={webPageJsonLd({
+          title: `${provider.name} welcome bonus and referral program`,
+          description: provider.description,
+          path: `/providers/${provider.slug}`,
+          updatedAt: provider.lastUpdated
+        })}
+      />
       <Container className="py-10">
         <Breadcrumb
           items={[
@@ -56,13 +65,14 @@ export default async function ProviderPage({ params }: PageProps) {
             <LastUpdated date={provider.lastUpdated} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} welcome bonus and referral program</h1>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
-              {provider.description} This page explains how the current bonus usually works, what to check before
-              signing up, and where our referral details fit in.
+              {provider.name} may have a welcome bonus or referral offer, but eligibility depends on the provider&apos;s
+              current rules. {provider.description}
             </p>
 
             <div className="mt-8 grid gap-5">
-              <BonusCard title="Welcome bonus">
-                <p>{provider.welcomeBonus}</p>
+              <KeyFacts facts={provider.keyFacts} />
+              <BonusCard title="Current offer explanation">
+                <p>{provider.currentOffer}</p>
               </BonusCard>
               <BonusCard title="Eligibility">
                 <p>{provider.eligibleUsers}</p>
@@ -81,6 +91,27 @@ export default async function ProviderPage({ params }: PageProps) {
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.requirements.map((requirement) => (
                     <li key={requirement}>{requirement}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="Common mistakes">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.commonMistakes.map((mistake) => (
+                    <li key={mistake}>{mistake}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="What to do if the bonus is missing">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.missingBonus.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="Country-specific notes">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.countryNotes.map((note) => (
+                    <li key={note}>{note}</li>
                   ))}
                 </ul>
               </BonusCard>

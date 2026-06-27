@@ -22,8 +22,20 @@ type MdxModule<T> = T & { default: ComponentType };
 const guideModules = {
   "how-referral-codes-work": () =>
     import("@/content/guides/how-referral-codes-work.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
+  "how-to-claim-a-welcome-bonus": () =>
+    import("@/content/guides/how-to-claim-a-welcome-bonus.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
   "promo-code-vs-referral-code": () =>
     import("@/content/guides/promo-code-vs-referral-code.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
+  "how-to-avoid-missing-signup-bonus": () =>
+    import("@/content/guides/how-to-avoid-missing-signup-bonus.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
+  "how-to-compare-welcome-bonuses-between-transfer-apps": () =>
+    import("@/content/guides/how-to-compare-welcome-bonuses-between-transfer-apps.mdx") as Promise<
+      MdxModule<{ meta: GuideMeta }>
+    >,
+  "what-to-check-before-using-money-transfer-referral-link": () =>
+    import("@/content/guides/what-to-check-before-using-money-transfer-referral-link.mdx") as Promise<
+      MdxModule<{ meta: GuideMeta }>
+    >,
   "why-bonus-was-not-received": () =>
     import("@/content/guides/why-bonus-was-not-received.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>
 };

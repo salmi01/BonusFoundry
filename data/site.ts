@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Bonus Foundry",
-  url: "https://bonusfoundry.com",
+  url: "https://bonus-foundry.vercel.app",
   description:
     "A transparent knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.",
   author: "Bonus Foundry",
@@ -8,8 +8,16 @@ export const siteConfig = {
 };
 
 export const navItems = [
-  { href: "/providers/taptap-send", label: "Providers" },
-  { href: "/corridors/france-to-morocco", label: "Corridors" },
-  { href: "/guides/how-referral-codes-work", label: "Guides" },
-  { href: "/blog", label: "Blog" }
+  { href: "/providers", label: "Providers" },
+  { href: "/corridors", label: "Corridors" },
+  { href: "/guides", label: "Guides" },
+  { href: "/faq", label: "FAQ" }
+];
+
+export const trustLinks = [
+  { href: "/about", label: "About" },
+  { href: "/disclosure", label: "Disclosure" },
+  { href: "/privacy-policy", label: "Privacy policy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/contact", label: "Contact" }
 ];

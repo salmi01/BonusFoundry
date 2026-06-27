@@ -9,7 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const routes = [
     "",
+    "/providers",
+    "/corridors",
+    "/guides",
+    "/faq",
     "/blog",
+    "/about",
+    "/disclosure",
+    "/privacy-policy",
+    "/terms",
+    "/contact",
     ...providers.flatMap((provider) => [`/providers/${provider.slug}`, `/providers/${provider.slug}/referral-code`]),
     ...corridors.map((corridor) => `/corridors/${corridor.slug}`),
     ...guideSlugs.map((slug) => `/guides/${slug}`),

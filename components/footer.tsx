@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { Container } from "@/components/container";
-import { siteConfig } from "@/data/site";
+import { navItems, siteConfig, trustLinks } from "@/data/site";
 
 export function Footer() {
   return (
     <footer className="mt-20 border-t bg-card">
-      <Container className="grid gap-8 py-10 md:grid-cols-[1.4fr_1fr_1fr]">
+      <Container className="grid gap-8 py-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
         <div>
           <p className="font-semibold">{siteConfig.name}</p>
           <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
@@ -15,15 +15,21 @@ export function Footer() {
         <div>
           <p className="text-sm font-semibold">Explore</p>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li>
-              <Link href="/providers/taptap-send">Providers</Link>
-            </li>
-            <li>
-              <Link href="/corridors/france-to-morocco">Corridors</Link>
-            </li>
-            <li>
-              <Link href="/guides/how-referral-codes-work">Guides</Link>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-sm font-semibold">Trust</p>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            {trustLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>

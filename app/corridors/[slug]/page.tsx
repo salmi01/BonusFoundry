@@ -5,10 +5,11 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
+import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
 import { ProviderCard } from "@/components/provider-card";
 import { corridors, getCorridor, getCorridorProviders } from "@/data/corridors";
-import { breadcrumbJsonLd, createMetadata, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -43,6 +44,14 @@ export default async function CorridorPage({ params }: PageProps) {
         ])}
       />
       <JsonLd data={faqJsonLd(corridor.faq)} />
+      <JsonLd
+        data={webPageJsonLd({
+          title: `${corridor.from} to ${corridor.to} transfer bonuses`,
+          description: corridor.summary,
+          path: `/corridors/${corridor.slug}`,
+          updatedAt: corridor.lastUpdated
+        })}
+      />
       <Container className="py-10">
         <Breadcrumb
           items={[
@@ -57,6 +66,10 @@ export default async function CorridorPage({ params }: PageProps) {
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">{corridor.summary}</p>
 
         <div className="mt-10 space-y-10">
+          <KeyFacts facts={corridor.keyFacts} />
+          <BonusCard title="Current offer explanation">
+            <p>{corridor.currentOffer}</p>
+          </BonusCard>
           <section>
             <h2 className="text-2xl font-semibold">Best providers to check</h2>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
@@ -81,6 +94,34 @@ export default async function CorridorPage({ params }: PageProps) {
             <ul className="list-disc space-y-2 pl-5">
               {corridor.requirements.map((requirement) => (
                 <li key={requirement}>{requirement}</li>
+              ))}
+            </ul>
+          </BonusCard>
+          <BonusCard title="Step-by-step comparison">
+            <ol className="list-decimal space-y-2 pl-5">
+              {corridor.steps.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </BonusCard>
+          <BonusCard title="Common mistakes">
+            <ul className="list-disc space-y-2 pl-5">
+              {corridor.commonMistakes.map((mistake) => (
+                <li key={mistake}>{mistake}</li>
+              ))}
+            </ul>
+          </BonusCard>
+          <BonusCard title="What to do if the bonus is missing">
+            <ul className="list-disc space-y-2 pl-5">
+              {corridor.missingBonus.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ul>
+          </BonusCard>
+          <BonusCard title="Country-specific notes">
+            <ul className="list-disc space-y-2 pl-5">
+              {corridor.countryNotes.map((note) => (
+                <li key={note}>{note}</li>
               ))}
             </ul>
           </BonusCard>

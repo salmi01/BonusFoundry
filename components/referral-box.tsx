@@ -10,7 +10,13 @@ export function ReferralBox({ provider }: { provider: Provider }) {
       <p className="mt-3 text-sm leading-6 text-muted-foreground">{provider.welcomeBonus}</p>
       <div className="mt-4 rounded-md border bg-muted p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Referral code</p>
-        <p className="mt-1 break-all text-2xl font-bold">{provider.referralCode}</p>
+        <p className="mt-1 break-all text-2xl font-bold">{provider.referralCode ?? "No known code listed"}</p>
+        {!provider.referralCode ? (
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            We do not publish a code for this provider unless we have one to disclose. Check the provider&apos;s live
+            offer terms directly.
+          </p>
+        ) : null}
       </div>
       <Link href={provider.referralLink} className={buttonStyles({ className: "mt-4 w-full" })} rel="nofollow sponsored">
         Open provider site

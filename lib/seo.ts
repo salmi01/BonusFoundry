@@ -92,3 +92,19 @@ export function articleJsonLd(input: {
     }
   };
 }
+
+export function webPageJsonLd(input: {
+  title: string;
+  description: string;
+  path: string;
+  updatedAt?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: input.title,
+    description: input.description,
+    url: new URL(input.path, siteConfig.url).toString(),
+    dateModified: input.updatedAt
+  };
+}

@@ -12,6 +12,9 @@ export function ProviderCard({ provider }: { provider: Provider }) {
         </div>
       </div>
       <p className="mt-4 text-sm font-medium">{provider.welcomeBonus}</p>
+      <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        {provider.referralCode ? `Code listed: ${provider.referralCode}` : "No known code listed"}
+      </p>
       <Link
         href={`/providers/${provider.slug}`}
         className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"

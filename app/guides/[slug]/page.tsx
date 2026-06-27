@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { JsonLd } from "@/components/json-ld";
 import { LastUpdated } from "@/components/last-updated";
-import { breadcrumbJsonLd, createMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 import { getGuide, guideSlugs } from "@/lib/content";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -39,6 +39,14 @@ export default async function GuidePage({ params }: PageProps) {
           { name: "Guides", item: `/guides/${meta.slug}` },
           { name: meta.title, item: `/guides/${meta.slug}` }
         ])}
+      />
+      <JsonLd
+        data={webPageJsonLd({
+          title: meta.title,
+          description: meta.description,
+          path: `/guides/${meta.slug}`,
+          updatedAt: meta.updatedAt
+        })}
       />
       <Container className="py-10">
         <Breadcrumb

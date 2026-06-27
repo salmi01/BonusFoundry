@@ -1,0 +1,56 @@
+import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { Container } from "@/components/container";
+import { JsonLd } from "@/components/json-ld";
+import { LastUpdated } from "@/components/last-updated";
+import { corridors, getCorridorProviders } from "@/data/corridors";
+import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "Money transfer corridor bonus guides",
+  description:
+    "Browse corridor pages that explain provider options, available welcome bonuses, referral limitations, and requirements by transfer route.",
+  path: "/corridors"
+});
+
+export default function CorridorsIndexPage() {
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", item: "/" }, { name: "Corridors", item: "/corridors" }])} />
+      <JsonLd
+        data={webPageJsonLd({
+          title: "Money transfer corridor bonus guides",
+          description:
+            "Browse corridor pages that explain provider options, available welcome bonuses, referral limitations, and requirements by transfer route.",
+          path: "/corridors",
+          updatedAt: "2026-06-27"
+        })}
+      />
+      <Container className="py-10">
+        <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/corridors", label: "Corridors" }]} />
+        <LastUpdated date="2026-06-27" />
+        <h1 className="mt-4 text-4xl font-bold tracking-normal">Transfer corridor bonus guides</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
+          Corridor pages explain which providers to check for a route, what bonus rules usually matter, and why a
+          referral offer may depend on sender country, destination, amount, and delivery method.
+        </p>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          {corridors.map((corridor) => (
+            <article key={corridor.slug} className="rounded-md border bg-card p-5">
+              <h2 className="text-xl font-semibold">
+                {corridor.from} to {corridor.to}
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{corridor.summary}</p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                Related providers: {getCorridorProviders(corridor).map((provider) => provider.name).join(", ")}
+              </p>
+              <Link href={`/corridors/${corridor.slug}`} className="mt-4 inline-block text-sm font-semibold text-primary">
+                Read corridor guide
+              </Link>
+            </article>
+          ))}
+        </div>
+      </Container>
+    </>
+  );
+}

@@ -5,10 +5,11 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
+import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
 import { ReferralBox } from "@/components/referral-box";
 import { getProvider, providers } from "@/data/providers";
-import { breadcrumbJsonLd, createMetadata, faqJsonLd } from "@/lib/seo";
+import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -41,6 +42,9 @@ export default async function ReferralCodePage({ params }: PageProps) {
         "Use the referral link or enter the code during signup if the provider gives you a code field. Confirm the live terms before completing a transfer."
     }
   ];
+  const referralAnswer = provider.referralCode
+    ? `The current referral code Bonus Foundry lists for ${provider.name} is ${provider.referralCode}.`
+    : `Bonus Foundry does not currently list a known ${provider.name} referral code.`;
 
   return (
     <>
@@ -52,6 +56,14 @@ export default async function ReferralCodePage({ params }: PageProps) {
         ])}
       />
       <JsonLd data={faqJsonLd(faq)} />
+      <JsonLd
+        data={webPageJsonLd({
+          title: `${provider.name} referral code`,
+          description: provider.welcomeBonus,
+          path: `/providers/${provider.slug}/referral-code`,
+          updatedAt: provider.lastUpdated
+        })}
+      />
       <Container className="py-10">
         <Breadcrumb
           items={[
@@ -65,11 +77,11 @@ export default async function ReferralCodePage({ params }: PageProps) {
             <LastUpdated date={provider.lastUpdated} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} referral code</h1>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
-              The current referral code we list for {provider.name} is <strong>{provider.referralCode}</strong>. The
-              bonus is not automatic; it depends on the provider&apos;s live eligibility rules, your country, and whether your
-              first transfer qualifies.
+              {referralAnswer} A referral bonus is not automatic; it depends on the provider&apos;s live eligibility rules,
+              your country, and whether your first transfer qualifies.
             </p>
             <div className="mt-8 grid gap-5">
+              <KeyFacts facts={provider.keyFacts} />
               <BonusCard title="What is the referral program?">
                 <p>
                   A referral program lets an existing user invite a new user. If the new user meets the current terms,
@@ -77,7 +89,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
                 </p>
               </BonusCard>
               <BonusCard title="Current bonus">
-                <p>{provider.welcomeBonus}</p>
+                <p>{provider.currentOffer}</p>
               </BonusCard>
               <BonusCard title="How to use it">
                 <ol className="list-decimal space-y-2 pl-5">
@@ -90,6 +102,27 @@ export default async function ReferralCodePage({ params }: PageProps) {
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.requirements.map((requirement) => (
                     <li key={requirement}>{requirement}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="Common mistakes">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.commonMistakes.map((mistake) => (
+                    <li key={mistake}>{mistake}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="What to do if the bonus is missing">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.missingBonus.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ul>
+              </BonusCard>
+              <BonusCard title="Country-specific notes">
+                <ul className="list-disc space-y-2 pl-5">
+                  {provider.countryNotes.map((note) => (
+                    <li key={note}>{note}</li>
                   ))}
                 </ul>
               </BonusCard>
