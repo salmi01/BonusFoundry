@@ -5,10 +5,18 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
-import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
+import {
+  EligibilityTable,
+  ProviderFacts,
+  ReferralChecklist,
+  SupportResources,
+  TroubleshootingGuide,
+  VerificationRequirements,
+  WelcomeBonusCard
+} from "@/components/provider-authority";
 import { ReferralBox } from "@/components/referral-box";
-import { getProvider, providers } from "@/data/providers";
+import { getProvider, getProviderAuthority, providers } from "@/data/providers";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -33,6 +41,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+  const authority = getProviderAuthority(provider);
 
   const faq = [
     ...provider.faq,
@@ -81,16 +90,15 @@ export default async function ReferralCodePage({ params }: PageProps) {
               your country, and whether your first transfer qualifies.
             </p>
             <div className="mt-8 grid gap-5">
-              <KeyFacts facts={provider.keyFacts} />
+              <ProviderFacts provider={provider} authority={authority} />
               <BonusCard title="What is the referral program?">
                 <p>
                   A referral program lets an existing user invite a new user. If the new user meets the current terms,
                   one or both accounts may receive a reward.
                 </p>
               </BonusCard>
-              <BonusCard title="Current bonus">
-                <p>{provider.currentOffer}</p>
-              </BonusCard>
+              <WelcomeBonusCard authority={authority} />
+              <EligibilityTable eligible={provider.eligibleUsers} ineligible={authority.ineligibleUsers} />
               <BonusCard title="How to use it">
                 <ol className="list-decimal space-y-2 pl-5">
                   {provider.steps.map((step) => (
@@ -105,6 +113,8 @@ export default async function ReferralCodePage({ params }: PageProps) {
                   ))}
                 </ul>
               </BonusCard>
+              <VerificationRequirements authority={authority} />
+              <ReferralChecklist items={authority.bonusChecklist} />
               <BonusCard title="Common mistakes">
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.commonMistakes.map((mistake) => (
@@ -112,13 +122,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
                   ))}
                 </ul>
               </BonusCard>
-              <BonusCard title="What to do if the bonus is missing">
-                <ul className="list-disc space-y-2 pl-5">
-                  {provider.missingBonus.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ul>
-              </BonusCard>
+              <TroubleshootingGuide items={provider.missingBonus} />
               <BonusCard title="Country-specific notes">
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.countryNotes.map((note) => (
@@ -127,6 +131,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
                 </ul>
               </BonusCard>
               <FAQ items={faq} />
+              <SupportResources authority={authority} />
               <Disclosure />
             </div>
           </article>

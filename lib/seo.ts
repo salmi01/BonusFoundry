@@ -23,6 +23,7 @@ export function createMetadata({
   return {
     title,
     description,
+    authors: [{ name: siteConfig.author }],
     alternates: {
       canonical: path
     },
@@ -105,6 +106,14 @@ export function webPageJsonLd(input: {
     name: input.title,
     description: input.description,
     url: new URL(input.path, siteConfig.url).toString(),
-    dateModified: input.updatedAt
+    dateModified: input.updatedAt,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.author
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name
+    }
   };
 }

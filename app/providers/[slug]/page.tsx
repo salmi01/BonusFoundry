@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BonusCard } from "@/components/bonus-card";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -6,10 +5,24 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
-import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
+import {
+  CountryAvailability,
+  EligibilityTable,
+  ProviderFacts,
+  ReferralChecklist,
+  RelatedProviderResources,
+  SupportResources,
+  TroubleshootingGuide,
+  UpdateHistory,
+  VerificationRequirements,
+  WelcomeBonusCard
+} from "@/components/provider-authority";
 import { ReferralBox } from "@/components/referral-box";
-import { getProvider, providers } from "@/data/providers";
+import { corridors } from "@/data/corridors";
+import { faqs } from "@/data/faqs";
+import { getProvider, getProviderAuthority, providers } from "@/data/providers";
+import { getGuides } from "@/lib/content";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -34,6 +47,12 @@ export default async function ProviderPage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+  const authority = getProviderAuthority(provider);
+  const guides = await getGuides();
+  const relatedGuides = guides.filter((guide) => authority.relatedGuideSlugs.includes(guide.slug));
+  const relatedFaqs = faqs.filter((faq) => authority.relatedFaqSlugs.includes(faq.slug));
+  const relatedCorridors = corridors.filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug));
+  const relatedProviders = providers.filter((item) => authority.relatedProviderSlugs.includes(item.slug));
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
@@ -70,30 +89,29 @@ export default async function ProviderPage({ params }: PageProps) {
             </p>
 
             <div className="mt-8 grid gap-5">
-              <KeyFacts facts={provider.keyFacts} />
-              <BonusCard title="Current offer explanation">
+              <ProviderFacts provider={provider} authority={authority} />
+              <WelcomeBonusCard authority={authority} />
+              <BonusCard title="Quick answer">
                 <p>{provider.currentOffer}</p>
               </BonusCard>
-              <BonusCard title="Eligibility">
-                <p>{provider.eligibleUsers}</p>
-              </BonusCard>
-              <BonusCard title="Supported countries">
-                <p>{provider.supportedCountries.join(", ")}</p>
-              </BonusCard>
-              <BonusCard title="How it works">
+              <EligibilityTable eligible={provider.eligibleUsers} ineligible={authority.ineligibleUsers} />
+              <CountryAvailability authority={authority} />
+              <VerificationRequirements authority={authority} />
+              <BonusCard title="Step-by-step signup">
                 <ol className="list-decimal space-y-2 pl-5">
                   {provider.steps.map((step) => (
                     <li key={step}>{step}</li>
                   ))}
                 </ol>
               </BonusCard>
-              <BonusCard title="Requirements">
+              <BonusCard title="Referral requirements">
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.requirements.map((requirement) => (
                     <li key={requirement}>{requirement}</li>
                   ))}
                 </ul>
               </BonusCard>
+              <ReferralChecklist items={authority.bonusChecklist} />
               <BonusCard title="Common mistakes">
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.commonMistakes.map((mistake) => (
@@ -101,13 +119,7 @@ export default async function ProviderPage({ params }: PageProps) {
                   ))}
                 </ul>
               </BonusCard>
-              <BonusCard title="What to do if the bonus is missing">
-                <ul className="list-disc space-y-2 pl-5">
-                  {provider.missingBonus.map((step) => (
-                    <li key={step}>{step}</li>
-                  ))}
-                </ul>
-              </BonusCard>
+              <TroubleshootingGuide items={provider.missingBonus} />
               <BonusCard title="Country-specific notes">
                 <ul className="list-disc space-y-2 pl-5">
                   {provider.countryNotes.map((note) => (
@@ -116,25 +128,20 @@ export default async function ProviderPage({ params }: PageProps) {
                 </ul>
               </BonusCard>
               <FAQ items={provider.faq} />
+              <RelatedProviderResources
+                provider={provider}
+                guides={relatedGuides}
+                faqs={relatedFaqs}
+                corridors={relatedCorridors}
+                relatedProviders={relatedProviders}
+              />
+              <SupportResources authority={authority} />
+              <UpdateHistory items={authority.updateHistory} />
               <Disclosure />
             </div>
           </article>
           <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
             <ReferralBox provider={provider} />
-            <div className="rounded-md border bg-card p-5">
-              <h2 className="font-semibold">Related pages</h2>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <Link href={`/providers/${provider.slug}/referral-code`}>{provider.name} referral code</Link>
-                </li>
-                <li>
-                  <Link href="/corridors/france-to-morocco">France to Morocco bonuses</Link>
-                </li>
-                <li>
-                  <Link href="/guides/how-referral-codes-work">How referral codes work</Link>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </Container>

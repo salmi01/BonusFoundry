@@ -2,13 +2,60 @@ export type Provider = {
   name: string;
   slug: string;
   description: string;
+  website?: string;
+  appStores?: {
+    ios: string | null;
+    android: string | null;
+  };
+  trustpilot?: string | null;
+  foundedYear?: string | null;
   referralCode: string | null;
   referralLink: string;
   welcomeBonus: string;
+  referral?: {
+    hasProgram: string;
+    code: string | null;
+    link: string;
+    welcomeBonus: string;
+    minimumTransfer: string;
+    expiry: string;
+    payoutTiming: string;
+    limitations: string[];
+  };
+  availability?: {
+    sendingCountries: string[];
+    receivingCountries: string[];
+    currencies: string[];
+    paymentMethods: string[];
+    countryAvailability: {
+      country: string;
+      supported: string;
+      paymentMethods: string[];
+      notes: string;
+    }[];
+  };
+  verification?: {
+    identityRequired: string;
+    proofOfAddress: string;
+    bankVerification: string;
+  };
+  support?: {
+    supportEmail: string | null;
+    supportUrl: string;
+    helpCenter: string;
+  };
+  updateHistory?: { date: string; note: string }[];
+  officialResources?: { label: string; href: string }[];
+  relatedGuideSlugs?: string[];
+  relatedFaqSlugs?: string[];
+  relatedCorridorSlugs?: string[];
+  relatedProviderSlugs?: string[];
   supportedCountries: string[];
   eligibleUsers: string;
+  ineligibleUsers?: string[];
   requirements: string[];
   steps: string[];
+  bonusChecklist?: string[];
   keyFacts: { label: string; value: string }[];
   currentOffer: string;
   commonMistakes: string[];
@@ -638,4 +685,124 @@ export const providers: Provider[] = [
 
 export function getProvider(slug: string) {
   return providers.find((provider) => provider.slug === slug);
+}
+
+export type ProviderAuthority = Required<
+  Pick<
+    Provider,
+    | "website"
+    | "appStores"
+    | "trustpilot"
+    | "foundedYear"
+    | "referral"
+    | "availability"
+    | "verification"
+    | "support"
+    | "updateHistory"
+    | "officialResources"
+    | "relatedGuideSlugs"
+    | "relatedFaqSlugs"
+    | "relatedCorridorSlugs"
+    | "relatedProviderSlugs"
+    | "ineligibleUsers"
+    | "bonusChecklist"
+  >
+>;
+
+const defaultGuideSlugs = [
+  "how-referral-codes-work",
+  "how-to-claim-a-welcome-bonus",
+  "how-to-avoid-missing-signup-bonus",
+  "what-to-check-before-using-money-transfer-referral-link"
+];
+
+const defaultFaqSlugs = [
+  "can-i-use-referral-code-after-signing-up",
+  "why-did-i-not-receive-my-referral-bonus",
+  "do-referral-codes-work-in-every-country",
+  "do-i-need-identity-verification-to-receive-bonus"
+];
+
+function defaultCountryAvailability(provider: Provider) {
+  return provider.supportedCountries.slice(0, 6).map((country) => ({
+    country,
+    supported: "Listed in Bonus Foundry provider notes",
+    paymentMethods: ["Confirm in the provider app or website"],
+    notes:
+      "Bonus Foundry has not separated sender-country, recipient-country, currency, and payment-method coverage for this country. Confirm live availability with the provider."
+  }));
+}
+
+export function getProviderAuthority(provider: Provider): ProviderAuthority {
+  const website = provider.website ?? provider.referralLink;
+  const hasKnownCode = Boolean(provider.referralCode);
+  const otherProviders = providers
+    .filter((item) => item.slug !== provider.slug)
+    .slice(0, 3)
+    .map((item) => item.slug);
+
+  return {
+    website,
+    appStores: provider.appStores ?? {
+      ios: null,
+      android: null
+    },
+    trustpilot: provider.trustpilot ?? null,
+    foundedYear: provider.foundedYear ?? null,
+    referral: provider.referral ?? {
+      hasProgram: hasKnownCode
+        ? "Bonus Foundry lists a referral code, but the active program still depends on provider terms."
+        : "Bonus Foundry does not currently list a known referral code. The provider may still show local or app-only offers.",
+      code: provider.referralCode,
+      link: provider.referralLink,
+      welcomeBonus: provider.welcomeBonus,
+      minimumTransfer: "Unknown. Check the live offer terms before sending money.",
+      expiry: "Unknown. Referral and welcome offers can change or expire without notice.",
+      payoutTiming: "Unknown. Confirm payout timing in the provider app or support documentation.",
+      limitations: provider.requirements
+    },
+    availability: provider.availability ?? {
+      sendingCountries: provider.supportedCountries,
+      receivingCountries: ["Not separately verified by Bonus Foundry. Confirm destination coverage with the provider."],
+      currencies: ["Not listed by Bonus Foundry. Confirm supported currencies in the transfer flow."],
+      paymentMethods: ["Not exhaustively listed by Bonus Foundry. Confirm card, bank, wallet, or cash options in the provider flow."],
+      countryAvailability: defaultCountryAvailability(provider)
+    },
+    verification: provider.verification ?? {
+      identityRequired:
+        "May be required. Money transfer providers commonly request identity checks before sending or paying rewards.",
+      proofOfAddress: "Unknown. Check the provider's current verification prompts for your country.",
+      bankVerification: "Unknown. Payment-method checks can depend on country, transfer amount, and provider rules."
+    },
+    support: provider.support ?? {
+      supportEmail: null,
+      supportUrl: website,
+      helpCenter: "Specific help center URL not listed by Bonus Foundry. Use the official provider website or app support area."
+    },
+    updateHistory: provider.updateHistory ?? [
+      {
+        date: provider.lastUpdated,
+        note: "Provider page converted to structured knowledge sections and reviewed for cautious offer wording."
+      }
+    ],
+    officialResources: provider.officialResources ?? [
+      { label: `${provider.name} official website`, href: website }
+    ],
+    relatedGuideSlugs: provider.relatedGuideSlugs ?? defaultGuideSlugs,
+    relatedFaqSlugs: provider.relatedFaqSlugs ?? defaultFaqSlugs,
+    relatedCorridorSlugs: provider.relatedCorridorSlugs ?? ["france-to-morocco"],
+    relatedProviderSlugs: provider.relatedProviderSlugs ?? otherProviders,
+    ineligibleUsers: provider.ineligibleUsers ?? [
+      "Existing users, unless the provider's current terms explicitly allow existing-account participation.",
+      "Users who create an account without using the required referral link or code when the offer requires one.",
+      "Users whose first transfer, country, destination, payment method, or verification status does not meet the live terms."
+    ],
+    bonusChecklist: provider.bonusChecklist ?? [
+      "Open the referral link or copy the code before signup.",
+      "Confirm country, destination, minimum transfer, expiry, and payout timing in the provider flow.",
+      "Complete identity verification if the provider requests it.",
+      "Send a qualifying first transfer only after checking total fee, exchange rate, and delivery method.",
+      "Keep the offer screen and transfer receipt until the reward is resolved."
+    ]
+  };
 }
