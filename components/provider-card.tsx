@@ -14,7 +14,7 @@ export function ProviderCard({ provider }: { provider: Provider }) {
         <CardContent className="flex flex-1 flex-col">
           <p className="text-sm font-medium leading-6">{provider.welcomeBonus}</p>
           <p className="mt-4 inline-flex w-fit rounded-full bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            {provider.referralCode ? `Code listed: ${provider.referralCode}` : "No known code listed"}
+            {provider.referralCode ? `Code listed: ${provider.referralCode}` : "Check referral details"}
           </p>
           <Link
             href={`/providers/${provider.slug}`}

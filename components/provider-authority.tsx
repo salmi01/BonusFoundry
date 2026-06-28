@@ -6,29 +6,35 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { Corridor } from "@/data/corridors";
 import type { FAQPage } from "@/data/faqs";
-import type { Provider, ProviderAuthority } from "@/data/providers";
+import { referralWarning, type Provider, type ProviderAuthority } from "@/data/providers";
 import type { GuideMeta } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 
 export function ProviderFacts({ provider, authority }: { provider: Provider; authority: ProviderAuthority }) {
-  return (
-    <KeyFacts
-      facts={[
-        { label: "Provider", value: provider.name },
-        { label: "Website", value: authority.website },
-        { label: "Founded year", value: authority.foundedYear ?? "Not listed by Bonus Foundry" },
-        { label: "Trustpilot", value: authority.trustpilot ?? "Not listed by Bonus Foundry" },
-        {
-          label: "Referral program",
-          value: authority.referral.hasProgram
-        },
-        { label: "Last verified", value: formatDate(provider.lastUpdated) }
-      ]}
-    />
-  );
+  const facts = [
+    { label: "Provider", value: provider.name },
+    { label: "Website", value: authority.website },
+    authority.foundedYear ? { label: "Founded year", value: authority.foundedYear } : null,
+    authority.trustpilot ? { label: "Trustpilot", value: authority.trustpilot } : null,
+    { label: "Referral program", value: authority.referral.hasProgram },
+    { label: "Displayed date", value: formatDate(authority.displayedDate) },
+    { label: "Last manual review", value: formatDate(authority.lastManualReview) },
+    { label: "Last offer update", value: formatDate(authority.lastOfferUpdate) }
+  ].filter(Boolean) as { label: string; value: string }[];
+
+  return <KeyFacts facts={facts} />;
 }
 
 export function WelcomeBonusCard({ authority }: { authority: ProviderAuthority }) {
+  const facts = [
+    authority.referral.code
+      ? { label: "Code", value: authority.referral.code }
+      : { label: "Referral link", value: authority.referral.link },
+    authority.referral.minimumTransfer ? { label: "Minimum transfer", value: authority.referral.minimumTransfer } : null,
+    authority.referral.expiry ? { label: "Expiry", value: authority.referral.expiry } : null,
+    authority.referral.payoutTiming ? { label: "Payout timing", value: authority.referral.payoutTiming } : null
+  ].filter(Boolean) as { label: string; value: string }[];
+
   return (
     <Card>
       <section>
@@ -37,12 +43,14 @@ export function WelcomeBonusCard({ authority }: { authority: ProviderAuthority }
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-2">
-            <Fact label="Code" value={authority.referral.code ?? "No known code listed by Bonus Foundry"} />
-            <Fact label="Minimum transfer" value={authority.referral.minimumTransfer} />
-            <Fact label="Expiry" value={authority.referral.expiry} />
-            <Fact label="Payout timing" value={authority.referral.payoutTiming} />
+            {facts.map((fact) => (
+              <Fact key={fact.label} label={fact.label} value={fact.value} />
+            ))}
           </div>
           <p className="mt-5 text-sm leading-6 text-muted-foreground">{authority.referral.welcomeBonus}</p>
+          <p className="mt-4 rounded-lg border bg-muted/40 p-4 text-sm leading-6 text-muted-foreground">
+            {referralWarning}
+          </p>
           <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
             {authority.referral.limitations.map((item) => (
               <li key={item}>{item}</li>
@@ -181,6 +189,33 @@ export function SupportResources({ authority }: { authority: ProviderAuthority }
                   {resource.label}
                   <ExternalLink className="size-4" aria-hidden="true" />
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </section>
+    </Card>
+  );
+}
+
+export function SourceNotes({ authority }: { authority: ProviderAuthority }) {
+  return (
+    <Card>
+      <section>
+        <CardHeader>
+          <CardTitle>Source notes</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-4 text-sm leading-6 text-muted-foreground">
+            {authority.sources.map((source) => (
+              <li key={`${source.label}-${source.url}`} className="rounded-lg border bg-muted/40 p-4">
+                <p className="font-semibold text-foreground">{source.label}</p>
+                <Link href={source.url} className="mt-1 inline-flex items-center gap-2 font-medium text-primary">
+                  Open source
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                </Link>
+                <p className="mt-2">Last manual source review: {formatDate(source.lastReviewed)}</p>
+                <p className="mt-1 capitalize">Confidence: {source.confidence.replace("-", " ")}</p>
               </li>
             ))}
           </ul>

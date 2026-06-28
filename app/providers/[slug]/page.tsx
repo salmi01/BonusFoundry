@@ -12,6 +12,7 @@ import {
   ProviderFacts,
   ReferralChecklist,
   RelatedProviderResources,
+  SourceNotes,
   SupportResources,
   TroubleshootingGuide,
   UpdateHistory,
@@ -136,6 +137,7 @@ export default async function ProviderPage({ params }: PageProps) {
                 relatedProviders={relatedProviders}
               />
               <SupportResources authority={authority} />
+              <SourceNotes authority={authority} />
               <UpdateHistory items={authority.updateHistory} />
               <Disclosure />
             </div>

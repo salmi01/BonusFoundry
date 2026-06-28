@@ -15,11 +15,13 @@ export function ReferralBox({ provider }: { provider: Provider }) {
         <CardContent>
           <div className="rounded-lg border bg-muted/70 p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Referral code</p>
-            <p className="mt-1 break-all text-2xl font-bold">{provider.referralCode ?? "No known code listed"}</p>
+            <p className="mt-1 break-all text-2xl font-bold">
+              {provider.referralCode ?? "Use the referral link when available"}
+            </p>
             {!provider.referralCode ? (
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                We do not publish a code for this provider unless we have one to disclose. Check the provider&apos;s live
-                offer terms directly.
+                This provider uses a referral link or has no manual code supplied to Bonus Foundry. Check the
+                provider&apos;s live offer terms directly.
               </p>
             ) : null}
           </div>

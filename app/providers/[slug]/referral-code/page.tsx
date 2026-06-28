@@ -10,6 +10,7 @@ import {
   EligibilityTable,
   ProviderFacts,
   ReferralChecklist,
+  SourceNotes,
   SupportResources,
   TroubleshootingGuide,
   VerificationRequirements,
@@ -53,7 +54,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
   ];
   const referralAnswer = provider.referralCode
     ? `The current referral code Bonus Foundry lists for ${provider.name} is ${provider.referralCode}.`
-    : `Bonus Foundry does not currently list a known ${provider.name} referral code.`;
+    : `Bonus Foundry lists a referral link for ${provider.name} when one is available; this provider may not use a manual referral code.`;
 
   return (
     <>
@@ -132,6 +133,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
               </BonusCard>
               <FAQ items={faq} />
               <SupportResources authority={authority} />
+              <SourceNotes authority={authority} />
               <Disclosure />
             </div>
           </article>
