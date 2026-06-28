@@ -9,6 +9,7 @@ import { LastUpdated } from "@/components/last-updated";
 import {
   EligibilityTable,
   ProviderFacts,
+  ResearchProfile,
   ReferralChecklist,
   SourceNotes,
   SupportResources,
@@ -92,6 +93,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
             </p>
             <div className="mt-8 grid gap-5">
               <ProviderFacts provider={provider} authority={authority} />
+              <ResearchProfile authority={authority} />
               <BonusCard title="What is the referral program?">
                 <p>
                   A referral program lets an existing user invite a new user. If the new user meets the current terms,

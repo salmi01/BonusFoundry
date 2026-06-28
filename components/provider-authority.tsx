@@ -179,7 +179,7 @@ export function SupportResources({ authority }: { authority: ProviderAuthority }
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
-            <Fact label="Support email" value={authority.support.supportEmail ?? "Not listed by Bonus Foundry"} />
+            <Fact label="Support email" value={authority.support.supportEmail ?? "Use the provider support page for current contact options."} />
             <Fact label="Help center" value={authority.support.helpCenter} />
           </div>
           <ul className="space-y-2 text-sm">
@@ -219,6 +219,29 @@ export function SourceNotes({ authority }: { authority: ProviderAuthority }) {
               </li>
             ))}
           </ul>
+        </CardContent>
+      </section>
+    </Card>
+  );
+}
+
+export function ResearchProfile({ authority }: { authority: ProviderAuthority }) {
+  return (
+    <Card>
+      <section>
+        <CardHeader>
+          <CardTitle>Research profile</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          <div className="grid gap-4 md:grid-cols-3">
+            <Fact label="Completeness" value={authority.researchProfile.completeness} />
+            <Fact label="Confidence" value={authority.researchProfile.confidence} />
+            <Fact label="Last manual review" value={formatDate(authority.lastManualReview)} />
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <FactList title="Sources reviewed" items={authority.researchProfile.sourcesReviewed} />
+            <FactList title="Remaining open items" items={authority.researchProfile.remainingItems} />
+          </div>
         </CardContent>
       </section>
     </Card>

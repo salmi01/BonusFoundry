@@ -10,6 +10,7 @@ import {
   CountryAvailability,
   EligibilityTable,
   ProviderFacts,
+  ResearchProfile,
   ReferralChecklist,
   RelatedProviderResources,
   SourceNotes,
@@ -91,6 +92,7 @@ export default async function ProviderPage({ params }: PageProps) {
 
             <div className="mt-8 grid gap-5">
               <ProviderFacts provider={provider} authority={authority} />
+              <ResearchProfile authority={authority} />
               <WelcomeBonusCard authority={authority} />
               <BonusCard title="Quick answer">
                 <p>{provider.currentOffer}</p>
