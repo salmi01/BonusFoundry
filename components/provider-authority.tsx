@@ -137,6 +137,7 @@ export function CountryAvailability({ authority }: { authority: ProviderAuthorit
 export function VerificationRequirements({ authority }: { authority: ProviderAuthority }) {
   return (
     <KeyFacts
+      title="Verification requirements"
       facts={[
         { label: "Identity verification", value: authority.verification.identityRequired },
         { label: "Proof of address", value: authority.verification.proofOfAddress },
@@ -207,17 +208,37 @@ export function SourceNotes({ authority }: { authority: ProviderAuthority }) {
         </CardHeader>
         <CardContent>
           <ul className="space-y-4 text-sm leading-6 text-muted-foreground">
-            {authority.sources.map((source) => (
-              <li key={`${source.label}-${source.url}`} className="rounded-lg border bg-muted/40 p-4">
-                <p className="font-semibold text-foreground">{source.label}</p>
-                <Link href={source.url} className="mt-1 inline-flex items-center gap-2 font-medium text-primary">
-                  Open source
-                  <ExternalLink className="size-4" aria-hidden="true" />
-                </Link>
-                <p className="mt-2">Last manual source review: {formatDate(source.lastReviewed)}</p>
-                <p className="mt-1 capitalize">Confidence: {source.confidence.replace("-", " ")}</p>
-              </li>
-            ))}
+            {authority.sources.map((source) => {
+              const sourceType = sourceTypeLabel(source.confidence);
+              const sourceStatus = sourceStatusLabel(source.confidence);
+
+              return (
+                <li key={`${source.label}-${source.url}`} className="rounded-lg border bg-muted/40 p-4">
+                  <dl className="grid gap-2 sm:grid-cols-2">
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Source name</dt>
+                      <dd className="mt-1 font-semibold text-foreground">{source.label}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Source type</dt>
+                      <dd className="mt-1 text-foreground">{sourceType}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Source status</dt>
+                      <dd className="mt-1 text-foreground">{sourceStatus}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Last manual review</dt>
+                      <dd className="mt-1 text-foreground">{formatDate(source.lastReviewed)}</dd>
+                    </div>
+                  </dl>
+                  <Link href={source.url} className="mt-3 inline-flex items-center gap-2 font-medium text-primary">
+                    Open source
+                    <ExternalLink className="size-4" aria-hidden="true" />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </CardContent>
       </section>
@@ -235,7 +256,7 @@ export function ResearchProfile({ authority }: { authority: ProviderAuthority })
         <CardContent className="space-y-5">
           <div className="grid gap-4 md:grid-cols-3">
             <Fact label="Completeness" value={authority.researchProfile.completeness} />
-            <Fact label="Confidence" value={authority.researchProfile.confidence} />
+            <Fact label="Review status" value={researchStatusLabel(authority.researchProfile.confidence)} />
             <Fact label="Last manual review" value={formatDate(authority.lastManualReview)} />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -328,6 +349,24 @@ export function RelatedProviderResources({
       </section>
     </Card>
   );
+}
+
+function sourceTypeLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
+  if (confidence === "official") return "Official provider source";
+  if (confidence === "referral-link") return "Referral or invite link";
+  return "BonusFoundry-owned referral detail";
+}
+
+function sourceStatusLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
+  if (confidence === "official") return "Official source reviewed";
+  if (confidence === "referral-link") return "Provider terms vary by campaign";
+  return "Owner-supplied referral code";
+}
+
+function researchStatusLabel(confidence: ProviderAuthority["researchProfile"]["confidence"]) {
+  if (confidence === "high") return "Official source reviewed";
+  if (confidence === "medium") return "Provider terms vary by country";
+  return "Public offer not verified";
 }
 
 function Fact({ label, value }: { label: string; value: string }) {
