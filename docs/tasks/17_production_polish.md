@@ -122,7 +122,7 @@ Do not imply that provider terms were checked today unless the manual review dat
 
 ## 5. Robots and sitemap
 
-Keep current robots.txt structure:
+Keep current robots.txt structure: 
 
 ```txt
 User-Agent: *
