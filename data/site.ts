@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Bonus Foundry",
-  url: "bonusfoundry.com",
+  url: "https://bonusfoundry.com",
   description:
     "A transparent knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.",
   author: "Bonus Foundry",
