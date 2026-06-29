@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Bonus Foundry",
-  url: "https://bonus-foundry.vercel.app",
+  url: "bonusfoundry.com",
   description:
     "A transparent knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.",
   author: "Bonus Foundry",
