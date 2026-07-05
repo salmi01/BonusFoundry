@@ -113,7 +113,7 @@ function corridor({
       "Sender currency depends on the country where the account is opened.",
       "Recipient currency and payout currency depend on the destination route and receiving method.",
       "Exchange rate comparison should use the same transfer amount and delivery method across providers.",
-      "Bonus Foundry could not verify every route currency from static provider documentation; confirm in the provider's live flow."
+      "Confirm the final route currency in the provider's live flow before sending."
     ],
     providerStrengths: [
       "Digital-first providers can be useful when the recipient can receive by bank account, wallet, or card.",
@@ -213,7 +213,7 @@ export const corridors: Corridor[] = [
     countryNotes: [
       "France to Algeria users should verify destination availability before creating an account for a bonus.",
       "Cash pickup may be more relevant than a digital-only provider if the recipient cannot receive by bank or wallet.",
-      "Bonus Foundry could not verify every Algeria payout method from current structured provider data."
+      "Check the live provider flow for Algeria payout methods before creating an account for a bonus."
     ],
     faq: [
       {
@@ -315,7 +315,7 @@ export const corridors: Corridor[] = [
       {
         question: "Do all providers support Cote d'Ivoire?",
         answer:
-          "No. Bonus Foundry could not verify corridor-specific availability for every compared provider, so unavailable rows should be checked directly."
+          "No. Use the corridor comparison table as a shortlist, then confirm the exact Cote d'Ivoire route in the provider flow."
       }
     ]
   }),

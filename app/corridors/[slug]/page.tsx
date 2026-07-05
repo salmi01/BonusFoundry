@@ -10,7 +10,7 @@ import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
 import { ProviderCard } from "@/components/provider-card";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { corridors, getComparisonProviders, getCorridor, getCorridorProviders } from "@/data/corridors";
+import { corridors, getCorridor, getCorridorProviders } from "@/data/corridors";
 import type { Provider } from "@/data/providers";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
@@ -45,7 +45,7 @@ export default async function CorridorPage({ params }: PageProps) {
   if (!corridor) notFound();
 
   const relatedProviders = getCorridorProviders(corridor);
-  const comparisonProviders = getComparisonProviders();
+  const comparisonProviders = relatedProviders;
 
   return (
     <>
@@ -84,8 +84,8 @@ export default async function CorridorPage({ params }: PageProps) {
           <section>
             <h2 className="text-2xl font-semibold">Best providers to check</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
-              These providers are prioritized for this corridor from Bonus Foundry&apos;s current structured provider data.
-              Availability, payout method, and bonus eligibility still need confirmation in the provider&apos;s flow.
+              These providers are prioritized for this corridor. Confirm the live route, payout method, and bonus
+              eligibility in the provider&apos;s flow before signup.
             </p>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {relatedProviders.map((provider) => (
@@ -94,7 +94,7 @@ export default async function CorridorPage({ params }: PageProps) {
             </div>
           </section>
 
-          <ProviderComparisonTable corridorProviderSlugs={corridor.providerSlugs} providers={comparisonProviders} />
+          <ProviderComparisonTable providers={comparisonProviders} />
 
           <BonusCard title="Current welcome rewards">
             <p>{corridor.currentOffer}</p>
@@ -219,13 +219,7 @@ export default async function CorridorPage({ params }: PageProps) {
   );
 }
 
-function ProviderComparisonTable({
-  corridorProviderSlugs,
-  providers
-}: {
-  corridorProviderSlugs: string[];
-  providers: Provider[];
-}) {
+function ProviderComparisonTable({ providers }: { providers: Provider[] }) {
   return (
     <section>
       <h2 className="text-2xl font-semibold">Provider comparison table</h2>
@@ -248,7 +242,7 @@ function ProviderComparisonTable({
                     {provider.name}
                   </Link>
                 </TableHead>
-                <TableCell>{corridorStatus(provider, corridorProviderSlugs)}</TableCell>
+                <TableCell>Provider to check for this corridor; confirm live route, payout method, and bonus eligibility before signup.</TableCell>
                 <TableCell>{referralOpportunity(provider)}</TableCell>
                 <TableCell>{provider.availability?.paymentMethods.slice(0, 4).join(", ") ?? "Check the provider flow."}</TableCell>
                 <TableCell>{provider.verification?.identityRequired ?? "Identity checks may be required."}</TableCell>
@@ -290,14 +284,6 @@ function TwoColumnFacts({
       </BonusCard>
     </div>
   );
-}
-
-function corridorStatus(provider: Provider, corridorProviderSlugs: string[]) {
-  if (corridorProviderSlugs.includes(provider.slug)) {
-    return "Provider to check for this corridor; confirm live route, payout method, and bonus eligibility before signup.";
-  }
-
-  return "Bonus Foundry could not verify corridor-specific availability from current structured provider data.";
 }
 
 function referralOpportunity(provider: Provider) {
