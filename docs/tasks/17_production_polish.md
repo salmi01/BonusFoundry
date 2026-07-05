@@ -128,4 +128,4 @@ Keep current robots.txt structure:
 User-Agent: *
 Allow: /
 
-Sitemap: https://bonus-foundry.vercel.app/sitemap.xml
+Sitemap: https://bonusfoundry.com/sitemap.xml

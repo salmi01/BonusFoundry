@@ -44,18 +44,27 @@ export default async function ReferralCodePage({ params }: PageProps) {
   const provider = getProvider(slug);
   if (!provider) notFound();
   const authority = getProviderAuthority(provider);
+  const hasOwnedReferralLink = Boolean(
+    provider.referralLink &&
+      provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
+  );
 
   const faq = [
     ...provider.faq,
     {
       question: `How do I use the ${provider.name} referral code?`,
-      answer:
-        "Use the referral link or enter the code during signup if the provider gives you a code field. Confirm the live terms before completing a transfer."
+      answer: provider.referralCode
+        ? "Enter the Bonus Foundry-listed code during signup or the first-transfer flow if the provider shows a code field. Confirm the live terms before completing a transfer."
+        : hasOwnedReferralLink
+          ? "Open the Bonus Foundry-listed referral link before signup, then confirm the provider's live terms before completing a transfer."
+          : "Bonus Foundry does not currently publish a referral code or owned referral link for this provider. Use the provider's official documentation to check current terms."
     }
   ];
   const referralAnswer = provider.referralCode
     ? `The current referral code Bonus Foundry lists for ${provider.name} is ${provider.referralCode}.`
-    : `Bonus Foundry lists a referral link for ${provider.name} when one is available; this provider may not use a manual referral code.`;
+    : hasOwnedReferralLink
+      ? `Bonus Foundry lists a referral link for ${provider.name} rather than a manual referral code.`
+      : `Bonus Foundry does not currently publish a referral code or owned referral link for ${provider.name}.`;
 
   return (
     <>
