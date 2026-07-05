@@ -93,7 +93,7 @@ export const providers: Provider[] = [
     description:
       "Taptap Send is a money transfer app used for sending money from countries such as France, the UK, the US, Canada, and parts of Europe to selected destinations in Africa, Asia, and Latin America.",
     referralCode: "SALAHEDD1933",
-    referralLink: "https://www.taptapsend.com/",
+    referralLink: null,
     welcomeBonus:
       "Taptap Send says referral codes can give both users bonus credit after the referred friend enters the code on their first transfer and sends with Taptap Send for the first time. The public help article does not publish one fixed reward amount for every country.",
     supportedCountries: ["France", "United Kingdom", "United States", "Canada", "Morocco", "Senegal", "Mali"],
@@ -127,7 +127,7 @@ export const providers: Provider[] = [
       hasProgram:
         "Taptap Send's official help centre explains that users can refer friends by sharing a personal code, and both users can receive bonus credit when the referred friend uses the code and sends with Taptap Send for the first time.",
       code: "SALAHEDD1933",
-      link: "https://www.taptapsend.com/",
+      link: null,
       welcomeBonus:
         "Taptap Send describes the referral reward as bonus credit. The public official pages reviewed do not publish one fixed reward amount for every country, so the app controls the live reward value.",
       minimumTransfer: "",
@@ -712,7 +712,7 @@ export const providers: Provider[] = [
     description:
       "Sendwave is a money transfer app used for sending funds to selected countries, often with mobile-focused delivery options.",
     referralCode: "I4H9G",
-    referralLink: "https://www.sendwave.com/",
+    referralLink: null,
     welcomeBonus:
       "Sendwave's public support page includes a promo-code step during signup, but Bonus Foundry could not verify public Sendwave referral-program terms or a fixed public reward amount from official pages. Bonus Foundry lists I4H9G as an owner-supplied code that must be confirmed in the Sendwave app.",
     supportedCountries: ["United States", "United Kingdom", "France", "Senegal", "Ghana", "Kenya"],
@@ -743,7 +743,7 @@ export const providers: Provider[] = [
       hasProgram:
         "Bonus Foundry lists an owner-supplied Sendwave code, but Sendwave's public official pages reviewed on 2026-07-05 did not publish a public referral-program page or reward table.",
       code: "I4H9G",
-      link: "https://www.sendwave.com/",
+      link: null,
       welcomeBonus:
         "Sendwave's public site highlights app transfers and wallet offers in select markets. Any referral reward should be treated as app-only unless Sendwave shows terms in the user's region.",
       minimumTransfer: "",
@@ -887,7 +887,7 @@ export const providers: Provider[] = [
     description:
       "Ria is a money transfer provider with online transfers and a large cash pickup network in many countries.",
     referralCode: null,
-    referralLink: "https://www.riamoneytransfer.com/",
+    referralLink: null,
     welcomeBonus:
       "Ria's official promo page lists new-customer promo codes, including HelloRia for $0 fees on first-time money transfers of $50 or more through December 31, 2026, but Bonus Foundry did not verify a public Ria referral-code program.",
     supportedCountries: ["United States", "United Kingdom", "France", "Morocco", "Mexico", "India"],
@@ -919,7 +919,7 @@ export const providers: Provider[] = [
       hasProgram:
         "No official public Ria referral-program page was found in the official public pages reviewed on 2026-07-05. Ria does publish promo-code offers, which are separate from a referral program.",
       code: null,
-      link: "https://www.riamoneytransfer.com/",
+      link: null,
       welcomeBonus:
         "Ria's public US promo page lists HelloRia for $0 fees on first-time money transfers of $50 or more; additional accepted codes include HOLARIA, HOLAYAPE, and HOLANEQUI. RDADD5 and RCADD5 are listed as select US Ria store new-customer offers that add $5 or $10 to the transferred principal amount.",
       minimumTransfer: "$50 or more for the public US promo codes reviewed.",
@@ -1521,7 +1521,7 @@ export const providers: Provider[] = [
     description:
       "WorldRemit supports international money transfers to bank accounts, mobile wallets, airtime top-up, and cash pickup in selected markets.",
     referralCode: null,
-    referralLink: "https://www.worldremit.com/",
+    referralLink: null,
     welcomeBonus:
       "WorldRemit has official help and promotion content for first-transfer promo codes and a Refer a friend topic, but Bonus Foundry does not currently list a known WorldRemit referral code or fixed reward.",
     supportedCountries: ["United States", "United Kingdom", "France", "Morocco", "Ghana", "Philippines"],
@@ -1553,7 +1553,7 @@ export const providers: Provider[] = [
       hasProgram:
         "WorldRemit's official help surface includes a Refer a friend topic, but Bonus Foundry did not verify a public fixed reward or owner referral code to publish.",
       code: null,
-      link: "https://www.worldremit.com/",
+      link: null,
       welcomeBonus:
         "First-transfer and referral-related benefits can depend on the code, sender country, route, payment method, delivery method, and active campaign displayed by WorldRemit.",
       minimumTransfer: "Offer-specific; check WorldRemit's displayed promo or referral terms.",
@@ -1900,7 +1900,7 @@ export const providers: Provider[] = [
     description:
       "LemFi is a fintech and money transfer app used by diaspora customers in supported markets for sending money and managing cross-border financial needs.",
     referralCode: "SALABGWQ",
-    referralLink: "https://www.lemfi.com/",
+    referralLink: null,
     welcomeBonus:
       "LemFi's Europe invite-and-earn page says both users can receive EUR 10 when a referred friend signs up, verifies, and sends over EUR 100 in one transfer. A separate Europe Referral & Earn campaign page lists referrer-only rewards, but its terms say the campaign period ended June 30, 2026 while page metadata lists July 31, 2026.",
     supportedCountries: ["France", "Germany", "Belgium", "Ireland", "Italy", "United Kingdom", "Canada", "United States", "Nigeria", "Ghana", "Kenya"],

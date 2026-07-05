@@ -3,15 +3,25 @@ import { notFound } from "next/navigation";
 import { BonusCard } from "@/components/bonus-card";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
+import { Disclosure } from "@/components/disclosure";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { KeyFacts } from "@/components/key-facts";
 import { LastUpdated } from "@/components/last-updated";
 import { ProviderCard } from "@/components/provider-card";
-import { corridors, getCorridor, getCorridorProviders } from "@/data/corridors";
+import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import { corridors, getComparisonProviders, getCorridor, getCorridorProviders } from "@/data/corridors";
+import type { Provider } from "@/data/providers";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 
 type PageProps = { params: Promise<{ slug: string }> };
+
+const guideLabels: Record<string, string> = {
+  "how-referral-codes-work": "How referral codes work",
+  "how-to-claim-a-welcome-bonus": "How to claim a welcome bonus",
+  "how-to-avoid-missing-signup-bonus": "How to avoid missing a signup bonus",
+  "what-to-check-before-using-money-transfer-referral-link": "What to check before using a referral link"
+};
 
 export function generateStaticParams() {
   return corridors.map((corridor) => ({ slug: corridor.slug }));
@@ -24,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return createMetadata({
     title: `${corridor.from} to ${corridor.to} transfer bonuses`,
-    description: `Compare providers, available welcome bonuses, referral requirements, and eligibility notes for transfers from ${corridor.from} to ${corridor.to}.`,
+    description: `Compare providers, welcome rewards, referral requirements, payment methods, receiving options, and verification notes for transfers from ${corridor.from} to ${corridor.to}.`,
     path: `/corridors/${corridor.slug}`
   });
 }
@@ -33,7 +43,9 @@ export default async function CorridorPage({ params }: PageProps) {
   const { slug } = await params;
   const corridor = getCorridor(slug);
   if (!corridor) notFound();
+
   const relatedProviders = getCorridorProviders(corridor);
+  const comparisonProviders = getComparisonProviders();
 
   return (
     <>
@@ -56,6 +68,7 @@ export default async function CorridorPage({ params }: PageProps) {
         <Breadcrumb
           items={[
             { href: "/", label: "Home" },
+            { href: "/corridors", label: "Corridors" },
             { href: `/corridors/${corridor.slug}`, label: `${corridor.from} to ${corridor.to}` }
           ]}
         />
@@ -66,23 +79,45 @@ export default async function CorridorPage({ params }: PageProps) {
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">{corridor.summary}</p>
 
         <div className="mt-10 space-y-10">
-          <KeyFacts facts={corridor.keyFacts} />
-          <BonusCard title="Current offer explanation">
-            <p>{corridor.currentOffer}</p>
-          </BonusCard>
+          <KeyFacts title="Quick answer" facts={corridor.keyFacts} />
+
           <section>
             <h2 className="text-2xl font-semibold">Best providers to check</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
+              These providers are prioritized for this corridor from Bonus Foundry&apos;s current structured provider data.
+              Availability, payout method, and bonus eligibility still need confirmation in the provider&apos;s flow.
+            </p>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {relatedProviders.map((provider) => (
                 <ProviderCard key={provider.slug} provider={provider} />
               ))}
             </div>
           </section>
-          <BonusCard title="Available bonuses">
+
+          <ProviderComparisonTable corridorProviderSlugs={corridor.providerSlugs} providers={comparisonProviders} />
+
+          <BonusCard title="Current welcome rewards">
+            <p>{corridor.currentOffer}</p>
+          </BonusCard>
+
+          <BonusCard title="Referral opportunities">
             <ul className="list-disc space-y-2 pl-5">
-              {relatedProviders.map((provider) => (
+              {comparisonProviders.map((provider) => (
                 <li key={provider.slug}>
                   <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
+                    {provider.name}
+                  </Link>
+                  : {referralOpportunity(provider)}
+                </li>
+              ))}
+            </ul>
+          </BonusCard>
+
+          <BonusCard title="Provider reward notes">
+            <ul className="list-disc space-y-2 pl-5">
+              {comparisonProviders.map((provider) => (
+                <li key={provider.slug}>
+                  <Link href={`/providers/${provider.slug}`} className="font-medium text-primary">
                     {provider.name}
                   </Link>
                   : {provider.welcomeBonus}
@@ -90,13 +125,35 @@ export default async function CorridorPage({ params }: PageProps) {
               ))}
             </ul>
           </BonusCard>
-          <BonusCard title="Requirements">
-            <ul className="list-disc space-y-2 pl-5">
-              {corridor.requirements.map((requirement) => (
-                <li key={requirement}>{requirement}</li>
-              ))}
-            </ul>
-          </BonusCard>
+
+          <TwoColumnFacts
+            leftTitle="Payment methods"
+            leftItems={corridor.paymentMethods}
+            rightTitle="Transfer speed"
+            rightItems={corridor.transferSpeed}
+          />
+
+          <TwoColumnFacts
+            leftTitle="Receiving options"
+            leftItems={corridor.receivingOptions}
+            rightTitle="Identity verification"
+            rightItems={corridor.identityVerification}
+          />
+
+          <TwoColumnFacts
+            leftTitle="Supported currencies"
+            leftItems={corridor.supportedCurrencies}
+            rightTitle="Provider strengths"
+            rightItems={corridor.providerStrengths}
+          />
+
+          <TwoColumnFacts
+            leftTitle="Provider limitations"
+            leftItems={corridor.providerLimitations}
+            rightTitle="Requirements"
+            rightItems={corridor.requirements}
+          />
+
           <BonusCard title="Step-by-step comparison">
             <ol className="list-decimal space-y-2 pl-5">
               {corridor.steps.map((step) => (
@@ -104,6 +161,7 @@ export default async function CorridorPage({ params }: PageProps) {
               ))}
             </ol>
           </BonusCard>
+
           <BonusCard title="Common mistakes">
             <ul className="list-disc space-y-2 pl-5">
               {corridor.commonMistakes.map((mistake) => (
@@ -111,13 +169,15 @@ export default async function CorridorPage({ params }: PageProps) {
               ))}
             </ul>
           </BonusCard>
-          <BonusCard title="What to do if the bonus is missing">
+
+          <BonusCard title="Troubleshooting missing rewards">
             <ul className="list-disc space-y-2 pl-5">
               {corridor.missingBonus.map((step) => (
                 <li key={step}>{step}</li>
               ))}
             </ul>
           </BonusCard>
+
           <BonusCard title="Country-specific notes">
             <ul className="list-disc space-y-2 pl-5">
               {corridor.countryNotes.map((note) => (
@@ -125,9 +185,132 @@ export default async function CorridorPage({ params }: PageProps) {
               ))}
             </ul>
           </BonusCard>
+
           <FAQ items={corridor.faq} />
+
+          <BonusCard title="Related providers">
+            <ul className="grid gap-2 pl-0 sm:grid-cols-2">
+              {relatedProviders.map((provider) => (
+                <li key={provider.slug} className="list-none">
+                  <Link href={`/providers/${provider.slug}`} className="font-medium text-primary">
+                    {provider.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </BonusCard>
+
+          <BonusCard title="Related guides">
+            <ul className="list-disc space-y-2 pl-5">
+              {corridor.relatedGuideSlugs.map((guideSlug) => (
+                <li key={guideSlug}>
+                  <Link href={`/guides/${guideSlug}`} className="font-medium text-primary">
+                    {guideLabels[guideSlug] ?? guideSlug}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </BonusCard>
+
+          <Disclosure />
         </div>
       </Container>
     </>
   );
+}
+
+function ProviderComparisonTable({
+  corridorProviderSlugs,
+  providers
+}: {
+  corridorProviderSlugs: string[];
+  providers: Provider[];
+}) {
+  return (
+    <section>
+      <h2 className="text-2xl font-semibold">Provider comparison table</h2>
+      <div className="mt-5 overflow-x-auto rounded-lg border bg-card shadow-sm">
+        <Table className="min-w-[980px]">
+          <thead>
+            <TableRow>
+              <TableHead className="w-[150px]">Provider</TableHead>
+              <TableHead>Corridor status</TableHead>
+              <TableHead>Referral opportunity</TableHead>
+              <TableHead>Payment methods</TableHead>
+              <TableHead>Verification</TableHead>
+            </TableRow>
+          </thead>
+          <tbody>
+            {providers.map((provider) => (
+              <TableRow key={provider.slug}>
+                <TableHead className="w-[150px]">
+                  <Link href={`/providers/${provider.slug}`} className="text-primary">
+                    {provider.name}
+                  </Link>
+                </TableHead>
+                <TableCell>{corridorStatus(provider, corridorProviderSlugs)}</TableCell>
+                <TableCell>{referralOpportunity(provider)}</TableCell>
+                <TableCell>{provider.availability?.paymentMethods.slice(0, 4).join(", ") ?? "Check the provider flow."}</TableCell>
+                <TableCell>{provider.verification?.identityRequired ?? "Identity checks may be required."}</TableCell>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+    </section>
+  );
+}
+
+function TwoColumnFacts({
+  leftTitle,
+  leftItems,
+  rightTitle,
+  rightItems
+}: {
+  leftTitle: string;
+  leftItems: string[];
+  rightTitle: string;
+  rightItems: string[];
+}) {
+  return (
+    <div className="grid gap-5 lg:grid-cols-2">
+      <BonusCard title={leftTitle}>
+        <ul className="list-disc space-y-2 pl-5">
+          {leftItems.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </BonusCard>
+      <BonusCard title={rightTitle}>
+        <ul className="list-disc space-y-2 pl-5">
+          {rightItems.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </BonusCard>
+    </div>
+  );
+}
+
+function corridorStatus(provider: Provider, corridorProviderSlugs: string[]) {
+  if (corridorProviderSlugs.includes(provider.slug)) {
+    return "Provider to check for this corridor; confirm live route, payout method, and bonus eligibility before signup.";
+  }
+
+  return "Bonus Foundry could not verify corridor-specific availability from current structured provider data.";
+}
+
+function referralOpportunity(provider: Provider) {
+  if (provider.referralCode) {
+    return `Bonus Foundry lists code ${provider.referralCode}; the route must still meet the provider's live terms.`;
+  }
+
+  if (
+    provider.referralLink &&
+    provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
+  ) {
+    return "Bonus Foundry lists an owned referral link; use it only if the live terms match this route.";
+  }
+
+  return "No Bonus Foundry-owned referral code or link is currently published; use official provider terms for eligibility.";
 }
