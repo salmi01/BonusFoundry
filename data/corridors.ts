@@ -219,7 +219,7 @@ export const corridors: Corridor[] = [
     slug: "france-to-algeria",
     from: "France",
     to: "Algeria",
-    providerSlugs: ["western-union", "moneygram", "ria", "remitly", "worldremit"],
+    providerSlugs: ["lemfi", "western-union", "moneygram", "ria", "remitly", "worldremit"],
     focus:
       "This route is mainly a coverage and pickup-method question, because some digital providers may not expose the same Algeria payout options in static documentation.",
     receivingOptions: [
@@ -249,7 +249,7 @@ export const corridors: Corridor[] = [
     slug: "france-to-tunisia",
     from: "France",
     to: "Tunisia",
-    providerSlugs: ["western-union", "moneygram", "ria", "remitly", "worldremit"],
+    providerSlugs: ["lemfi", "western-union", "moneygram", "ria", "remitly", "worldremit"],
     focus:
       "This route should be checked for cash pickup, bank deposit, and whether first-transfer offers exclude specific payout methods.",
     receivingOptions: [
@@ -259,6 +259,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Tunisia availability can differ by provider and payout method.",
+      "LemFi should be checked in the live France to Tunisia flow when the official site shows Tunisia as an available destination.",
       "A provider may support France as a sender country but still not show every Tunisia receiving method.",
       "Identity review can be more important on first transfers than repeat transfers."
     ],
@@ -279,7 +280,7 @@ export const corridors: Corridor[] = [
     slug: "france-to-senegal",
     from: "France",
     to: "Senegal",
-    providerSlugs: ["taptap-send", "remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit"],
+    providerSlugs: ["lemfi", "taptap-send", "remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit"],
     focus:
       "This route often requires comparing mobile money, cash pickup, and bank delivery rather than looking only at the referral reward.",
     receivingOptions: [
@@ -290,6 +291,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Senegal routes can involve mobile money, cash pickup, or bank delivery depending on provider.",
+      "LemFi should be checked in the live France to Senegal flow when the official site shows Senegal as an available destination.",
       "Sendwave and Taptap Send may be useful to check when the recipient can receive through supported digital channels.",
       "Provider-specific destination and payout rules should be checked before relying on a bonus."
     ],
@@ -310,7 +312,7 @@ export const corridors: Corridor[] = [
     slug: "france-to-cote-divoire",
     from: "France",
     to: "Cote d'Ivoire",
-    providerSlugs: ["taptap-send", "remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit"],
+    providerSlugs: ["lemfi", "taptap-send", "remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit"],
     focus:
       "This route should prioritize receiving method support, because mobile money, cash pickup, and bank delivery can have different availability and offer rules.",
     receivingOptions: [
@@ -320,6 +322,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Cote d'Ivoire delivery options can vary substantially by provider.",
+      "LemFi should be checked in the live France to Cote d'Ivoire flow when the official site shows Cote d'Ivoire as an available destination.",
       "A digital provider can be useful when the recipient has a supported wallet or account.",
       "An agent-network provider can be useful when the recipient needs cash pickup."
     ],
@@ -340,7 +343,7 @@ export const corridors: Corridor[] = [
     slug: "belgium-to-morocco",
     from: "Belgium",
     to: "Morocco",
-    providerSlugs: ["wise", "ria", "western-union", "moneygram", "worldremit", "remitly"],
+    providerSlugs: ["lemfi", "wise", "ria", "western-union", "moneygram", "worldremit", "remitly"],
     focus:
       "This route is useful for users comparing EU-funded transfers to Morocco, especially where France-specific offers do not apply to Belgium accounts.",
     receivingOptions: [
@@ -350,6 +353,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Belgium users should not assume France referral or welcome terms apply to their account.",
+      "LemFi should be checked in the live Belgium to Morocco flow when the official site shows Morocco as an available destination.",
       "EU sender-country rules can still differ by provider, even when the destination is the same.",
       "Morocco receiving options should be checked by payout method before signup."
     ],
@@ -370,7 +374,7 @@ export const corridors: Corridor[] = [
     slug: "spain-to-morocco",
     from: "Spain",
     to: "Morocco",
-    providerSlugs: ["wise", "ria", "western-union", "moneygram", "remitly", "worldremit"],
+    providerSlugs: ["lemfi", "wise", "ria", "western-union", "moneygram", "remitly", "worldremit"],
     focus:
       "This route should be checked for Spain-specific account eligibility and Morocco receiving method support, not copied from France or Belgium pages.",
     receivingOptions: [
@@ -380,6 +384,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Spain sender accounts can have different payment methods and referral terms from France or Belgium accounts.",
+      "LemFi should be checked in the live Spain to Morocco flow when the official site shows Morocco as an available destination.",
       "Morocco cash pickup and bank deposit options may not have the same cost or speed.",
       "Bonus eligibility should be checked before creating a new provider account."
     ],
@@ -400,7 +405,7 @@ export const corridors: Corridor[] = [
     slug: "canada-to-morocco",
     from: "Canada",
     to: "Morocco",
-    providerSlugs: ["wise", "western-union", "moneygram", "remitly", "worldremit", "ria"],
+    providerSlugs: ["lemfi", "wise", "western-union", "moneygram", "remitly", "worldremit", "ria"],
     focus:
       "This route should focus on Canadian payment methods, Morocco payout options, and whether any offer is limited to a different sender country.",
     receivingOptions: [
@@ -410,6 +415,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "Canada users can see different funding methods and offer rules from EU or US users.",
+      "LemFi should be checked in the live Canada to Morocco flow when the official site shows Morocco as an available destination.",
       "Canadian bank or card funding can change total transfer cost and speed.",
       "Do not rely on US-only referral terms for a Canada sender account."
     ],
@@ -461,7 +467,7 @@ export const corridors: Corridor[] = [
     slug: "usa-to-egypt",
     from: "USA",
     to: "Egypt",
-    providerSlugs: ["remitly", "ria", "western-union", "moneygram", "worldremit", "paysend", "xe"],
+    providerSlugs: ["lemfi", "remitly", "ria", "western-union", "moneygram", "worldremit", "paysend", "xe"],
     focus:
       "This route should prioritize live route confirmation, because provider-level coverage can be broad while Egypt payout methods vary by transfer flow.",
     receivingOptions: [
@@ -472,6 +478,7 @@ export const corridors: Corridor[] = [
     ],
     countryNotes: [
       "USA to Egypt users should check whether the provider shows Egypt before relying on a bonus.",
+      "LemFi should be checked in the live USA to Egypt flow when the official site shows Egypt as an available destination.",
       "Cash pickup and bank deposit can have different fees, speeds, and verification requirements.",
       "A US referral program may still exclude a specific route, amount, payment method, or delivery method."
     ],
