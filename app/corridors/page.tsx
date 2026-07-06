@@ -24,12 +24,12 @@ export default function CorridorsIndexPage() {
           description:
             "Browse corridor pages that explain provider options, available welcome bonuses, referral limitations, and requirements by transfer route.",
           path: "/corridors",
-          updatedAt: "2026-07-05"
+          updatedAt: "2026-07-07"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/corridors", label: "Corridors" }]} />
-        <LastUpdated date="2026-07-05" />
+        <LastUpdated date="2026-07-07" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Transfer corridor bonus guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           Corridor pages explain which providers to check for a route, what bonus rules usually matter, and why a

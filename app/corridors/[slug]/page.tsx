@@ -100,7 +100,7 @@ export default async function CorridorPage({ params }: PageProps) {
             <p>{corridor.currentOffer}</p>
           </BonusCard>
 
-          <BonusCard title="Referral opportunities">
+          <BonusCard title="Available referral bonuses">
             <ul className="list-disc space-y-2 pl-5">
               {comparisonProviders.map((provider) => (
                 <li key={provider.slug}>
@@ -126,6 +126,14 @@ export default async function CorridorPage({ params }: PageProps) {
             </ul>
           </BonusCard>
 
+          <BonusCard title="Transfer fees overview">
+            <ul className="list-disc space-y-2 pl-5">
+              {corridor.feeOverview.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </BonusCard>
+
           <TwoColumnFacts
             leftTitle="Payment methods"
             leftItems={corridor.paymentMethods}
@@ -143,8 +151,8 @@ export default async function CorridorPage({ params }: PageProps) {
           <TwoColumnFacts
             leftTitle="Supported currencies"
             leftItems={corridor.supportedCurrencies}
-            rightTitle="Provider strengths"
-            rightItems={corridor.providerStrengths}
+            rightTitle="When to choose each provider"
+            rightItems={corridor.whenToChoose}
           />
 
           <TwoColumnFacts
@@ -212,10 +220,32 @@ export default async function CorridorPage({ params }: PageProps) {
             </ul>
           </BonusCard>
 
+          {corridor.from === "USA" ? <RelatedUsaCorridors currentSlug={corridor.slug} /> : null}
+
           <Disclosure />
         </div>
       </Container>
     </>
+  );
+}
+
+function RelatedUsaCorridors({ currentSlug }: { currentSlug: string }) {
+  const usaCorridors = corridors.filter((item) => item.from === "USA" && item.slug !== currentSlug);
+
+  if (!usaCorridors.length) return null;
+
+  return (
+    <BonusCard title="Related USA corridors">
+      <ul className="grid gap-2 pl-0 sm:grid-cols-2">
+        {usaCorridors.map((item) => (
+          <li key={item.slug} className="list-none">
+            <Link href={`/corridors/${item.slug}`} className="font-medium text-primary">
+              USA to {item.to}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </BonusCard>
   );
 }
 
@@ -229,6 +259,7 @@ function ProviderComparisonTable({ providers }: { providers: Provider[] }) {
             <TableRow>
               <TableHead className="w-[150px]">Provider</TableHead>
               <TableHead>Corridor status</TableHead>
+              <TableHead>Best fit</TableHead>
               <TableHead>Referral opportunity</TableHead>
               <TableHead>Payment methods</TableHead>
               <TableHead>Verification</TableHead>
@@ -243,6 +274,7 @@ function ProviderComparisonTable({ providers }: { providers: Provider[] }) {
                   </Link>
                 </TableHead>
                 <TableCell>Provider to check for this corridor; confirm live route, payout method, and bonus eligibility before signup.</TableCell>
+                <TableCell>{providerBestFit(provider)}</TableCell>
                 <TableCell>{referralOpportunity(provider)}</TableCell>
                 <TableCell>{provider.availability?.paymentMethods.slice(0, 4).join(", ") ?? "Check the provider flow."}</TableCell>
                 <TableCell>{provider.verification?.identityRequired ?? "Identity checks may be required."}</TableCell>
@@ -299,4 +331,19 @@ function referralOpportunity(provider: Provider) {
   }
 
   return "No Bonus Foundry-owned referral code or link is currently published; use official provider terms for eligibility.";
+}
+
+function providerBestFit(provider: Provider) {
+  if (provider.slug === "wise") return "Bank-account routes where the live total received amount is stronger.";
+  if (provider.slug === "sendwave") return "Digital delivery routes where the recipient can use a supported wallet or account.";
+  if (provider.slug === "lemfi") return "Diaspora-focused routes where LemFi supports the sender country and recipient market.";
+  if (provider.slug === "remitly") return "First-transfer comparisons where delivery speed, payout method, and reward terms all match.";
+  if (provider.slug === "ria") return "Cash pickup and agent-network coverage when the recipient needs in-person collection.";
+  if (provider.slug === "western-union") return "Cash pickup backup coverage and broad route availability.";
+  if (provider.slug === "moneygram") return "Agent-network or broad global coverage where the live route shows a qualifying offer.";
+  if (provider.slug === "worldremit") return "Routes with bank, wallet, cash pickup, airtime, or mobile money options in the live flow.";
+  if (provider.slug === "paysend") return "Card, bank, or wallet routes where Paysend shows the destination and referral terms.";
+  if (provider.slug === "xe") return "Bank-account or broad currency routes where the live quote is competitive.";
+
+  return "Use when the provider's live route, payment method, and reward terms match the transfer.";
 }

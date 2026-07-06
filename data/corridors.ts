@@ -8,6 +8,7 @@ export type Corridor = {
   providerSlugs: string[];
   keyFacts: { label: string; value: string }[];
   currentOffer: string;
+  feeOverview: string[];
   paymentMethods: string[];
   transferSpeed: string[];
   receivingOptions: string[];
@@ -15,6 +16,7 @@ export type Corridor = {
   supportedCurrencies: string[];
   providerStrengths: string[];
   providerLimitations: string[];
+  whenToChoose: string[];
   requirements: string[];
   steps: string[];
   commonMistakes: string[];
@@ -90,6 +92,12 @@ function corridor({
     ],
     currentOffer:
       `${title} referral and welcome rewards depend on the provider, sender country, destination, transfer amount, payment method, delivery method, and account status. Bonus Foundry uses provider-level reward data and does not invent corridor-specific reward amounts.`,
+    feeOverview: [
+      `${title} transfer fees vary by provider, payment method, delivery method, amount, and exchange rate.`,
+      "Card-funded transfers can cost more than bank-funded transfers, but they may be faster.",
+      "Cash pickup can have different pricing from bank, wallet, or card delivery.",
+      "Compare the total received amount instead of comparing only the visible transfer fee."
+    ],
     paymentMethods: [
       "Debit card or credit card where the provider supports card funding.",
       "Bank transfer or local account debit where available for the sender country.",
@@ -127,6 +135,15 @@ function corridor({
       "Published country coverage can change and should be checked before signup or payment.",
       "Bonus Foundry does not treat an official provider referral page as a Bonus Foundry-owned referral link."
     ],
+    whenToChoose: [
+      "For lowest fees, compare the total received amount after fees and exchange rate rather than the advertised transfer fee alone.",
+      "For fastest delivery, compare card-funded, wallet, and cash pickup routes against slower bank-funded routes in the live flow.",
+      "For the best first-transfer reward, use only a Bonus Foundry-owned code or link when the provider's live terms match this route.",
+      "For bank transfer, choose a provider that shows bank deposit for the destination and a funding method you can verify.",
+      "For mobile wallet, choose a provider that shows wallet delivery for the destination and recipient account type.",
+      "For cash pickup, choose an agent-network provider and verify recipient ID requirements before sending.",
+      "For ease of use, choose the provider with the clearest signup, payment, verification, and recipient setup for your route."
+    ],
     requirements: [
       "A sender account in the country shown on this corridor page.",
       "Recipient details that match the selected delivery method.",
@@ -158,7 +175,7 @@ function corridor({
     countryNotes,
     relatedGuideSlugs: defaultGuides,
     faq,
-    lastUpdated: "2026-07-05"
+    lastUpdated: "2026-07-07"
   };
 }
 
@@ -410,6 +427,161 @@ export const corridors: Corridor[] = [
     ]
   }),
   corridor({
+    slug: "usa-to-morocco",
+    from: "USA",
+    to: "Morocco",
+    providerSlugs: ["remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit", "wise", "paysend", "xe"],
+    focus:
+      "This route should compare US funding methods, Morocco receiving options, and whether a provider rewards only the first qualifying transfer.",
+    receivingOptions: [
+      "Bank deposit where the provider supports Morocco.",
+      "Cash pickup through providers with agent-network support.",
+      "Mobile wallet or local account delivery only when the route flow shows it.",
+      "Card or account delivery where supported by the selected provider."
+    ],
+    countryNotes: [
+      "US sender accounts may have card, bank, ACH, or cash funding options depending on provider.",
+      "Morocco receiving options can differ between bank deposit, cash pickup, wallet, and card delivery.",
+      "US-only referral terms still need destination, amount, and payout-method confirmation."
+    ],
+    faq: [
+      {
+        question: "Which providers should USA to Morocco users compare?",
+        answer:
+          "Compare digital providers, agent-network providers, and broad global providers. Use the live flow to confirm Morocco payout method, total received amount, and reward eligibility."
+      },
+      {
+        question: "Can a US referral offer apply to USA to Morocco?",
+        answer:
+          "Yes, but only when the provider's current terms include the US sender account, Morocco route, amount, payment method, and receiving method."
+      }
+    ]
+  }),
+  corridor({
+    slug: "usa-to-egypt",
+    from: "USA",
+    to: "Egypt",
+    providerSlugs: ["remitly", "ria", "western-union", "moneygram", "worldremit", "paysend", "xe"],
+    focus:
+      "This route should prioritize live route confirmation, because provider-level coverage can be broad while Egypt payout methods vary by transfer flow.",
+    receivingOptions: [
+      "Bank deposit where supported for Egypt.",
+      "Cash pickup through providers with agent-network support.",
+      "Wallet or local delivery only when visible in the USA to Egypt route.",
+      "Card or account delivery only when the selected provider shows it."
+    ],
+    countryNotes: [
+      "USA to Egypt users should check whether the provider shows Egypt before relying on a bonus.",
+      "Cash pickup and bank deposit can have different fees, speeds, and verification requirements.",
+      "A US referral program may still exclude a specific route, amount, payment method, or delivery method."
+    ],
+    faq: [
+      {
+        question: "What should I compare for USA to Egypt?",
+        answer:
+          "Compare provider availability, total received amount, transfer fee, exchange rate, delivery method, speed, and any first-transfer reward shown in the live flow."
+      },
+      {
+        question: "Is a referral reward guaranteed on USA to Egypt?",
+        answer:
+          "No. Referral rewards depend on the provider's current terms, account status, transfer amount, and receiving method."
+      }
+    ]
+  }),
+  corridor({
+    slug: "usa-to-ghana",
+    from: "USA",
+    to: "Ghana",
+    providerSlugs: ["sendwave", "lemfi", "remitly", "ria", "western-union", "moneygram", "worldremit", "xe"],
+    focus:
+      "This route often needs comparison between mobile money, bank delivery, cash pickup, and first-transfer reward eligibility.",
+    receivingOptions: [
+      "Mobile money where supported by the selected provider.",
+      "Bank deposit where the provider shows a Ghana bank route.",
+      "Cash pickup through providers with agent-network support.",
+      "Wallet or local account delivery only when visible in the live route."
+    ],
+    countryNotes: [
+      "Ghana routes can involve mobile money, bank deposit, or cash pickup depending on provider.",
+      "Sendwave, LemFi, Remitly, and WorldRemit are useful to check when the recipient can receive through supported digital channels.",
+      "US funding method can affect speed, fee, and whether the first transfer qualifies for a reward."
+    ],
+    faq: [
+      {
+        question: "What receiving method matters most for USA to Ghana?",
+        answer:
+          "The recipient's usable method matters most. Compare mobile money, bank deposit, and cash pickup before comparing bonus amounts."
+      },
+      {
+        question: "Can mobile money affect USA to Ghana reward eligibility?",
+        answer:
+          "Yes. Some offers depend on delivery method, so confirm whether mobile money is included before sending."
+      }
+    ]
+  }),
+  corridor({
+    slug: "usa-to-ethiopia",
+    from: "USA",
+    to: "Ethiopia",
+    providerSlugs: ["remitly", "ria", "western-union", "moneygram", "worldremit", "xe"],
+    focus:
+      "This route should be checked for destination support, bank or cash payout availability, and first-transfer verification timing.",
+    receivingOptions: [
+      "Bank deposit where the provider supports Ethiopia.",
+      "Cash pickup through providers with agent-network support.",
+      "Wallet or local delivery only when shown in the live route.",
+      "Digital delivery only when the recipient can use the supported account or wallet."
+    ],
+    countryNotes: [
+      "USA to Ethiopia users should confirm the exact payout method before creating an account for a reward.",
+      "First transfers may take longer if the provider requests identity, source-of-funds, or payment verification.",
+      "Provider-level country coverage should still be checked in the live USA to Ethiopia transfer flow."
+    ],
+    faq: [
+      {
+        question: "Which providers should I check for USA to Ethiopia?",
+        answer:
+          "Start with broad global and agent-network providers, then confirm live Ethiopia delivery options and reward eligibility before signup."
+      },
+      {
+        question: "Can verification delay a USA to Ethiopia transfer bonus?",
+        answer:
+          "Yes. Identity, payment, or source-of-funds checks can delay both the transfer and any reward tied to a qualifying first transfer."
+      }
+    ]
+  }),
+  corridor({
+    slug: "usa-to-kenya",
+    from: "USA",
+    to: "Kenya",
+    providerSlugs: ["sendwave", "lemfi", "remitly", "ria", "western-union", "moneygram", "worldremit", "xe"],
+    focus:
+      "This route often needs comparison between mobile wallet delivery, bank deposit, cash pickup, and US funding method tradeoffs.",
+    receivingOptions: [
+      "Mobile wallet where supported by the selected provider.",
+      "Bank deposit where the provider shows a Kenya bank route.",
+      "Cash pickup through providers with agent-network support.",
+      "Local account delivery only when visible in the USA to Kenya route."
+    ],
+    countryNotes: [
+      "Kenya delivery can involve mobile wallet, bank deposit, or cash pickup depending on provider.",
+      "Sendwave, LemFi, Remitly, and WorldRemit are useful to check for digital delivery routes.",
+      "US card or bank funding can change speed, fee, and reward eligibility."
+    ],
+    faq: [
+      {
+        question: "Should USA to Kenya users compare mobile wallet delivery?",
+        answer:
+          "Yes. If the recipient can use a supported wallet, compare wallet delivery against bank deposit and cash pickup."
+      },
+      {
+        question: "Can a USA to Kenya bonus depend on payment method?",
+        answer:
+          "Yes. Card, bank, ACH, and cash-funded transfers can have different provider rules and reward eligibility."
+      }
+    ]
+  }),
+  corridor({
     slug: "uk-to-nigeria",
     from: "UK",
     to: "Nigeria",
@@ -444,7 +616,7 @@ export const corridors: Corridor[] = [
     slug: "usa-to-nigeria",
     from: "USA",
     to: "Nigeria",
-    providerSlugs: ["remitly", "sendwave", "taptap-send", "ria", "western-union", "moneygram", "worldremit", "lemfi"],
+    providerSlugs: ["remitly", "sendwave", "ria", "western-union", "moneygram", "worldremit", "lemfi", "xe"],
     focus:
       "This route should compare US funding methods, Nigeria receiving options, and whether a provider's referral terms are US-specific or route-specific.",
     receivingOptions: [

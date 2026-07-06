@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { corridors } from "@/data/corridors";
 import { faqs } from "@/data/faqs";
 import { providers } from "@/data/providers";
+import { sendingCountryHubs } from "@/data/sending-country-hubs";
 import { siteConfig } from "@/data/site";
 import { blogSlugs, guideSlugs } from "@/lib/content";
 
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
     "/terms",
     "/contact",
+    ...sendingCountryHubs.map((hub) => `/from/${hub.slug}`),
     ...providers.flatMap((provider) => [`/providers/${provider.slug}`, `/providers/${provider.slug}/referral-code`]),
     ...corridors.map((corridor) => `/corridors/${corridor.slug}`),
     ...guideSlugs.map((slug) => `/guides/${slug}`),
