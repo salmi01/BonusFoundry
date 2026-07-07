@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps) {
   return createMetadata({
     title: hub.title,
     description:
-      "Compare US money transfer providers, referral and welcome bonus opportunities, payment methods, verification requirements, and covered USA outbound corridors.",
+      `Compare ${hub.name} money transfer providers, referral and welcome bonus opportunities, payment methods, verification requirements, and covered outbound corridors.`,
     path: `/from/${hub.slug}`
   });
 }
@@ -98,9 +98,9 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
           <KeyFacts title="Key facts" facts={hub.keyFacts} />
 
           <section>
-            <h2 className="text-2xl font-semibold">Providers available from the United States</h2>
+            <h2 className="text-2xl font-semibold">Providers available or relevant from {hub.name}</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
-              These providers are relevant to US outbound transfers from Bonus Foundry&apos;s structured provider data.
+              These providers are relevant to outbound transfers from {hub.name} based on Bonus Foundry&apos;s structured provider data.
               Confirm the destination, receiving method, payment method, and bonus terms in the provider flow.
             </p>
             <div className="mt-5 overflow-x-auto rounded-lg border bg-card shadow-sm">
@@ -108,7 +108,7 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
                 <thead>
                   <TableRow>
                     <TableHead className="w-[160px]">Provider</TableHead>
-                    <TableHead>US relevance</TableHead>
+                    <TableHead>Country relevance</TableHead>
                     <TableHead>Referral or welcome bonus</TableHead>
                     <TableHead>Payment methods</TableHead>
                     <TableHead>Verification</TableHead>
@@ -122,8 +122,8 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
                           {provider.name}
                         </Link>
                       </TableHead>
-                      <TableCell>{provider.supportedCountries.includes("United States") ? "US sender data is present in Bonus Foundry provider notes." : "US relevance is based on corridor and provider notes; confirm in the live flow."}</TableCell>
-                      <TableCell>{referralOpportunity(provider)}</TableCell>
+                      <TableCell>{provider.supportedCountries.includes(hub.name) ? `${hub.name} sender data is present in Bonus Foundry provider notes.` : `${hub.name} relevance is based on corridor and provider notes; confirm in the live flow.`}</TableCell>
+                      <TableCell>{referralOpportunity(provider, hub.shortName)}</TableCell>
                       <TableCell>{provider.availability?.paymentMethods.slice(0, 4).join(", ") ?? "Check the provider flow."}</TableCell>
                       <TableCell>{provider.verification?.identityRequired ?? "Identity checks may be required."}</TableCell>
                     </TableRow>
@@ -140,32 +140,32 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
                   <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
                     {provider.name} referral page
                   </Link>
-                  : {referralOpportunity(provider)}
+                  : {referralOpportunity(provider, hub.shortName)}
                 </li>
               ))}
             </ul>
           </BonusCard>
 
-          <BonusCard title="Popular USA corridors">
+          <BonusCard title="Popular corridors">
             <div className="grid gap-4 md:grid-cols-2">
               {hubCorridors.map((corridor) => (
                 <article key={corridor.slug} className="rounded-lg border bg-muted/30 p-4">
                   <h3 className="font-semibold text-foreground">
-                    USA to {corridor.to}
+                    {hub.shortName} to {corridor.to}
                   </h3>
                   <p className="mt-2 text-sm leading-6">{corridor.summary}</p>
                   <Link href={`/corridors/${corridor.slug}`} className="mt-3 inline-block font-medium text-primary">
-                    Read USA to {corridor.to} guide
+                    Read {hub.shortName} to {corridor.to} guide
                   </Link>
                 </article>
               ))}
             </div>
           </BonusCard>
 
-          <ProviderUseCaseTable providers={hubProviders} />
+          <ProviderUseCaseTable providers={hubProviders} countryName={hub.shortName} />
 
           <TwoColumnFacts
-            leftTitle="Payment methods from the US"
+            leftTitle={`Payment methods from ${hub.shortName}`}
             leftItems={hub.paymentMethods}
             rightTitle="Receiving methods by destination"
             rightItems={hub.receivingMethods}
@@ -204,12 +204,12 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
             </ul>
           </BonusCard>
 
-          <BonusCard title="Related USA corridors">
+          <BonusCard title="Related corridor pages">
             <ul className="grid gap-2 pl-0 sm:grid-cols-2">
               {hubCorridors.map((corridor) => (
                 <li key={corridor.slug} className="list-none">
                   <Link href={`/corridors/${corridor.slug}`} className="font-medium text-primary">
-                    USA to {corridor.to}
+                    {hub.shortName} to {corridor.to}
                   </Link>
                 </li>
               ))}
@@ -235,7 +235,7 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
   );
 }
 
-function ProviderUseCaseTable({ providers }: { providers: Provider[] }) {
+function ProviderUseCaseTable({ providers, countryName }: { providers: Provider[]; countryName: string }) {
   return (
     <section>
       <h2 className="text-2xl font-semibold">Provider comparison table</h2>
@@ -256,7 +256,7 @@ function ProviderUseCaseTable({ providers }: { providers: Provider[] }) {
                     {provider.name}
                   </Link>
                 </TableHead>
-                <TableCell>{providerBestFit(provider)}</TableCell>
+                <TableCell>{providerBestFit(provider, countryName)}</TableCell>
                 <TableCell>{provider.welcomeBonus}</TableCell>
               </TableRow>
             ))}
@@ -298,33 +298,33 @@ function TwoColumnFacts({
   );
 }
 
-function referralOpportunity(provider: Provider) {
+function referralOpportunity(provider: Provider, countryName: string) {
   if (provider.referralCode) {
-    return `Bonus Foundry lists code ${provider.referralCode}; the US route must still meet the provider's live terms.`;
+    return `Bonus Foundry lists code ${provider.referralCode}; the ${countryName} route must still meet the provider's live terms.`;
   }
 
   if (
     provider.referralLink &&
     provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
   ) {
-    return "Bonus Foundry lists an owned referral link; use it only when the provider's live US terms match the route.";
+    return `Bonus Foundry lists an owned referral link; use it only when the provider's live ${countryName} terms match the route.`;
   }
 
   return "No Bonus Foundry-owned referral code or link is currently published; check the provider's official terms for eligibility.";
 }
 
-function providerBestFit(provider: Provider) {
+function providerBestFit(provider: Provider, countryName: string) {
   if (provider.slug === "wise") return "Bank-account routes where the live quote gives a stronger total received amount.";
   if (provider.slug === "sendwave") return "Mobile wallet or digital delivery routes shown in the live flow.";
   if (provider.slug === "taptap-send") return "Supported destination routes where the referral code is accepted during the first transfer.";
-  if (provider.slug === "lemfi") return "Diaspora-focused routes where LemFi supports the US sender and destination market.";
+  if (provider.slug === "lemfi") return `Diaspora-focused routes where LemFi supports the ${countryName} sender and destination market.`;
   if (provider.slug === "remitly") return "First-time transfer comparisons where the reward terms, speed, and payout method match.";
   if (provider.slug === "ria") return "Cash pickup and agent-network coverage.";
   if (provider.slug === "western-union") return "Broad country coverage and cash pickup backup options.";
-  if (provider.slug === "moneygram") return "US Invite Friends or agent-network routes when the live destination qualifies.";
+  if (provider.slug === "moneygram") return "Official referral or agent-network routes when the live destination qualifies.";
   if (provider.slug === "worldremit") return "Routes with bank, wallet, cash pickup, airtime, or mobile money options.";
   if (provider.slug === "paysend") return "Card, bank, or wallet routes where Paysend shows destination support and referral terms.";
   if (provider.slug === "xe") return "Bank-account or broad currency routes where the live quote is competitive.";
 
-  return "Use when the provider's live US route, payment method, and reward terms match the transfer.";
+  return `Use when the provider's live ${countryName} route, payment method, and reward terms match the transfer.`;
 }
