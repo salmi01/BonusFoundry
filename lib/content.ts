@@ -28,6 +28,10 @@ const guideModules = {
     import("@/content/guides/promo-code-vs-referral-code.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
   "how-to-avoid-missing-signup-bonus": () =>
     import("@/content/guides/how-to-avoid-missing-signup-bonus.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
+  "how-to-use-taptap-send-bonus-credit": () =>
+    import("@/content/guides/how-to-use-taptap-send-bonus-credit.mdx") as Promise<
+      MdxModule<{ meta: GuideMeta }>
+    >,
   "how-to-compare-welcome-bonuses-between-transfer-apps": () =>
     import("@/content/guides/how-to-compare-welcome-bonuses-between-transfer-apps.mdx") as Promise<
       MdxModule<{ meta: GuideMeta }>

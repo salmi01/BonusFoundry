@@ -26,12 +26,12 @@ export default async function GuidesIndexPage() {
           description:
             "Detailed guides explaining how money transfer referral codes, welcome bonuses, promo codes, and first-transfer offers usually work.",
           path: "/guides",
-          updatedAt: "2026-06-27"
+          updatedAt: "2026-07-08"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }]} />
-        <LastUpdated date="2026-06-27" />
+        <LastUpdated date="2026-07-08" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code and bonus guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           These guides explain practical rules behind money transfer signup bonuses, including how to claim an offer,
