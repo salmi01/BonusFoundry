@@ -23,6 +23,11 @@ const guideLabels: Record<string, string> = {
   "what-to-check-before-using-money-transfer-referral-link": "What to check before using a referral link"
 };
 
+const sendingCountryHubSlugs: Record<string, string> = {
+  France: "france",
+  USA: "usa"
+};
+
 export function generateStaticParams() {
   return corridors.map((corridor) => ({ slug: corridor.slug }));
 }
@@ -34,7 +39,7 @@ export async function generateMetadata({ params }: PageProps) {
 
   return createMetadata({
     title: `${corridor.from} to ${corridor.to} transfer bonuses`,
-    description: `Compare providers, welcome rewards, referral requirements, payment methods, receiving options, and verification notes for transfers from ${corridor.from} to ${corridor.to}.`,
+    description: `Compare providers, referral and promo opportunities, payment methods, delivery options, verification checks, and bonus mistakes for transfers from ${corridor.from} to ${corridor.to}.`,
     path: `/corridors/${corridor.slug}`
   });
 }
@@ -82,10 +87,10 @@ export default async function CorridorPage({ params }: PageProps) {
           <KeyFacts title="Quick answer" facts={corridor.keyFacts} />
 
           <section>
-            <h2 className="text-2xl font-semibold">Best providers to check</h2>
+            <h2 className="text-2xl font-semibold">Which providers support this corridor?</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
-              These providers are prioritized for this corridor. Confirm the live route, payout method, and bonus
-              eligibility in the provider&apos;s flow before signup.
+              These providers are useful starting points for this corridor. Confirm the live route, payout method, and
+              current offer in the provider&apos;s flow before signup or payment.
             </p>
             <div className="mt-6 grid gap-5 md:grid-cols-3">
               {relatedProviders.map((provider) => (
@@ -96,12 +101,9 @@ export default async function CorridorPage({ params }: PageProps) {
 
           <ProviderComparisonTable providers={comparisonProviders} />
 
-          <BonusCard title="Current welcome rewards">
+          <BonusCard title="Referral and Promo Opportunities for This Corridor">
             <p>{corridor.currentOffer}</p>
-          </BonusCard>
-
-          <BonusCard title="Available referral bonuses">
-            <ul className="list-disc space-y-2 pl-5">
+            <ul className="mt-4 list-disc space-y-2 pl-5">
               {comparisonProviders.map((provider) => (
                 <li key={provider.slug}>
                   <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
@@ -113,14 +115,27 @@ export default async function CorridorPage({ params }: PageProps) {
             </ul>
           </BonusCard>
 
-          <BonusCard title="Provider reward notes">
-            <ul className="list-disc space-y-2 pl-5">
+          <BonusCard title="How can users use a referral or promo offer on this corridor?">
+            <ol className="list-decimal space-y-2 pl-5">
+              <li>Choose a provider that shows this exact sender country, destination, and delivery method.</li>
+              <li>Open the provider page or referral page from this corridor guide before signup or checkout.</li>
+              <li>Apply the listed referral code, referral link, promo code, or first-transfer offer when the provider shows the option.</li>
+              <li>Review the transfer amount, payment method, delivery method, expiry, and reward timing before sending.</li>
+              <li>Keep the offer screen and transfer receipt until the bonus or transfer is resolved.</li>
+            </ol>
+          </BonusCard>
+
+          <BonusCard title="Provider pages to read next">
+            <ul className="grid gap-2 pl-0 sm:grid-cols-2">
               {comparisonProviders.map((provider) => (
-                <li key={provider.slug}>
+                <li key={provider.slug} className="list-none">
                   <Link href={`/providers/${provider.slug}`} className="font-medium text-primary">
                     {provider.name}
                   </Link>
-                  : {provider.welcomeBonus}
+                  <span className="text-muted-foreground"> · </span>
+                  <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
+                    referral code
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -135,16 +150,16 @@ export default async function CorridorPage({ params }: PageProps) {
           </BonusCard>
 
           <TwoColumnFacts
-            leftTitle="Payment methods"
+            leftTitle="What transfer methods are commonly available?"
             leftItems={corridor.paymentMethods}
             rightTitle="Transfer speed"
             rightItems={corridor.transferSpeed}
           />
 
           <TwoColumnFacts
-            leftTitle="Receiving options"
+            leftTitle="What recipient methods are commonly available?"
             leftItems={corridor.receivingOptions}
-            rightTitle="Identity verification"
+            rightTitle="What verification steps may be required?"
             rightItems={corridor.identityVerification}
           />
 
@@ -158,11 +173,11 @@ export default async function CorridorPage({ params }: PageProps) {
           <TwoColumnFacts
             leftTitle="Provider limitations"
             leftItems={corridor.providerLimitations}
-            rightTitle="Requirements"
+            rightTitle="What country-specific conditions may matter?"
             rightItems={corridor.requirements}
           />
 
-          <BonusCard title="Step-by-step comparison">
+          <BonusCard title="What should users check before sending money?">
             <ol className="list-decimal space-y-2 pl-5">
               {corridor.steps.map((step) => (
                 <li key={step}>{step}</li>
@@ -170,7 +185,7 @@ export default async function CorridorPage({ params }: PageProps) {
             </ol>
           </BonusCard>
 
-          <BonusCard title="Common mistakes">
+          <BonusCard title="What mistakes can cause a transfer or bonus to fail?">
             <ul className="list-disc space-y-2 pl-5">
               {corridor.commonMistakes.map((mistake) => (
                 <li key={mistake}>{mistake}</li>
@@ -195,6 +210,8 @@ export default async function CorridorPage({ params }: PageProps) {
           </BonusCard>
 
           <FAQ items={corridor.faq} />
+
+          <RelatedCountryHub corridorFrom={corridor.from} />
 
           <BonusCard title="Related providers">
             <ul className="grid gap-2 pl-0 sm:grid-cols-2">
@@ -245,6 +262,19 @@ function RelatedUsaCorridors({ currentSlug }: { currentSlug: string }) {
           </li>
         ))}
       </ul>
+    </BonusCard>
+  );
+}
+
+function RelatedCountryHub({ corridorFrom }: { corridorFrom: string }) {
+  const slug = sendingCountryHubSlugs[corridorFrom];
+  if (!slug) return null;
+
+  return (
+    <BonusCard title="Related country hub">
+      <Link href={`/from/${slug}`} className="font-medium text-primary">
+        Send money from {corridorFrom}
+      </Link>
     </BonusCard>
   );
 }
@@ -320,17 +350,17 @@ function TwoColumnFacts({
 
 function referralOpportunity(provider: Provider) {
   if (provider.referralCode) {
-    return `Bonus Foundry lists code ${provider.referralCode}; the route must still meet the provider's live terms.`;
+    return `Code ${provider.referralCode} may help eligible users when ${provider.name} shows a code field for this route.`;
   }
 
   if (
     provider.referralLink &&
     provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
   ) {
-    return "Bonus Foundry lists an owned referral link; use it only if the live terms match this route.";
+    return "Referral link available; open it before signup when the provider shows this corridor and offer terms.";
   }
 
-  return "No Bonus Foundry-owned referral code or link is currently published; use official provider terms for eligibility.";
+  return "Check the provider flow for a promo, referral, or first-transfer offer that applies to this route.";
 }
 
 function providerBestFit(provider: Provider) {

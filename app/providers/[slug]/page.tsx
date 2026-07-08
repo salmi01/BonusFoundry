@@ -55,6 +55,11 @@ export default async function ProviderPage({ params }: PageProps) {
   const relatedFaqs = faqs.filter((faq) => authority.relatedFaqSlugs.includes(faq.slug));
   const relatedCorridors = corridors.filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug));
   const relatedProviders = providers.filter((item) => authority.relatedProviderSlugs.includes(item.slug));
+  const referralInstruction = provider.referralCode
+    ? `Use code ${provider.referralCode} when ${provider.name} shows a referral or promo-code field.`
+    : provider.referralLink
+      ? `Open the listed ${provider.name} referral link before signup.`
+      : `Check ${provider.name}'s live app or website for any active referral, promo, or first-transfer offer.`;
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
@@ -86,8 +91,8 @@ export default async function ProviderPage({ params }: PageProps) {
             <LastUpdated date={provider.lastUpdated} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} welcome bonus and referral program</h1>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
-              {provider.name} may have a welcome bonus or referral offer, but eligibility depends on the provider&apos;s
-              current rules. {provider.description}
+              {referralInstruction} Any bonus may depend on country, account status, transfer amount, destination,
+              payment method, verification, and the provider&apos;s current promotion rules. {provider.description}
             </p>
 
             <div className="mt-8 grid gap-5">

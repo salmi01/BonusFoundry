@@ -25,16 +25,16 @@ export default function FAQIndexPage() {
           description:
             "Answers to common questions about referral codes, promo codes, welcome bonuses, expiry, verification, and country-specific rules.",
           path: "/faq",
-          updatedAt: "2026-06-27"
+          updatedAt: "2026-07-09"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/faq", label: "FAQ" }]} />
-        <LastUpdated date="2026-06-27" />
+        <LastUpdated date="2026-07-09" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code FAQ</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
-          These answers cover high-intent questions about money transfer referral codes and welcome bonuses. Provider
-          rules vary, so use each answer as general guidance and confirm the live terms in the provider app.
+          These answers help users apply referral codes, promo codes, welcome bonuses, and transfer offers correctly.
+          Each answer explains the practical condition to check and links to related provider pages for the next step.
         </p>
         <div className="mt-8 grid gap-4">
           {faqs.map((faq) => (

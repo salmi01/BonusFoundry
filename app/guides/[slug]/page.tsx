@@ -62,9 +62,9 @@ export default async function GuidePage({ params }: PageProps) {
           <div className="mt-8 rounded-md border bg-card p-5">
             <h2 className="text-lg font-semibold">On this page</h2>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-              <li>Direct answer</li>
-              <li>How it works</li>
-              <li>What to check before using a code</li>
+              <li>Direct answer or quick answer</li>
+              <li>Practical steps and checklist</li>
+              <li>Common mistakes and FAQ</li>
             </ul>
           </div>
           <div className="mt-8">

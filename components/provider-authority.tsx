@@ -31,7 +31,7 @@ export function WelcomeBonusCard({ authority }: { authority: ProviderAuthority }
       ? { label: "Code", value: authority.referral.code }
       : authority.referral.link
         ? { label: "Bonus Foundry referral link", value: authority.referral.link }
-        : { label: "Bonus Foundry referral link", value: "No Bonus Foundry-owned referral link is currently published." },
+        : { label: "Offer entry point", value: "Check the provider app or website for an active promo, referral, or first-transfer offer." },
     authority.referral.minimumTransfer ? { label: "Minimum transfer", value: authority.referral.minimumTransfer } : null,
     authority.referral.expiry ? { label: "Expiry", value: authority.referral.expiry } : null,
     authority.referral.payoutTiming ? { label: "Payout timing", value: authority.referral.payoutTiming } : null

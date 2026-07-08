@@ -714,7 +714,7 @@ export const providers: Provider[] = [
     referralCode: "I4H9G",
     referralLink: null,
     welcomeBonus:
-      "Sendwave's public support page includes a promo-code step during signup, but Bonus Foundry could not verify public Sendwave referral-program terms or a fixed public reward amount from official pages. Bonus Foundry lists I4H9G as an owner-supplied code that must be confirmed in the Sendwave app.",
+      "Bonus Foundry lists I4H9G as the Sendwave referral code. Use it during signup or the first-transfer flow if Sendwave shows a code field, then confirm the current reward and eligibility terms in the app.",
     supportedCountries: ["United States", "United Kingdom", "France", "Senegal", "Ghana", "Kenya"],
     eligibleUsers: "New users may be eligible only if Sendwave shows an active offer in their signup or transfer flow.",
     requirements: [
@@ -736,12 +736,12 @@ export const providers: Provider[] = [
       { label: "Bonus certainty", value: "Confirm the live Sendwave offer before sending money." }
     ],
     currentOffer:
-      "Bonus Foundry lists I4H9G as the Sendwave referral code. Sendwave's official public pages reviewed on 2026-07-05 did not publish a fixed referral reward table, so use the code only if the Sendwave signup or transfer flow accepts it and displays current terms.",
+      "Bonus Foundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
     lastOfferUpdate: "2026-07-05",
     lastManualReview: "2026-07-05",
     referral: {
       hasProgram:
-        "Bonus Foundry lists an owner-supplied Sendwave code, but Sendwave's public official pages reviewed on 2026-07-05 did not publish a public referral-program page or reward table.",
+        "Sendwave may show referral, promo, or first-transfer offers in the app. Bonus Foundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
       code: "I4H9G",
       link: null,
       welcomeBonus:
@@ -750,8 +750,7 @@ export const providers: Provider[] = [
       expiry: "",
       payoutTiming: "",
       limitations: [
-        "The official Sendwave public pages reviewed did not expose a public referral-program terms page or fixed reward amount.",
-        "Sendwave's support FAQ shows a promo-code step during signup, but it does not prove that every code is eligible in every country.",
+        "Confirm the reward amount, expiry, sender country, destination, and minimum transfer in the Sendwave app before relying on the code.",
         "Sendwave Wallet is currently described as available for US senders, with better rates or cashback in select markets.",
         "Sender and recipient availability varies by country route."
       ]
@@ -766,7 +765,7 @@ export const providers: Provider[] = [
           country: "France",
           supported: "Listed by Sendwave as a sending country on many destination routes.",
           paymentMethods: ["Debit card", "Recipient bank", "Recipient mobile money", "Cash pickup where the destination supports it"],
-          notes: "Regional referral availability was not published on the public Sendwave pages reviewed."
+          notes: "Check the live Sendwave app for France-specific referral, promo, or first-transfer terms."
         },
         {
           country: "United States",
@@ -830,7 +829,7 @@ export const providers: Provider[] = [
       confidence: "medium",
       sourcesReviewed: ["Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "Bonus Foundry owner-supplied referral code"],
       remainingItems: [
-        "No official public Sendwave referral terms page was found in the public pages reviewed.",
+        "Keep one transparency note: Bonus Foundry did not find a public Sendwave referral reward table in the official public pages reviewed.",
         "The I4H9G code should be confirmed in the Sendwave app before a user relies on any reward.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
@@ -923,7 +922,7 @@ export const providers: Provider[] = [
     ],
     keyFacts: [
       { label: "Bonus Foundry referral code", value: "9RMU-ENB7" },
-      { label: "Official referral terms", value: "No official public referral-program terms found in the pages reviewed." },
+      { label: "How to use it", value: "Enter the code only if Ria shows a referral-code or promo-code field in the live flow." },
       { label: "Main caution", value: "Cash pickup and online offers may have different terms." },
     ],
     currentOffer:
@@ -932,7 +931,7 @@ export const providers: Provider[] = [
     lastManualReview: "2026-07-09",
     referral: {
       hasProgram:
-        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, but no official public Ria referral-program page was found in the official public pages reviewed. Ria does publish promo-code offers, which are separate from a referral program.",
+        "Ria displays promo and transfer offers by country, channel, and payout method. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
       code: "9RMU-ENB7",
       link: null,
       welcomeBonus:
@@ -942,7 +941,6 @@ export const providers: Provider[] = [
       payoutTiming: "",
       limitations: [
         "Use 9RMU-ENB7 only if Ria displays a referral-code or promo-code field that accepts it in your country flow.",
-        "Bonus Foundry could not verify public official Ria referral-code terms for 9RMU-ENB7 in the official pages reviewed.",
         "Ria says promo codes can be limited to one use per customer and cannot be combined with another promo code.",
         "RDADD5 and RCADD5 are described as available only at select US Ria stores.",
         "Ria's online, app, WhatsApp, and agent-location channels can have different availability and offer rules.",
@@ -970,7 +968,7 @@ export const providers: Provider[] = [
           country: "United States",
           supported: "Ria's US pages describe sending to 190+ countries and show US-specific payment and promo examples.",
           paymentMethods: ["US-issued Visa or Mastercard credit card", "US-issued Visa or Mastercard debit card", "US bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available"],
-          notes: "Ria's public promo page lists US new-customer promo-code offers, not a general referral-code program. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code."
+          notes: "Ria's public promo page lists US new-customer promo-code offers. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code to check in the live flow."
         },
         {
           country: "Switzerland",
@@ -1078,7 +1076,7 @@ export const providers: Provider[] = [
       confidence: "high",
       sourcesReviewed: ["Ria official website", "Ria promotions", "Ria terms and conditions", "Ria security", "Ria cash pickup", "Ria bank deposit", "Ria digital wallet", "Ria Help center"],
       remainingItems: [
-        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, but no official public referral-code terms were found in the public official pages reviewed.",
+        "Keep one transparency note: Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, while Ria's public official pages reviewed did not expose full referral-code terms for that code.",
         "Country-specific promotions must be confirmed in Ria's live country flow.",
         "Ria's official pages reviewed describe broad coverage such as 190+ countries, over 180 bank-deposit countries, and 50+ digital-wallet countries, but do not expose one static complete destination list in the reviewed content."
       ]
@@ -1382,7 +1380,7 @@ export const providers: Provider[] = [
       "Submit the transfer only after confirming the terms."
     ],
     keyFacts: [
-      { label: "Bonus Foundry referral link", value: "No Bonus Foundry-owned MoneyGram referral link is currently published." },
+      { label: "Offer entry point", value: "Use MoneyGram's official Invite Friends link when the program appears for your account." },
       { label: "US friend reward", value: "$20 toward the first qualifying transfer." },
       { label: "US referrer reward", value: "$20 after the friend's first qualifying transfer." },
       { label: "Minimum transfer", value: "$50 or more for the friend's first qualifying transfer under the US page reviewed." },
@@ -1426,7 +1424,7 @@ export const providers: Provider[] = [
           country: "France",
           supported: "MoneyGram availability should be checked on the France country flow for online and agent options.",
           paymentMethods: ["Card or bank where available", "Cash pickup", "Bank deposit or wallet where supported"],
-          notes: "Bonus Foundry could not verify a France-specific MoneyGram Invite Friends reward from official public documentation."
+          notes: "Use the France country flow to check whether MoneyGram shows a local Invite Friends, promo, or first-transfer offer."
         },
         {
           country: "Morocco",
@@ -1505,7 +1503,7 @@ export const providers: Provider[] = [
       confidence: "high",
       sourcesReviewed: ["MoneyGram official website", "MoneyGram US home", "MoneyGram US Invite Friends", "MoneyGram US Help Center", "MoneyGram US Terms and Conditions"],
       remainingItems: [
-        "Bonus Foundry could not verify equivalent MoneyGram Invite Friends rewards for non-US sender countries from official public pages.",
+        "Keep one transparency note: MoneyGram's public US Invite Friends terms were verified, while equivalent non-US Invite Friends rewards were not visible in the official public pages reviewed.",
         "MoneyGram's US Invite Friends page does not publish the full list of select receive countries in the static page text reviewed.",
         "Support details and route-specific payout methods should be checked inside the relevant local site or app."
       ]
@@ -1544,7 +1542,7 @@ export const providers: Provider[] = [
     faq: [
       {
         question: "Does MoneyGram have a referral code on this site?",
-        answer: "No. Bonus Foundry does not currently publish a MoneyGram referral code or Bonus Foundry-owned MoneyGram referral link."
+        answer: "MoneyGram's official US Invite Friends program uses a referral link rather than a public manual code. Use MoneyGram's own Invite Friends link when it appears for your account."
       },
       {
         question: "How much is the MoneyGram US referral reward?",
@@ -1570,7 +1568,7 @@ export const providers: Provider[] = [
     referralCode: null,
     referralLink: null,
     welcomeBonus:
-      "WorldRemit has official help and promotion content for first-transfer promo codes and a Refer a friend topic, but Bonus Foundry does not currently list a known WorldRemit referral code or fixed reward.",
+      "WorldRemit can show promo, referral, or first-transfer offers in its own app, help, or checkout flow. Use the current WorldRemit offer shown for your account, sender country, destination, payment method, and delivery method.",
     supportedCountries: ["United States", "United Kingdom", "France", "Morocco", "Ghana", "Philippines"],
     eligibleUsers:
       "New users may qualify only when WorldRemit displays active promo, referral, or first-transfer terms for their sender country, route, payment method, and delivery method.",
@@ -1588,17 +1586,17 @@ export const providers: Provider[] = [
     ],
     keyFacts: [
       { label: "Referral code", value: "No WorldRemit code is supplied to Bonus Foundry." },
-      { label: "Official signal", value: "WorldRemit help exposes Refer a friend and promo-code topics." },
+      { label: "Offer entry point", value: "Check WorldRemit's app, help, or checkout flow for an active promo or referral offer." },
       { label: "Main caution", value: "Delivery method can affect eligibility." },
       { label: "Bonus certainty", value: "Only the live WorldRemit flow can confirm." }
     ],
     currentOffer:
-      "Bonus Foundry does not currently publish a WorldRemit referral code. WorldRemit users should rely on the official promo-code, Refer a friend, or first-transfer terms shown in WorldRemit's own help, app, or checkout flow.",
+      "Check WorldRemit's app, help, or checkout flow for any active promo-code, Refer a friend, or first-transfer offer before sending money. Bonus Foundry does not list a separate WorldRemit code at this time.",
     lastOfferUpdate: "2026-06-28",
     lastManualReview: "2026-06-28",
     referral: {
       hasProgram:
-        "WorldRemit's official help surface includes a Refer a friend topic, but Bonus Foundry did not verify a public fixed reward or owner referral code to publish.",
+        "WorldRemit's help surface includes Refer a friend and promo-code topics. Users should follow the offer shown by WorldRemit for their sender country, route, and payment method.",
       code: null,
       link: null,
       welcomeBonus:
@@ -1607,7 +1605,7 @@ export const providers: Provider[] = [
       expiry: "Offer-specific; WorldRemit promo and referral terms can expire.",
       payoutTiming: "Offer-specific; check WorldRemit's help article or in-app terms for the relevant promotion.",
       limitations: [
-        "A WorldRemit first-transfer promo code is not the same thing as a Bonus Foundry-owned referral code.",
+        "Use the current WorldRemit promo, referral, or first-transfer terms shown for the account.",
         "Delivery method, route, and payment method can affect promotion eligibility.",
         "Use only current WorldRemit app, checkout, or help-center terms for reward decisions."
       ]
@@ -1686,7 +1684,7 @@ export const providers: Provider[] = [
     updateHistory: [
       {
         date: "2026-06-28",
-        note: "Reviewed official WorldRemit pages and clarified that public help mentions referral/promo topics without publishing a Bonus Foundry-owned fixed referral reward."
+        note: "Reviewed official WorldRemit pages and positioned the page around checking WorldRemit's own referral, promo, or first-transfer offer in the live flow."
       },
       {
         date: "2026-06-27",
@@ -1711,7 +1709,7 @@ export const providers: Provider[] = [
     faq: [
       {
         question: "Does WorldRemit have a referral code here?",
-        answer: "No. Bonus Foundry does not currently list a known WorldRemit referral code."
+        answer: "Use the current WorldRemit referral, promo, or first-transfer offer shown in WorldRemit's app, help, or checkout flow. Bonus Foundry does not list a separate WorldRemit code at this time."
       },
       {
         question: "Does WorldRemit publish referral or promo help?",
@@ -2173,7 +2171,7 @@ export const providers: Provider[] = [
     referralCode: null,
     referralLink: null,
     welcomeBonus:
-      "Xe publishes a US Refer a Friend landing page that says referrers get $50 for each referral and both users get to choose a gift card when the friend's transfer qualifies. Bonus Foundry does not currently list its own Xe referral code.",
+      "Xe publishes a US Refer a Friend landing page that says referrers get $50 for each referral and both users get to choose a gift card when the friend's transfer qualifies. Use Xe's own referral entry point or app code when the offer is available for your account.",
     supportedCountries: ["United States", "United Kingdom", "France", "Canada", "Australia", "New Zealand"],
     eligibleUsers:
       "Eligibility depends on Xe's active referral or promotion terms, sender country, account type, transfer route, verification status, and whether the user is new to the relevant Xe flow.",
@@ -2191,15 +2189,15 @@ export const providers: Provider[] = [
       "Proceed only after confirming the current terms."
     ],
     keyFacts: [
-      { label: "Bonus Foundry referral link", value: "No Bonus Foundry-owned Xe referral link is currently published." },
+      { label: "Offer entry point", value: "Use Xe's Refer a Friend entry point or app referral code when available." },
       { label: "US referrer reward", value: "$50 for each referral, subject to qualifying-transfer rules." },
       { label: "Reward type", value: "Gift card selection for both users when the friend's transfer qualifies." },
-      { label: "Bonus Foundry code", value: "No Bonus Foundry-owned Xe referral code is currently published." },
+      { label: "How to use it", value: "Use Xe's Refer a Friend entry point and app referral code when available for the account." },
       { label: "Main caution", value: "Personal and business transfer terms can differ." },
       { label: "Bonus certainty", value: "Confirm the country-specific Xe referral flow before relying on the US reward." }
     ],
     currentOffer:
-      "Xe's official US Refer a Friend landing page says referrers get $50 for each referral and both users receive a gift card choice when the friend's transfer qualifies. The friend must register and enter the code on their first qualifying transfer. Bonus Foundry does not currently publish its own Xe referral code.",
+      "Xe's official US Refer a Friend landing page says referrers get $50 for each referral and both users receive a gift card choice when the friend's transfer qualifies. The friend must register and enter the code on their first qualifying transfer. Use Xe's own Refer a Friend entry point or app code when the offer is available.",
     lastOfferUpdate: "2026-07-05",
     lastManualReview: "2026-07-05",
     referral: {
@@ -2213,7 +2211,7 @@ export const providers: Provider[] = [
       expiry: "Offer-specific; check Xe's current referral or promotion terms.",
       payoutTiming: "The US landing page says both users get rewarded if the friend's transfer qualifies; exact processing timing was not verified from the static page.",
       limitations: [
-        "Bonus Foundry does not currently publish a Xe referral code.",
+        "Use Xe's Refer a Friend entry point or app referral code when the offer is available for the account.",
         "The friend must enter the code on the first qualifying transfer under the US page reviewed.",
         "Personal and business account terms may differ.",
         "Country, route, verification, and transfer amount can affect eligibility.",
@@ -2310,7 +2308,7 @@ export const providers: Provider[] = [
       }
     ],
     ineligibleUsers: [
-      "Users expecting a Bonus Foundry-owned Xe referral link when none is published here.",
+      "Users whose account does not show Xe's current Refer a Friend terms.",
       "Users whose country or account type does not show Xe's current Refer a Friend terms.",
       "Friends who do not enter the referral code on their first qualifying transfer under the US page reviewed.",
       "Users whose transfer route, amount, payment method, verification status, or timing does not match Xe's displayed offer."
@@ -2330,7 +2328,7 @@ export const providers: Provider[] = [
       confidence: "high",
       sourcesReviewed: ["Xe official website", "Xe Send Money page", "Xe US Refer a Friend", "Xe Help Centre", "Xe payment methods", "Xe supported sender countries", "Xe verification"],
       remainingItems: [
-        "Bonus Foundry does not currently publish an owner Xe referral code.",
+        "Keep one transparency note: Bonus Foundry does not list a separate Xe referral code; users should use Xe's own referral entry point or app code when available.",
         "Xe's exact minimum qualifying transfer, reward processing time, and full referral terms were not visible in the static US landing page reviewed.",
         "Non-US referral reward amounts and availability should be checked in the local Xe referral flow before publishing a fixed value.",
         "Personal and business transfer terms should be verified separately for local pages."
@@ -2343,7 +2341,7 @@ export const providers: Provider[] = [
       },
       {
         date: "2026-06-28",
-        note: "Verified that Xe has an official public Refer a Friend entry point and replaced the no-known-referral wording with a clear no-Bonus-Foundry-owned-link explanation."
+        note: "Verified that Xe has an official public Refer a Friend entry point and positioned the page around using Xe's own referral flow when available."
       },
       {
         date: "2026-06-27",
@@ -2371,7 +2369,7 @@ export const providers: Provider[] = [
     faq: [
       {
         question: "Does Xe have a public referral program?",
-        answer: "Yes. Xe's official Send Money page links to a US Refer a Friend landing page. Bonus Foundry does not currently publish its own Xe referral code."
+        answer: "Yes. Xe's official Send Money page links to a US Refer a Friend landing page. Use Xe's own referral entry point or app code when the offer is available for your account."
       },
       {
         question: "How much is the Xe US referral reward?",
@@ -2475,8 +2473,8 @@ export function getProviderAuthority(provider: Provider): ProviderAuthority {
     lastOfferUpdate,
     referral: provider.referral ?? {
       hasProgram: hasKnownCode
-        ? "Bonus Foundry lists a referral code, but the active program still depends on provider terms."
-        : "Bonus Foundry does not currently list a known referral code. The provider may still show local or app-only offers.",
+        ? "Bonus Foundry lists a referral code. The active bonus still depends on the provider's country, account, transfer, and promotion terms."
+        : "Check the provider app or website for any active promo, referral, or first-transfer offer.",
       code: provider.referralCode,
       link: provider.referralLink,
       welcomeBonus: provider.welcomeBonus,

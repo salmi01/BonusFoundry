@@ -82,8 +82,8 @@ function corridor({
       { label: "Route", value: title },
       { label: "Main user need", value: focus },
       {
-        label: "Bonus risk",
-        value: "A provider can support a transfer route without including that route in a referral or welcome campaign."
+        label: "Bonus opportunity",
+        value: "Referral, signup, or promotional bonuses may apply when the provider shows an eligible offer for this route."
       },
       {
         label: "Best comparison method",
@@ -91,7 +91,7 @@ function corridor({
       }
     ],
     currentOffer:
-      `${title} referral and welcome rewards depend on the provider, sender country, destination, transfer amount, payment method, delivery method, and account status. Bonus Foundry uses provider-level reward data and does not invent corridor-specific reward amounts.`,
+      `Some money transfer providers may offer referral, signup, or promotional bonuses for eligible ${title} transfers. Bonus availability can depend on the sending country, receiving country, account status, transfer amount, payment method, delivery method, and current provider rules.`,
     feeOverview: [
       `${title} transfer fees vary by provider, payment method, delivery method, amount, and exchange rate.`,
       "Card-funded transfers can cost more than bank-funded transfers, but they may be faster.",
@@ -130,15 +130,15 @@ function corridor({
       "Broad global providers can be useful as backup options when a specialist provider does not support the exact route."
     ],
     providerLimitations: [
-      "A provider listed for comparison is not guaranteed to support every payout method on this corridor.",
-      "Referral rewards can be unavailable even when the transfer route itself is available.",
+      "A provider can support the route while offering only some payout methods for this corridor.",
+      "Referral and promo offers can depend on account status, transfer amount, delivery method, and campaign timing.",
       "Published country coverage can change and should be checked before signup or payment.",
-      "Bonus Foundry does not treat an official provider referral page as a Bonus Foundry-owned referral link."
+      "Agent, app, and online channels can show different transfer and bonus options."
     ],
     whenToChoose: [
       "For lowest fees, compare the total received amount after fees and exchange rate rather than the advertised transfer fee alone.",
       "For fastest delivery, compare card-funded, wallet, and cash pickup routes against slower bank-funded routes in the live flow.",
-      "For the best first-transfer reward, use only a Bonus Foundry-owned code or link when the provider's live terms match this route.",
+      "For the best first-transfer reward, use a listed code, referral link, or provider offer only when the provider's live terms match this route.",
       "For bank transfer, choose a provider that shows bank deposit for the destination and a funding method you can verify.",
       "For mobile wallet, choose a provider that shows wallet delivery for the destination and recipient account type.",
       "For cash pickup, choose an agent-network provider and verify recipient ID requirements before sending.",
@@ -166,7 +166,7 @@ function corridor({
       "Creating an account before checking whether the bonus must be applied during signup."
     ],
     missingBonus: [
-      "Check whether the referral code or Bonus Foundry-owned link was used before signup or the first transfer.",
+      "Check whether the referral code, referral link, promo code, or first-transfer offer was applied before signup or the first transfer.",
       "Confirm that the transfer amount, destination, delivery method, payment method, and timing matched the displayed terms.",
       "Wait for the provider's stated reward timing if the transfer is still pending or under review.",
       "Save the offer screen, transfer receipt, and referral details before contacting support.",
@@ -175,7 +175,7 @@ function corridor({
     countryNotes,
     relatedGuideSlugs: defaultGuides,
     faq,
-    lastUpdated: "2026-07-07"
+    lastUpdated: "2026-07-09"
   };
 }
 

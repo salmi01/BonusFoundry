@@ -11,6 +11,14 @@ import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/li
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+const relatedGuides = [
+  { href: "/guides/how-referral-codes-work", label: "How referral codes work" },
+  { href: "/guides/promo-code-vs-referral-code", label: "Promo code vs referral code" },
+  { href: "/guides/how-to-claim-a-welcome-bonus", label: "How to claim a welcome bonus" },
+  { href: "/guides/how-to-avoid-missing-signup-bonus", label: "How to avoid missing a signup bonus" },
+  { href: "/guides/why-bonus-was-not-received", label: "Why a welcome bonus was not received" }
+];
+
 export function generateStaticParams() {
   return faqs.map((faq) => ({ slug: faq.slug }));
 }
@@ -68,10 +76,11 @@ export default async function FAQPage({ params }: PageProps) {
                 ))}
               </ul>
             </BonusCard>
-            <BonusCard title="Provider rules vary">
+            <BonusCard title="What to check next">
               <p>
-                Treat this as general educational guidance, not legal or financial advice. Money transfer providers can
-                set different rules by country, corridor, account type, payment method, and campaign.
+                Check the provider&apos;s current offer screen before signup or transfer. Bonus eligibility is controlled
+                by the provider and can depend on country, corridor, account type, transfer amount, payment method,
+                delivery method, verification, and campaign timing.
               </p>
             </BonusCard>
             <BonusCard title="Related provider pages">
@@ -91,6 +100,17 @@ export default async function FAQPage({ params }: PageProps) {
                     </li>
                   );
                 })}
+              </ul>
+            </BonusCard>
+            <BonusCard title="Related guides">
+              <ul className="list-disc space-y-2 pl-5">
+                {relatedGuides.map((guide) => (
+                  <li key={guide.href}>
+                    <Link href={guide.href} className="font-medium text-primary">
+                      {guide.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </BonusCard>
           </div>

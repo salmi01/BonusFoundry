@@ -26,16 +26,17 @@ export default async function GuidesIndexPage() {
           description:
             "Detailed guides explaining how money transfer referral codes, welcome bonuses, promo codes, and first-transfer offers usually work.",
           path: "/guides",
-          updatedAt: "2026-07-08"
+          updatedAt: "2026-07-09"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }]} />
-        <LastUpdated date="2026-07-08" />
+        <LastUpdated date="2026-07-09" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code and bonus guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
-          These guides explain practical rules behind money transfer signup bonuses, including how to claim an offer,
-          what can make a bonus fail, and what to compare before using a referral link.
+          These guides explain how referral codes, promo codes, signup bonuses, welcome bonuses, and transfer rewards
+          work. Use them to check eligibility, apply offers correctly, avoid common mistakes, and troubleshoot missing
+          rewards before contacting provider support.
         </p>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {guides.map((guide) => (

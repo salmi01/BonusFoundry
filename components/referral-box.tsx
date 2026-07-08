@@ -21,13 +21,13 @@ export function ReferralBox({ provider }: { provider: Provider }) {
           <div className="rounded-lg border bg-muted/70 p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Referral code</p>
             <p className="mt-1 break-all text-2xl font-bold">
-              {provider.referralCode ?? (hasOwnedReferralLink ? "Use the referral link when available" : "No code listed")}
+              {provider.referralCode ?? (hasOwnedReferralLink ? "Use referral link" : "Check live offer")}
             </p>
             {!provider.referralCode ? (
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 {hasOwnedReferralLink
-                  ? "This provider uses a Bonus Foundry referral link rather than a manual code. Check the provider's live offer terms directly."
-                  : "Bonus Foundry does not currently publish a referral code or owned referral link for this provider. Check the provider's live offer terms directly."}
+                  ? "Open the referral link before signup, then review the provider's live offer terms."
+                  : "Use the provider app or website to check whether a promo, referral, or first-transfer offer is active."}
               </p>
             ) : null}
           </div>
@@ -42,7 +42,7 @@ export function ReferralBox({ provider }: { provider: Provider }) {
             </Link>
           ) : null}
           <p className="mt-3 text-xs leading-5 text-muted-foreground">
-            Check the live terms in the provider app before sending money. Rewards are not guaranteed.
+            Check the live terms in the provider app before sending money. Eligibility is controlled by the provider.
           </p>
         </CardContent>
       </aside>

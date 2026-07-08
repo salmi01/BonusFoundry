@@ -4,8 +4,9 @@ export function Disclosure() {
   return (
     <Alert>
       <p>
-        This website is independent and is not an official provider page. Referral links or codes may generate a reward
-        for us if you qualify and use them.
+        Bonus Foundry may receive a referral reward if a user signs up or completes a qualifying transfer through a
+        listed referral code or link. Bonus availability and eligibility are controlled by the provider and may depend on
+        the user&apos;s country, account status, transfer details, and current promotion rules.
       </p>
     </Alert>
   );
