@@ -886,18 +886,34 @@ export const providers: Provider[] = [
     website: "https://www.riamoneytransfer.com/",
     description:
       "Ria is a money transfer provider with online transfers and a large cash pickup network in many countries.",
-    referralCode: null,
+    referralCode: "9RMU-ENB7",
     referralLink: null,
     welcomeBonus:
-      "Ria's official promo page lists new-customer promo codes, including HelloRia for $0 fees on first-time money transfers of $50 or more through December 31, 2026, but Bonus Foundry did not verify a public Ria referral-code program.",
-    supportedCountries: ["United States", "United Kingdom", "France", "Morocco", "Mexico", "India"],
+      "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code. ",
+    supportedCountries: [
+      "190+ countries and territories according to Ria's official coverage messaging",
+      "United States",
+      "Switzerland",
+      "Mexico",
+      "Colombia",
+      "India",
+      "Dominican Republic",
+      "El Salvador",
+      "Peru",
+      "Morocco",
+      "Philippines",
+      "Bangladesh",
+      "Ghana",
+      "China",
+      "Senegal"
+    ],
     eligibleUsers: "New customers aged 18 or older may be eligible only for promotions Ria displays in the relevant country site, app, store, or checkout flow.",
     requirements: [
       "Use the correct Ria country website or app for your sender location.",
-      "Check for any displayed promo terms before payment, including minimum principal amount and channel restrictions.",
+      "Check for any displayed referral or promo terms before payment, including minimum principal amount and channel restrictions.",
       "Complete identity verification if requested.",
       "Send through an eligible route and payout method.",
-      "Enter any promo code at checkout when Ria requires the code to be quoted before the money transfer order is placed."
+      "Enter 9RMU-ENB7 only if Ria shows a referral-code or promo-code field that accepts it before the money transfer order is placed."
     ],
     steps: [
       "Choose the sender country and destination in Ria.",
@@ -906,27 +922,27 @@ export const providers: Provider[] = [
       "Complete payment only after reviewing total cost and delivery timing."
     ],
     keyFacts: [
-      { label: "Referral program", value: "No official public referral program found in the pages reviewed." },
-      { label: "Current public promo", value: "HelloRia: $0 fees on first-time $50+ transfers, according to Ria's US promo page." },
+      { label: "Bonus Foundry referral code", value: "9RMU-ENB7" },
+      { label: "Official referral terms", value: "No official public referral-program terms found in the pages reviewed." },
       { label: "Main caution", value: "Cash pickup and online offers may have different terms." },
-      { label: "Bonus certainty", value: "Only Ria's live flow can confirm a current promotion." }
     ],
     currentOffer:
-      "Bonus Foundry does not currently display a verified public Ria invite reward. Ria's official US promo page lists HelloRia for $0 fees on first-time money transfers of $50 or more through December 31, 2026, plus accepted codes HOLARIA, HOLAYAPE, and HOLANEQUI; it also lists RDADD5 and RCADD5 as select US store new-customer offers.",
-    lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+      "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code.",
+    lastOfferUpdate: "2026-07-09",
+    lastManualReview: "2026-07-09",
     referral: {
       hasProgram:
-        "No official public Ria referral-program page was found in the official public pages reviewed on 2026-07-05. Ria does publish promo-code offers, which are separate from a referral program.",
-      code: null,
+        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, but no official public Ria referral-program page was found in the official public pages reviewed. Ria does publish promo-code offers, which are separate from a referral program.",
+      code: "9RMU-ENB7",
       link: null,
       welcomeBonus:
-        "Ria's public US promo page lists HelloRia for $0 fees on first-time money transfers of $50 or more; additional accepted codes include HOLARIA, HOLAYAPE, and HOLANEQUI. RDADD5 and RCADD5 are listed as select US Ria store new-customer offers that add $5 or $10 to the transferred principal amount.",
+        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code.",
       minimumTransfer: "$50 or more for the public US promo codes reviewed.",
       expiry: "HelloRia expires on December 31, 2026; Ria says it may terminate promotions at any time.",
       payoutTiming: "",
       limitations: [
-        "Do not use a Ria code unless Ria displays an official code field and terms in your country flow.",
+        "Use 9RMU-ENB7 only if Ria displays a referral-code or promo-code field that accepts it in your country flow.",
+        "Bonus Foundry could not verify public official Ria referral-code terms for 9RMU-ENB7 in the official pages reviewed.",
         "Ria says promo codes can be limited to one use per customer and cannot be combined with another promo code.",
         "RDADD5 and RCADD5 are described as available only at select US Ria stores.",
         "Ria's online, app, WhatsApp, and agent-location channels can have different availability and offer rules.",
@@ -934,16 +950,33 @@ export const providers: Provider[] = [
       ]
     },
     availability: {
-      sendingCountries: ["Ria-supported sender countries shown on the selected country site or app"],
-      receivingCountries: ["Ria's official homepage says users can send to over 200 countries; the header and cash-pickup pages also describe 190+ country coverage."],
+      sendingCountries: ["Ria-supported sender countries shown on the selected country site or app; availability depends on the local Ria site, app, or agent network."],
+      receivingCountries: [
+        "Ria's official site says users can send money to 190+ countries.",
+        "Ria's cash-pickup page says cash pickup is available in 190+ countries and territories.",
+        "Ria's bank-deposit page says bank deposits are available to over 180 countries.",
+        "Ria's digital-wallet page says wallet transfers are available in 50+ countries."
+      ],
       currencies: ["100+ receive currencies according to Ria's official website", "Route-specific currencies shown in the Ria flow"],
       paymentMethods: ["Debit card", "Credit card where available", "Bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available", "ATM pickup where available"],
       countryAvailability: [
         {
+          country: "190+ countries and territories",
+          supported: "Ria's official site describes broad global coverage instead of publishing one static country list in the pages reviewed.",
+          paymentMethods: ["Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available", "ATM pickup where available"],
+          notes: "Delivery methods vary by destination, partner network, sender country, and live transfer flow."
+        },
+        {
           country: "United States",
-          supported: "Ria's official homepage is framed around sending from the US to 190+ or 200+ countries depending on page section.",
+          supported: "Ria's US pages describe sending to 190+ countries and show US-specific payment and promo examples.",
           paymentMethods: ["US-issued Visa or Mastercard credit card", "US-issued Visa or Mastercard debit card", "US bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available"],
-          notes: "Ria's public promo page lists US new-customer promo-code offers, not a general referral-code program."
+          notes: "Ria's public promo page lists US new-customer promo-code offers, not a general referral-code program. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code."
+        },
+        {
+          country: "Switzerland",
+          supported: "Ria's official homepage redirected to a Switzerland country site during the 2026-07-09 review and displayed Swiss-franc transfer examples.",
+          paymentMethods: ["Debit card", "Cash pickup", "Bank deposit where available", "Digital wallet where available"],
+          notes: "Use the selected Ria country site or app to confirm the exact destination, currency, fee, and delivery methods."
         },
         {
           country: "Morocco",
@@ -978,7 +1011,7 @@ export const providers: Provider[] = [
       {
         label: "Ria official website",
         url: "https://www.riamoneytransfer.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-09",
         confidence: "official"
       },
       {
@@ -1002,13 +1035,19 @@ export const providers: Provider[] = [
       {
         label: "Ria cash pickup",
         url: "https://www.riamoneytransfer.com/en-us/send-money-cash-pickup/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-09",
         confidence: "official"
       },
       {
         label: "Ria bank deposit",
         url: "https://www.riamoneytransfer.com/en-us/send-money-to-bank-account/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-09",
+        confidence: "official"
+      },
+      {
+        label: "Ria digital wallet",
+        url: "https://www.riamoneytransfer.com/en-us/wallets/",
+        lastReviewed: "2026-07-09",
         confidence: "official"
       },
       {
@@ -1019,7 +1058,7 @@ export const providers: Provider[] = [
       }
     ],
     ineligibleUsers: [
-      "Users relying on a public referral code that Ria does not show in the live flow.",
+      "Users relying on 9RMU-ENB7 when Ria does not show a code field or does not accept the code in the live flow.",
       "Users attempting to apply a local promotion from another country site.",
       "Users trying to combine two Ria promo codes on one transfer.",
       "Users trying to reuse a one-per-customer new-customer promo code.",
@@ -1028,23 +1067,31 @@ export const providers: Provider[] = [
     bonusChecklist: [
       "Open the correct Ria country site or app.",
       "Check whether Ria displays a promo code, promo rate, or local offer before payment.",
-      "Do not assume a referral code exists unless Ria shows an official code field and terms.",
-      "Enter the promo code at checkout before placing the money transfer order when Ria requires it.",
+      "Use 9RMU-ENB7 only if Ria shows a referral-code or promo-code field that accepts it.",
+      "Enter the code at checkout before placing the money transfer order when Ria requires it.",
       "Compare the fee, exchange rate, delivery method, and arrival timing before sending.",
       "Keep the transfer receipt and any displayed promotion screen."
     ],
     researchProfile: {
       completeness:
-        "Reviewed Ria's official public website, promo page, terms and conditions, security page, cash pickup page, bank deposit page, support links, transfer coverage, delivery methods, verification requirements, and public referral evidence.",
+        "Reviewed Ria's official public website, promo page, terms and conditions, security page, cash pickup page, bank deposit page, digital wallet page, support links, transfer coverage, delivery methods, verification requirements, public referral evidence, and Bonus Foundry's owner-provided referral code.",
       confidence: "high",
-      sourcesReviewed: ["Ria official website", "Ria promotions", "Ria terms and conditions", "Ria security", "Ria cash pickup", "Ria bank deposit", "Ria Help center"],
+      sourcesReviewed: ["Ria official website", "Ria promotions", "Ria terms and conditions", "Ria security", "Ria cash pickup", "Ria bank deposit", "Ria digital wallet", "Ria Help center"],
       remainingItems: [
-        "No official public referral-code terms were found in the public official pages reviewed.",
+        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, but no official public referral-code terms were found in the public official pages reviewed.",
         "Country-specific promotions must be confirmed in Ria's live country flow.",
-        "Ria's public pages use both 190+ and over 200 country-coverage language; Bonus Foundry preserves the variation instead of normalizing it."
+        "Ria's official pages reviewed describe broad coverage such as 190+ countries, over 180 bank-deposit countries, and 50+ digital-wallet countries, but do not expose one static complete destination list in the reviewed content."
       ]
     },
     updateHistory: [
+      {
+        date: "2026-07-09",
+        note: "Expanded Ria country availability from a narrow representative list to Ria's official broad coverage language: 190+ countries overall, 190+ cash-pickup countries and territories, over 180 bank-deposit countries, and 50+ digital-wallet countries."
+      },
+      {
+        date: "2026-07-09",
+        note: "Added Bonus Foundry's Ria referral code 9RMU-ENB7 while preserving the caveat that public official Ria referral-code terms were not verified in the official pages reviewed."
+      },
       {
         date: "2026-07-05",
         note: "Verified Ria's public promo codes, first-transfer $50+ fee offer, select US store code caveats, no public referral-program evidence, identity document rules, payment methods, delivery methods, support channels, refund/cancellation terms, and country-coverage caveats from official Ria pages."
@@ -1073,20 +1120,20 @@ export const providers: Provider[] = [
       "Ria's online service and agent network can differ by market.",
       "France to Morocco users should compare online availability, pickup options, fee, exchange rate, and any visible promotion.",
       "Identity and transfer limits can vary by country.",
-      "Ria says bank deposit transfers are available to over 180 countries, while cash pickup is available in 190+ countries and territories."
+      "Ria says users can send to 190+ countries, cash pickup is available in 190+ countries and territories, bank deposits are available to over 180 countries, and digital wallet transfers are available in 50+ countries."
     ],
     faq: [
       {
-        question: "Does Ria have a verified public referral program on Bonus Foundry?",
+        question: "Does Bonus Foundry list a Ria referral code?",
         answer:
-          "No verified public Ria referral-code program was found in the official pages reviewed. Use only promotions Ria displays in its live flow."
+          "Yes. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code. Public official Ria referral-code terms were not found in the pages reviewed, so use the code only if Ria accepts it in the live flow."
       },
       {
         question: "Can a Ria promotion depend on the payout method?",
         answer: "Yes. Provider rules may differ for bank deposit, wallet delivery, and cash pickup."
       }
     ],
-    lastUpdated: "2026-07-05"
+    lastUpdated: "2026-07-09"
   },
   {
     name: "Western Union",
