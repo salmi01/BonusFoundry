@@ -1,23 +1,35 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BonusCard } from "@/components/bonus-card";
+import {
+  BestFor,
+  CommonMistakes,
+  KeyFacts,
+  KeyTakeaways,
+  LastVerified,
+  OfficialSources,
+  ProviderMiniFAQ,
+  ProviderQuickCard,
+  QuickAnswer,
+  RelatedResources,
+  type LinkItem,
+  type SourceItem
+} from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
-import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
-import { KeyFacts } from "@/components/key-facts";
-import { LastUpdated } from "@/components/last-updated";
-import { buttonStyles } from "@/components/ui/button";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
+import type { Corridor } from "@/data/corridors";
 import {
   getSendingCountryHub,
   getSendingCountryHubCorridors,
   getSendingCountryHubProviders,
-  sendingCountryHubs
+  sendingCountryHubs,
+  type SendingCountryHub
 } from "@/data/sending-country-hubs";
-import type { Provider } from "@/data/providers";
+import { getProviderAuthority, type Provider } from "@/data/providers";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
+import { formatDate } from "@/lib/utils";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -52,6 +64,7 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
 
   const hubProviders = getSendingCountryHubProviders(hub);
   const hubCorridors = getSendingCountryHubCorridors(hub);
+  const relatedResources = buildRelatedResources(hub, hubProviders, hubCorridors);
 
   return (
     <>
@@ -72,162 +85,32 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: `/from/${hub.slug}`, label: hub.shortName }]} />
-        <LastUpdated date={hub.lastUpdated} />
+        <LastVerified date={formatDate(hub.lastUpdated)} />
         <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-normal">{hub.title}</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">{hub.summary}</p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/providers" className={buttonStyles({ variant: "outline" })}>
-            Browse providers
-          </Link>
-          <Link href="/corridors" className={buttonStyles({ variant: "outline" })}>
-            Browse corridors
-          </Link>
-          <Link href="/guides" className={buttonStyles({ variant: "outline" })}>
-            Read guides
-          </Link>
-          <Link href="/faq" className={buttonStyles({ variant: "outline" })}>
-            FAQ
-          </Link>
-        </div>
 
-        <div className="mt-10 space-y-10">
-          <BonusCard title="Quick answer">
-            <p>{hub.summary}</p>
-          </BonusCard>
-
-          <KeyFacts title="Key facts" facts={hub.keyFacts} />
-
-          <section>
-            <h2 className="text-2xl font-semibold">Providers available or relevant from {hub.name}</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
-              These providers are relevant to outbound transfers from {hub.name} based on Bonus Foundry&apos;s structured provider data.
-              Confirm the destination, receiving method, payment method, and bonus terms in the provider flow.
-            </p>
-            <div className="mt-5 overflow-x-auto rounded-lg border bg-card shadow-sm">
-              <Table className="min-w-[960px]">
-                <thead>
-                  <TableRow>
-                    <TableHead className="w-[160px]">Provider</TableHead>
-                    <TableHead>Country relevance</TableHead>
-                    <TableHead>Referral or welcome bonus</TableHead>
-                    <TableHead>Payment methods</TableHead>
-                    <TableHead>Verification</TableHead>
-                  </TableRow>
-                </thead>
-                <tbody>
-                  {hubProviders.map((provider) => (
-                    <TableRow key={provider.slug}>
-                      <TableHead className="w-[160px]">
-                        <Link href={`/providers/${provider.slug}`} className="text-primary">
-                          {provider.name}
-                        </Link>
-                      </TableHead>
-                      <TableCell>{provider.supportedCountries.includes(hub.name) ? `${hub.name} sender data is present in Bonus Foundry provider notes.` : `${hub.name} relevance is based on corridor and provider notes; confirm in the live flow.`}</TableCell>
-                      <TableCell>{referralOpportunity(provider, hub.shortName)}</TableCell>
-                      <TableCell>{provider.availability?.paymentMethods.slice(0, 4).join(", ") ?? "Check the provider flow."}</TableCell>
-                      <TableCell>{provider.verification?.identityRequired ?? "Identity checks may be required."}</TableCell>
-                    </TableRow>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
-          </section>
-
-          <BonusCard title="Referral and welcome bonus opportunities">
-            <ul className="list-disc space-y-2 pl-5">
-              {hubProviders.map((provider) => (
-                <li key={provider.slug}>
-                  <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
-                    {provider.name} referral page
-                  </Link>
-                  : {referralOpportunity(provider, hub.shortName)}
-                </li>
-              ))}
-            </ul>
-          </BonusCard>
-
-          <BonusCard title="Popular corridors">
-            <div className="grid gap-4 md:grid-cols-2">
-              {hubCorridors.map((corridor) => (
-                <article key={corridor.slug} className="rounded-lg border bg-muted/30 p-4">
-                  <h3 className="font-semibold text-foreground">
-                    {hub.shortName} to {corridor.to}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6">{corridor.summary}</p>
-                  <Link href={`/corridors/${corridor.slug}`} className="mt-3 inline-block font-medium text-primary">
-                    Read {hub.shortName} to {corridor.to} guide
-                  </Link>
-                </article>
-              ))}
-            </div>
-          </BonusCard>
-
-          <ProviderUseCaseTable providers={hubProviders} countryName={hub.shortName} />
-
-          <TwoColumnFacts
-            leftTitle={`Payment methods from ${hub.shortName}`}
-            leftItems={hub.paymentMethods}
-            rightTitle="Receiving methods by destination"
-            rightItems={hub.receivingMethods}
+        <div className="mt-10 space-y-8">
+          <QuickAnswer answer={hub.summary} />
+          <KeyTakeaways items={countryTakeaways(hub, hubProviders, hubCorridors)} />
+          <KeyFacts
+            title="Country summary"
+            facts={[
+              ...hub.keyFacts,
+              { label: "Tracked providers", value: `${hubProviders.length} providers relevant from ${hub.shortName}` },
+              { label: "Popular corridors", value: hubCorridors.map((corridor) => `${hub.shortName} to ${corridor.to}`).join(", ") },
+              { label: "Last verified", value: formatDate(hub.lastUpdated) }
+            ]}
           />
 
-          <TwoColumnFacts
-            leftTitle="Verification requirements"
-            leftItems={hub.verificationRequirements}
-            rightTitle="How to choose a provider"
-            rightItems={hub.chooseProvider.map((item) => `${item.useCase}: ${item.guidance}`)}
-          />
-
-          <BonusCard title="Common mistakes">
-            <ul className="list-disc space-y-2 pl-5">
-              {hub.commonMistakes.map((mistake) => (
-                <li key={mistake}>{mistake}</li>
-              ))}
-            </ul>
-          </BonusCard>
-
-          <FAQ items={hub.faq} />
-
-          <BonusCard title="Related providers">
-            <ul className="grid gap-2 pl-0 sm:grid-cols-2">
-              {hubProviders.map((provider) => (
-                <li key={provider.slug} className="list-none">
-                  <Link href={`/providers/${provider.slug}`} className="font-medium text-primary">
-                    {provider.name}
-                  </Link>
-                  <span className="text-muted-foreground"> · </span>
-                  <Link href={`/providers/${provider.slug}/referral-code`} className="font-medium text-primary">
-                    referral details
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </BonusCard>
-
-          <BonusCard title="Related corridor pages">
-            <ul className="grid gap-2 pl-0 sm:grid-cols-2">
-              {hubCorridors.map((corridor) => (
-                <li key={corridor.slug} className="list-none">
-                  <Link href={`/corridors/${corridor.slug}`} className="font-medium text-primary">
-                    {hub.shortName} to {corridor.to}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </BonusCard>
-
-          <BonusCard title="Related guides">
-            <ul className="list-disc space-y-2 pl-5">
-              {hub.relatedGuideSlugs.map((guideSlug) => (
-                <li key={guideSlug}>
-                  <Link href={`/guides/${guideSlug}`} className="font-medium text-primary">
-                    {guideLabels[guideSlug] ?? guideSlug}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </BonusCard>
-
+          <FeaturedProviders hub={hub} providers={hubProviders} />
+          <PopularCorridors hub={hub} corridors={hubCorridors} />
+          <BestFor items={bestForItems(hub)} />
+          <KeyFacts title={`Payment and receiving methods from ${hub.shortName}`} facts={methodFacts(hub)} />
+          <ProviderUseCaseTable hub={hub} providers={hubProviders} />
+          <CommonMistakes mistakes={hub.commonMistakes} />
+          <ProviderMiniFAQ items={hub.faq} title={`${hub.shortName} money transfer FAQ`} />
+          <OfficialSources sources={officialSources(hubProviders)} />
+          <RelatedResources links={relatedResources} />
           <Disclosure />
         </div>
       </Container>
@@ -235,17 +118,80 @@ export default async function SendingCountryHubPage({ params }: PageProps) {
   );
 }
 
-function ProviderUseCaseTable({ providers, countryName }: { providers: Provider[]; countryName: string }) {
+function FeaturedProviders({ hub, providers }: { hub: SendingCountryHub; providers: Provider[] }) {
   return (
     <section>
-      <h2 className="text-2xl font-semibold">Provider comparison table</h2>
+      <h2 className="text-2xl font-semibold">Featured providers from {hub.shortName}</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
+        These compact cards summarize reward, eligibility, minimum transfer, best-fit use case, and review date. Open the
+        provider page for full terms, support details, and official-source notes.
+      </p>
+      <div className="mt-5 grid gap-5 lg:grid-cols-2">
+        {providers.map((provider) => {
+          const authority = getProviderAuthority(provider);
+          const minimumTransfer =
+            authority.referral.minimumTransfer || "No fixed minimum transfer was verified from reviewed public sources.";
+
+          return (
+            <div key={provider.slug} className="space-y-3">
+              <ProviderQuickCard
+                provider={provider.name}
+                reward={authority.referral.welcomeBonus}
+                eligibility={provider.eligibleUsers}
+                minimumTransfer={minimumTransfer}
+                whereToEnterCode={whereToEnterCode(provider)}
+                codeOrLink={codeOrLink(provider)}
+                typicalTransferSpeed="Route, destination, payment method, payout method, and verification status control timing."
+                lastVerified={formatDate(authority.lastManualReview)}
+                officialSourcesReviewed={authority.researchProfile.sourcesReviewed.slice(0, 4).join(", ")}
+              />
+              <Link href={`/providers/${provider.slug}`} className="inline-flex font-medium text-primary">
+                Read {provider.name} provider page
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function PopularCorridors({ hub, corridors }: { hub: SendingCountryHub; corridors: Corridor[] }) {
+  return (
+    <section>
+      <h2 className="text-2xl font-semibold">Popular corridors from {hub.shortName}</h2>
+      <div className="mt-5 grid gap-4 md:grid-cols-2">
+        {corridors.map((corridor) => (
+          <article key={corridor.slug} className="rounded-lg border bg-card p-5 shadow-sm">
+            <h3 className="text-lg font-semibold">
+              {hub.shortName} to {corridor.to}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">{corridorFocus(corridor)}</p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Relevant receiving options: {corridor.receivingOptions.join(", ")}
+            </p>
+            <Link href={`/corridors/${corridor.slug}`} className="mt-4 inline-block font-medium text-primary">
+              Read {hub.shortName} to {corridor.to} corridor guide
+            </Link>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProviderUseCaseTable({ hub, providers }: { hub: SendingCountryHub; providers: Provider[] }) {
+  return (
+    <section>
+      <h2 className="text-2xl font-semibold">Provider use cases from {hub.shortName}</h2>
       <div className="mt-5 overflow-x-auto rounded-lg border bg-card shadow-sm">
         <Table className="min-w-[900px]">
           <thead>
             <TableRow>
               <TableHead>Provider</TableHead>
-              <TableHead>Best-fit use case</TableHead>
+              <TableHead>Best for</TableHead>
               <TableHead>Reward note</TableHead>
+              <TableHead>Eligibility check</TableHead>
             </TableRow>
           </thead>
           <tbody>
@@ -256,8 +202,9 @@ function ProviderUseCaseTable({ providers, countryName }: { providers: Provider[
                     {provider.name}
                   </Link>
                 </TableHead>
-                <TableCell>{providerBestFit(provider, countryName)}</TableCell>
+                <TableCell>{providerBestFit(provider, hub.shortName)}</TableCell>
                 <TableCell>{provider.welcomeBonus}</TableCell>
+                <TableCell>{provider.eligibleUsers}</TableCell>
               </TableRow>
             ))}
           </tbody>
@@ -267,50 +214,105 @@ function ProviderUseCaseTable({ providers, countryName }: { providers: Provider[
   );
 }
 
-function TwoColumnFacts({
-  leftTitle,
-  leftItems,
-  rightTitle,
-  rightItems
-}: {
-  leftTitle: string;
-  leftItems: string[];
-  rightTitle: string;
-  rightItems: string[];
-}) {
-  return (
-    <div className="grid gap-5 lg:grid-cols-2">
-      <BonusCard title={leftTitle}>
-        <ul className="list-disc space-y-2 pl-5">
-          {leftItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </BonusCard>
-      <BonusCard title={rightTitle}>
-        <ul className="list-disc space-y-2 pl-5">
-          {rightItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </BonusCard>
-    </div>
+function countryTakeaways(hub: SendingCountryHub, providers: Provider[], corridors: Corridor[]) {
+  return [
+    `${hub.shortName} users should compare providers by destination, payout method, payment method, verification, and total received amount.`,
+    `${providers.length} relevant providers are tracked for ${hub.shortName}.`,
+    `${corridors.length} outbound corridor guides are linked from this country hub.`,
+    `Sender currency: ${hub.currency}.`,
+    "Use provider pages for full reward, eligibility, support, and official-source details."
+  ];
+}
+
+function methodFacts(hub: SendingCountryHub) {
+  return [
+    { label: "Payment methods", value: hub.paymentMethods.join(", ") },
+    { label: "Receiving methods", value: hub.receivingMethods.join(", ") },
+    { label: "Verification requirements", value: hub.verificationRequirements.join(", ") },
+    { label: "Provider choice", value: hub.chooseProvider.map((item) => `${item.useCase}: ${item.guidance}`).join(" ") }
+  ];
+}
+
+function bestForItems(hub: SendingCountryHub) {
+  return Array.from(new Set(hub.chooseProvider.map((item) => item.useCase.replace(/^Best for /i, "")))).slice(0, 8);
+}
+
+function whereToEnterCode(provider: Provider) {
+  if (provider.referralCode) return "Enter the Bonus Foundry code when the provider shows a referral or promo-code field.";
+  if (hasOwnedReferralLink(provider)) return "Open the Bonus Foundry referral link before creating the provider account.";
+  return "Use the provider's own live referral, promo, or first-transfer offer when it appears.";
+}
+
+function codeOrLink(provider: Provider) {
+  if (provider.referralCode) return `Bonus Foundry code: ${provider.referralCode}`;
+  if (hasOwnedReferralLink(provider) && provider.referralLink) return "Bonus Foundry referral link listed on the referral page.";
+  return "No separate Bonus Foundry code or link is listed for this provider.";
+}
+
+function hasOwnedReferralLink(provider: Provider) {
+  return Boolean(
+    provider.referralLink &&
+      provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
   );
 }
 
-function referralOpportunity(provider: Provider, countryName: string) {
-  if (provider.referralCode) {
-    return `Bonus Foundry lists code ${provider.referralCode}; the ${countryName} route must still meet the provider's live terms.`;
-  }
+function officialSources(providers: Provider[]): SourceItem[] {
+  const sources = providers.flatMap((provider) =>
+    (provider.sources ?? []).map((source) => ({
+      name: source.label,
+      type: source.confidence === "official" ? "Official provider source" : "Bonus Foundry-owned referral detail",
+      url: source.url,
+      reviewedInformation:
+        source.confidence === "official"
+          ? `${provider.name} availability, referral, verification, support, or payment-method information`
+          : `${provider.name} Bonus Foundry-owned referral code or link`,
+      reviewDate: formatDate(source.lastReviewed)
+    }))
+  );
+  const seen = new Set<string>();
 
-  if (
-    provider.referralLink &&
-    provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
-  ) {
-    return `Bonus Foundry lists an owned referral link; use it only when the provider's live ${countryName} terms match the route.`;
-  }
+  return sources
+    .filter((source) => {
+      const key = `${source.name}-${source.url}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, 12);
+}
 
-  return "No Bonus Foundry-owned referral code or link is currently published; check the provider's official terms for eligibility.";
+function buildRelatedResources(hub: SendingCountryHub, providers: Provider[], corridors: Corridor[]): LinkItem[] {
+  return [
+    ...providers.slice(0, 8).flatMap((provider) => [
+      {
+        href: `/providers/${provider.slug}`,
+        label: `${provider.name} provider page`,
+        description: `Reward, eligibility, verification, support, and source notes for ${provider.name}.`
+      },
+      {
+        href: `/providers/${provider.slug}/referral-code`,
+        label: `${provider.name} referral details`,
+        description: `Referral-code, link, timing, and missing-reward checks for ${provider.name}.`
+      }
+    ]),
+    ...corridors.map((corridor) => ({
+      href: `/corridors/${corridor.slug}`,
+      label: `${hub.shortName} to ${corridor.to}`,
+      description: corridorFocus(corridor)
+    })),
+    ...hub.relatedGuideSlugs.map((guideSlug) => ({
+      href: `/guides/${guideSlug}`,
+      label: guideLabels[guideSlug] ?? guideSlug,
+      description: "Related guide for referral, welcome-bonus, and signup decisions."
+    })),
+    { href: "/faq", label: "Referral bonus FAQ", description: "Short answers for referral, promo, eligibility, and verification questions." },
+    { href: "/providers", label: "All providers", description: "Browse the full Bonus Foundry provider library." },
+    { href: "/corridors", label: "All corridors", description: "Browse route-specific provider and bonus comparisons." }
+  ];
+}
+
+function corridorFocus(corridor: Corridor) {
+  return corridor.keyFacts.find((fact) => fact.label === "Main user need")?.value ?? corridor.summary;
 }
 
 function providerBestFit(provider: Provider, countryName: string) {

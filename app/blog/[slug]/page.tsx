@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
@@ -62,13 +63,27 @@ export default async function BlogPostPage({ params }: PageProps) {
           ]}
         />
         <article className="max-w-3xl">
-          <p className="text-sm text-muted-foreground">
-            Published {formatDate(meta.publishedAt)} · Updated {formatDate(meta.updatedAt)} · {meta.author}
+          <LastVerified date={formatDate(meta.updatedAt)} />
+          <p className="mt-4 text-sm text-muted-foreground">
+            Published {formatDate(meta.publishedAt)}. Author: {meta.author}.
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-normal">{meta.title}</h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{meta.description}</p>
           <div className="mt-8">
+            <QuickAnswer answer={meta.description} />
+          </div>
+          <div className="mt-8">
             <Content />
+          </div>
+          <div className="mt-10">
+            <RelatedResources
+              links={[
+                { href: "/guides", label: "Referral and bonus guides" },
+                { href: "/providers", label: "Provider bonus guides" },
+                { href: "/faq", label: "Referral code FAQ" },
+                { href: "/disclosure", label: "Referral disclosure" }
+              ]}
+            />
           </div>
           <div className="mt-10">
             <Disclosure />

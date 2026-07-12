@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Container } from "@/components/container";
 import { CTAButton } from "@/components/cta-button";
 import { FAQ } from "@/components/faq";
@@ -28,6 +29,7 @@ export default async function HomePage() {
       <section className="border-b bg-card/70">
         <Container className="grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
           <div>
+            <LastVerified date="July 9, 2026" />
             <p className="inline-flex rounded-full border bg-background px-3 py-1 text-sm font-semibold text-primary shadow-sm">
               Independent bonus guides
             </p>
@@ -46,6 +48,9 @@ export default async function HomePage() {
               >
                 Learn how referral codes work
               </Link>
+            </div>
+            <div className="mt-8 max-w-2xl">
+              <QuickAnswer answer="Bonus Foundry helps users understand money transfer Referral Code, Referral Link, Promo Code, Welcome Bonus, Signup Bonus, and Qualifying Transfer rules before signup or a first transfer." />
             </div>
           </div>
           <Card className="self-start">
@@ -130,6 +135,17 @@ export default async function HomePage() {
         </section>
 
         <FAQ items={faqs.slice(0, 2).map(({ question, answer }) => ({ question, answer }))} />
+        <RelatedResources
+          links={[
+            { href: "/providers", label: "Provider bonus guides" },
+            { href: "/corridors", label: "Corridor guides" },
+            { href: "/guides", label: "Referral and bonus guides" },
+            { href: "/faq", label: "Referral code FAQ" },
+            { href: "/from/usa", label: "Send money from USA" },
+            { href: "/from/france", label: "Send money from France" },
+            { href: "/disclosure", label: "Referral disclosure" }
+          ]}
+        />
       </Container>
     </>
   );

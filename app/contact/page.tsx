@@ -1,7 +1,7 @@
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { LastUpdated } from "@/components/last-updated";
 import { siteConfig } from "@/data/site";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -26,8 +26,11 @@ export default function ContactPage() {
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/contact", label: "Contact" }]} />
-        <LastUpdated date="2026-06-27" />
+        <LastVerified date="June 27, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Contact</h1>
+        <div className="mt-6 max-w-3xl">
+          <QuickAnswer answer="Contact Bonus Foundry for content corrections, provider-source updates, and referral disclosure questions. Contact the provider directly for account-specific transfer support." />
+        </div>
         <div className="mt-6 max-w-3xl space-y-5 text-muted-foreground">
           <p>
             For corrections, disclosure questions, or provider-content updates, contact Bonus Foundry at{" "}
@@ -40,6 +43,16 @@ export default function ContactPage() {
             Do not send passwords, full card numbers, identity documents, or support requests meant for a transfer
             provider. Contact the provider directly for account-specific issues.
           </p>
+        </div>
+        <div className="mt-10 max-w-3xl">
+          <RelatedResources
+            links={[
+              { href: "/about", label: "About Bonus Foundry" },
+              { href: "/disclosure", label: "Referral disclosure" },
+              { href: "/providers", label: "Provider bonus guides" },
+              { href: "/faq", label: "Referral code FAQ" }
+            ]}
+          />
         </div>
       </Container>
     </>

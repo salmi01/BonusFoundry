@@ -1,7 +1,7 @@
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { LastUpdated } from "@/components/last-updated";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -26,8 +26,11 @@ export default function DisclosurePage() {
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/disclosure", label: "Disclosure" }]} />
-        <LastUpdated date="2026-06-27" />
+        <LastVerified date="June 27, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral disclosure</h1>
+        <div className="mt-6 max-w-3xl">
+          <QuickAnswer answer="Bonus Foundry may receive a referral reward when a user signs up or completes a qualifying transfer through a listed Bonus Foundry referral code or owned referral link." />
+        </div>
         <div className="mt-6 max-w-3xl space-y-5 text-muted-foreground">
           <p>
             Bonus Foundry is independent. It is not an official website of Taptap Send, Wise, Remitly, Sendwave, Ria, or
@@ -41,6 +44,16 @@ export default function DisclosurePage() {
             Offers can change by country, time, provider, transfer corridor, payment method, and user eligibility. A
             referral code or link shown here does not guarantee that a bonus will be available or paid.
           </p>
+        </div>
+        <div className="mt-10 max-w-3xl">
+          <RelatedResources
+            links={[
+              { href: "/about", label: "About Bonus Foundry" },
+              { href: "/providers", label: "Provider bonus guides" },
+              { href: "/faq/are-money-transfer-referral-codes-safe", label: "Are referral codes safe?" },
+              { href: "/contact", label: "Contact Bonus Foundry" }
+            ]}
+          />
         </div>
       </Container>
     </>

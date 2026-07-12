@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { LastUpdated } from "@/components/last-updated";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { faqs } from "@/data/faqs";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
@@ -30,12 +30,15 @@ export default function FAQIndexPage() {
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/faq", label: "FAQ" }]} />
-        <LastUpdated date="2026-07-09" />
+        <LastVerified date="July 9, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code FAQ</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           These answers help users apply referral codes, promo codes, welcome bonuses, and transfer offers correctly.
           Each answer explains the practical condition to check and links to related provider pages for the next step.
         </p>
+        <div className="mt-8">
+          <QuickAnswer answer="Use the FAQ index for short answers about Referral Code timing, Promo Code stacking, Welcome Bonus eligibility, verification, country rules, and missing rewards." />
+        </div>
         <div className="mt-8 grid gap-4">
           {faqs.map((faq) => (
             <Card key={faq.slug} className="transition-colors hover:border-primary/40">
@@ -51,6 +54,17 @@ export default function FAQIndexPage() {
               </article>
             </Card>
           ))}
+        </div>
+        <div className="mt-10">
+          <RelatedResources
+            links={[
+              { href: "/guides/how-referral-codes-work", label: "How referral codes work" },
+              { href: "/guides/promo-code-vs-referral-code", label: "Promo Code vs Referral Code" },
+              { href: "/providers", label: "Provider bonus guides" },
+              { href: "/corridors", label: "Corridor guides" },
+              { href: "/disclosure", label: "Referral disclosure" }
+            ]}
+          />
         </div>
       </Container>
     </>

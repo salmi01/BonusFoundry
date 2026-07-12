@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-content";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
-import { LastUpdated } from "@/components/last-updated";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 import { getGuides } from "@/lib/content";
@@ -31,13 +31,16 @@ export default async function GuidesIndexPage() {
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }]} />
-        <LastUpdated date="2026-07-09" />
+        <LastVerified date="July 9, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code and bonus guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           These guides explain how referral codes, promo codes, signup bonuses, welcome bonuses, and transfer rewards
           work. Use them to check eligibility, apply offers correctly, avoid common mistakes, and troubleshoot missing
           rewards before contacting provider support.
         </p>
+        <div className="mt-8">
+          <QuickAnswer answer="Use the Guides index for practical explanations of Referral Code, Referral Link, Promo Code, Welcome Bonus, Signup Bonus, Qualifying Transfer, and missing-reward workflows." />
+        </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {guides.map((guide) => (
             <Card key={guide.slug} className="transition-colors hover:border-primary/40">
@@ -53,6 +56,17 @@ export default async function GuidesIndexPage() {
               </article>
             </Card>
           ))}
+        </div>
+        <div className="mt-10">
+          <RelatedResources
+            links={[
+              { href: "/providers", label: "Provider bonus guides" },
+              { href: "/corridors", label: "Corridor guides" },
+              { href: "/faq", label: "Referral code FAQ" },
+              { href: "/from/usa", label: "Send money from USA" },
+              { href: "/from/france", label: "Send money from France" }
+            ]}
+          />
         </div>
       </Container>
     </>
