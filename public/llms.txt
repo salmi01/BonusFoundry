@@ -1,0 +1,39 @@
+# BonusFoundry
+
+> Independent knowledge base for international money transfer Referral Programs, Referral Codes, Referral Links, Promo Codes, Welcome Bonuses, Signup Bonuses, corridors, and country hubs.
+
+BonusFoundry helps users understand eligibility, qualifying transfer rules, verification requirements, payment methods, payout methods, common mistakes, troubleshooting, and official-source notes before using a money transfer referral or welcome offer.
+
+## Main Sections
+
+- [Providers](https://bonusfoundry.com/providers): Provider-level referral, promo, welcome bonus, eligibility, verification, support, and official-source guides.
+- [Corridors](https://bonusfoundry.com/corridors): Route-specific provider comparisons by sender country, destination, payout method, and bonus opportunity.
+- [Country Hubs](https://bonusfoundry.com/from/usa): Sender-country hubs for provider and corridor discovery.
+- [Guides](https://bonusfoundry.com/guides): Educational guides about referral codes, promo codes, signup bonuses, missing rewards, and bonus checks.
+- [FAQ](https://bonusfoundry.com/faq): Short answers to common referral, promo, eligibility, verification, country, and missing-reward questions.
+
+## Featured Providers
+
+- [Taptap Send](https://bonusfoundry.com/providers/taptap-send)
+- [Ria](https://bonusfoundry.com/providers/ria)
+- [LemFi](https://bonusfoundry.com/providers/lemfi)
+- [Sendwave](https://bonusfoundry.com/providers/sendwave)
+- [Remitly](https://bonusfoundry.com/providers/remitly)
+- [Wise](https://bonusfoundry.com/providers/wise)
+- [Paysend](https://bonusfoundry.com/providers/paysend)
+
+## Featured Guides
+
+- [Promo Code vs Referral Code](https://bonusfoundry.com/guides/promo-code-vs-referral-code)
+- [How Referral Codes Work](https://bonusfoundry.com/guides/how-referral-codes-work)
+- [How to Use Taptap Send Bonus Credit](https://bonusfoundry.com/guides/how-to-use-taptap-send-bonus-credit)
+- [How to Avoid Missing a Signup Bonus](https://bonusfoundry.com/guides/how-to-avoid-missing-signup-bonus)
+- [Why a Welcome Bonus Was Not Received](https://bonusfoundry.com/guides/why-bonus-was-not-received)
+
+## Trust Pages
+
+- [About](https://bonusfoundry.com/about)
+- [Referral Disclosure](https://bonusfoundry.com/disclosure)
+- [Contact](https://bonusfoundry.com/contact)
+- [Terms](https://bonusfoundry.com/terms)
+- [Privacy Policy](https://bonusfoundry.com/privacy-policy)
