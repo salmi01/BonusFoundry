@@ -89,6 +89,7 @@ export function articleJsonLd(input: {
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name
     }
   };
@@ -113,7 +114,45 @@ export function webPageJsonLd(input: {
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name
     }
+  };
+}
+
+export function organizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteConfig.url}/#organization`,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: new URL("/favicon.svg", siteConfig.url).toString(),
+    description: siteConfig.description,
+    email: siteConfig.email,
+    publishingPrinciples: new URL("/editorial-policy", siteConfig.url).toString()
+  };
+}
+
+export function editorialTeamJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteConfig.url}/#editorial-team`,
+    name: "BonusFoundry Editorial Team",
+    url: new URL("/about", siteConfig.url).toString(),
+    parentOrganization: {
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name
+    },
+    description:
+      "The editorial team that researches Bonus Foundry provider, corridor, guide, FAQ, and referral bonus pages using official provider sources and clearly disclosed referral information.",
+    knowsAbout: [
+      "Money transfer referral programs",
+      "Welcome bonuses",
+      "Promo codes",
+      "Referral eligibility",
+      "Provider verification requirements"
+    ]
   };
 }

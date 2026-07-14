@@ -16,6 +16,8 @@ export const navItems = [
 
 export const trustLinks = [
   { href: "/about", label: "About" },
+  { href: "/editorial-policy", label: "Editorial policy" },
+  { href: "/research-methodology", label: "Research methodology" },
   { href: "/disclosure", label: "Disclosure" },
   { href: "/privacy-policy", label: "Privacy policy" },
   { href: "/terms", label: "Terms" },

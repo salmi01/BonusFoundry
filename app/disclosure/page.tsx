@@ -49,6 +49,8 @@ export default function DisclosurePage() {
           <RelatedResources
             links={[
               { href: "/about", label: "About Bonus Foundry" },
+              { href: "/editorial-policy", label: "Editorial policy" },
+              { href: "/research-methodology", label: "Research methodology" },
               { href: "/providers", label: "Provider bonus guides" },
               { href: "/faq/are-money-transfer-referral-codes-safe", label: "Are referral codes safe?" },
               { href: "/contact", label: "Contact Bonus Foundry" }

@@ -388,18 +388,25 @@ export function ProsCons({ pros, cons, title = "Pros and cons" }: { pros: ReactN
 }
 
 const defaultContentUpdateDate = "July 12, 2026";
+const defaultReviewedBy = "BonusFoundry Editorial Team";
 
 export function LastVerified({
   date,
-  label = "Last verified",
-  contentUpdatedAt = defaultContentUpdateDate
+  label = "Last reviewed",
+  contentUpdatedAt = defaultContentUpdateDate,
+  reviewedBy = defaultReviewedBy
 }: {
   date: string;
   label?: string;
   contentUpdatedAt?: string;
+  reviewedBy?: string;
 }) {
   return (
     <div className="rounded-lg border bg-card px-4 py-3 text-sm shadow-sm">
+      <p>
+        <span className="font-semibold text-foreground">Reviewed by: </span>
+        <span className="text-muted-foreground">{reviewedBy}</span>
+      </p>
       <p>
         <span className="font-semibold text-foreground">{label}: </span>
         <time dateTime={date} className="text-muted-foreground">
@@ -424,10 +431,10 @@ export function OfficialSources({ sources, title = "Official sources" }: { sourc
         <Table className="min-w-[860px]">
           <thead>
             <TableRow>
-              <TableHead>Source</TableHead>
+              <TableHead>Official link</TableHead>
               <TableHead>Type</TableHead>
-              <TableHead>Reviewed information</TableHead>
-              <TableHead>Review date</TableHead>
+              <TableHead>What was verified</TableHead>
+              <TableHead>Last checked</TableHead>
             </TableRow>
           </thead>
           <tbody>

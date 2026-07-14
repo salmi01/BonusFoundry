@@ -33,6 +33,8 @@ BonusFoundry helps users understand eligibility, qualifying transfer rules, veri
 ## Trust Pages
 
 - [About](https://bonusfoundry.com/about)
+- [Editorial Policy](https://bonusfoundry.com/editorial-policy)
+- [Research Methodology](https://bonusfoundry.com/research-methodology)
 - [Referral Disclosure](https://bonusfoundry.com/disclosure)
 - [Contact](https://bonusfoundry.com/contact)
 - [Terms](https://bonusfoundry.com/terms)

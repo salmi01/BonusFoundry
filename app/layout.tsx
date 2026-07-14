@@ -3,7 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { JsonLd } from "@/components/json-ld";
 import { siteConfig } from "@/data/site";
+import { editorialTeamJsonLd, organizationJsonLd } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,6 +43,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} min-h-screen font-sans antialiased`}>
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={editorialTeamJsonLd()} />
         <Header />
         <main>{children}</main>
         <Footer />
