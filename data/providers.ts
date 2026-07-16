@@ -95,48 +95,53 @@ export const providers: Provider[] = [
     referralCode: "SALAHEDD1933",
     referralLink: null,
     welcomeBonus:
-      "Taptap Send says referral codes can give both users bonus credit after the referred friend enters the code on their first transfer and sends with Taptap Send for the first time. The public help article does not publish one fixed reward amount for every country.",
+      "Use TapTap Send referral code SALAHEDD1933 to receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100. This offer was manually verified in the TapTap Send app.",
     supportedCountries: ["France", "United Kingdom", "United States", "Canada", "Morocco", "Senegal", "Mali"],
     eligibleUsers:
-      "New Taptap Send users who enter an eligible referral code when making their first transfer may qualify, subject to country, transfer, verification, and promotion rules shown by Taptap Send.",
+      "New TapTap Send users completing their first qualifying transfer after entering SALAHEDD1933 before the transfer is completed.",
     requirements: [
       "Create a new account before using Taptap Send for the first time.",
       "Enter the referral code when making the first transfer, because Taptap Send says this is required for both accounts to receive referral credit.",
       "Complete identity verification with a valid government-issued ID and selfie when Taptap Send requests it.",
       "Pass any payment verification, including 3D Secure card authentication when the sender's bank requires it.",
-      "Send a qualifying first transfer to an eligible destination and meet any transfer amount or campaign rules shown in the app."
+      "Send at least €100 or $100 as the first qualifying transfer."
     ],
     steps: [
-      "Copy the referral code before starting the first transfer.",
-      "Install Taptap Send and sign up with accurate personal details.",
-      "Check the bonus terms shown in the app, including country, destination, minimum amount, and the 90-day redemption window for referred friends.",
-      "Add your recipient and review the exchange rate, fee, payment method, and delivery option.",
-      "Enter the referral code during the first-transfer flow and send only if the terms match what you expected."
+      "Download or open TapTap Send.",
+      "Create a new account.",
+      "Start the first eligible transfer.",
+      "Enter SALAHEDD1933 in the referral or promo code field.",
+      "Send at least €100 or $100.",
+      "Complete the transfer.",
+      "Check the account for the €10 or $10 bonus."
     ],
     keyFacts: [
       { label: "Best for", value: "Users sending to eligible Taptap Send destination countries." },
-      { label: "Referral code", value: "SALAHEDD1933, if the first-transfer flow accepts the code." },
-      { label: "Reward type", value: "Bonus credit applied to a future transfer, according to Taptap Send's help article." },
-      { label: "When to apply", value: "When making the first transfer; referred friends have 90 days to redeem a code." }
+      { label: "Referral code", value: "SALAHEDD1933" },
+      { label: "Bonus", value: "€10 or $10" },
+      { label: "Minimum transfer", value: "€100 or $100" },
+      { label: "Expiration", value: "No expiration currently shown for SALAHEDD1933 in the TapTap Send app." },
+      { label: "Verification source", value: "TapTap Send app" }
     ],
     currentOffer:
-      "If you do not already have a Taptap Send referral code, you can use SALAHEDD1933. Taptap Send's help centre verifies that referral codes can credit both accounts after the referred friend enters the code on their first transfer, but the exact reward amount and eligible countries are controlled by the live app terms.",
-    lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-07-04",
+      "TapTap Send referral code SALAHEDD1933 currently shows a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100. The TapTap Send app did not display an expiration date for the code during manual verification.",
+    lastOfferUpdate: "2026-07-16",
+    lastManualReview: "2026-07-16",
     referral: {
       hasProgram:
         "Taptap Send's official help centre explains that users can refer friends by sharing a personal code, and both users can receive bonus credit when the referred friend uses the code and sends with Taptap Send for the first time.",
       code: "SALAHEDD1933",
       link: null,
       welcomeBonus:
-        "Taptap Send describes the referral reward as bonus credit. The public official pages reviewed do not publish one fixed reward amount for every country, so the app controls the live reward value.",
-      minimumTransfer: "",
-      expiry: "Taptap Send says the referred friend has 90 days to redeem the referral code.",
+        "€10 or $10 bonus after a qualifying first transfer of at least €100 or $100, manually verified in the TapTap Send app.",
+      minimumTransfer: "€100 or $100",
+      expiry: "No expiration currently shown for SALAHEDD1933 in the TapTap Send app.",
       payoutTiming: "Taptap Send says both accounts receive credit directly in the account after the referred friend uses the code and sends their first transfer; the credit is automatically added to the next transfer.",
       limitations: [
         "The referred friend must be new to Taptap Send; the help article says the offer will not work if the friend already uses Taptap Send.",
         "The referred friend needs to enter the code when making their first transfer.",
-        "Taptap Send says users can refer as many friends as they want, with no referral-count limit stated in the help article.",
+        "The first qualifying transfer must be at least €100 or $100 for the app-verified offer.",
+        "No expiration date was displayed for SALAHEDD1933 during the manual app verification.",
         "Marketing promo codes are separate from referral codes and work only when they match the criteria defined by Taptap Send's marketing team."
       ]
     },
@@ -173,6 +178,7 @@ export const providers: Provider[] = [
     },
     officialResources: [
       { label: "Taptap Send official website", href: "https://www.taptapsend.com/" },
+      { label: "Taptap Send referrals help", href: "https://support.taptapsend.com/hc/en-gb/articles/360001303088-How-do-referrals-work" },
       { label: "Taptap Send promo codes and referrals", href: "https://support.taptapsend.com/hc/en-gb/articles/360001301127-How-do-promo-codes-work" },
       { label: "Taptap Send account verification", href: "https://support.taptapsend.com/hc/en-gb/articles/1500000672181-How-to-verify-your-Taptap-Send-account" },
       { label: "Taptap Send 3D Secure help", href: "https://support.taptapsend.com/hc/en-gb/articles/4408602423315-Payment-verification-issue-3DS-Why-did-my-transfer-not-go-through" },
@@ -182,31 +188,37 @@ export const providers: Provider[] = [
       {
         label: "Taptap Send official website",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-16",
+        confidence: "official"
+      },
+      {
+        label: "Taptap Send referrals help",
+        url: "https://support.taptapsend.com/hc/en-gb/articles/360001303088-How-do-referrals-work",
+        lastReviewed: "2026-07-16",
         confidence: "official"
       },
       {
         label: "Taptap Send promo codes and referrals",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360001301127-How-do-promo-codes-work",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-16",
         confidence: "official"
       },
       {
         label: "Taptap Send account verification",
         url: "https://support.taptapsend.com/hc/en-gb/articles/1500000672181-How-to-verify-your-Taptap-Send-account",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-16",
         confidence: "official"
       },
       {
         label: "Taptap Send support",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360035876954-Contact-Taptap-Send-Support",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-16",
         confidence: "official"
       },
       {
-        label: "Referral code supplied by Bonus Foundry owner",
+        label: "TapTap Send app manual verification",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-16",
         confidence: "internal"
       }
     ],
@@ -216,19 +228,23 @@ export const providers: Provider[] = [
       confidence: "high",
       sourcesReviewed: [
         "Taptap Send official website",
+        "Taptap Send referrals help",
         "Taptap Send promo codes and referrals",
         "Taptap Send account verification",
         "Taptap Send 3D Secure help",
         "Taptap Send support",
-        "Bonus Foundry owner-supplied referral code"
+        "TapTap Send app manual verification"
       ],
       remainingItems: [
-        "Public official pages reviewed did not publish one universal referral reward amount.",
-        "Public official pages reviewed did not publish a universal minimum transfer for referral-code eligibility.",
-        "Country-specific referral eligibility and reward amount should still be confirmed in the Taptap Send app."
+        "Public official help pages explain referral mechanics but do not publish the app-specific SALAHEDD1933 reward screen.",
+        "Destination availability, delivery methods, and transfer limits still depend on the live TapTap Send route."
       ]
     },
     updateHistory: [
+      {
+        date: "2026-07-16",
+        note: "Manually verified in the TapTap Send app that SALAHEDD1933 displayed a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100, with no expiration date displayed."
+      },
       {
         date: "2026-07-04",
         note: "Verified Taptap Send referral-code mechanics, 90-day redemption window, bonus-credit payout, identity verification, 3D Secure payment checks, transfer troubleshooting, support channels, and country/payment-method caveats from official help pages."
@@ -250,8 +266,8 @@ export const providers: Provider[] = [
       "Confusing a marketing promo code with a personal referral code."
     ],
     missingBonus: [
-      "Check whether the code or referral link was applied before signup.",
-      "Confirm that the code was entered during the first-transfer flow and that the referred account had not used Taptap Send before.",
+      "Confirm that SALAHEDD1933 was entered before completing the first eligible transfer.",
+      "Confirm that the first qualifying transfer was at least €100 or $100 and that the referred account had not used Taptap Send before.",
       "Check whether the first transfer is still delayed, failed, awaiting documents, or blocked by 3D Secure payment verification.",
       "Contact Taptap Send support with your signup date, transfer date, and referral details if the terms appear to be met."
     ],
@@ -262,22 +278,25 @@ export const providers: Provider[] = [
     ],
     faq: [
       {
-        question: "Is this Taptap Send referral code official?",
+        question: "What is the TapTap Send referral code?",
         answer:
-          "No. Bonus Foundry is independent and is not an official Taptap Send website. Taptap Send officially supports personal referral codes, but SALAHEDD1933 is Bonus Foundry's own code."
+          "The TapTap Send referral code is SALAHEDD1933."
       },
       {
-        question: "When does a Taptap Send referral code need to be entered?",
+        question: "How much is the TapTap Send referral bonus?",
         answer:
-          "Taptap Send's help article says the referred friend needs to enter the code when making their first transfer."
+          "The app-verified TapTap Send referral bonus is €10 or $10 after a qualifying first transfer of at least €100 or $100."
       },
       {
-        question: "How long does a referred friend have to redeem a Taptap Send code?",
+        question: "Does the TapTap Send referral code expire?",
         answer:
-          "Taptap Send says the referred friend has 90 days to redeem the referral code."
+          "No expiration date was displayed for SALAHEDD1933 during the July 16, 2026 TapTap Send app verification."
       }
     ],
-    lastUpdated: "2026-07-04"
+    relatedGuideSlugs: ["how-to-use-taptap-send-bonus-credit", "how-to-avoid-missing-signup-bonus", "how-referral-codes-work"],
+    relatedFaqSlugs: ["can-i-use-referral-code-after-signing-up", "why-did-i-not-receive-my-referral-bonus"],
+    relatedCorridorSlugs: ["france-to-morocco", "france-to-senegal", "france-to-cote-divoire", "usa-to-kenya"],
+    lastUpdated: "2026-07-16"
   },
   {
     name: "Wise",
@@ -1947,7 +1966,7 @@ export const providers: Provider[] = [
     referralCode: "SALABGWQ",
     referralLink: null,
     welcomeBonus:
-      "LemFi's Europe invite-and-earn page says both users can receive EUR 10 when a referred friend signs up, verifies, and sends over EUR 100 in one transfer. A separate Europe Referral & Earn campaign page lists referrer-only rewards, but its terms say the campaign period ended June 30, 2026 while page metadata lists July 31, 2026.",
+      "The LemFi offer was manually verified as a €10 or $10 bonus after a qualifying transfer of €100 or $100, and the code remains valid. LemFi's Europe invite-and-earn page also says both users can receive EUR 10 when a referred friend signs up, verifies, and sends over EUR 100 in one transfer.",
     supportedCountries: ["France", "Germany", "Belgium", "Ireland", "Italy", "United Kingdom", "Canada", "United States", "Nigeria", "Ghana", "Kenya"],
     eligibleUsers:
       "New users may be eligible when they sign up with a valid LemFi referral code, verify their account, and complete the qualifying transfer shown in LemFi's terms. Europe campaign referrer rewards require an existing fully verified LemFi Europe account.",
@@ -1968,24 +1987,24 @@ export const providers: Provider[] = [
     keyFacts: [
       { label: "Best for", value: "Europe users who can verify a LemFi account and complete the transfer threshold." },
       { label: "Referral code", value: "SALABGWQ, if LemFi accepts the code in your signup flow." },
-      { label: "Invite reward", value: "EUR 10 for both users after a qualifying EUR 100+ first transfer, according to LemFi's invite page." },
+      { label: "Invite reward", value: "€10 or $10 after a qualifying €100 or $100 transfer; LemFi's Europe invite page also states EUR 10 after over EUR 100." },
       { label: "Campaign date caution", value: "LemFi's campaign metadata and campaign terms show different end dates." },
       { label: "When to apply", value: "Before or during signup, not after completing the qualifying action." }
     ],
     currentOffer:
-      "For Europe users, LemFi's invite-and-earn page says both accounts can receive EUR 10 when the invited friend signs up, verifies, and sends over EUR 100 in one transfer. LemFi's Europe Referral & Earn campaign page also describes EUR 10 per successful referral plus EUR 50 for every 5 qualifying referrals for referrers only, but the campaign terms say the promotion period ended June 30, 2026 while page metadata lists July 31, 2026; confirm the live app terms before relying on that campaign.",
-    lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+      "The LemFi offer was manually verified as a €10 or $10 bonus after a qualifying transfer of €100 or $100, and the code remains valid. For Europe users, LemFi's invite-and-earn page says both accounts can receive EUR 10 when the invited friend signs up, verifies, and sends over EUR 100 in one transfer.",
+    lastOfferUpdate: "2026-07-16",
+    lastManualReview: "2026-07-16",
     referral: {
       hasProgram:
         "LemFi publishes an Invite and Earn page and Europe referral campaign terms for supported European users.",
       code: "SALABGWQ",
       link: "https://www.lemfi.com/en-fr/invite-and-earn",
       welcomeBonus:
-        "The Europe invite-and-earn page says both users can receive EUR 10 after the referred friend signs up, verifies, and sends over EUR 100 in one transfer. The Europe campaign terms reward the referrer only.",
-      minimumTransfer: "Over EUR 100 for the invite-and-earn page; EUR 100 or more for the Europe Referral & Earn campaign.",
+        "Manually verified offer: €10 or $10 after a qualifying €100 or $100 transfer. The Europe invite-and-earn page says both users can receive EUR 10 after the referred friend signs up, verifies, and sends over EUR 100 in one transfer.",
+      minimumTransfer: "€100 or $100 for the manually verified offer; over EUR 100 for LemFi's Europe invite-and-earn page.",
       expiry:
-        "Europe Referral & Earn campaign terms state May 20, 2026 to June 30, 2026 for the qualifying campaign period; the promotion page metadata lists the campaign through July 31, 2026.",
+        "The manually verified LemFi code remains valid. Europe Referral & Earn campaign terms state May 20, 2026 to June 30, 2026 for that separate campaign period; the promotion page metadata lists the campaign through July 31, 2026.",
       payoutTiming:
         "Europe campaign terms say rewards are credited in EUR to the referrer's LemFi wallet within 7 working days of each qualifying referral being confirmed.",
       limitations: [
@@ -2045,7 +2064,7 @@ export const providers: Provider[] = [
       {
         label: "LemFi official website",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-16",
         confidence: "official"
       },
       {
@@ -2075,7 +2094,7 @@ export const providers: Provider[] = [
       {
         label: "Referral code supplied by Bonus Foundry owner",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-16",
         confidence: "internal"
       }
     ],
@@ -2090,7 +2109,7 @@ export const providers: Provider[] = [
       "Confirm your country is a supported LemFi corridor.",
       "Enter SALABGWQ during signup if the flow asks for a referral code.",
       "Complete LemFi account verification before relying on the reward.",
-      "Send more than EUR 100 for the invite-and-earn page, or EUR 100 or more for the Europe Referral & Earn campaign.",
+      "Send €100 or $100 for the manually verified offer; LemFi's Europe invite-and-earn page separately says over EUR 100.",
       "Use the reward only after LemFi credits and approves it for future international transfers."
     ],
     researchProfile: {
@@ -2108,11 +2127,14 @@ export const providers: Provider[] = [
       ],
       remainingItems: [
         "The Europe campaign page metadata and campaign body use different end dates; users should rely on the live campaign page and in-app display before sending.",
-        "SALABGWQ should be confirmed in the live LemFi signup flow for the user's country.",
         "Destination-specific delivery methods and limits should be checked inside LemFi."
       ]
     },
     updateHistory: [
+      {
+        date: "2026-07-16",
+        note: "Updated shared LemFi offer data to reflect manual verification of a €10 or $10 bonus after a qualifying €100 or $100 transfer, with the code remaining valid."
+      },
       {
         date: "2026-07-05",
         note: "Verified LemFi invite-and-earn EUR 10 / EUR 100 mechanics, Europe campaign referrer-only rewards, June 30 terms end date versus July 31 metadata conflict, reward-credit timing, verification rules, payment-processor caveats, supported Europe country data, and support channels from official LemFi pages."
@@ -2147,12 +2169,12 @@ export const providers: Provider[] = [
       {
         question: "What is the LemFi referral code listed by Bonus Foundry?",
         answer:
-          "Bonus Foundry lists SALABGWQ as the LemFi referral code. Confirm that the code is accepted in your LemFi signup flow before relying on any reward."
+          "Bonus Foundry lists SALABGWQ as the LemFi referral code. The code remains valid according to the manual verification recorded by Bonus Foundry."
       },
       {
         question: "How much is the current LemFi Europe referral reward?",
         answer:
-          "LemFi's Europe invite-and-earn page says both users can receive EUR 10 after the referred friend verifies and sends over EUR 100. The Europe Referral & Earn campaign pays the referrer EUR 10 per successful referral plus EUR 50 for every 5 qualifying referred friends, but its terms and metadata show different end dates."
+          "The manually verified LemFi offer is €10 or $10 after a qualifying €100 or $100 transfer. LemFi's Europe invite-and-earn page also says both users can receive EUR 10 after the referred friend verifies and sends over EUR 100."
       },
       {
         question: "Who is excluded from the LemFi Europe campaign?",
@@ -2160,7 +2182,7 @@ export const providers: Provider[] = [
           "Existing users, unverified accounts, self-referrals, duplicate-account referrals, and referrals sharing the same device, IP address, payment method, or household may be excluded under LemFi's campaign terms."
       }
     ],
-    lastUpdated: "2026-07-05"
+    lastUpdated: "2026-07-16"
   },
   {
     name: "Xe",
