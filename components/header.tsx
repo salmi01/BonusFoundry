@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Landmark } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { navItems, siteConfig } from "@/data/site";
 
@@ -7,11 +7,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 shadow-sm backdrop-blur">
       <Container className="flex min-h-16 items-center justify-between gap-5">
-        <Link href="/" className="flex items-center gap-2 font-semibold" aria-label={`${siteConfig.name} home`}>
-          <span className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
-            <Landmark className="size-5" aria-hidden="true" />
-          </span>
-          <span>{siteConfig.name}</span>
+        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
+          <Image
+            src={siteConfig.logo}
+            alt={siteConfig.name}
+            width={2172}
+            height={724}
+            priority
+            className="h-10 w-auto"
+          />
         </Link>
         <nav
           aria-label="Main navigation"

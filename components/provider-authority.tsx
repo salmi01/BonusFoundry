@@ -30,7 +30,7 @@ export function WelcomeBonusCard({ authority }: { authority: ProviderAuthority }
     authority.referral.code
       ? { label: "Code", value: authority.referral.code }
       : authority.referral.link
-        ? { label: "Bonus Foundry referral link", value: authority.referral.link }
+        ? { label: "BonusFoundry referral link", value: authority.referral.link }
         : { label: "Offer entry point", value: "Check the provider app or website for an active promo, referral, or first-transfer offer." },
     authority.referral.minimumTransfer ? { label: "Minimum transfer", value: authority.referral.minimumTransfer } : null,
     authority.referral.expiry ? { label: "Expiry", value: authority.referral.expiry } : null,
@@ -344,7 +344,7 @@ export function RelatedProviderResources({
             title="Trust"
             items={[
               { href: "/disclosure", label: "Referral disclosure" },
-              { href: "/about", label: "About Bonus Foundry" }
+              { href: "/about", label: "About BonusFoundry" }
             ]}
           />
         </CardContent>

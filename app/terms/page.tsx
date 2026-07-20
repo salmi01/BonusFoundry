@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "Terms of use",
-  description: "Terms of use for Bonus Foundry.",
+  description: "Terms of use for BonusFoundry.",
   path: "/terms"
 });
 
@@ -17,7 +17,7 @@ export default function TermsPage() {
       <JsonLd
         data={webPageJsonLd({
           title: "Terms of use",
-          description: "Terms of use for Bonus Foundry.",
+          description: "Terms of use for BonusFoundry.",
           path: "/terms",
           updatedAt: "2026-06-27"
         })}
@@ -27,11 +27,11 @@ export default function TermsPage() {
         <LastVerified date="June 27, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Terms of use</h1>
         <div className="mt-6 max-w-3xl">
-          <QuickAnswer answer="Bonus Foundry provides general informational content about referral programs and welcome bonuses. Bonus Foundry is not a money transfer provider or an official provider support channel." />
+          <QuickAnswer answer="BonusFoundry provides general informational content about referral programs and welcome bonuses. BonusFoundry is not a money transfer provider or an official provider support channel." />
         </div>
         <div className="mt-6 max-w-3xl space-y-5 text-muted-foreground">
           <p>
-            Bonus Foundry provides general informational content about referral programs and welcome bonuses. It is not a
+            BonusFoundry provides general informational content about referral programs and welcome bonuses. It is not a
             money transfer provider, financial adviser, legal adviser, or official support channel for any provider.
           </p>
           <p>
@@ -44,7 +44,7 @@ export default function TermsPage() {
             links={[
               { href: "/privacy-policy", label: "Privacy policy" },
               { href: "/disclosure", label: "Referral disclosure" },
-              { href: "/contact", label: "Contact Bonus Foundry" }
+              { href: "/contact", label: "Contact BonusFoundry" }
             ]}
           />
         </div>

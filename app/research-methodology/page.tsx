@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Research Methodology",
   description:
-    "How Bonus Foundry researches money transfer referral programs, official provider sources, country variation, verification rules, and missing-bonus issues.",
+    "How BonusFoundry researches money transfer referral programs, official provider sources, country variation, verification rules, and missing-bonus issues.",
   path: "/research-methodology"
 });
 
@@ -21,7 +21,7 @@ export default function ResearchMethodologyPage() {
         data={webPageJsonLd({
           title: "Research Methodology",
           description:
-            "How Bonus Foundry researches money transfer referral programs, official provider sources, country variation, verification rules, and missing-bonus issues.",
+            "How BonusFoundry researches money transfer referral programs, official provider sources, country variation, verification rules, and missing-bonus issues.",
           path: "/research-methodology",
           updatedAt: "2026-07-14"
         })}
@@ -31,7 +31,7 @@ export default function ResearchMethodologyPage() {
         <LastVerified date="July 14, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Research Methodology</h1>
         <div className="mt-6 max-w-3xl">
-          <QuickAnswer answer="Bonus Foundry researches provider pages by checking official provider sources first: referral terms, promotion pages, help centers, FAQ pages, legal documents, support articles, and app-facing instructions when available." />
+          <QuickAnswer answer="BonusFoundry researches provider pages by checking official provider sources first: referral terms, promotion pages, help centers, FAQ pages, legal documents, support articles, and app-facing instructions when available." />
         </div>
         <div className="mt-10 max-w-3xl space-y-6">
           <HowItWorks
@@ -80,7 +80,7 @@ export default function ResearchMethodologyPage() {
               "Provider pages should identify what official sources verified and when those sources were last checked.",
               "Country or promotion variation should be explained directly when official sources show different rules.",
               "Unverified details should remain cautious, especially for rewards, eligibility, supported countries, and payment methods.",
-              "Bonus Foundry does not use coupon sites, referral marketplaces, or user-submitted codes as proof of provider referral rules."
+              "BonusFoundry does not use coupon sites, referral marketplaces, or user-submitted codes as proof of provider referral rules."
             ]}
           />
         </div>
@@ -88,7 +88,7 @@ export default function ResearchMethodologyPage() {
           <RelatedResources
             links={[
               { href: "/editorial-policy", label: "Editorial policy" },
-              { href: "/about", label: "About Bonus Foundry" },
+              { href: "/about", label: "About BonusFoundry" },
               { href: "/providers", label: "Provider bonus guides" },
               { href: "/guides", label: "Referral and bonus guides" },
               { href: "/faq", label: "Referral FAQ" },

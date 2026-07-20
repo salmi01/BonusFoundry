@@ -6,7 +6,7 @@ import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "Privacy policy",
-  description: "Privacy policy for Bonus Foundry.",
+  description: "Privacy policy for BonusFoundry.",
   path: "/privacy-policy"
 });
 
@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
       <JsonLd
         data={webPageJsonLd({
           title: "Privacy policy",
-          description: "Privacy policy for Bonus Foundry.",
+          description: "Privacy policy for BonusFoundry.",
           path: "/privacy-policy",
           updatedAt: "2026-06-27"
         })}
@@ -29,11 +29,11 @@ export default function PrivacyPolicyPage() {
         <LastVerified date="June 27, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Privacy policy</h1>
         <div className="mt-6 max-w-3xl">
-          <QuickAnswer answer="Bonus Foundry is a static content website. The current site does not provide user accounts, user submissions, comments, or a database for visitor-submitted referral codes." />
+          <QuickAnswer answer="BonusFoundry is a static content website. The current site does not provide user accounts, user submissions, comments, or a database for visitor-submitted referral codes." />
         </div>
         <div className="mt-6 max-w-3xl space-y-5 text-muted-foreground">
           <p>
-            Bonus Foundry is a static content website. The MVP does not include user accounts, user submissions,
+            BonusFoundry is a static content website. The MVP does not include user accounts, user submissions,
             comments, or a database for storing visitor-provided referral codes.
           </p>
           <p>
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
             links={[
               { href: "/terms", label: "Terms of use" },
               { href: "/disclosure", label: "Referral disclosure" },
-              { href: "/contact", label: "Contact Bonus Foundry" }
+              { href: "/contact", label: "Contact BonusFoundry" }
             ]}
           />
         </div>

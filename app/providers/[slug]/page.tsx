@@ -188,7 +188,7 @@ export default async function ProviderPage({ params }: PageProps) {
                 facts={authority.updateHistory.map((item) => ({ label: formatDate(item.date), value: item.note }))}
               />
               <EditorialNote>
-                Bonus Foundry advice is separate from provider rules: keep the offer screen, transfer receipt, and verification messages until the reward or transfer is resolved.
+                BonusFoundry advice is separate from provider rules: keep the offer screen, transfer receipt, and verification messages until the reward or transfer is resolved.
               </EditorialNote>
               <RelatedResources links={relatedResources} />
               <Disclosure />
@@ -212,11 +212,11 @@ function hasOwnedReferralLink(provider: Provider) {
 
 function referralEntryInstruction(provider: Provider) {
   if (provider.referralCode) {
-    return `Use Bonus Foundry code ${provider.referralCode} when ${provider.name} shows a referral or promo-code field.`;
+    return `Use BonusFoundry code ${provider.referralCode} when ${provider.name} shows a referral or promo-code field.`;
   }
 
   if (hasOwnedReferralLink(provider) && provider.referralLink) {
-    return `Open the Bonus Foundry ${provider.name} referral link before signup.`;
+    return `Open the BonusFoundry ${provider.name} referral link before signup.`;
   }
 
   return `Use ${provider.name}'s own referral, promo, or first-transfer offer when it appears in the live provider flow.`;
@@ -225,15 +225,15 @@ function referralEntryInstruction(provider: Provider) {
 function providerQuickCardFacts(provider: Provider, authority: ProviderAuthority) {
   const minimumTransfer = authority.referral.minimumTransfer || "No fixed minimum transfer was verified from the reviewed public provider sources.";
   const whereToEnterCode = provider.referralCode
-    ? "Enter the Bonus Foundry code in the referral or promo-code field before completing the qualifying transfer."
+    ? "Enter the BonusFoundry code in the referral or promo-code field before completing the qualifying transfer."
     : hasOwnedReferralLink(provider)
-      ? "Open the Bonus Foundry referral link before creating the account."
+      ? "Open the BonusFoundry referral link before creating the account."
       : "Use the provider's own referral or promo entry point before checkout when the live flow shows one.";
   const codeOrLink = provider.referralCode
-    ? `Bonus Foundry code: ${provider.referralCode}`
+    ? `BonusFoundry code: ${provider.referralCode}`
     : hasOwnedReferralLink(provider) && provider.referralLink
-      ? `Bonus Foundry referral link: ${provider.referralLink}`
-      : "No separate Bonus Foundry code is listed for this provider.";
+      ? `BonusFoundry referral link: ${provider.referralLink}`
+      : "No separate BonusFoundry code is listed for this provider.";
 
   return { minimumTransfer, whereToEnterCode, codeOrLink };
 }
@@ -244,7 +244,7 @@ function whereToEnterCodeSteps(provider: Provider) {
   }
 
   if (hasOwnedReferralLink(provider)) {
-    return ["Bonus Foundry referral link", "Provider signup flow", "Before creating the account"];
+    return ["BonusFoundry referral link", "Provider signup flow", "Before creating the account"];
   }
 
   return ["Provider referral entry point", "Offer or checkout screen", "Before paying for the qualifying transfer"];
@@ -324,14 +324,14 @@ function buildOfficialSources(authority: ProviderAuthority): SourceItem[] {
 
 function sourceTypeLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
   if (confidence === "official") return "Official provider source";
-  if (confidence === "referral-link") return "Bonus Foundry referral link";
-  return "Bonus Foundry-owned referral detail";
+  if (confidence === "referral-link") return "BonusFoundry referral link";
+  return "BonusFoundry-owned referral detail";
 }
 
 function sourceStatusLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
   if (confidence === "official") return "Provider rules, availability, support, or verification details reviewed";
-  if (confidence === "referral-link") return "Bonus Foundry-owned referral link reviewed";
-  return "Bonus Foundry owner-supplied code reviewed";
+  if (confidence === "referral-link") return "BonusFoundry-owned referral link reviewed";
+  return "BonusFoundry owner-supplied code reviewed";
 }
 
 function buildRelatedResources(

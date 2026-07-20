@@ -194,14 +194,14 @@ function buildComparisonRow(provider: Provider, corridor: Corridor): ComparisonR
 
 function referralOpportunity(provider: Provider) {
   if (provider.referralCode) {
-    return `Bonus Foundry code listed when ${provider.name} shows a code field for this route.`;
+    return `BonusFoundry code listed when ${provider.name} shows a code field for this route.`;
   }
 
   if (
     provider.referralLink &&
     provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
   ) {
-    return "Bonus Foundry referral link listed; open it before signup when the route and offer terms match.";
+    return "BonusFoundry referral link listed; open it before signup when the route and offer terms match.";
   }
 
   return "Use the provider's own live promo, referral, or first-transfer offer when it appears for this route.";

@@ -238,15 +238,15 @@ function bestForItems(hub: SendingCountryHub) {
 }
 
 function whereToEnterCode(provider: Provider) {
-  if (provider.referralCode) return "Enter the Bonus Foundry code when the provider shows a referral or promo-code field.";
-  if (hasOwnedReferralLink(provider)) return "Open the Bonus Foundry referral link before creating the provider account.";
+  if (provider.referralCode) return "Enter the BonusFoundry code when the provider shows a referral or promo-code field.";
+  if (hasOwnedReferralLink(provider)) return "Open the BonusFoundry referral link before creating the provider account.";
   return "Use the provider's own live referral, promo, or first-transfer offer when it appears.";
 }
 
 function codeOrLink(provider: Provider) {
-  if (provider.referralCode) return `Bonus Foundry code: ${provider.referralCode}`;
-  if (hasOwnedReferralLink(provider) && provider.referralLink) return "Bonus Foundry referral link listed on the referral page.";
-  return "No separate Bonus Foundry code or link is listed for this provider.";
+  if (provider.referralCode) return `BonusFoundry code: ${provider.referralCode}`;
+  if (hasOwnedReferralLink(provider) && provider.referralLink) return "BonusFoundry referral link listed on the referral page.";
+  return "No separate BonusFoundry code or link is listed for this provider.";
 }
 
 function hasOwnedReferralLink(provider: Provider) {
@@ -260,12 +260,12 @@ function officialSources(providers: Provider[]): SourceItem[] {
   const sources = providers.flatMap((provider) =>
     (provider.sources ?? []).map((source) => ({
       name: source.label,
-      type: source.confidence === "official" ? "Official provider source" : "Bonus Foundry-owned referral detail",
+      type: source.confidence === "official" ? "Official provider source" : "BonusFoundry-owned referral detail",
       url: source.url,
       reviewedInformation:
         source.confidence === "official"
           ? `${provider.name} availability, referral, verification, support, or payment-method information`
-          : `${provider.name} Bonus Foundry-owned referral code or link`,
+          : `${provider.name} BonusFoundry-owned referral code or link`,
       reviewDate: formatDate(source.lastReviewed)
     }))
   );
@@ -306,7 +306,7 @@ function buildRelatedResources(hub: SendingCountryHub, providers: Provider[], co
       description: "Related guide for referral, welcome-bonus, and signup decisions."
     })),
     { href: "/faq", label: "Referral bonus FAQ", description: "Short answers for referral, promo, eligibility, and verification questions." },
-    { href: "/providers", label: "All providers", description: "Browse the full Bonus Foundry provider library." },
+    { href: "/providers", label: "All providers", description: "Browse the full BonusFoundry provider library." },
     { href: "/corridors", label: "All corridors", description: "Browse route-specific provider and bonus comparisons." }
   ];
 }

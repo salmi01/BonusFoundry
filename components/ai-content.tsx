@@ -125,7 +125,7 @@ export function ProviderQuickCard(props: ProviderQuickCardProps) {
     { label: "Eligibility", value: props.eligibility ?? "Eligibility depends on the provider's current rules." },
     { label: "Minimum transfer", value: props.minimumTransfer ?? "Check the qualifying transfer amount before sending." },
     { label: "Where to enter the code", value: props.whereToEnterCode ?? "Apply the code or link before the qualifying transfer when the provider shows the option." },
-    { label: "Code or referral link", value: props.codeOrLink ?? "Use the listed Bonus Foundry code or link when available." },
+    { label: "Code or referral link", value: props.codeOrLink ?? "Use the listed BonusFoundry code or link when available." },
     { label: "Typical transfer speed", value: props.typicalTransferSpeed ?? "Transfer speed varies by route and payout method." },
     { label: "Last verified", value: props.lastVerified ?? "Review date not supplied." },
     { label: "Official sources reviewed", value: props.officialSourcesReviewed ?? "See the official sources section." }

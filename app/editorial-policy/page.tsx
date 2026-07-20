@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Editorial Policy",
   description:
-    "Bonus Foundry editorial policy for provider referral guides, official-source research, corrections, independence, and disclosure.",
+    "BonusFoundry editorial policy for provider referral guides, official-source research, corrections, independence, and disclosure.",
   path: "/editorial-policy"
 });
 
@@ -19,7 +19,7 @@ export default function EditorialPolicyPage() {
         data={webPageJsonLd({
           title: "Editorial Policy",
           description:
-            "Bonus Foundry editorial policy for provider referral guides, official-source research, corrections, independence, and disclosure.",
+            "BonusFoundry editorial policy for provider referral guides, official-source research, corrections, independence, and disclosure.",
           path: "/editorial-policy",
           updatedAt: "2026-07-14"
         })}
@@ -29,7 +29,7 @@ export default function EditorialPolicyPage() {
         <LastVerified date="July 14, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Editorial Policy</h1>
         <div className="mt-6 max-w-3xl">
-          <QuickAnswer answer="Bonus Foundry pages are reviewed by the BonusFoundry Editorial Team. The editorial standard is to use official provider sources first, explain country and promotion variation, and avoid presenting referral rewards as guaranteed." />
+          <QuickAnswer answer="BonusFoundry pages are reviewed by the BonusFoundry Editorial Team. The editorial standard is to use official provider sources first, explain country and promotion variation, and avoid presenting referral rewards as guaranteed." />
         </div>
         <div className="mt-10 max-w-3xl space-y-6">
           <KeyFacts
@@ -47,15 +47,15 @@ export default function EditorialPolicyPage() {
               "Review official provider documentation before describing a referral reward, promo rule, payment method, country list, or verification step.",
               "Document provider-specific variation when terms differ by country, corridor, customer type, time-limited campaign, or payment method.",
               "Avoid guarantees: referral codes, promo codes, welcome bonuses, and signup rewards can depend on provider eligibility checks.",
-              "Use only Bonus Foundry-owned referral codes or referral links when a page displays a code or link."
+              "Use only BonusFoundry-owned referral codes or referral links when a page displays a code or link."
             ]}
           />
           <KeyFacts
             title="Independence and disclosure"
             facts={[
-              { label: "Independence", value: "Bonus Foundry is independent and is not an official website of any listed money transfer or fintech provider." },
-              { label: "Referral support", value: "Bonus Foundry may receive a referral reward if a user signs up or transfers through a listed Bonus Foundry-owned referral code or link and meets provider requirements." },
-              { label: "No paid listings", value: "Bonus Foundry does not accept paid provider rankings, user-submitted referral codes, or referral marketplace submissions." },
+              { label: "Independence", value: "BonusFoundry is independent and is not an official website of any listed money transfer or fintech provider." },
+              { label: "Referral support", value: "BonusFoundry may receive a referral reward if a user signs up or transfers through a listed BonusFoundry-owned referral code or link and meets provider requirements." },
+              { label: "No paid listings", value: "BonusFoundry does not accept paid provider rankings, user-submitted referral codes, or referral marketplace submissions." },
               { label: "No fake expertise", value: "The site does not claim licenses, certifications, or individual expert credentials that have not been verified." }
             ]}
           />
@@ -72,7 +72,7 @@ export default function EditorialPolicyPage() {
         <div className="mt-10 max-w-3xl">
           <RelatedResources
             links={[
-              { href: "/about", label: "About Bonus Foundry" },
+              { href: "/about", label: "About BonusFoundry" },
               { href: "/research-methodology", label: "Research methodology" },
               { href: "/disclosure", label: "Referral disclosure" },
               { href: "/providers", label: "Provider bonus guides" },

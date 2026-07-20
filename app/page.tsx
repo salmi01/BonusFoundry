@@ -37,7 +37,7 @@ export default async function HomePage() {
               Understand welcome bonuses before you sign up.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Bonus Foundry explains referral programs, signup offers, and first-transfer rewards for money transfer and
+              BonusFoundry explains referral programs, signup offers, and first-transfer rewards for money transfer and
               fintech apps. We answer the practical questions first, then show our referral code when it is relevant.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -50,7 +50,7 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="mt-8 max-w-2xl">
-              <QuickAnswer answer="Bonus Foundry helps users understand money transfer Referral Code, Referral Link, Promo Code, Welcome Bonus, Signup Bonus, and Qualifying Transfer rules before signup or a first transfer." />
+              <QuickAnswer answer="BonusFoundry helps users understand money transfer Referral Code, Referral Link, Promo Code, Welcome Bonus, Signup Bonus, and Qualifying Transfer rules before signup or a first transfer." />
             </div>
           </div>
           <Card className="self-start">

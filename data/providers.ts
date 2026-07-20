@@ -335,7 +335,7 @@ export const providers: Provider[] = [
     lastManualReview: "2026-07-04",
     referral: {
       hasProgram:
-        "Bonus Foundry lists a Wise invite link. Wise referral benefits are controlled by the live invitation and account flow rather than one public reward amount for every user.",
+        "BonusFoundry lists a Wise invite link. Wise referral benefits are controlled by the live invitation and account flow rather than one public reward amount for every user.",
       code: null,
       link: "https://wise.com/invite/ahpc/salaheddines203",
       welcomeBonus:
@@ -434,7 +434,7 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed Wise's official send-money page, bank-transfer payment page, availability checker, help centre, public invite page, and Bonus Foundry's Wise invite link for transfer coverage, payment methods, support path, security/verification caveats, and referral visibility.",
+        "Reviewed Wise's official send-money page, bank-transfer payment page, availability checker, help centre, public invite page, and BonusFoundry's Wise invite link for transfer coverage, payment methods, support path, security/verification caveats, and referral visibility.",
       confidence: "medium",
       sourcesReviewed: [
         "Wise official website",
@@ -733,7 +733,7 @@ export const providers: Provider[] = [
     referralCode: "I4H9G",
     referralLink: null,
     welcomeBonus:
-      "Bonus Foundry lists I4H9G as the Sendwave referral code. Use it during signup or the first-transfer flow if Sendwave shows a code field, then confirm the current reward and eligibility terms in the app.",
+      "BonusFoundry lists I4H9G as the Sendwave referral code. Use it during signup or the first-transfer flow if Sendwave shows a code field, then confirm the current reward and eligibility terms in the app.",
     supportedCountries: ["United States", "United Kingdom", "France", "Senegal", "Ghana", "Kenya"],
     eligibleUsers: "New users may be eligible only if Sendwave shows an active offer in their signup or transfer flow.",
     requirements: [
@@ -755,12 +755,12 @@ export const providers: Provider[] = [
       { label: "Bonus certainty", value: "Confirm the live Sendwave offer before sending money." }
     ],
     currentOffer:
-      "Bonus Foundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
+      "BonusFoundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
     lastOfferUpdate: "2026-07-05",
     lastManualReview: "2026-07-05",
     referral: {
       hasProgram:
-        "Sendwave may show referral, promo, or first-transfer offers in the app. Bonus Foundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
+        "Sendwave may show referral, promo, or first-transfer offers in the app. BonusFoundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
       code: "I4H9G",
       link: null,
       welcomeBonus:
@@ -836,7 +836,7 @@ export const providers: Provider[] = [
         confidence: "official"
       },
       {
-        label: "Referral code supplied by Bonus Foundry owner",
+        label: "Referral code supplied by BonusFoundry owner",
         url: "https://www.sendwave.com/",
         lastReviewed: "2026-07-05",
         confidence: "internal"
@@ -846,9 +846,9 @@ export const providers: Provider[] = [
       completeness:
         "Reviewed Sendwave's official homepage, structured organization data, wallet copy, countries page, support FAQ, sender/recipient route signals, verification FAQ, limits FAQ, cancellation/refund FAQ, and public referral signals.",
       confidence: "medium",
-      sourcesReviewed: ["Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "Bonus Foundry owner-supplied referral code"],
+      sourcesReviewed: ["Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
-        "Keep one transparency note: Bonus Foundry did not find a public Sendwave referral reward table in the official public pages reviewed.",
+        "Keep one transparency note: BonusFoundry did not find a public Sendwave referral reward table in the official public pages reviewed.",
         "The I4H9G code should be confirmed in the Sendwave app before a user relies on any reward.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
@@ -888,8 +888,8 @@ export const providers: Provider[] = [
     ],
     faq: [
       {
-        question: "Does Bonus Foundry have a Sendwave referral code?",
-        answer: "Yes. Bonus Foundry lists I4H9G as the Sendwave referral code. Confirm the live offer terms in Sendwave before sending money."
+        question: "Does BonusFoundry have a Sendwave referral code?",
+        answer: "Yes. BonusFoundry lists I4H9G as the Sendwave referral code. Confirm the live offer terms in Sendwave before sending money."
       },
       {
         question: "Can Sendwave offers change?",
@@ -907,7 +907,7 @@ export const providers: Provider[] = [
     referralCode: "9RMU-ENB7",
     referralLink: null,
     welcomeBonus:
-      "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code. ",
+      "BonusFoundry lists 9RMU-ENB7 as the Ria referral code. ",
     supportedCountries: [
       "190+ countries and territories according to Ria's official coverage messaging",
       "United States",
@@ -940,21 +940,21 @@ export const providers: Provider[] = [
       "Complete payment only after reviewing total cost and delivery timing."
     ],
     keyFacts: [
-      { label: "Bonus Foundry referral code", value: "9RMU-ENB7" },
+      { label: "BonusFoundry referral code", value: "9RMU-ENB7" },
       { label: "How to use it", value: "Enter the code only if Ria shows a referral-code or promo-code field in the live flow." },
       { label: "Main caution", value: "Cash pickup and online offers may have different terms." },
     ],
     currentOffer:
-      "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code.",
+      "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
     lastOfferUpdate: "2026-07-09",
     lastManualReview: "2026-07-09",
     referral: {
       hasProgram:
-        "Ria displays promo and transfer offers by country, channel, and payout method. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
+        "Ria displays promo and transfer offers by country, channel, and payout method. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
       code: "9RMU-ENB7",
       link: null,
       welcomeBonus:
-        "Bonus Foundry lists 9RMU-ENB7 as the Ria referral code.",
+        "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
       minimumTransfer: "$50 or more for the public US promo codes reviewed.",
       expiry: "HelloRia expires on December 31, 2026; Ria says it may terminate promotions at any time.",
       payoutTiming: "",
@@ -987,7 +987,7 @@ export const providers: Provider[] = [
           country: "United States",
           supported: "Ria's US pages describe sending to 190+ countries and show US-specific payment and promo examples.",
           paymentMethods: ["US-issued Visa or Mastercard credit card", "US-issued Visa or Mastercard debit card", "US bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available"],
-          notes: "Ria's public promo page lists US new-customer promo-code offers. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code to check in the live flow."
+          notes: "Ria's public promo page lists US new-customer promo-code offers. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to check in the live flow."
         },
         {
           country: "Switzerland",
@@ -1091,11 +1091,11 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed Ria's official public website, promo page, terms and conditions, security page, cash pickup page, bank deposit page, digital wallet page, support links, transfer coverage, delivery methods, verification requirements, public referral evidence, and Bonus Foundry's owner-provided referral code.",
+        "Reviewed Ria's official public website, promo page, terms and conditions, security page, cash pickup page, bank deposit page, digital wallet page, support links, transfer coverage, delivery methods, verification requirements, public referral evidence, and BonusFoundry's owner-provided referral code.",
       confidence: "high",
       sourcesReviewed: ["Ria official website", "Ria promotions", "Ria terms and conditions", "Ria security", "Ria cash pickup", "Ria bank deposit", "Ria digital wallet", "Ria Help center"],
       remainingItems: [
-        "Keep one transparency note: Bonus Foundry lists 9RMU-ENB7 as the Ria referral code, while Ria's public official pages reviewed did not expose full referral-code terms for that code.",
+        "Keep one transparency note: BonusFoundry lists 9RMU-ENB7 as the Ria referral code, while Ria's public official pages reviewed did not expose full referral-code terms for that code.",
         "Country-specific promotions must be confirmed in Ria's live country flow.",
         "Ria's official pages reviewed describe broad coverage such as 190+ countries, over 180 bank-deposit countries, and 50+ digital-wallet countries, but do not expose one static complete destination list in the reviewed content."
       ]
@@ -1107,7 +1107,7 @@ export const providers: Provider[] = [
       },
       {
         date: "2026-07-09",
-        note: "Added Bonus Foundry's Ria referral code 9RMU-ENB7 while preserving the caveat that public official Ria referral-code terms were not verified in the official pages reviewed."
+        note: "Added BonusFoundry's Ria referral code 9RMU-ENB7 while preserving the caveat that public official Ria referral-code terms were not verified in the official pages reviewed."
       },
       {
         date: "2026-07-05",
@@ -1141,9 +1141,9 @@ export const providers: Provider[] = [
     ],
     faq: [
       {
-        question: "Does Bonus Foundry list a Ria referral code?",
+        question: "Does BonusFoundry list a Ria referral code?",
         answer:
-          "Yes. Bonus Foundry lists 9RMU-ENB7 as the Ria referral code. Public official Ria referral-code terms were not found in the pages reviewed, so use the code only if Ria accepts it in the live flow."
+          "Yes. BonusFoundry lists 9RMU-ENB7 as the Ria referral code. Public official Ria referral-code terms were not found in the pages reviewed, so use the code only if Ria accepts it in the live flow."
       },
       {
         question: "Can a Ria promotion depend on the payout method?",
@@ -1161,7 +1161,7 @@ export const providers: Provider[] = [
     referralCode: null,
     referralLink: "https://ssqt.co/mQVq5Jg",
     welcomeBonus:
-      "Western Union publishes US Refer a Friend pages where invited friends can receive a $0 transfer fee on their first international digital money transfer and both users receive rewards after requirements are completed. Western Union's official terms are country-specific, so Bonus Foundry does not treat the US offer as a universal global reward.",
+      "Western Union publishes US Refer a Friend pages where invited friends can receive a $0 transfer fee on their first international digital money transfer and both users receive rewards after requirements are completed. Western Union's official terms are country-specific, so BonusFoundry does not treat the US offer as a universal global reward.",
     supportedCountries: ["United States", "United Kingdom", "France", "Morocco", "Mexico", "India"],
     eligibleUsers:
       "New or invited users may be eligible only when the Western Union country site, app, or referral landing flow displays an active local offer for their account.",
@@ -1185,7 +1185,7 @@ export const providers: Provider[] = [
       { label: "Main caution", value: "Western Union referral terms are country-specific and rewards expire 6 months after processing." }
     ],
     currentOffer:
-      "Bonus Foundry lists a Western Union referral link. Western Union's US Refer a Friend page says friends receive a $0 transfer fee on their first international digital money transfer, while both users receive rewards after the friend completes all requirements. Check the sender-country terms before treating the US rules as available elsewhere.",
+      "BonusFoundry lists a Western Union referral link. Western Union's US Refer a Friend page says friends receive a $0 transfer fee on their first international digital money transfer, while both users receive rewards after the friend completes all requirements. Check the sender-country terms before treating the US rules as available elsewhere.",
     lastOfferUpdate: "2026-07-05",
     lastManualReview: "2026-07-05",
     referral: {
@@ -1302,7 +1302,7 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed Western Union's official global site, US country site, US Refer a Friend page, US Refer a Friend FAQ, US Refer a Friend legal terms, and the Bonus Foundry referral link for referral, reward, eligibility, verification, countries, payment methods, troubleshooting, support, and FAQ details.",
+        "Reviewed Western Union's official global site, US country site, US Refer a Friend page, US Refer a Friend FAQ, US Refer a Friend legal terms, and the BonusFoundry referral link for referral, reward, eligibility, verification, countries, payment methods, troubleshooting, support, and FAQ details.",
       confidence: "high",
       sourcesReviewed: [
         "Western Union official website",
@@ -1355,7 +1355,7 @@ export const providers: Provider[] = [
     faq: [
       {
         question: "Does Western Union have a referral code here?",
-        answer: "Bonus Foundry lists a Western Union referral link rather than a manual code. Use the link before signup and check the live offer terms."
+        answer: "BonusFoundry lists a Western Union referral link rather than a manual code. Use the link before signup and check the live offer terms."
       },
       {
         question: "Are Western Union referral rewards the same in every country?",
@@ -1534,7 +1534,7 @@ export const providers: Provider[] = [
       },
       {
         date: "2026-06-28",
-        note: "Verified that Bonus Foundry should not present MoneyGram as having a public referral program without official terms; added Plus Rewards and first-transfer offer caveats."
+        note: "Verified that BonusFoundry should not present MoneyGram as having a public referral program without official terms; added Plus Rewards and first-transfer offer caveats."
       },
       {
         date: "2026-06-27",
@@ -1604,13 +1604,13 @@ export const providers: Provider[] = [
       "Complete the first transfer only if the terms are clear."
     ],
     keyFacts: [
-      { label: "Referral code", value: "No WorldRemit code is supplied to Bonus Foundry." },
+      { label: "Referral code", value: "No WorldRemit code is supplied to BonusFoundry." },
       { label: "Offer entry point", value: "Check WorldRemit's app, help, or checkout flow for an active promo or referral offer." },
       { label: "Main caution", value: "Delivery method can affect eligibility." },
       { label: "Bonus certainty", value: "Only the live WorldRemit flow can confirm." }
     ],
     currentOffer:
-      "Check WorldRemit's app, help, or checkout flow for any active promo-code, Refer a friend, or first-transfer offer before sending money. Bonus Foundry does not list a separate WorldRemit code at this time.",
+      "Check WorldRemit's app, help, or checkout flow for any active promo-code, Refer a friend, or first-transfer offer before sending money. BonusFoundry does not list a separate WorldRemit code at this time.",
     lastOfferUpdate: "2026-06-28",
     lastManualReview: "2026-06-28",
     referral: {
@@ -1695,7 +1695,7 @@ export const providers: Provider[] = [
       confidence: "medium",
       sourcesReviewed: ["WorldRemit official website", "WorldRemit help surface"],
       remainingItems: [
-        "Bonus Foundry does not have a verified owner WorldRemit referral code to publish.",
+        "BonusFoundry does not have a verified owner WorldRemit referral code to publish.",
         "WorldRemit Refer a friend and promo-code details should be checked in the user's app or help article for their region.",
         "Route-specific payout methods, transfer limits, and identity checks remain live-flow dependent."
       ]
@@ -1728,7 +1728,7 @@ export const providers: Provider[] = [
     faq: [
       {
         question: "Does WorldRemit have a referral code here?",
-        answer: "Use the current WorldRemit referral, promo, or first-transfer offer shown in WorldRemit's app, help, or checkout flow. Bonus Foundry does not list a separate WorldRemit code at this time."
+        answer: "Use the current WorldRemit referral, promo, or first-transfer offer shown in WorldRemit's app, help, or checkout flow. BonusFoundry does not list a separate WorldRemit code at this time."
       },
       {
         question: "Does WorldRemit publish referral or promo help?",
@@ -1775,7 +1775,7 @@ export const providers: Provider[] = [
       { label: "Main caution", value: "Program availability, withdrawal availability, and reward currency vary by country." }
     ],
     currentOffer:
-      "Bonus Foundry lists a Paysend referral link. Paysend's official bonus page says invited friends get their first transfer fee-free and referrers earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent.",
+      "BonusFoundry lists a Paysend referral link. Paysend's official bonus page says invited friends get their first transfer fee-free and referrers earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent.",
     lastOfferUpdate: "2026-07-05",
     lastManualReview: "2026-07-05",
     referral: {
@@ -1939,8 +1939,8 @@ export const providers: Provider[] = [
     ],
     faq: [
       {
-        question: "Does Paysend have a referral code on Bonus Foundry?",
-        answer: "Bonus Foundry lists a Paysend referral link rather than a manual code. Confirm the live Paysend terms before sending money."
+        question: "Does Paysend have a referral code on BonusFoundry?",
+        answer: "BonusFoundry lists a Paysend referral link rather than a manual code. Confirm the live Paysend terms before sending money."
       },
       {
         question: "Does Paysend waive the first transfer fee for referred users?",
@@ -2092,7 +2092,7 @@ export const providers: Provider[] = [
         confidence: "official"
       },
       {
-        label: "Referral code supplied by Bonus Foundry owner",
+        label: "Referral code supplied by BonusFoundry owner",
         url: "https://www.lemfi.com/",
         lastReviewed: "2026-07-16",
         confidence: "internal"
@@ -2123,7 +2123,7 @@ export const providers: Provider[] = [
         "LemFi Europe promotions",
         "LemFi Europe terms",
         "LemFi contact page",
-        "Bonus Foundry owner-supplied referral code"
+        "BonusFoundry owner-supplied referral code"
       ],
       remainingItems: [
         "The Europe campaign page metadata and campaign body use different end dates; users should rely on the live campaign page and in-app display before sending.",
@@ -2167,9 +2167,9 @@ export const providers: Provider[] = [
     ],
     faq: [
       {
-        question: "What is the LemFi referral code listed by Bonus Foundry?",
+        question: "What is the LemFi referral code listed by BonusFoundry?",
         answer:
-          "Bonus Foundry lists SALABGWQ as the LemFi referral code. The code remains valid according to the manual verification recorded by Bonus Foundry."
+          "BonusFoundry lists SALABGWQ as the LemFi referral code. The code remains valid according to the manual verification recorded by BonusFoundry."
       },
       {
         question: "How much is the current LemFi Europe referral reward?",
@@ -2229,7 +2229,7 @@ export const providers: Provider[] = [
       link: null,
       welcomeBonus:
         "The US page says the referrer gets $50 for each referral and both users get to choose a gift card if the friend makes a qualifying transfer.",
-      minimumTransfer: "Xe's US landing page reviewed says the friend must make a first qualifying transfer, but Bonus Foundry could not verify a fixed minimum amount from the static page.",
+      minimumTransfer: "Xe's US landing page reviewed says the friend must make a first qualifying transfer, but BonusFoundry could not verify a fixed minimum amount from the static page.",
       expiry: "Offer-specific; check Xe's current referral or promotion terms.",
       payoutTiming: "The US landing page says both users get rewarded if the friend's transfer qualifies; exact processing timing was not verified from the static page.",
       limitations: [
@@ -2350,7 +2350,7 @@ export const providers: Provider[] = [
       confidence: "high",
       sourcesReviewed: ["Xe official website", "Xe Send Money page", "Xe US Refer a Friend", "Xe Help Centre", "Xe payment methods", "Xe supported sender countries", "Xe verification"],
       remainingItems: [
-        "Keep one transparency note: Bonus Foundry does not list a separate Xe referral code; users should use Xe's own referral entry point or app code when available.",
+        "Keep one transparency note: BonusFoundry does not list a separate Xe referral code; users should use Xe's own referral entry point or app code when available.",
         "Xe's exact minimum qualifying transfer, reward processing time, and full referral terms were not visible in the static US landing page reviewed.",
         "Non-US referral reward amounts and availability should be checked in the local Xe referral flow before publishing a fixed value.",
         "Personal and business transfer terms should be verified separately for local pages."
@@ -2374,7 +2374,7 @@ export const providers: Provider[] = [
       "Assuming business and personal accounts share the same offer rules.",
       "Comparing a bonus without checking the exchange rate.",
       "Relying on old promo-code pages.",
-      "Assuming Xe's public referral entry point means Bonus Foundry has a publishable Xe referral code.",
+      "Assuming Xe's public referral entry point means BonusFoundry has a publishable Xe referral code.",
       "Forgetting that the friend must enter the code on the first qualifying transfer under the US page reviewed."
     ],
     missingBonus: [
@@ -2458,10 +2458,10 @@ const defaultFaqSlugs = [
 function defaultCountryAvailability(provider: Provider) {
   return provider.supportedCountries.slice(0, 6).map((country) => ({
     country,
-    supported: "Listed in Bonus Foundry provider notes",
+    supported: "Listed in BonusFoundry provider notes",
     paymentMethods: ["Confirm in the provider app or website"],
     notes:
-      "Bonus Foundry has not separated sender-country, recipient-country, currency, and payment-method coverage for this country. Confirm live availability with the provider."
+      "BonusFoundry has not separated sender-country, recipient-country, currency, and payment-method coverage for this country. Confirm live availability with the provider."
   }));
 }
 
@@ -2495,7 +2495,7 @@ export function getProviderAuthority(provider: Provider): ProviderAuthority {
     lastOfferUpdate,
     referral: provider.referral ?? {
       hasProgram: hasKnownCode
-        ? "Bonus Foundry lists a referral code. The active bonus still depends on the provider's country, account, transfer, and promotion terms."
+        ? "BonusFoundry lists a referral code. The active bonus still depends on the provider's country, account, transfer, and promotion terms."
         : "Check the provider app or website for any active promo, referral, or first-transfer offer.",
       code: provider.referralCode,
       link: provider.referralLink,
@@ -2507,9 +2507,9 @@ export function getProviderAuthority(provider: Provider): ProviderAuthority {
     },
     availability: provider.availability ?? {
       sendingCountries: provider.supportedCountries,
-      receivingCountries: ["Not separately verified by Bonus Foundry. Confirm destination coverage with the provider."],
+      receivingCountries: ["Not separately verified by BonusFoundry. Confirm destination coverage with the provider."],
       currencies: ["Use the provider's live transfer flow for currently supported currencies."],
-      paymentMethods: ["Not exhaustively listed by Bonus Foundry. Confirm card, bank, wallet, or cash options in the provider flow."],
+      paymentMethods: ["Not exhaustively listed by BonusFoundry. Confirm card, bank, wallet, or cash options in the provider flow."],
       countryAvailability: defaultCountryAvailability(provider)
     },
     verification: provider.verification ?? {
@@ -2521,7 +2521,7 @@ export function getProviderAuthority(provider: Provider): ProviderAuthority {
     support: provider.support ?? {
       supportEmail: null,
       supportUrl: website,
-      helpCenter: "Specific help center URL not listed by Bonus Foundry. Use the official provider website or app support area."
+      helpCenter: "Specific help center URL not listed by BonusFoundry. Use the official provider website or app support area."
     },
     updateHistory: provider.updateHistory ?? [
       {

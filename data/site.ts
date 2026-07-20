@@ -1,10 +1,14 @@
 export const siteConfig = {
-  name: "Bonus Foundry",
+  name: "BonusFoundry",
   url: "https://bonusfoundry.com",
   description:
-    "A transparent knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.",
-  author: "Bonus Foundry",
-  email: "hello@bonusfoundry.com"
+    "Independent knowledge base for international money transfer referral programs, welcome bonuses and signup promotions.",
+  author: "BonusFoundry Editorial Team",
+  email: "hello@bonusfoundry.com",
+  logo: "/brand/bonusfoundry-logo.png",
+  icon: "/brand/bonusfoundry-icon.png",
+  ogImage: "/brand/bonusfoundry-og.png",
+  sameAs: [] as string[]
 };
 
 export const navItems = [

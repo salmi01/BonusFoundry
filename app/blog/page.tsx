@@ -8,7 +8,7 @@ import { getBlogPosts } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 
 export const metadata = createMetadata({
-  title: "Bonus Foundry blog",
+  title: "BonusFoundry blog",
   description: "Updates and practical notes about money transfer welcome bonuses and referral terms.",
   path: "/blog"
 });
@@ -22,7 +22,7 @@ export default async function BlogIndexPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", item: "/" }, { name: "Blog", item: "/blog" }])} />
       <JsonLd
         data={webPageJsonLd({
-          title: "Bonus Foundry blog",
+          title: "BonusFoundry blog",
           description: "Updates and practical notes about money transfer welcome bonuses and referral terms.",
           path: "/blog",
           updatedAt: lastUpdated
@@ -35,7 +35,7 @@ export default async function BlogIndexPage() {
           Practical updates and checks for people comparing referral and welcome bonus terms.
         </p>
         <div className="mt-8">
-          <QuickAnswer answer="Use the Bonus Foundry blog for practical notes about money transfer bonus terms, Referral Code conditions, Promo Code checks, and provider offer review habits." />
+          <QuickAnswer answer="Use the BonusFoundry blog for practical notes about money transfer bonus terms, Referral Code conditions, Promo Code checks, and provider offer review habits." />
         </div>
         <div className="mt-8 grid gap-5">
           {posts.map((post) => (

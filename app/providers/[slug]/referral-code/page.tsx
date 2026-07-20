@@ -203,7 +203,7 @@ function TaptapSendReferralPage({
           },
           publisher: {
             "@id": "https://bonusfoundry.com/#organization",
-            name: "Bonus Foundry"
+            name: "BonusFoundry"
           },
           about: {
             "@type": "Offer",
@@ -444,21 +444,21 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralOfferEntry(provider: Provider) {
-  if (provider.referralCode) return `Bonus Foundry referral code: ${provider.referralCode}`;
-  if (hasOwnedReferralLink(provider)) return `Bonus Foundry referral link is listed for ${provider.name}.`;
-  return `${provider.name} does not have a separate Bonus Foundry referral code listed. Use the provider's own live promo, referral, or first-transfer offer when it appears.`;
+  if (provider.referralCode) return `BonusFoundry referral code: ${provider.referralCode}`;
+  if (hasOwnedReferralLink(provider)) return `BonusFoundry referral link is listed for ${provider.name}.`;
+  return `${provider.name} does not have a separate BonusFoundry referral code listed. Use the provider's own live promo, referral, or first-transfer offer when it appears.`;
 }
 
 function referralAnswer(provider: Provider) {
   if (provider.referralCode) {
-    return `The current Bonus Foundry referral code for ${provider.name} is ${provider.referralCode}. Apply it before signup or the first qualifying transfer when ${provider.name} shows a code field.`;
+    return `The current BonusFoundry referral code for ${provider.name} is ${provider.referralCode}. Apply it before signup or the first qualifying transfer when ${provider.name} shows a code field.`;
   }
 
   if (hasOwnedReferralLink(provider)) {
-    return `Bonus Foundry lists an owned referral link for ${provider.name}. Open the link before signup, then use the same provider flow until the qualifying action is complete.`;
+    return `BonusFoundry lists an owned referral link for ${provider.name}. Open the link before signup, then use the same provider flow until the qualifying action is complete.`;
   }
 
-  return `${provider.name} does not have a separate Bonus Foundry referral code on this page. Use ${provider.name}'s own referral, promo, or first-transfer offer when it appears in the live provider flow.`;
+  return `${provider.name} does not have a separate BonusFoundry referral code on this page. Use ${provider.name}'s own referral, promo, or first-transfer offer when it appears in the live provider flow.`;
 }
 
 function applicationTiming(provider: Provider) {
@@ -469,7 +469,7 @@ function applicationTiming(provider: Provider) {
 
 function whereToEnterCodeSteps(provider: Provider) {
   if (provider.referralCode) return ["Signup or first-transfer flow", "Referral Code or Promo Code field", "Before the qualifying transfer"];
-  if (hasOwnedReferralLink(provider)) return ["Bonus Foundry referral link", "Provider signup flow", "Before account creation"];
+  if (hasOwnedReferralLink(provider)) return ["BonusFoundry referral link", "Provider signup flow", "Before account creation"];
   return ["Provider offer entry point", "Signup or checkout flow", "Before payment"];
 }
 
@@ -492,7 +492,7 @@ function buildTroubleshooting(provider: Provider): TroubleshootingItem[] {
 
 function buildReferralFaq(provider: Provider, authority: ProviderAuthority): FAQItem[] {
   const filteredProviderFaq = provider.faq.filter(
-    (item) => !/official|Bonus Foundry-owned|does .* have .* here/i.test(`${item.question} ${item.answer}`)
+    (item) => !/official|BonusFoundry-owned|does .* have .* here/i.test(`${item.question} ${item.answer}`)
   );
 
   return [
@@ -515,9 +515,9 @@ function buildReferralFaq(provider: Provider, authority: ProviderAuthority): FAQ
       answer: authority.ineligibleUsers[0] ?? "Existing users are usually not eligible unless the provider's current terms allow existing-account participation."
     },
     {
-      question: "Is the code on Bonus Foundry official?",
+      question: "Is the code on BonusFoundry official?",
       answer:
-        "Bonus Foundry is independent. A listed code or owned referral link is provided as a practical referral resource, not as a universal public provider promo code."
+        "BonusFoundry is independent. A listed code or owned referral link is provided as a practical referral resource, not as a universal public provider promo code."
     },
     ...filteredProviderFaq
   ];

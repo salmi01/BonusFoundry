@@ -33,8 +33,22 @@ export function createMetadata({
       description,
       url,
       siteName: siteConfig.name,
+      images: [
+        {
+          url: new URL(siteConfig.ogImage, siteConfig.url).toString(),
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name
+        }
+      ],
       publishedTime,
       modifiedTime
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [new URL(siteConfig.ogImage, siteConfig.url).toString()]
     }
   };
 }
@@ -84,13 +98,11 @@ export function articleJsonLd(input: {
     datePublished: input.publishedAt,
     dateModified: input.updatedAt,
     author: {
-      "@type": "Organization",
-      name: input.author
+      "@id": `${siteConfig.url}/#editorial-team`,
+      name: input.author || siteConfig.author
     },
     publisher: {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}/#organization`,
-      name: siteConfig.name
+      "@id": `${siteConfig.url}/#organization`
     }
   };
 }
@@ -109,13 +121,10 @@ export function webPageJsonLd(input: {
     url: new URL(input.path, siteConfig.url).toString(),
     dateModified: input.updatedAt,
     author: {
-      "@type": "Organization",
-      name: siteConfig.author
+      "@id": `${siteConfig.url}/#editorial-team`
     },
     publisher: {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}/#organization`,
-      name: siteConfig.name
+      "@id": `${siteConfig.url}/#organization`
     }
   };
 }
@@ -126,11 +135,33 @@ export function organizationJsonLd() {
     "@type": "Organization",
     "@id": `${siteConfig.url}/#organization`,
     name: siteConfig.name,
-    url: siteConfig.url,
-    logo: new URL("/favicon.svg", siteConfig.url).toString(),
+    url: new URL("/", siteConfig.url).toString(),
+    logo: {
+      "@type": "ImageObject",
+      "@id": `${siteConfig.url}/#logo`,
+      url: new URL(siteConfig.logo, siteConfig.url).toString(),
+      contentUrl: new URL(siteConfig.logo, siteConfig.url).toString(),
+      caption: siteConfig.name,
+      width: 2172,
+      height: 724
+    },
     description: siteConfig.description,
     email: siteConfig.email,
+    sameAs: siteConfig.sameAs,
     publishingPrinciples: new URL("/editorial-policy", siteConfig.url).toString()
+  };
+}
+
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.url}/#website`,
+    url: new URL("/", siteConfig.url).toString(),
+    name: siteConfig.name,
+    publisher: {
+      "@id": `${siteConfig.url}/#organization`
+    }
   };
 }
 
@@ -146,7 +177,7 @@ export function editorialTeamJsonLd() {
       name: siteConfig.name
     },
     description:
-      "The editorial team that researches Bonus Foundry provider, corridor, guide, FAQ, and referral bonus pages using official provider sources and clearly disclosed referral information.",
+      "The editorial team that researches BonusFoundry provider, corridor, guide, FAQ, and referral bonus pages by reviewing official provider websites, referral terms, help-center documentation, and manually verified app offers.",
     knowsAbout: [
       "Money transfer referral programs",
       "Welcome bonuses",

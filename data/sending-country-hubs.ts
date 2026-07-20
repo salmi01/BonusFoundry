@@ -85,7 +85,7 @@ export const sendingCountryHubs: SendingCountryHub[] = [
       {
         useCase: "Best for checking referral rewards",
         guidance:
-          "Start with providers where Bonus Foundry lists an owned code or link, then confirm the US route is eligible in the live terms.",
+          "Start with providers where BonusFoundry lists an owned code or link, then confirm the US route is eligible in the live terms.",
         providerSlugs: ["remitly", "taptap-send", "western-union", "paysend"]
       },
       {
@@ -130,12 +130,12 @@ export const sendingCountryHubs: SendingCountryHub[] = [
       {
         question: "Which money transfer providers are available from the United States?",
         answer:
-          "Bonus Foundry tracks US-relevant providers including Remitly, Wise, Sendwave, Taptap Send, Ria, Western Union, MoneyGram, WorldRemit, Paysend, LemFi, and Xe. Availability still depends on destination, payment method, receiving method, and live provider terms."
+          "BonusFoundry tracks US-relevant providers including Remitly, Wise, Sendwave, Taptap Send, Ria, Western Union, MoneyGram, WorldRemit, Paysend, LemFi, and Xe. Availability still depends on destination, payment method, receiving method, and live provider terms."
       },
       {
-        question: "Which USA corridors does Bonus Foundry cover?",
+        question: "Which USA corridors does BonusFoundry cover?",
         answer:
-          "Bonus Foundry currently covers USA to Morocco, Egypt, Ghana, Ethiopia, Kenya, and Nigeria as dedicated corridor pages."
+          "BonusFoundry currently covers USA to Morocco, Egypt, Ghana, Ethiopia, Kenya, and Nigeria as dedicated corridor pages."
       },
       {
         question: "Can a US referral bonus apply to any destination?",
@@ -218,7 +218,7 @@ export const sendingCountryHubs: SendingCountryHub[] = [
       {
         useCase: "Best for checking referral rewards",
         guidance:
-          "Start with providers where Bonus Foundry lists an owned code or link, then confirm the France corridor is eligible in the live terms.",
+          "Start with providers where BonusFoundry lists an owned code or link, then confirm the France corridor is eligible in the live terms.",
         providerSlugs: ["taptap-send", "wise", "remitly", "western-union", "paysend", "lemfi"]
       },
       {
@@ -269,12 +269,12 @@ export const sendingCountryHubs: SendingCountryHub[] = [
       {
         question: "Which money transfer providers are relevant from France?",
         answer:
-          "Bonus Foundry tracks France-relevant providers including Taptap Send, Wise, Remitly, Sendwave, Ria, Western Union, MoneyGram, WorldRemit, Paysend, LemFi, and Xe. Availability still depends on destination, payment method, receiving method, and live provider terms."
+          "BonusFoundry tracks France-relevant providers including Taptap Send, Wise, Remitly, Sendwave, Ria, Western Union, MoneyGram, WorldRemit, Paysend, LemFi, and Xe. Availability still depends on destination, payment method, receiving method, and live provider terms."
       },
       {
-        question: "Which France corridors does Bonus Foundry cover?",
+        question: "Which France corridors does BonusFoundry cover?",
         answer:
-          "Bonus Foundry currently covers France to Morocco, Algeria, Tunisia, Senegal, and Cote d'Ivoire as dedicated corridor pages."
+          "BonusFoundry currently covers France to Morocco, Algeria, Tunisia, Senegal, and Cote d'Ivoire as dedicated corridor pages."
       },
       {
         question: "Can a France referral bonus apply to any destination?",

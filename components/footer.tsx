@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/container";
 import { navItems, siteConfig, trustLinks } from "@/data/site";
 
@@ -7,7 +8,13 @@ export function Footer() {
     <footer className="mt-20 border-t bg-card/90">
       <Container className="grid gap-8 py-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">
         <div>
-          <p className="font-semibold">{siteConfig.name}</p>
+          <Image
+            src={siteConfig.logo}
+            alt={siteConfig.name}
+            width={2172}
+            height={724}
+            className="h-9 w-auto"
+          />
           <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
             Independent guidance on referral programs and welcome bonuses for money transfer and fintech apps.
           </p>

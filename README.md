@@ -1,6 +1,6 @@
-# Bonus Foundry
+# BonusFoundry
 
-Bonus Foundry is a static-first knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.
+BonusFoundry is a static-first knowledge base for welcome bonuses and referral programs from money transfer and fintech apps.
 
 ## Stack
 

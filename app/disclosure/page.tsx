@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Referral disclosure",
   description:
-    "Bonus Foundry referral disclosure, independence statement, and explanation of changing offer eligibility.",
+    "BonusFoundry referral disclosure, independence statement, and explanation of changing offer eligibility.",
   path: "/disclosure"
 });
 
@@ -19,7 +19,7 @@ export default function DisclosurePage() {
         data={webPageJsonLd({
           title: "Referral disclosure",
           description:
-            "Bonus Foundry referral disclosure, independence statement, and explanation of changing offer eligibility.",
+            "BonusFoundry referral disclosure, independence statement, and explanation of changing offer eligibility.",
           path: "/disclosure",
           updatedAt: "2026-06-27"
         })}
@@ -29,15 +29,15 @@ export default function DisclosurePage() {
         <LastVerified date="June 27, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral disclosure</h1>
         <div className="mt-6 max-w-3xl">
-          <QuickAnswer answer="Bonus Foundry may receive a referral reward when a user signs up or completes a qualifying transfer through a listed Bonus Foundry referral code or owned referral link." />
+          <QuickAnswer answer="BonusFoundry may receive a referral reward when a user signs up or completes a qualifying transfer through a listed BonusFoundry referral code or owned referral link." />
         </div>
         <div className="mt-6 max-w-3xl space-y-5 text-muted-foreground">
           <p>
-            Bonus Foundry is independent. It is not an official website of Taptap Send, Wise, Remitly, Sendwave, Ria, or
+            BonusFoundry is independent. It is not an official website of Taptap Send, Wise, Remitly, Sendwave, Ria, or
             any other money transfer or fintech provider.
           </p>
           <p>
-            Some links on Bonus Foundry are referral links. Bonus Foundry may receive a reward if a user signs up through
+            Some links on BonusFoundry are referral links. BonusFoundry may receive a reward if a user signs up through
             a referral link and meets the provider&apos;s current requirements.
           </p>
           <p>
@@ -48,12 +48,12 @@ export default function DisclosurePage() {
         <div className="mt-10 max-w-3xl">
           <RelatedResources
             links={[
-              { href: "/about", label: "About Bonus Foundry" },
+              { href: "/about", label: "About BonusFoundry" },
               { href: "/editorial-policy", label: "Editorial policy" },
               { href: "/research-methodology", label: "Research methodology" },
               { href: "/providers", label: "Provider bonus guides" },
               { href: "/faq/are-money-transfer-referral-codes-safe", label: "Are referral codes safe?" },
-              { href: "/contact", label: "Contact Bonus Foundry" }
+              { href: "/contact", label: "Contact BonusFoundry" }
             ]}
           />
         </div>
