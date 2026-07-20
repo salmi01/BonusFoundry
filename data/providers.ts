@@ -126,7 +126,7 @@ export const providers: Provider[] = [
     currentOffer:
       "TapTap Send referral code SALAHEDD1933 currently shows a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100. The TapTap Send app did not display an expiration date for the code during manual verification.",
     lastOfferUpdate: "2026-07-16",
-    lastManualReview: "2026-07-16",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Taptap Send's official help centre explains that users can refer friends by sharing a personal code, and both users can receive bonus credit when the referred friend uses the code and sends with Taptap Send for the first time.",
@@ -188,37 +188,37 @@ export const providers: Provider[] = [
       {
         label: "Taptap Send official website",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Taptap Send referrals help",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360001303088-How-do-referrals-work",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Taptap Send promo codes and referrals",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360001301127-How-do-promo-codes-work",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Taptap Send account verification",
         url: "https://support.taptapsend.com/hc/en-gb/articles/1500000672181-How-to-verify-your-Taptap-Send-account",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Taptap Send support",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360035876954-Contact-Taptap-Send-Support",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "TapTap Send app manual verification",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "internal"
       }
     ],
@@ -332,7 +332,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Wise referral offers are not uniform across all countries. The public invite page reviewed required the live Wise invite/account flow, so the reward can depend on the inviting account, the new user's country, the product used, and the qualifying transfer or account action.",
     lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-07-04",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "BonusFoundry lists a Wise invite link. Wise referral benefits are controlled by the live invitation and account flow rather than one public reward amount for every user.",
@@ -392,43 +392,43 @@ export const providers: Provider[] = [
       {
         label: "Wise official website",
         url: "https://wise.com/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise international money transfer page",
         url: "https://wise.com/gb/send-money/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise bank transfer payment method",
         url: "https://wise.com/gb/send-money/send-money-from-bank-account",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise availability checker",
         url: "https://wise.com/de/availability/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise public invite page",
         url: "https://wise.com/invite/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise help centre",
         url: "https://wise.com/help/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Wise referral invite link",
         url: "https://wise.com/invite/ahpc/salaheddines203",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "referral-link"
       }
     ],
@@ -536,7 +536,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Remitly's visible offer may be a referral reward, a first-transfer promotion, or no offer at all. Check the live transfer screen before sending because the bonus can be affected by destination country, payment method, and transfer amount.",
     lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-07-04",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Remitly publishes referral program terms. Users can invite family and friends with a referral link or QR code, and referred friends must complete a qualified first transfer for the referral to qualify.",
@@ -599,43 +599,43 @@ export const providers: Provider[] = [
       {
         label: "Remitly official website",
         url: "https://www.remitly.com/",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly United States website",
         url: "https://www.remitly.com/us/en",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly United States to Morocco route",
         url: "https://www.remitly.com/us/en/money-transfer/send-money-to-morocco",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly referral offer program",
         url: "https://www.remitly.com/us/en/home/referral-offer-program",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly referral program terms",
         url: "https://www.remitly.com/us/en/home/referral-program-tnc",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly security",
         url: "https://www.remitly.com/us/en/home/security",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Remitly referral link",
         url: "https://remit.ly/35sixkkg",
-        lastReviewed: "2026-07-04",
+        lastReviewed: "2026-07-20",
         confidence: "referral-link"
       }
     ],
@@ -757,7 +757,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Sendwave may show referral, promo, or first-transfer offers in the app. BonusFoundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
@@ -820,25 +820,25 @@ export const providers: Provider[] = [
       {
         label: "Sendwave official website",
         url: "https://www.sendwave.com/en-us",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Sendwave countries page",
         url: "https://www.sendwave.com/en-us/countries",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Sendwave support FAQ",
         url: "https://www.sendwave.com/en-us/support",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Referral code supplied by BonusFoundry owner",
         url: "https://www.sendwave.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "internal"
       }
     ],
@@ -947,7 +947,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
     lastOfferUpdate: "2026-07-09",
-    lastManualReview: "2026-07-09",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Ria displays promo and transfer offers by country, channel, and payout method. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
@@ -1028,49 +1028,49 @@ export const providers: Provider[] = [
       {
         label: "Ria official website",
         url: "https://www.riamoneytransfer.com/",
-        lastReviewed: "2026-07-09",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria promotions",
         url: "https://www.riamoneytransfer.com/en-us/promo/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria terms and conditions",
         url: "https://www.riamoneytransfer.com/en-us/terms/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria security",
         url: "https://www.riamoneytransfer.com/en-us/security/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria cash pickup",
         url: "https://www.riamoneytransfer.com/en-us/send-money-cash-pickup/",
-        lastReviewed: "2026-07-09",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria bank deposit",
         url: "https://www.riamoneytransfer.com/en-us/send-money-to-bank-account/",
-        lastReviewed: "2026-07-09",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria digital wallet",
         url: "https://www.riamoneytransfer.com/en-us/wallets/",
-        lastReviewed: "2026-07-09",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Ria Help center",
         url: "https://help.riamoneytransfer.com/hc/en-us",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       }
     ],
@@ -1187,7 +1187,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists a Western Union referral link. Western Union's US Refer a Friend page says friends receive a $0 transfer fee on their first international digital money transfer, while both users receive rewards after the friend completes all requirements. Check the sender-country terms before treating the US rules as available elsewhere.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Western Union publishes official US Refer a Friend pages and legal terms. The program is operated by the applicable Western Union entity by country of residence, so local terms control eligibility.",
@@ -1253,37 +1253,37 @@ export const providers: Provider[] = [
       {
         label: "Western Union official website",
         url: "https://www.westernunion.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Western Union US home",
         url: "https://www.westernunion.com/us/en/home.html",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Western Union US Refer a Friend",
         url: "https://www.westernunion.com/us/en/refer-a-friend.html",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Western Union US Refer a Friend FAQ",
         url: "https://www.westernunion.com/us/en/frequently-asked-questions/faq-refer-a-friend.html",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Western Union US Refer a Friend Terms",
         url: "https://www.westernunion.com/us/en/legal/refer-a-friend-terms-and-conditions.html",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Western Union referral link",
         url: "https://ssqt.co/mQVq5Jg",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "referral-link"
       }
     ],
@@ -1409,7 +1409,7 @@ export const providers: Provider[] = [
     currentOffer:
       "MoneyGram's official US Invite Friends page says new customers get $20 toward their first qualifying transfer and the referrer gets $20 after the friend signs up with the link and completes a first qualifying transfer of $50 or more. The promotion is available only when sending from the United States to select receive countries.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "MoneyGram publishes an official US Invite Friends referral page.",
@@ -1473,31 +1473,31 @@ export const providers: Provider[] = [
       {
         label: "MoneyGram official website",
         url: "https://www.moneygram.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "MoneyGram US home",
         url: "https://www.moneygram.com/us/en",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "MoneyGram US Invite Friends",
         url: "https://www.moneygram.com/us/en/services/invite-friends",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "MoneyGram US Help Center",
         url: "https://www.moneygram.com/us/en/help-center",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "MoneyGram US Terms and Conditions",
         url: "https://www.moneygram.com/us/en/help-center/terms-and-conditions",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       }
     ],
@@ -1612,7 +1612,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Check WorldRemit's app, help, or checkout flow for any active promo-code, Refer a friend, or first-transfer offer before sending money. BonusFoundry does not list a separate WorldRemit code at this time.",
     lastOfferUpdate: "2026-06-28",
-    lastManualReview: "2026-06-28",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "WorldRemit's help surface includes Refer a friend and promo-code topics. Users should follow the offer shown by WorldRemit for their sender country, route, and payment method.",
@@ -1673,7 +1673,7 @@ export const providers: Provider[] = [
       {
         label: "WorldRemit official website",
         url: "https://www.worldremit.com/",
-        lastReviewed: "2026-06-28",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       }
     ],
@@ -1777,7 +1777,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists a Paysend referral link. Paysend's official bonus page says invited friends get their first transfer fee-free and referrers earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Paysend publishes a public referral program through its bonus and referral pages.",
@@ -1844,37 +1844,37 @@ export const providers: Provider[] = [
       {
         label: "Paysend official website",
         url: "https://paysend.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Paysend US bonus page",
         url: "https://paysend.com/en-us/bonus",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Paysend UK home",
         url: "https://paysend.com/en-gb",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Paysend US home",
         url: "https://paysend.com/en-us",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Paysend Help Center",
         url: "https://paysend.com/en-gb/help",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Paysend referral link",
         url: "https://paysend.com/en/referral/06mvt6",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "referral-link"
       }
     ],
@@ -1994,7 +1994,7 @@ export const providers: Provider[] = [
     currentOffer:
       "The LemFi offer was manually verified as a €10 or $10 bonus after a qualifying transfer of €100 or $100, and the code remains valid. For Europe users, LemFi's invite-and-earn page says both accounts can receive EUR 10 when the invited friend signs up, verifies, and sends over EUR 100 in one transfer.",
     lastOfferUpdate: "2026-07-16",
-    lastManualReview: "2026-07-16",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "LemFi publishes an Invite and Earn page and Europe referral campaign terms for supported European users.",
@@ -2064,37 +2064,37 @@ export const providers: Provider[] = [
       {
         label: "LemFi official website",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "LemFi Europe Invite and Earn",
         url: "https://www.lemfi.com/en-fr/invite-and-earn",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "LemFi Europe Referral & Earn campaign",
         url: "https://www.lemfi.com/en-fr/promotions/eu-referral-campaign",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "LemFi Europe terms",
         url: "https://www.lemfi.com/en-fr/legal/terms",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "LemFi contact page",
         url: "https://www.lemfi.com/en-fr/contact-us",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Referral code supplied by BonusFoundry owner",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-16",
+        lastReviewed: "2026-07-20",
         confidence: "internal"
       }
     ],
@@ -2221,7 +2221,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Xe's official US Refer a Friend landing page says referrers get $50 for each referral and both users receive a gift card choice when the friend's transfer qualifies. The friend must register and enter the code on their first qualifying transfer. Use Xe's own Refer a Friend entry point or app code when the offer is available.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-05",
+    lastManualReview: "2026-07-20",
     referral: {
       hasProgram:
         "Xe's official Send Money page links to a US Refer a Friend landing page.",
@@ -2289,43 +2289,43 @@ export const providers: Provider[] = [
       {
         label: "Xe official website",
         url: "https://www.xe.com/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe Send Money page",
         url: "https://www.xe.com/send-money/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe US Refer a Friend",
         url: "https://www.xe.com/mt/us-money-transfer/lp/refer-a-friend-onsite/",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe Help Centre",
         url: "https://help.xe.com/hc/en-gb",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe payment methods",
         url: "https://help.xe.com/hc/en-gb/articles/360019845777-Which-payment-methods-can-I-use",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe supported sender countries",
         url: "https://help.xe.com/hc/en-gb/articles/4405589187985-Can-I-register-to-send-money-from-my-country",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       },
       {
         label: "Xe verification",
         url: "https://help.xe.com/hc/en-gb/articles/360019467417-How-do-I-complete-verification",
-        lastReviewed: "2026-07-05",
+        lastReviewed: "2026-07-20",
         confidence: "official"
       }
     ],

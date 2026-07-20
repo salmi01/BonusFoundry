@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps) {
         "Use TapTap Send referral code SALAHEDD1933 and receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100.",
       path: "/providers/taptap-send/referral-code",
       type: "article",
-      modifiedTime: "2026-07-16"
+      modifiedTime: "2026-07-20"
     });
   }
 
@@ -192,7 +192,7 @@ function TaptapSendReferralPage({
           description:
             "Use TapTap Send referral code SALAHEDD1933 and receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100.",
           url: "https://bonusfoundry.com/providers/taptap-send/referral-code",
-          dateModified: "2026-07-16",
+          dateModified: "2026-07-20",
           author: {
             "@id": "https://bonusfoundry.com/#editorial-team",
             name: "BonusFoundry Editorial Team"
