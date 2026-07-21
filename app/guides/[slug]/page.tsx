@@ -18,7 +18,7 @@ import { JsonLd } from "@/components/json-ld";
 import { corridors } from "@/data/corridors";
 import { faqs } from "@/data/faqs";
 import { providers } from "@/data/providers";
-import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
 import { getGuide, getGuides, guideSlugs, type GuideMeta } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 
@@ -36,7 +36,10 @@ export async function generateMetadata({ params }: PageProps) {
   return createMetadata({
     title: guide.meta.title,
     description: guide.meta.description,
-    path: `/guides/${guide.meta.slug}`
+    path: `/guides/${guide.meta.slug}`,
+    type: "article",
+    publishedTime: guide.meta.publishedAt,
+    modifiedTime: guide.meta.updatedAt
   });
 }
 
@@ -66,6 +69,17 @@ export default async function GuidePage({ params }: PageProps) {
           updatedAt: meta.updatedAt
         })}
       />
+      <JsonLd
+        data={articleJsonLd({
+          title: meta.title,
+          description: meta.description,
+          path: `/guides/${meta.slug}`,
+          publishedAt: meta.publishedAt ?? meta.updatedAt,
+          updatedAt: meta.updatedAt,
+          author: "BonusFoundry Editorial Team"
+        })}
+      />
+      {meta.faqs ? <JsonLd data={faqJsonLd(meta.faqs)} /> : null}
       <Container className="py-10">
         <Breadcrumb
           items={[
@@ -75,21 +89,23 @@ export default async function GuidePage({ params }: PageProps) {
         />
         <article className="max-w-3xl">
           <LastVerified date={formatDate(meta.updatedAt)} />
-          <h1 className="mt-4 text-4xl font-bold tracking-normal">{meta.title}</h1>
+          <h1 className="mt-4 text-4xl font-bold tracking-normal">{meta.h1 ?? meta.title}</h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{meta.description}</p>
           <div className="mt-8">
-            <QuickAnswer answer={meta.description} />
+            <QuickAnswer answer={meta.quickAnswer ?? meta.description} />
           </div>
           <div className="mt-5">
             <KeyTakeaways
               title="On this page"
-              items={[
-                "Direct answer first.",
-                "Step-by-step actions before signup or transfer.",
-                "Checklist for avoiding missed rewards.",
-                "Common mistakes and troubleshooting paths.",
-                "Related provider, FAQ, and corridor pages."
-              ]}
+              items={
+                meta.keyTakeaways ?? [
+                  "Direct answer first.",
+                  "Step-by-step actions before signup or transfer.",
+                  "Checklist for avoiding missed rewards.",
+                  "Common mistakes and troubleshooting paths.",
+                  "Related provider, FAQ, and corridor pages."
+                ]
+              }
             />
           </div>
           <div className="mt-5">

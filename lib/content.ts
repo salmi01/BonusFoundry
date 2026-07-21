@@ -2,9 +2,14 @@ import type { ComponentType } from "react";
 
 export type GuideMeta = {
   title: string;
+  h1?: string;
   slug: string;
   description: string;
   updatedAt: string;
+  publishedAt?: string;
+  quickAnswer?: string;
+  keyTakeaways?: string[];
+  faqs?: { question: string; answer: string }[];
 };
 
 export type BlogMeta = {
@@ -41,7 +46,11 @@ const guideModules = {
       MdxModule<{ meta: GuideMeta }>
     >,
   "why-bonus-was-not-received": () =>
-    import("@/content/guides/why-bonus-was-not-received.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>
+    import("@/content/guides/why-bonus-was-not-received.mdx") as Promise<MdxModule<{ meta: GuideMeta }>>,
+  "best-money-transfer-apps-to-morocco": () =>
+    import("@/content/guides/best-money-transfer-apps-to-morocco.mdx") as Promise<
+      MdxModule<{ meta: GuideMeta }>
+    >
 };
 
 const blogModules = {
