@@ -29,7 +29,7 @@ export default async function HomePage() {
       <section className="border-b bg-card/70">
         <Container className="grid gap-10 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
           <div>
-            <LastVerified date="July 9, 2026" />
+            <LastVerified date="July 21, 2026" />
             <p className="inline-flex rounded-full border bg-background px-3 py-1 text-sm font-semibold text-primary shadow-sm">
               Independent bonus guides
             </p>
