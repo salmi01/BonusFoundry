@@ -2,7 +2,11 @@
 
 ## Environment
 
-No required environment variables are needed for the MVP.
+Configure these variables in Vercel and in any local environment that needs the related integration:
+
+- `SITE_URL`: canonical site URL, usually `https://bonusfoundry.com`.
+- `INDEXNOW_KEY`: IndexNow verification key.
+- `NEXT_PUBLIC_GOOGLE_ADS_ID`: Google Ads global tag ID. Leave empty to disable the Google Ads tag.
 
 ## Pre-deploy checks
 

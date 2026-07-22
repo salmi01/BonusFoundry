@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
+import { GoogleAdsTag } from "@/components/google-ads-tag";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { siteConfig } from "@/data/site";
@@ -58,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} min-h-screen font-sans antialiased`}>
+        <GoogleAdsTag />
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={webSiteJsonLd()} />
         <JsonLd data={editorialTeamJsonLd()} />
