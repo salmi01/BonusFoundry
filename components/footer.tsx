@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/container";
+import { SocialLinks } from "@/components/social-links";
 import { navItems, siteConfig, trustLinks } from "@/data/site";
 
 export function Footer() {
@@ -18,6 +19,10 @@ export function Footer() {
           <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
             Independent guidance on referral programs and welcome bonuses for money transfer and fintech apps.
           </p>
+          <div className="mt-5">
+            <p className="text-sm font-semibold">Follow BonusFoundry</p>
+            <SocialLinks compact />
+          </div>
         </div>
         <div>
           <p className="text-sm font-semibold">Explore</p>

@@ -48,6 +48,7 @@ export function createMetadata({
       card: "summary_large_image",
       title,
       description,
+      site: siteConfig.xHandle,
       images: [new URL(siteConfig.ogImage, siteConfig.url).toString()]
     }
   };

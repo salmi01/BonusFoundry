@@ -8,7 +8,17 @@ export const siteConfig = {
   logo: "/brand/bonusfoundry-logo.png",
   icon: "/brand/bonusfoundry-icon.png",
   ogImage: "/brand/bonusfoundry-og.png",
-  sameAs: [] as string[]
+  xHandle: "@bonusfoundry",
+  socialProfiles: [
+    { label: "Instagram", href: "https://www.instagram.com/bonusfoundry/" },
+    { label: "Pinterest", href: "https://www.pinterest.com/bonusfoundry/" },
+    { label: "X", href: "https://x.com/bonusfoundry" }
+  ],
+  sameAs: [
+    "https://www.instagram.com/bonusfoundry/",
+    "https://www.pinterest.com/bonusfoundry/",
+    "https://x.com/bonusfoundry"
+  ] as string[]
 };
 
 export const navItems = [

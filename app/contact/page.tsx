@@ -2,6 +2,7 @@ import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-con
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { SocialLinks } from "@/components/social-links";
 import { siteConfig } from "@/data/site";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -43,6 +44,10 @@ export default function ContactPage() {
             Do not send passwords, full card numbers, identity documents, or support requests meant for a transfer
             provider. Contact the provider directly for account-specific issues.
           </p>
+          <div>
+            <p className="font-medium text-foreground">Official social profiles</p>
+            <SocialLinks compact />
+          </div>
         </div>
         <div className="mt-10 max-w-3xl">
           <RelatedResources

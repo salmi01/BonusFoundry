@@ -3,6 +3,7 @@ import { KeyFacts, LastVerified, QuickAnswer, RelatedResources } from "@/compone
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { SocialLinks } from "@/components/social-links";
 import { siteConfig } from "@/data/site";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -74,6 +75,14 @@ export default function AboutPage() {
             ]}
           />
         </div>
+        <section className="mt-10 max-w-3xl rounded-lg border bg-card p-5 shadow-sm">
+          <h2 className="text-xl font-semibold">Follow BonusFoundry</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            BonusFoundry publishes updates and educational content about money transfer referral programs, welcome
+            bonuses and transfer guides across Instagram, Pinterest and X.
+          </p>
+          <SocialLinks compact />
+        </section>
         <div className="mt-10 max-w-3xl">
           <RelatedResources
             links={[
