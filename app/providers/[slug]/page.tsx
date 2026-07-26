@@ -66,7 +66,6 @@ export default async function ProviderPage({ params }: PageProps) {
   const relatedFaqs = faqs.filter((faq) => authority.relatedFaqSlugs.includes(faq.slug));
   const relatedCorridors = corridors.filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug));
   const relatedProviders = providers.filter((item) => authority.relatedProviderSlugs.includes(item.slug));
-  const referralInstruction = referralEntryInstruction(provider);
   const quickCardFacts = providerQuickCardFacts(provider, authority);
   const providerFaq = buildProviderFaq(provider, authority);
   const relatedResources = buildRelatedResources(provider, relatedGuides, relatedFaqs, relatedCorridors, relatedProviders);
@@ -110,10 +109,10 @@ export default async function ProviderPage({ params }: PageProps) {
         />
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <article>
-            <LastVerified date={formatDate(authority.lastManualReview)} />
+            <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} welcome bonus and referral program</h1>
             <p className="mt-5 text-lg leading-8 text-muted-foreground">
-              {referralInstruction} {provider.description}
+              {providerPageDirectAnswer(provider, authority)}
             </p>
 
             <div className="mt-8 grid gap-5">
@@ -222,8 +221,22 @@ function referralEntryInstruction(provider: Provider) {
   return `Use ${provider.name}'s own referral, promo, or first-transfer offer when it appears in the live provider flow.`;
 }
 
+function providerPageDirectAnswer(provider: Provider, authority: ProviderAuthority) {
+  const lastVerified = formatDate(authority.lastManualReview);
+
+  if (provider.referralCode) {
+    return `${provider.name} referral code: ${provider.referralCode}. ${authority.referral.welcomeBonus} Eligible users: ${provider.eligibleUsers} Last reviewed by BonusFoundry: ${lastVerified}.`;
+  }
+
+  if (hasOwnedReferralLink(provider) && provider.referralLink) {
+    return `${provider.name} uses a BonusFoundry-owned referral link rather than a manual BonusFoundry code. ${authority.referral.welcomeBonus} Eligible users: ${provider.eligibleUsers} Last reviewed by BonusFoundry: ${lastVerified}.`;
+  }
+
+  return `${provider.name} does not have a separate BonusFoundry referral code listed. ${provider.currentOffer} Last reviewed by BonusFoundry: ${lastVerified}.`;
+}
+
 function providerQuickCardFacts(provider: Provider, authority: ProviderAuthority) {
-  const minimumTransfer = authority.referral.minimumTransfer || "No fixed minimum transfer was verified from the reviewed public provider sources.";
+  const minimumTransfer = authority.referral.minimumTransfer || "Check the provider's live offer for the qualifying transfer amount.";
   const whereToEnterCode = provider.referralCode
     ? "Enter the BonusFoundry code in the referral or promo-code field before completing the qualifying transfer."
     : hasOwnedReferralLink(provider)
@@ -282,6 +295,18 @@ function buildTroubleshooting(provider: Provider): TroubleshootingItem[] {
 function buildProviderFaq(provider: Provider, authority: ProviderAuthority): FAQItem[] {
   const requiredFaq: FAQItem[] = [
     {
+      question: `What is the ${provider.name} referral code?`,
+      answer: referralOfferEntry(provider)
+    },
+    {
+      question: `How much is the ${provider.name} referral or welcome reward?`,
+      answer: referralRewardAnswer(provider, authority)
+    },
+    {
+      question: `What is the minimum qualifying transfer for ${provider.name}?`,
+      answer: authority.referral.minimumTransfer || "Check the provider's live offer for the qualifying transfer amount."
+    },
+    {
       question: `Who is eligible for the ${provider.name} referral or welcome offer?`,
       answer: provider.eligibleUsers
     },
@@ -310,6 +335,21 @@ function buildProviderFaq(provider: Provider, authority: ProviderAuthority): FAQ
     .map((item) => ({ question: item.question, answer: item.answer }));
 
   return [...requiredFaq, ...providerSpecificFaq];
+}
+
+function referralOfferEntry(provider: Provider) {
+  if (provider.referralCode) return `BonusFoundry referral code: ${provider.referralCode}.`;
+  if (hasOwnedReferralLink(provider) && provider.referralLink) return `BonusFoundry referral link: ${provider.referralLink}.`;
+  return `${provider.name} does not have a separate BonusFoundry referral code listed. Use ${provider.name}'s own live promo, referral, or first-transfer offer when it appears.`;
+}
+
+function referralRewardAnswer(provider: Provider, authority: ProviderAuthority) {
+  const rewardText = authority.referral.welcomeBonus;
+  if (rewardText === `BonusFoundry lists ${provider.referralCode} as the ${provider.name} referral code.`) {
+    return `BonusFoundry has not verified a separate public reward amount for ${provider.referralCode}. Use the code only if ${provider.name} accepts it in the live flow and shows matching offer terms.`;
+  }
+
+  return rewardText;
 }
 
 function buildOfficialSources(authority: ProviderAuthority): SourceItem[] {

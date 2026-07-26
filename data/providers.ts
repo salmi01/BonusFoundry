@@ -956,12 +956,12 @@ export const providers: Provider[] = [
       welcomeBonus:
         "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
       minimumTransfer: "$50 or more for the public US promo codes reviewed.",
-      expiry: "HelloRia expires on December 31, 2026; Ria says it may terminate promotions at any time.",
+      expiry: "Ria promotions can have promotion-specific expiry dates and Ria says it may terminate promotions at any time.",
       payoutTiming: "",
       limitations: [
         "Use 9RMU-ENB7 only if Ria displays a referral-code or promo-code field that accepts it in your country flow.",
         "Ria says promo codes can be limited to one use per customer and cannot be combined with another promo code.",
-        "RDADD5 and RCADD5 are described as available only at select US Ria stores.",
+        "Some Ria store promotions are available only at select US Ria stores.",
         "Ria's online, app, WhatsApp, and agent-location channels can have different availability and offer rules.",
         "Country, destination, payout method, and payment method can affect whether a Ria promotion applies."
       ]
@@ -2229,7 +2229,7 @@ export const providers: Provider[] = [
       link: null,
       welcomeBonus:
         "The US page says the referrer gets $50 for each referral and both users get to choose a gift card if the friend makes a qualifying transfer.",
-      minimumTransfer: "Xe's US landing page reviewed says the friend must make a first qualifying transfer, but BonusFoundry could not verify a fixed minimum amount from the static page.",
+      minimumTransfer: "Xe's US landing page reviewed says the friend must make a first qualifying transfer. Check Xe's live referral flow for the current qualifying amount.",
       expiry: "Offer-specific; check Xe's current referral or promotion terms.",
       payoutTiming: "The US landing page says both users get rewarded if the friend's transfer qualifies; exact processing timing was not verified from the static page.",
       limitations: [
@@ -2465,17 +2465,11 @@ function defaultCountryAvailability(provider: Provider) {
   }));
 }
 
-function isoDateDaysAgo(days: number) {
-  const date = new Date();
-  date.setDate(date.getDate() - days);
-  return date.toISOString().slice(0, 10);
-}
-
 export function getProviderAuthority(provider: Provider): ProviderAuthority {
   const website = provider.website ?? provider.referralLink ?? "";
   const hasKnownCode = Boolean(provider.referralCode);
-  const displayedDate = new Date().toISOString().slice(0, 10);
-  const lastManualReview = provider.lastManualReview ?? isoDateDaysAgo(7);
+  const lastManualReview = provider.lastManualReview ?? provider.lastUpdated;
+  const displayedDate = lastManualReview;
   const lastOfferUpdate = provider.lastOfferUpdate ?? provider.lastUpdated;
   const otherProviders = providers
     .filter((item) => item.slug !== provider.slug)

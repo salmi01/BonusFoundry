@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps) {
         "Use TapTap Send referral code SALAHEDD1933 and receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100.",
       path: "/providers/taptap-send/referral-code",
       type: "article",
-      modifiedTime: "2026-07-20"
+      modifiedTime: provider.lastManualReview ?? provider.lastUpdated
     });
   }
 
@@ -76,6 +76,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
   const offerEntry = referralOfferEntry(provider);
   const codeSteps = whereToEnterCodeSteps(provider);
   const relatedResources = buildRelatedResources(provider, authority, guides);
+  const officialSources = buildOfficialSources(authority);
 
   return (
     <>
@@ -105,9 +106,9 @@ export default async function ReferralCodePage({ params }: PageProps) {
         />
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <article>
-            <LastVerified date={formatDate(authority.lastManualReview)} />
+            <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} referral code</h1>
-            <p className="mt-5 text-lg leading-8 text-muted-foreground">{referralAnswer(provider)}</p>
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">{referralAnswer(provider, authority)}</p>
             <div className="mt-8 grid gap-5">
               <QuickAnswer answer={offerEntry} />
               <KeyTakeaways
@@ -124,7 +125,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
                 rewardRange={authority.referral.welcomeBonus}
                 qualifyingTransfer={
                   authority.referral.minimumTransfer ||
-                  "No fixed minimum transfer was verified from reviewed public provider sources."
+                  "Check the provider's live offer for the qualifying transfer amount."
                 }
                 notes={authority.referral.limitations[0] ?? "Use the live provider terms for final eligibility."}
               />
@@ -148,6 +149,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
               <Troubleshooting items={buildTroubleshooting(provider)} title="Troubleshooting missing rewards" />
               <KeyFacts title="Country-specific notes" facts={provider.countryNotes.map((note, index) => ({ label: `Note ${index + 1}`, value: note }))} />
               <ProviderMiniFAQ items={pageFaq} title={`${provider.name} referral FAQ`} />
+              <OfficialSources sources={officialSources} />
               <RelatedResources links={relatedResources} />
               <Disclosure />
             </div>
@@ -192,7 +194,7 @@ function TaptapSendReferralPage({
           description:
             "Use TapTap Send referral code SALAHEDD1933 and receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100.",
           url: "https://bonusfoundry.com/providers/taptap-send/referral-code",
-          dateModified: "2026-07-20",
+          dateModified: authority.lastManualReview,
           author: {
             "@id": "https://bonusfoundry.com/#editorial-team",
             name: "BonusFoundry Editorial Team"
@@ -223,7 +225,7 @@ function TaptapSendReferralPage({
         />
         <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
           <article>
-            <LastVerified date={reviewDate} />
+            <LastVerified date={reviewDate} contentUpdatedAt={formatDate(provider.lastUpdated)} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">TapTap Send Referral Code SALAHEDD1933</h1>
             <div className="mt-6 grid gap-5">
               <QuickAnswer answer={quickAnswer} />
@@ -449,16 +451,18 @@ function referralOfferEntry(provider: Provider) {
   return `${provider.name} does not have a separate BonusFoundry referral code listed. Use the provider's own live promo, referral, or first-transfer offer when it appears.`;
 }
 
-function referralAnswer(provider: Provider) {
+function referralAnswer(provider: Provider, authority: ProviderAuthority) {
+  const lastVerified = formatDate(authority.lastManualReview);
+
   if (provider.referralCode) {
-    return `The current BonusFoundry referral code for ${provider.name} is ${provider.referralCode}. Apply it before signup or the first qualifying transfer when ${provider.name} shows a code field.`;
+    return `${provider.name} referral code: ${provider.referralCode}. ${authority.referral.welcomeBonus} Apply it before signup or the first qualifying transfer when ${provider.name} shows a code field. Last reviewed by BonusFoundry: ${lastVerified}.`;
   }
 
   if (hasOwnedReferralLink(provider)) {
-    return `BonusFoundry lists an owned referral link for ${provider.name}. Open the link before signup, then use the same provider flow until the qualifying action is complete.`;
+    return `${provider.name} uses a BonusFoundry-owned referral link rather than a manual BonusFoundry code. ${authority.referral.welcomeBonus} Open the link before signup, then use the same provider flow until the qualifying action is complete. Last reviewed by BonusFoundry: ${lastVerified}.`;
   }
 
-  return `${provider.name} does not have a separate BonusFoundry referral code on this page. Use ${provider.name}'s own referral, promo, or first-transfer offer when it appears in the live provider flow.`;
+  return `${provider.name} does not have a separate BonusFoundry referral code on this page. ${provider.currentOffer} Last reviewed by BonusFoundry: ${lastVerified}.`;
 }
 
 function applicationTiming(provider: Provider) {
@@ -497,6 +501,18 @@ function buildReferralFaq(provider: Provider, authority: ProviderAuthority): FAQ
 
   return [
     {
+      question: `What is the ${provider.name} referral code?`,
+      answer: referralOfferEntry(provider)
+    },
+    {
+      question: `How much is the ${provider.name} referral or welcome reward?`,
+      answer: referralRewardAnswer(provider, authority)
+    },
+    {
+      question: `What is the minimum qualifying transfer for ${provider.name}?`,
+      answer: authority.referral.minimumTransfer || "Check the provider's live offer for the qualifying transfer amount."
+    },
+    {
       question: `How do I use the ${provider.name} referral code or offer?`,
       answer: referralOfferEntry(provider)
     },
@@ -514,13 +530,39 @@ function buildReferralFaq(provider: Provider, authority: ProviderAuthority): FAQ
       question: `Can existing ${provider.name} users use this offer?`,
       answer: authority.ineligibleUsers[0] ?? "Existing users are usually not eligible unless the provider's current terms allow existing-account participation."
     },
-    {
-      question: "Is the code on BonusFoundry official?",
-      answer:
-        "BonusFoundry is independent. A listed code or owned referral link is provided as a practical referral resource, not as a universal public provider promo code."
-    },
     ...filteredProviderFaq
   ];
+}
+
+function buildOfficialSources(authority: ProviderAuthority) {
+  return authority.sources.map((source) => ({
+    name: source.label,
+    type: sourceTypeLabel(source.confidence),
+    url: source.url,
+    reviewedInformation: sourceStatusLabel(source.confidence),
+    reviewDate: formatDate(source.lastReviewed)
+  }));
+}
+
+function sourceTypeLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
+  if (confidence === "official") return "Official provider source";
+  if (confidence === "referral-link") return "BonusFoundry referral link";
+  return "BonusFoundry-owned referral detail";
+}
+
+function sourceStatusLabel(confidence: ProviderAuthority["sources"][number]["confidence"]) {
+  if (confidence === "official") return "Provider rules, availability, support, or verification details reviewed";
+  if (confidence === "referral-link") return "BonusFoundry-owned referral link reviewed";
+  return "BonusFoundry owner-supplied code reviewed";
+}
+
+function referralRewardAnswer(provider: Provider, authority: ProviderAuthority) {
+  const rewardText = authority.referral.welcomeBonus;
+  if (rewardText === `BonusFoundry lists ${provider.referralCode} as the ${provider.name} referral code.`) {
+    return `BonusFoundry has not verified a separate public reward amount for ${provider.referralCode}. Use the code only if ${provider.name} accepts it in the live flow and shows matching offer terms.`;
+  }
+
+  return rewardText;
 }
 
 function buildRelatedResources(provider: Provider, authority: ProviderAuthority, guides: { slug: string; title: string; description: string }[]): LinkItem[] {

@@ -17,7 +17,6 @@ export function ProviderFacts({ provider, authority }: { provider: Provider; aut
     authority.foundedYear ? { label: "Founded year", value: authority.foundedYear } : null,
     authority.trustpilot ? { label: "Trustpilot", value: authority.trustpilot } : null,
     { label: "Referral program", value: authority.referral.hasProgram },
-    { label: "Displayed date", value: formatDate(authority.displayedDate) },
     { label: "Last manual review", value: formatDate(authority.lastManualReview) },
     { label: "Last offer update", value: formatDate(authority.lastOfferUpdate) }
   ].filter(Boolean) as { label: string; value: string }[];

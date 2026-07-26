@@ -130,7 +130,7 @@ function FeaturedProviders({ hub, providers }: { hub: SendingCountryHub; provide
         {providers.map((provider) => {
           const authority = getProviderAuthority(provider);
           const minimumTransfer =
-            authority.referral.minimumTransfer || "No fixed minimum transfer was verified from reviewed public sources.";
+            authority.referral.minimumTransfer || "Check the provider's live offer for the qualifying transfer amount.";
 
           return (
             <div key={provider.slug} className="space-y-3">

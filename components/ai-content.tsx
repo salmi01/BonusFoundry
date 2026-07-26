@@ -387,13 +387,12 @@ export function ProsCons({ pros, cons, title = "Pros and cons" }: { pros: ReactN
   );
 }
 
-const defaultContentUpdateDate = "July 12, 2026";
 const defaultReviewedBy = "BonusFoundry Editorial Team";
 
 export function LastVerified({
   date,
   label = "Last reviewed",
-  contentUpdatedAt = defaultContentUpdateDate,
+  contentUpdatedAt,
   reviewedBy = defaultReviewedBy
 }: {
   date: string;
@@ -413,12 +412,14 @@ export function LastVerified({
           {date}
         </time>
       </p>
-      <p className="mt-1">
-        <span className="font-semibold text-foreground">Last content update: </span>
-        <time dateTime={contentUpdatedAt} className="text-muted-foreground">
-          {contentUpdatedAt}
-        </time>
-      </p>
+      {contentUpdatedAt ? (
+        <p className="mt-1">
+          <span className="font-semibold text-foreground">Last content update: </span>
+          <time dateTime={contentUpdatedAt} className="text-muted-foreground">
+            {contentUpdatedAt}
+          </time>
+        </p>
+      ) : null}
     </div>
   );
 }
