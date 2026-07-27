@@ -41,22 +41,14 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) return {};
-
-  if (provider.slug === "taptap-send") {
-    return createMetadata({
-      title: "TapTap Send Referral Code SALAHEDD1933 — Get €10 or $10",
-      description:
-        "Use TapTap Send referral code SALAHEDD1933 and receive a €10 or $10 bonus after completing a qualifying first transfer of at least €100 or $100.",
-      path: "/providers/taptap-send/referral-code",
-      type: "article",
-      modifiedTime: provider.lastManualReview ?? provider.lastUpdated
-    });
-  }
+  const metadata = referralPageMetadata(provider);
 
   return createMetadata({
-    title: `${provider.name} referral code and promo code guide`,
-    description: `Current ${provider.name} referral code, promo code, bonus requirements, eligibility notes, and first-transfer checks.`,
-    path: `/providers/${provider.slug}/referral-code`
+    title: metadata.title,
+    description: metadata.description,
+    path: `/providers/${provider.slug}/referral-code`,
+    type: "article",
+    modifiedTime: provider.lastManualReview ?? provider.lastUpdated
   });
 }
 
@@ -73,10 +65,11 @@ export default async function ReferralCodePage({ params }: PageProps) {
   }
 
   const pageFaq = buildReferralFaq(provider, authority);
-  const offerEntry = referralOfferEntry(provider);
+  const quickAnswer = referralAnswer(provider, authority);
   const codeSteps = whereToEnterCodeSteps(provider);
   const relatedResources = buildRelatedResources(provider, authority, guides);
   const officialSources = buildOfficialSources(authority);
+  const metadata = referralPageMetadata(provider);
 
   return (
     <>
@@ -90,8 +83,8 @@ export default async function ReferralCodePage({ params }: PageProps) {
       <JsonLd data={faqJsonLd(pageFaq.map((item) => ({ question: item.question, answer: String(item.answer) })))} />
       <JsonLd
         data={webPageJsonLd({
-          title: `${provider.name} referral code`,
-          description: provider.welcomeBonus,
+          title: metadata.title,
+          description: metadata.description,
           path: `/providers/${provider.slug}/referral-code`,
           updatedAt: provider.lastUpdated
         })}
@@ -108,12 +101,12 @@ export default async function ReferralCodePage({ params }: PageProps) {
           <article>
             <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
             <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} referral code</h1>
-            <p className="mt-5 text-lg leading-8 text-muted-foreground">{referralAnswer(provider, authority)}</p>
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">{quickAnswer}</p>
             <div className="mt-8 grid gap-5">
-              <QuickAnswer answer={offerEntry} />
+              <QuickAnswer answer={quickAnswer} />
               <KeyTakeaways
                 items={[
-                  offerEntry,
+                  quickAnswer,
                   applicationTiming(provider),
                   provider.eligibleUsers,
                   authority.referral.payoutTiming || "Reward timing is controlled by the provider's live offer terms.",
@@ -443,6 +436,66 @@ function hasOwnedReferralLink(provider: Provider) {
     provider.referralLink &&
       provider.sources?.some((source) => source.confidence === "referral-link" && source.url === provider.referralLink)
   );
+}
+
+function referralPageMetadata(provider: Provider) {
+  const providerName = referralMetadataProviderName(provider);
+
+  if (provider.slug === "taptap-send") {
+    return {
+      title: "TapTap Send Referral Code SALAHEDD1933 — €10 / $10 Bonus",
+      description:
+        "Use TapTap Send referral code SALAHEDD1933 to get a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100."
+    };
+  }
+
+  if (provider.slug === "lemfi") {
+    return {
+      title: "LemFi Referral Code SALABGWQ — €10 / $10 Bonus",
+      description:
+        "Use LemFi referral code SALABGWQ to get a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100."
+    };
+  }
+
+  if (provider.referralCode) {
+    return {
+      title: `${providerName} Referral Code ${provider.referralCode} — Variable Reward`,
+      description: `Use ${providerName} referral code ${provider.referralCode} only when ${providerName} accepts it in the live flow. Reward terms vary by country, campaign, route, and payout method.`
+    };
+  }
+
+  if (hasOwnedReferralLink(provider)) {
+    return {
+      title: `${providerName} Referral Program — Invite Link`,
+      description: `Use the BonusFoundry ${providerName} referral link before signup. Reward terms depend on ${providerName}'s current country, account, product, and transfer rules.`
+    };
+  }
+
+  if (provider.slug === "moneygram") {
+    return {
+      title: "MoneyGram Referral Program — Invite Friends Guide",
+      description:
+        "MoneyGram's US Invite Friends page describes a $20 new-customer offer after a qualifying $50+ first transfer, limited to eligible US transfers."
+    };
+  }
+
+  if (provider.slug === "xe") {
+    return {
+      title: "Xe Referral Program — Refer a Friend Guide",
+      description:
+        "Xe's US Refer a Friend page describes a $50 referrer reward and gift-card choice when the friend's transfer qualifies. Check the live Xe flow for local terms."
+    };
+  }
+
+  return {
+    title: `${providerName} Referral Program and Promo Guide`,
+    description: `${providerName} does not have a separate BonusFoundry referral code listed. Check the provider's live flow for current referral, promo, or first-transfer terms.`
+  };
+}
+
+function referralMetadataProviderName(provider: Provider) {
+  if (provider.slug === "taptap-send") return "TapTap Send";
+  return provider.name;
 }
 
 function referralOfferEntry(provider: Provider) {
