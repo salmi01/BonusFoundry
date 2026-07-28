@@ -15,10 +15,10 @@ import {
   ProviderQuickCard,
   QuickAnswer,
   RelatedResources,
-  ResearchConfidence,
   RewardSummary,
   StepChecklist,
   Troubleshooting,
+  VerificationStatus,
   WhereToEnterCode,
   type FAQItem,
   type KeyFactRow,
@@ -72,7 +72,6 @@ export default async function ProviderPage({ params }: PageProps) {
   const officialSources = buildOfficialSources(authority);
   const troubleshooting = buildTroubleshooting(provider);
   const codePath = whereToEnterCodeSteps(provider);
-  const confidence = researchConfidencePercent(authority.researchProfile.confidence);
   const providerFacts: KeyFactRow[] = [
     { label: "Provider", value: provider.name },
     { label: "Website", value: authority.website },
@@ -117,6 +116,9 @@ export default async function ProviderPage({ params }: PageProps) {
 
             <div className="mt-8 grid gap-5">
               <QuickAnswer answer={provider.currentOffer} />
+              {provider.proprietaryVerification ? (
+                <VerificationStatus verification={provider.proprietaryVerification} />
+              ) : null}
               <ProviderQuickCard
                 provider={provider.name}
                 reward={authority.referral.welcomeBonus}
@@ -172,7 +174,6 @@ export default async function ProviderPage({ params }: PageProps) {
               <Troubleshooting items={troubleshooting} title="Troubleshooting missing rewards" />
               <KeyFacts title="Country-specific notes" facts={provider.countryNotes.map((note, index) => ({ label: `Note ${index + 1}`, value: note }))} />
               <ProviderMiniFAQ items={providerFaq} title={`${provider.name} FAQ`} />
-              <ResearchConfidence percentage={confidence} explanation={authority.researchProfile.completeness} />
               <OfficialSources sources={officialSources} />
               <KeyFacts
                 title="Support"
@@ -389,10 +390,4 @@ function buildRelatedResources(
     ...relatedProviders.map((item) => ({ href: `/providers/${item.slug}`, label: item.name })),
     { href: "/disclosure", label: "Referral disclosure" }
   ];
-}
-
-function researchConfidencePercent(confidence: ProviderAuthority["researchProfile"]["confidence"]) {
-  if (confidence === "high") return 95;
-  if (confidence === "medium") return 75;
-  return 50;
 }

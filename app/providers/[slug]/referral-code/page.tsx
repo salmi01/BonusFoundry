@@ -13,6 +13,7 @@ import {
   RewardSummary,
   StepChecklist,
   Troubleshooting,
+  VerificationStatus,
   WhereToEnterCode,
   type FAQItem,
   type LinkItem,
@@ -104,6 +105,9 @@ export default async function ReferralCodePage({ params }: PageProps) {
             <p className="mt-5 text-lg leading-8 text-muted-foreground">{quickAnswer}</p>
             <div className="mt-8 grid gap-5">
               <QuickAnswer answer={quickAnswer} />
+              {provider.proprietaryVerification ? (
+                <VerificationStatus verification={provider.proprietaryVerification} />
+              ) : null}
               <KeyTakeaways
                 items={[
                   quickAnswer,
@@ -222,6 +226,9 @@ function TaptapSendReferralPage({
             <h1 className="mt-4 text-4xl font-bold tracking-normal">TapTap Send Referral Code SALAHEDD1933</h1>
             <div className="mt-6 grid gap-5">
               <QuickAnswer answer={quickAnswer} />
+              {provider.proprietaryVerification ? (
+                <VerificationStatus verification={provider.proprietaryVerification} />
+              ) : null}
 
               <section className="rounded-lg border bg-card p-5 shadow-sm">
                 <h2 className="text-xl font-semibold leading-tight">Referral code</h2>

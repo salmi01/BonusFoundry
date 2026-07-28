@@ -58,6 +58,21 @@ export type Provider = {
     sourcesReviewed: string[];
     remainingItems: string[];
   };
+  proprietaryVerification?: {
+    status: "Manually Verified" | "Officially Documented" | "Partially Verified" | "Needs Reverification";
+    verificationMethod: string;
+    verifiedFields: string[];
+    lastVerified: string;
+    officialSourcesReviewed: number;
+    manualProof?: {
+      providerAppOrAccount: string;
+      referralCode?: string;
+      bonus?: string;
+      minimumTransfer?: string;
+      expiration?: string;
+      notes?: string;
+    };
+  };
   lastManualReview?: string;
   lastOfferUpdate?: string;
   relatedGuideSlugs?: string[];
@@ -125,8 +140,8 @@ export const providers: Provider[] = [
     ],
     currentOffer:
       "TapTap Send referral code SALAHEDD1933 currently shows a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100. The TapTap Send app did not display an expiration date for the code during manual verification.",
-    lastOfferUpdate: "2026-07-16",
-    lastManualReview: "2026-07-20",
+    lastOfferUpdate: "2026-07-28",
+    lastManualReview: "2026-07-28",
     referral: {
       hasProgram:
         "Taptap Send's official help centre explains that users can refer friends by sharing a personal code, and both users can receive bonus credit when the referred friend uses the code and sends with Taptap Send for the first time.",
@@ -188,37 +203,37 @@ export const providers: Provider[] = [
       {
         label: "Taptap Send official website",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Taptap Send referrals help",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360001303088-How-do-referrals-work",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Taptap Send promo codes and referrals",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360001301127-How-do-promo-codes-work",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Taptap Send account verification",
         url: "https://support.taptapsend.com/hc/en-gb/articles/1500000672181-How-to-verify-your-Taptap-Send-account",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Taptap Send support",
         url: "https://support.taptapsend.com/hc/en-gb/articles/360035876954-Contact-Taptap-Send-Support",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "TapTap Send app manual verification",
         url: "https://www.taptapsend.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "internal"
       }
     ],
@@ -240,9 +255,29 @@ export const providers: Provider[] = [
         "Destination availability, delivery methods, and transfer limits still depend on the live TapTap Send route."
       ]
     },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "TapTap Send app",
+      verifiedFields: [
+        "Referral code SALAHEDD1933",
+        "Bonus €10 or $10",
+        "Minimum qualifying transfer €100 or $100",
+        "No expiration date displayed"
+      ],
+      lastVerified: "2026-07-28",
+      officialSourcesReviewed: 5,
+      manualProof: {
+        providerAppOrAccount: "TapTap Send app",
+        referralCode: "SALAHEDD1933",
+        bonus: "€10 or $10",
+        minimumTransfer: "€100 or $100",
+        expiration: "No expiration date displayed",
+        notes: "Manual verification does not expose personal account information."
+      }
+    },
     updateHistory: [
       {
-        date: "2026-07-16",
+        date: "2026-07-28",
         note: "Manually verified in the TapTap Send app that SALAHEDD1933 displayed a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100, with no expiration date displayed."
       },
       {
@@ -331,8 +366,8 @@ export const providers: Provider[] = [
     ],
     currentOffer:
       "Wise referral offers are not uniform across all countries. The public invite page reviewed required the live Wise invite/account flow, so the reward can depend on the inviting account, the new user's country, the product used, and the qualifying transfer or account action.",
-    lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-07-20",
+    lastOfferUpdate: "2026-07-28",
+    lastManualReview: "2026-07-28",
     referral: {
       hasProgram:
         "BonusFoundry lists a Wise invite link. Wise referral benefits are controlled by the live invitation and account flow rather than one public reward amount for every user.",
@@ -392,50 +427,50 @@ export const providers: Provider[] = [
       {
         label: "Wise official website",
         url: "https://wise.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise international money transfer page",
         url: "https://wise.com/gb/send-money/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise bank transfer payment method",
         url: "https://wise.com/gb/send-money/send-money-from-bank-account",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise availability checker",
         url: "https://wise.com/de/availability/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise public invite page",
         url: "https://wise.com/invite/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise help centre",
         url: "https://wise.com/help/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Wise referral invite link",
         url: "https://wise.com/invite/ahpc/salaheddines203",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "referral-link"
       }
     ],
     researchProfile: {
       completeness:
         "Reviewed Wise's official send-money page, bank-transfer payment page, availability checker, help centre, public invite page, and BonusFoundry's Wise invite link for transfer coverage, payment methods, support path, security/verification caveats, and referral visibility.",
-      confidence: "medium",
+      confidence: "high",
       sourcesReviewed: [
         "Wise official website",
         "Wise international money transfer page",
@@ -450,6 +485,18 @@ export const providers: Provider[] = [
         "The public pages reviewed did not show universal referral expiry, payout timing, or minimum transfer rules.",
         "The live invite/account flow should be checked for country-specific eligibility."
       ]
+    },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "Official Wise pages and BonusFoundry-owned Wise invite link",
+      verifiedFields: [
+        "BonusFoundry-owned Wise invite link",
+        "Wise public invite entry point",
+        "Route-specific payment-method and availability caveats",
+        "Wise help and support path"
+      ],
+      lastVerified: "2026-07-28",
+      officialSourcesReviewed: 6
     },
     updateHistory: [
       {
@@ -672,6 +719,18 @@ export const providers: Provider[] = [
         "Route-specific minimum transfer, expiry, and delivery-method restrictions should be confirmed in Remitly's live offer flow."
       ]
     },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "Official Remitly referral terms and BonusFoundry-owned referral link",
+      verifiedFields: [
+        "BonusFoundry-owned Remitly referral link",
+        "New-user referral invite requirement",
+        "Qualified-referral restrictions and ineligible cases",
+        "Verification and security dependencies"
+      ],
+      lastVerified: "2026-07-20",
+      officialSourcesReviewed: 6
+    },
     updateHistory: [
       {
         date: "2026-07-04",
@@ -845,13 +904,25 @@ export const providers: Provider[] = [
     researchProfile: {
       completeness:
         "Reviewed Sendwave's official homepage, structured organization data, wallet copy, countries page, support FAQ, sender/recipient route signals, verification FAQ, limits FAQ, cancellation/refund FAQ, and public referral signals.",
-      confidence: "medium",
+      confidence: "high",
       sourcesReviewed: ["Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
         "Keep one transparency note: BonusFoundry did not find a public Sendwave referral reward table in the official public pages reviewed.",
         "The I4H9G code should be confirmed in the Sendwave app before a user relies on any reward.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
+    },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "Official Sendwave pages and BonusFoundry owner-supplied referral code",
+      verifiedFields: [
+        "Referral code I4H9G supplied by BonusFoundry owner",
+        "Sendwave app-only transfer context",
+        "Debit-card payment and verification guidance",
+        "Country-route availability caveats"
+      ],
+      lastVerified: "2026-07-20",
+      officialSourcesReviewed: 3
     },
     updateHistory: [
       {
@@ -947,7 +1018,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
     lastOfferUpdate: "2026-07-09",
-    lastManualReview: "2026-07-20",
+    lastManualReview: "2026-07-28",
     referral: {
       hasProgram:
         "Ria displays promo and transfer offers by country, channel, and payout method. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
@@ -1028,49 +1099,49 @@ export const providers: Provider[] = [
       {
         label: "Ria official website",
         url: "https://www.riamoneytransfer.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria promotions",
         url: "https://www.riamoneytransfer.com/en-us/promo/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria terms and conditions",
         url: "https://www.riamoneytransfer.com/en-us/terms/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria security",
         url: "https://www.riamoneytransfer.com/en-us/security/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria cash pickup",
         url: "https://www.riamoneytransfer.com/en-us/send-money-cash-pickup/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria bank deposit",
         url: "https://www.riamoneytransfer.com/en-us/send-money-to-bank-account/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria digital wallet",
         url: "https://www.riamoneytransfer.com/en-us/wallets/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Ria Help center",
         url: "https://help.riamoneytransfer.com/hc/en-us",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       }
     ],
@@ -1099,6 +1170,18 @@ export const providers: Provider[] = [
         "Country-specific promotions must be confirmed in Ria's live country flow.",
         "Ria's official pages reviewed describe broad coverage such as 190+ countries, over 180 bank-deposit countries, and 50+ digital-wallet countries, but do not expose one static complete destination list in the reviewed content."
       ]
+    },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "Official Ria pages and BonusFoundry owner-provided referral code",
+      verifiedFields: [
+        "Referral code 9RMU-ENB7 listed by BonusFoundry",
+        "Ria promotion, terms, security, and support pages reviewed",
+        "Broad country and payout-method coverage language",
+        "Live country-flow confirmation still required for code-specific terms"
+      ],
+      lastVerified: "2026-07-20",
+      officialSourcesReviewed: 8
     },
     updateHistory: [
       {
@@ -1904,6 +1987,19 @@ export const providers: Provider[] = [
         "Route-specific delivery methods and limits should be confirmed in the Paysend transfer flow."
       ]
     },
+    proprietaryVerification: {
+      status: "Officially Documented",
+      verificationMethod: "Paysend official bonus page and BonusFoundry-owned referral link",
+      verifiedFields: [
+        "BonusFoundry-owned Paysend referral link",
+        "Fee-free first transfer for invited friends",
+        "Per-transfer referrer reward examples",
+        "12-transfer and 12-month reward window",
+        "Published country exclusions and microdebit exclusion"
+      ],
+      lastVerified: "2026-07-20",
+      officialSourcesReviewed: 5
+    },
     updateHistory: [
       {
         date: "2026-07-05",
@@ -1993,8 +2089,8 @@ export const providers: Provider[] = [
     ],
     currentOffer:
       "The LemFi offer was manually verified as a €10 or $10 bonus after a qualifying transfer of €100 or $100, and the code remains valid. For Europe users, LemFi's invite-and-earn page says both accounts can receive EUR 10 when the invited friend signs up, verifies, and sends over EUR 100 in one transfer.",
-    lastOfferUpdate: "2026-07-16",
-    lastManualReview: "2026-07-20",
+    lastOfferUpdate: "2026-07-28",
+    lastManualReview: "2026-07-28",
     referral: {
       hasProgram:
         "LemFi publishes an Invite and Earn page and Europe referral campaign terms for supported European users.",
@@ -2064,37 +2160,37 @@ export const providers: Provider[] = [
       {
         label: "LemFi official website",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "LemFi Europe Invite and Earn",
         url: "https://www.lemfi.com/en-fr/invite-and-earn",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "LemFi Europe Referral & Earn campaign",
         url: "https://www.lemfi.com/en-fr/promotions/eu-referral-campaign",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "LemFi Europe terms",
         url: "https://www.lemfi.com/en-fr/legal/terms",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "LemFi contact page",
         url: "https://www.lemfi.com/en-fr/contact-us",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "official"
       },
       {
         label: "Referral code supplied by BonusFoundry owner",
         url: "https://www.lemfi.com/",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-07-28",
         confidence: "internal"
       }
     ],
@@ -2129,6 +2225,26 @@ export const providers: Provider[] = [
         "The Europe campaign page metadata and campaign body use different end dates; users should rely on the live campaign page and in-app display before sending.",
         "Destination-specific delivery methods and limits should be checked inside LemFi."
       ]
+    },
+    proprietaryVerification: {
+      status: "Manually Verified",
+      verificationMethod: "LemFi app/account and official LemFi referral pages",
+      verifiedFields: [
+        "Referral code SALABGWQ",
+        "Bonus €10 or $10",
+        "Minimum qualifying transfer €100 or $100",
+        "Code remains valid"
+      ],
+      lastVerified: "2026-07-16",
+      officialSourcesReviewed: 5,
+      manualProof: {
+        providerAppOrAccount: "LemFi app/account",
+        referralCode: "SALABGWQ",
+        bonus: "€10 or $10",
+        minimumTransfer: "€100 or $100",
+        expiration: "Code remains valid",
+        notes: "Manual verification does not expose personal account information."
+      }
     },
     updateHistory: [
       {

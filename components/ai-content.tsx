@@ -4,7 +4,7 @@ import { AlertTriangle, Check, Circle, ExternalLink, Info } from "lucide-react";
 import { KeyFacts, type KeyFactRow } from "@/components/key-facts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
 export type LinkItem = {
   href: string;
@@ -52,6 +52,22 @@ export type ProviderQuickCardProps = {
   typicalTransferSpeed?: ReactNode;
   lastVerified?: string;
   officialSourcesReviewed?: ReactNode;
+};
+
+export type VerificationStatusData = {
+  status: "Manually Verified" | "Officially Documented" | "Partially Verified" | "Needs Reverification";
+  verificationMethod: string;
+  verifiedFields: string[];
+  lastVerified: string;
+  officialSourcesReviewed: number;
+  manualProof?: {
+    providerAppOrAccount: string;
+    referralCode?: string;
+    bonus?: string;
+    minimumTransfer?: string;
+    expiration?: string;
+    notes?: string;
+  };
 };
 
 export { KeyFacts };
@@ -421,6 +437,49 @@ export function LastVerified({
         </p>
       ) : null}
     </div>
+  );
+}
+
+export function VerificationStatus({ verification }: { verification: VerificationStatusData }) {
+  const manualFacts = verification.manualProof
+    ? [
+        { label: "Provider app or account used", value: verification.manualProof.providerAppOrAccount },
+        verification.manualProof.referralCode ? { label: "Referral code checked", value: verification.manualProof.referralCode } : null,
+        verification.manualProof.bonus ? { label: "Bonus checked", value: verification.manualProof.bonus } : null,
+        verification.manualProof.minimumTransfer ? { label: "Minimum transfer checked", value: verification.manualProof.minimumTransfer } : null,
+        verification.manualProof.expiration ? { label: "Expiration status", value: verification.manualProof.expiration } : null,
+        verification.manualProof.notes ? { label: "Manual proof note", value: verification.manualProof.notes } : null
+      ].filter(Boolean) as KeyFactRow[]
+    : [];
+
+  return (
+    <section>
+      <h2 className="text-2xl font-semibold">Verification status</h2>
+      <div className="mt-4 grid gap-5">
+        <KeyFacts
+          title="Verification summary"
+          facts={[
+            { label: "Verification status", value: verification.status },
+            { label: "Verification method", value: verification.verificationMethod },
+            { label: "Last verified", value: formatDate(verification.lastVerified) },
+            { label: "Official sources reviewed", value: String(verification.officialSourcesReviewed) }
+          ]}
+        />
+        <ModuleCard title="What BonusFoundry verified">
+          <ul className="space-y-2">
+            {verification.verifiedFields.map((field) => (
+              <li key={field} className="flex gap-2">
+                <Check className="mt-1 size-4 shrink-0 text-primary" aria-hidden="true" />
+                <span>{field}</span>
+              </li>
+            ))}
+          </ul>
+        </ModuleCard>
+        {manualFacts.length ? (
+          <KeyFacts title="BonusFoundry manual verification proof" facts={manualFacts} />
+        ) : null}
+      </div>
+    </section>
   );
 }
 
