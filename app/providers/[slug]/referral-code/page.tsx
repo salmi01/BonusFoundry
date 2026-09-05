@@ -102,7 +102,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
           updatedAt: provider.lastUpdated
         })}
       />
-      <Container className="py-10">
+      <Container className="py-6 sm:py-10">
         <Breadcrumb
           items={[
             { href: "/", label: "Home" },
@@ -110,12 +110,12 @@ export default async function ReferralCodePage({ params }: PageProps) {
             { href: `/providers/${provider.slug}/referral-code`, label: "Referral code" }
           ]}
         />
-        <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-          <article>
+        <div className="grid w-full min-w-0 max-w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <article className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
             <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
-            <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} referral code</h1>
-            <p className="mt-5 text-lg leading-8 text-muted-foreground">{quickAnswer}</p>
-            <div className="mt-8 grid gap-5">
+            <h1 className="mt-4 break-words text-3xl font-bold tracking-normal sm:text-4xl">{provider.name} referral code</h1>
+            <p className="mt-4 text-base leading-7 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-8">{quickAnswer}</p>
+            <div className="mt-6 grid min-w-0 grid-cols-1 gap-5 sm:mt-8">
               <QuickAnswer answer={quickAnswer} />
               {provider.proprietaryVerification ? (
                 <VerificationStatus verification={provider.proprietaryVerification} />
@@ -163,7 +163,9 @@ export default async function ReferralCodePage({ params }: PageProps) {
               <Disclosure />
             </div>
           </article>
-          <ReferralBox provider={provider} />
+          <div className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
+            <ReferralBox provider={provider} />
+          </div>
         </div>
       </Container>
     </>
@@ -268,7 +270,7 @@ function RiaReferralPage({
           updatedAt: authority.lastManualReview
         })}
       />
-      <Container className="py-10">
+      <Container className="py-6 sm:py-10">
         <Breadcrumb
           items={[
             { href: "/", label: "Home" },
@@ -828,7 +830,7 @@ function TaptapSendReferralPage({
           }
         }}
       />
-      <Container className="py-10">
+      <Container className="py-6 sm:py-10">
         <Breadcrumb
           items={[
             { href: "/", label: "Home" },
@@ -836,11 +838,11 @@ function TaptapSendReferralPage({
             { href: "/providers/taptap-send/referral-code", label: "Referral code" }
           ]}
         />
-        <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-          <article>
+        <div className="grid w-full min-w-0 max-w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <article className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
             <LastVerified date={reviewDate} contentUpdatedAt={formatDate(provider.lastUpdated)} />
-            <h1 className="mt-4 text-4xl font-bold tracking-normal">TapTap Send Referral Code SALAHEDD1933</h1>
-            <div className="mt-6 grid gap-5">
+            <h1 className="mt-4 break-words text-3xl font-bold tracking-normal sm:text-4xl">TapTap Send Referral Code SALAHEDD1933</h1>
+            <div className="mt-6 grid min-w-0 grid-cols-1 gap-5">
               <QuickAnswer answer={quickAnswer} />
               {provider.proprietaryVerification ? (
                 <VerificationStatus verification={provider.proprietaryVerification} />
@@ -987,7 +989,9 @@ function TaptapSendReferralPage({
               <Disclosure />
             </div>
           </article>
-          <ReferralBox provider={provider} />
+          <div className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
+            <ReferralBox provider={provider} />
+          </div>
         </div>
       </Container>
     </>

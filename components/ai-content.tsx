@@ -85,11 +85,11 @@ function ModuleCard({
   className?: string;
 }) {
   return (
-    <section className={cn("rounded-lg border bg-card shadow-sm", className)}>
+    <section className={cn("min-w-0 rounded-lg border bg-card shadow-sm", className)}>
       <div className="p-5">
         <h2 className="text-xl font-semibold leading-tight">{title}</h2>
         {description ? <div className="mt-2 text-sm leading-6 text-muted-foreground">{description}</div> : null}
-        <div className="mt-4 text-sm leading-6 text-muted-foreground">{children}</div>
+        <div className="mt-4 text-sm leading-6 text-muted-foreground [overflow-wrap:anywhere]">{children}</div>
       </div>
     </section>
   );
@@ -97,7 +97,7 @@ function ModuleCard({
 
 function ResourceLink({ item }: { item: LinkItem }) {
   const isInternal = item.href.startsWith("/");
-  const className = "font-medium text-primary";
+  const className = "break-words font-medium text-primary";
 
   return isInternal ? (
     <Link href={item.href} className={className}>
@@ -112,9 +112,9 @@ function ResourceLink({ item }: { item: LinkItem }) {
 
 export function QuickAnswer({ answer, title = "Quick answer" }: { answer: ReactNode; title?: string }) {
   return (
-    <aside className="rounded-lg border bg-card p-5 shadow-sm">
+    <aside className="min-w-0 rounded-lg border bg-card p-5 shadow-sm">
       <h2 className="text-base font-semibold">{title}</h2>
-      <div className="mt-2 text-sm leading-6 text-muted-foreground">{answer}</div>
+      <div className="mt-2 text-sm leading-6 text-muted-foreground [overflow-wrap:anywhere]">{answer}</div>
     </aside>
   );
 }
@@ -317,9 +317,9 @@ export function CommonMistakes({ mistakes, title = "Common mistakes" }: { mistak
 
 export function Troubleshooting({ items, title = "Troubleshooting" }: { items: TroubleshootingItem[]; title?: string }) {
   return (
-    <section>
+    <section className="min-w-0">
       <h2 className="text-2xl font-semibold">{title}</h2>
-      <div className="mt-4 overflow-x-auto rounded-lg border bg-card shadow-sm">
+      <div className="mt-4 max-w-full overflow-x-auto rounded-lg border bg-card shadow-sm">
         <Table className="min-w-[760px]">
           <thead>
             <TableRow>
@@ -453,7 +453,7 @@ export function VerificationStatus({ verification }: { verification: Verificatio
     : [];
 
   return (
-    <section>
+    <section className="min-w-0">
       <h2 className="text-2xl font-semibold">Verification status</h2>
       <div className="mt-4 grid gap-5">
         <KeyFacts
@@ -485,9 +485,9 @@ export function VerificationStatus({ verification }: { verification: Verificatio
 
 export function OfficialSources({ sources, title = "Official sources" }: { sources: SourceItem[]; title?: string }) {
   return (
-    <section>
+    <section className="min-w-0">
       <h2 className="text-2xl font-semibold">{title}</h2>
-      <div className="mt-4 overflow-x-auto rounded-lg border bg-card shadow-sm">
+      <div className="mt-4 max-w-full overflow-x-auto rounded-lg border bg-card shadow-sm">
         <Table className="min-w-[860px]">
           <thead>
             <TableRow>
@@ -559,9 +559,9 @@ export function EditorialNote({ children, title = "Editorial note" }: { children
 export function RelatedResources({ links, title = "Related resources" }: { links: LinkItem[]; title?: string }) {
   return (
     <ModuleCard title={title}>
-      <ul className="grid gap-3 sm:grid-cols-2">
+      <ul className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
         {links.map((item) => (
-          <li key={item.href} className="rounded-md border bg-background p-3">
+          <li key={item.href} className="min-w-0 rounded-md border bg-background p-3">
             <ResourceLink item={item} />
             {item.description ? <p className="mt-1">{item.description}</p> : null}
           </li>

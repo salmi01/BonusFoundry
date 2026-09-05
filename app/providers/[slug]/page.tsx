@@ -99,22 +99,22 @@ export default async function ProviderPage({ params }: PageProps) {
           updatedAt: provider.lastUpdated
         })}
       />
-      <Container className="py-10">
+      <Container className="py-6 sm:py-10">
         <Breadcrumb
           items={[
             { href: "/", label: "Home" },
             { href: `/providers/${provider.slug}`, label: provider.name }
           ]}
         />
-        <div className="grid gap-8 lg:grid-cols-[1fr_340px]">
-          <article>
+        <div className="grid w-full min-w-0 max-w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <article className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
             <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
-            <h1 className="mt-4 text-4xl font-bold tracking-normal">{provider.name} welcome bonus and referral program</h1>
-            <p className="mt-5 text-lg leading-8 text-muted-foreground">
+            <h1 className="mt-4 break-words text-3xl font-bold tracking-normal sm:text-4xl">{provider.name} welcome bonus and referral program</h1>
+            <p className="mt-4 text-base leading-7 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-8">
               {providerPageDirectAnswer(provider, authority)}
             </p>
 
-            <div className="mt-8 grid gap-5">
+            <div className="mt-6 grid min-w-0 grid-cols-1 gap-5 sm:mt-8">
               <QuickAnswer answer={provider.currentOffer} />
               {provider.proprietaryVerification ? (
                 <VerificationStatus verification={provider.proprietaryVerification} />
@@ -194,7 +194,7 @@ export default async function ProviderPage({ params }: PageProps) {
               <Disclosure />
             </div>
           </article>
-          <div className="space-y-5 lg:sticky lg:top-24 lg:self-start">
+          <div className="w-full min-w-0 max-w-[calc(100vw-2rem)] space-y-5 sm:max-w-none lg:sticky lg:top-24 lg:self-start">
             <ReferralBox provider={provider} />
           </div>
         </div>
