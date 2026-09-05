@@ -6,7 +6,7 @@ import { navItems, siteConfig } from "@/data/site";
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 shadow-sm backdrop-blur">
-      <Container className="flex min-h-16 items-center justify-between gap-5">
+      <Container className="flex min-h-16 flex-col items-stretch gap-2 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:py-0">
         <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
           <Image
             src={siteConfig.logo}
@@ -14,12 +14,12 @@ export function Header() {
             width={2172}
             height={724}
             priority
-            className="h-10 w-auto"
+            className="h-8 w-auto sm:h-10"
           />
         </Link>
         <nav
           aria-label="Main navigation"
-          className="flex flex-wrap items-center justify-end gap-1 rounded-lg border bg-card/80 p-1 text-sm shadow-sm"
+          className="flex flex-wrap items-center justify-center gap-1 rounded-lg border bg-card/80 p-1 text-sm shadow-sm sm:justify-end"
         >
           {navItems.map((item) => (
             <Link

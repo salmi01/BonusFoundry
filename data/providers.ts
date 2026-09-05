@@ -978,7 +978,7 @@ export const providers: Provider[] = [
     referralCode: "9RMU-ENB7",
     referralLink: null,
     welcomeBonus:
-      "BonusFoundry lists 9RMU-ENB7 as the Ria referral code. ",
+      "BonusFoundry's publisher supplies Ria referral code 9RMU-ENB7. Ria's official rewards vary by residence: France EUR 20 for each person with a EUR 50 minimum, United States USD 20 for the referrer and USD 10 for the friend with a USD 50 minimum, and Australia AUD 30 for each person with an AUD 100 minimum.",
     supportedCountries: [
       "190+ countries and territories according to Ria's official coverage messaging",
       "United States",
@@ -996,80 +996,143 @@ export const providers: Provider[] = [
       "China",
       "Senegal"
     ],
-    eligibleUsers: "New customers aged 18 or older may be eligible only for promotions Ria displays in the relevant country site, app, store, or checkout flow.",
+    eligibleUsers:
+      "New Ria customers with no previous Ria account or transfer history may qualify when both people are at least 18 and live in France, the United States, or Australia.",
     requirements: [
-      "Use the correct Ria country website or app for your sender location.",
-      "Check for any displayed referral or promo terms before payment, including minimum principal amount and channel restrictions.",
-      "Complete identity verification if requested.",
-      "Send through an eligible route and payout method.",
-      "Enter 9RMU-ENB7 only if Ria shows a referral-code or promo-code field that accepts it before the money transfer order is placed."
+      "Both the referrer and referred friend must be at least 18 and live in France, the United States, or Australia.",
+      "The referrer must have completed at least one transfer in the Ria app before referring friends.",
+      "The friend must be a new Ria customer with no previous account or transfer history.",
+      "The friend must enter the referral code before completing the first transfer.",
+      "The minimum must be sent in one qualifying international transfer: EUR 50 in France, USD 50 in the United States, or AUD 100 in Australia."
     ],
     steps: [
-      "Choose the sender country and destination in Ria.",
-      "Review payout options such as bank deposit, cash pickup, or wallet where available.",
-      "Check whether a promotion is shown before checkout.",
-      "Complete payment only after reviewing total cost and delivery timing."
+      "Create a new Ria account or begin the first transfer.",
+      "Enter the referral code during account creation or through Add promo code while preparing the first transfer.",
+      "Send the country-specific minimum in one international transfer.",
+      "Complete the transfer successfully and wait until it is paid to the recipient."
     ],
     keyFacts: [
       { label: "BonusFoundry referral code", value: "9RMU-ENB7" },
-      { label: "How to use it", value: "Enter the code only if Ria shows a referral-code or promo-code field in the live flow." },
-      { label: "Main caution", value: "Cash pickup and online offers may have different terms." },
+      {
+        label: "Eligible residences",
+        value: "France, United States, and Australia"
+      },
+      {
+        label: "France",
+        value: "EUR 20 friend reward, EUR 20 referrer reward, EUR 50 minimum"
+      },
+      {
+        label: "United States",
+        value: "USD 10 friend reward, USD 20 referrer reward, USD 50 minimum"
+      },
+      {
+        label: "Australia",
+        value: "AUD 30 friend reward, AUD 30 referrer reward, AUD 100 minimum"
+      }
     ],
     currentOffer:
-      "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
-    lastOfferUpdate: "2026-07-09",
-    lastManualReview: "2026-07-28",
+      "Ria officially documents country-specific refer-a-friend discounts for eligible residents of France, the United States, and Australia. BonusFoundry's publisher supplies code 9RMU-ENB7",
+    lastOfferUpdate: "2026-08-18",
+    lastManualReview: "2026-09-05",
     referral: {
       hasProgram:
-        "Ria displays promo and transfer offers by country, channel, and payout method. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to use when Ria accepts a code in the live flow.",
+        "Ria's official refer-a-friend program is available to eligible residents of France, the United States, and Australia. Both people must be at least 18, and the referrer must have completed a transfer in the Ria app.",
       code: "9RMU-ENB7",
       link: null,
       welcomeBonus:
-        "BonusFoundry lists 9RMU-ENB7 as the Ria referral code.",
-      minimumTransfer: "$50 or more for the public US promo codes reviewed.",
-      expiry: "Ria promotions can have promotion-specific expiry dates and Ria says it may terminate promotions at any time.",
-      payoutTiming: "",
+        "France: EUR 20 off for each person. United States: USD 10 off for the friend and USD 20 off for the referrer. Australia: AUD 30 off for each person.",
+      minimumTransfer:
+        "EUR 50 in France, USD 50 in the United States, or AUD 100 in Australia, sent in one qualifying international transfer.",
+      expiry:
+        "No fixed expiry was stated in the official referral pages checked on 5 September 2026; Ria offers and conditions can change.",
+      payoutTiming:
+        "The friend's discount applies to the first qualifying international transfer. The referrer's discount applies to the next qualifying international transfer and may take up to two days to appear after the friend's transfer is paid to the recipient.",
       limitations: [
-        "Use 9RMU-ENB7 only if Ria displays a referral-code or promo-code field that accepts it in your country flow.",
-        "Ria says promo codes can be limited to one use per customer and cannot be combined with another promo code.",
-        "Some Ria store promotions are available only at select US Ria stores.",
-        "Ria's online, app, WhatsApp, and agent-location channels can have different availability and offer rules.",
-        "Country, destination, payout method, and payment method can affect whether a Ria promotion applies."
+        "BonusFoundry's publisher supplies code 9RMU-ENB7",
+        "The referral program is documented only for eligible residents of France, the United States, and Australia.",
+        "Domestic, canceled, unsuccessful, and below-minimum transfers do not qualify.",
+        "The friend must enter the referral code before completing the first transfer; it cannot be applied retroactively or to a later transfer.",
+        "Confirm the offer displayed in the Ria app because availability, amounts, and conditions can change."
       ]
     },
     availability: {
-      sendingCountries: ["Ria-supported sender countries shown on the selected country site or app; availability depends on the local Ria site, app, or agent network."],
+      sendingCountries: [
+        "Ria-supported sender countries shown on the selected country site or app; availability depends on the local Ria site, app, or agent network."
+      ],
       receivingCountries: [
         "Ria's official site says users can send money to 190+ countries.",
         "Ria's cash-pickup page says cash pickup is available in 190+ countries and territories.",
         "Ria's bank-deposit page says bank deposits are available to over 180 countries.",
         "Ria's digital-wallet page says wallet transfers are available in 50+ countries."
       ],
-      currencies: ["100+ receive currencies according to Ria's official website", "Route-specific currencies shown in the Ria flow"],
-      paymentMethods: ["Debit card", "Credit card where available", "Bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available", "ATM pickup where available"],
+      currencies: [
+        "100+ receive currencies according to Ria's official website",
+        "Route-specific currencies shown in the Ria flow"
+      ],
+      paymentMethods: [
+        "Debit card",
+        "Credit card where available",
+        "Bank account",
+        "Cash at 7-Eleven where available",
+        "Cash pickup",
+        "Bank deposit",
+        "Digital wallet",
+        "Home delivery where available",
+        "ATM pickup where available"
+      ],
       countryAvailability: [
         {
           country: "190+ countries and territories",
-          supported: "Ria's official site describes broad global coverage instead of publishing one static country list in the pages reviewed.",
-          paymentMethods: ["Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available", "ATM pickup where available"],
-          notes: "Delivery methods vary by destination, partner network, sender country, and live transfer flow."
+          supported:
+            "Ria's official site describes broad global coverage instead of publishing one static country list in the pages reviewed.",
+          paymentMethods: [
+            "Cash pickup",
+            "Bank deposit",
+            "Digital wallet",
+            "Home delivery where available",
+            "ATM pickup where available"
+          ],
+          notes:
+            "Delivery methods vary by destination, partner network, sender country, and live transfer flow."
         },
         {
           country: "United States",
-          supported: "Ria's US pages describe sending to 190+ countries and show US-specific payment and promo examples.",
-          paymentMethods: ["US-issued Visa or Mastercard credit card", "US-issued Visa or Mastercard debit card", "US bank account", "Cash at 7-Eleven where available", "Cash pickup", "Bank deposit", "Digital wallet", "Home delivery where available"],
-          notes: "Ria's public promo page lists US new-customer promo-code offers. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to check in the live flow."
+          supported:
+            "Ria's US pages describe sending to 190+ countries and show US-specific payment and promo examples.",
+          paymentMethods: [
+            "US-issued Visa or Mastercard credit card",
+            "US-issued Visa or Mastercard debit card",
+            "US bank account",
+            "Cash at 7-Eleven where available",
+            "Cash pickup",
+            "Bank deposit",
+            "Digital wallet",
+            "Home delivery where available"
+          ],
+          notes:
+            "Ria's public promo page lists US new-customer promo-code offers. BonusFoundry lists 9RMU-ENB7 as the Ria referral code to check in the live flow."
         },
         {
           country: "Switzerland",
-          supported: "Ria's official homepage redirected to a Switzerland country site during the 2026-07-09 review and displayed Swiss-franc transfer examples.",
-          paymentMethods: ["Debit card", "Cash pickup", "Bank deposit where available", "Digital wallet where available"],
-          notes: "Use the selected Ria country site or app to confirm the exact destination, currency, fee, and delivery methods."
+          supported:
+            "Ria's official homepage redirected to a Switzerland country site during the 2026-07-09 review and displayed Swiss-franc transfer examples.",
+          paymentMethods: [
+            "Debit card",
+            "Cash pickup",
+            "Bank deposit where available",
+            "Digital wallet where available"
+          ],
+          notes:
+            "Use the selected Ria country site or app to confirm the exact destination, currency, fee, and delivery methods."
         },
         {
           country: "Morocco",
-          supported: "Ria lists Morocco among destination countries on its official website.",
-          paymentMethods: ["Cash pickup", "Bank deposit or wallet where available"],
+          supported:
+            "Ria lists Morocco among destination countries on its official website.",
+          paymentMethods: [
+            "Cash pickup",
+            "Bank deposit or wallet where available"
+          ],
           notes: "Cash pickup and online delivery choices can change by route."
         }
       ]
@@ -1077,25 +1140,102 @@ export const providers: Provider[] = [
     verification: {
       identityRequired:
         "Ria's security page says it verifies sender and recipient identities and accepts proof of identity such as passport, driver's license, national identity card, or residence permit card; the document must match the Ria account name and be valid.",
-      proofOfAddress: "Ria terms allow the company to require additional information to complete a transfer, so confirm any address-document request in Ria's live country flow.",
-      bankVerification: "Ria terms say payment and delivery depend on identity verification, card or bank authorization, compliance screening, and recipient information when required."
+      proofOfAddress:
+        "Ria terms allow the company to require additional information to complete a transfer, so confirm any address-document request in Ria's live country flow.",
+      bankVerification:
+        "Ria terms say payment and delivery depend on identity verification, card or bank authorization, compliance screening, and recipient information when required."
     },
     support: {
       supportEmail: "us_support@riamoneytransfer.com",
       supportUrl: "https://help.riamoneytransfer.com/hc/en-us",
-      helpCenter: "Ria links to its Help center, phone support, chat, complaint form, and fraud-reporting channels; US terms list 1-877-443-1399 for customer service."
+      helpCenter:
+        "Ria links to its Help center, phone support, chat, complaint form, and fraud-reporting channels; US terms list 1-877-443-1399 for customer service."
     },
     officialResources: [
-      { label: "Ria official website", href: "https://www.riamoneytransfer.com/" },
-      { label: "Ria promotions", href: "https://www.riamoneytransfer.com/en-us/promo/" },
-      { label: "Ria terms and conditions", href: "https://www.riamoneytransfer.com/en-us/terms/" },
-      { label: "Ria security", href: "https://www.riamoneytransfer.com/en-us/security/" },
-      { label: "Ria Help center", href: "https://help.riamoneytransfer.com/hc/en-us" },
-      { label: "Ria cash pickup", href: "https://www.riamoneytransfer.com/en-us/send-money-cash-pickup/" },
-      { label: "Ria bank deposit", href: "https://www.riamoneytransfer.com/en-us/send-money-to-bank-account/" },
-      { label: "Ria digital wallet", href: "https://www.riamoneytransfer.com/en-us/wallets/" }
+      {
+        label: "Ria refer-a-friend program",
+        href: "https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program"
+      },
+      {
+        label: "Ria France refer-a-friend",
+        href: "https://www.riamoneytransfer.com/en-fr/refer-a-friend/"
+      },
+      {
+        label: "Claim a Ria referral reward",
+        href: "https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward"
+      },
+      {
+        label: "Ria missing referral discount help",
+        href: "https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount"
+      },
+      {
+        label: "Use a Ria promo code",
+        href: "https://help.riamoneytransfer.com/hc/en-us/articles/4406279777169-How-do-I-use-a-promo-code"
+      },
+      {
+        label: "Ria official website",
+        href: "https://www.riamoneytransfer.com/"
+      },
+      {
+        label: "Ria promotions",
+        href: "https://www.riamoneytransfer.com/en-us/promo/"
+      },
+      {
+        label: "Ria terms and conditions",
+        href: "https://www.riamoneytransfer.com/en-us/terms/"
+      },
+      {
+        label: "Ria security",
+        href: "https://www.riamoneytransfer.com/en-us/security/"
+      },
+      {
+        label: "Ria Help center",
+        href: "https://help.riamoneytransfer.com/hc/en-us"
+      },
+      {
+        label: "Ria cash pickup",
+        href: "https://www.riamoneytransfer.com/en-us/send-money-cash-pickup/"
+      },
+      {
+        label: "Ria bank deposit",
+        href: "https://www.riamoneytransfer.com/en-us/send-money-to-bank-account/"
+      },
+      {
+        label: "Ria digital wallet",
+        href: "https://www.riamoneytransfer.com/en-us/wallets/"
+      }
     ],
     sources: [
+      {
+        label: "Ria refer-a-friend program",
+        url: "https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program",
+        lastReviewed: "2026-09-05",
+        confidence: "official"
+      },
+      {
+        label: "Ria France refer-a-friend",
+        url: "https://www.riamoneytransfer.com/en-fr/refer-a-friend/",
+        lastReviewed: "2026-09-05",
+        confidence: "official"
+      },
+      {
+        label: "Claim a Ria referral reward",
+        url: "https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward",
+        lastReviewed: "2026-09-05",
+        confidence: "official"
+      },
+      {
+        label: "Ria missing referral discount help",
+        url: "https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount",
+        lastReviewed: "2026-09-05",
+        confidence: "official"
+      },
+      {
+        label: "Use a Ria promo code",
+        url: "https://help.riamoneytransfer.com/hc/en-us/articles/4406279777169-How-do-I-use-a-promo-code",
+        lastReviewed: "2026-09-05",
+        confidence: "official"
+      },
       {
         label: "Ria official website",
         url: "https://www.riamoneytransfer.com/",
@@ -1146,44 +1286,55 @@ export const providers: Provider[] = [
       }
     ],
     ineligibleUsers: [
-      "Users relying on 9RMU-ENB7 when Ria does not show a code field or does not accept the code in the live flow.",
-      "Users attempting to apply a local promotion from another country site.",
-      "Users trying to combine two Ria promo codes on one transfer.",
-      "Users trying to reuse a one-per-customer new-customer promo code.",
-      "Transfers whose channel, destination, payout method, payment method, or user status does not match the displayed Ria terms."
+      "Existing Ria customers, including anyone with a previous Ria account or transfer history, cannot qualify as the referred friend.",
+      "People outside France, the United States, and Australia are not documented as eligible for Ria's refer-a-friend program.",
+      "Anyone under 18 is ineligible.",
+      "Domestic, canceled, unsuccessful, and below-minimum transfers do not qualify.",
+      "A referral code entered after the first transfer cannot be applied retroactively or to a later transfer."
     ],
     bonusChecklist: [
-      "Open the correct Ria country site or app.",
-      "Check whether Ria displays a promo code, promo rate, or local offer before payment.",
-      "Use 9RMU-ENB7 only if Ria shows a referral-code or promo-code field that accepts it.",
-      "Enter the code at checkout before placing the money transfer order when Ria requires it.",
-      "Compare the fee, exchange rate, delivery method, and arrival timing before sending.",
-      "Keep the transfer receipt and any displayed promotion screen."
+      "Confirm that both people are at least 18 and live in France, the United States, or Australia.",
+      "Confirm that the friend has no previous Ria account or transfer history.",
+      "Enter 9RMU-ENB7 during account creation or through Add promo code before completing the first transfer.",
+      "Send at least EUR 50, USD 50, or AUD 100 in one international transfer for the applicable residence.",
+      "Confirm that the transfer completes successfully and is paid to the recipient.",
+      "Keep the offer screen and receipt until both discounts have been applied."
     ],
     researchProfile: {
       completeness:
-        "Reviewed Ria's official public website, promo page, terms and conditions, security page, cash pickup page, bank deposit page, digital wallet page, support links, transfer coverage, delivery methods, verification requirements, public referral evidence, and BonusFoundry's owner-provided referral code.",
+        "Reviewed Ria's official referral overview, France referral page, reward-claim instructions, missing-discount guidance, promo-code instructions, and BonusFoundry's publisher-supplied referral code alongside the existing provider research.",
       confidence: "high",
-      sourcesReviewed: ["Ria official website", "Ria promotions", "Ria terms and conditions", "Ria security", "Ria cash pickup", "Ria bank deposit", "Ria digital wallet", "Ria Help center"],
+      sourcesReviewed: [
+        "Ria refer-a-friend program",
+        "Ria France refer-a-friend",
+        "Claim a Ria referral reward",
+        "Ria missing referral discount help",
+        "Use a Ria promo code"
+      ],
       remainingItems: [
-        "Keep one transparency note: BonusFoundry lists 9RMU-ENB7 as the Ria referral code, while Ria's public official pages reviewed did not expose full referral-code terms for that code.",
-        "Country-specific promotions must be confirmed in Ria's live country flow.",
+        "Keep one transparency note: BonusFoundry's publisher supplies 9RMU-ENB7, while Ria's public official pages reviewed do not independently identify that individual code.",
+        "Ria's live app remains the final source for whether the code is accepted and which country offer is attached to an account.",
         "Ria's official pages reviewed describe broad coverage such as 190+ countries, over 180 bank-deposit countries, and 50+ digital-wallet countries, but do not expose one static complete destination list in the reviewed content."
       ]
     },
     proprietaryVerification: {
-      status: "Manually Verified",
-      verificationMethod: "Official Ria pages and BonusFoundry owner-provided referral code",
+      status: "Officially Documented",
+      verificationMethod:
+        "Official Ria referral pages plus BonusFoundry publisher-supplied referral code",
       verifiedFields: [
-        "Referral code 9RMU-ENB7 listed by BonusFoundry",
-        "Ria promotion, terms, security, and support pages reviewed",
-        "Broad country and payout-method coverage language",
-        "Live country-flow confirmation still required for code-specific terms"
+        "France, United States, and Australia referral rewards and minimums officially documented",
+        "Age, residence, new-customer, international-transfer, code-timing, payout-timing, and cancellation rules officially documented",
+        "Referral code 9RMU-ENB7 supplied by BonusFoundry's publisher",
+        "Live Ria confirmation still required for acceptance of the individual code"
       ],
-      lastVerified: "2026-07-20",
-      officialSourcesReviewed: 8
+      lastVerified: "2026-09-05",
+      officialSourcesReviewed: 5
     },
     updateHistory: [
+      {
+        date: "2026-09-05",
+        note: "Rechecked Ria's official refer-a-friend guidance and added the country-specific France, United States, and Australia rewards, minimum transfers, eligibility, code timing, reward timing, cancellation rules, troubleshooting, and publisher-code disclosure."
+      },
       {
         date: "2026-07-09",
         note: "Expanded Ria country availability from a narrow representative list to Ria's official broad coverage language: 190+ countries overall, 190+ cash-pickup countries and territories, over 180 bank-deposit countries, and 50+ digital-wallet countries."
@@ -1206,34 +1357,39 @@ export const providers: Provider[] = [
       }
     ],
     commonMistakes: [
-      "Assuming a promo from one Ria country site applies in another country.",
-      "Confusing cash pickup availability with bonus eligibility.",
-      "Forgetting that agent-location transfers and online transfers can have different rules.",
-      "Trying to apply a promo code after checkout even though Ria says the code must be quoted at checkout."
+      "Assuming France, United States, and Australia rewards or currencies are interchangeable.",
+      "Entering the referral code after completing the first transfer.",
+      "Using an existing Ria account or an account with previous transfer history as the referred friend.",
+      "Sending below the country-specific minimum or splitting the minimum across transfers.",
+      "Using a domestic, canceled, or unsuccessful transfer and expecting it to qualify."
     ],
     missingBonus: [
-      "Check whether the offer was attached to the transfer before payment.",
-      "Review the sender country, destination, payout method, payment method, minimum principal amount, and one-use-per-customer rules.",
-      "Contact Ria support with transfer details if a displayed promotion did not apply."
+      "Check that the referred friend lives in France, the United States, or Australia and had no previous Ria account or transfer history.",
+      "Confirm that the referral code was entered before the first transfer was completed.",
+      "Confirm that one international transfer met the applicable EUR 50, USD 50, or AUD 100 minimum.",
+      "Check that the transfer completed successfully and was paid to the recipient.",
+      "Allow up to two days after recipient payout for the referrer's discount, then contact Ria support if every condition was met."
     ],
     countryNotes: [
-      "Ria's online service and agent network can differ by market.",
-      "France to Morocco users should compare online availability, pickup options, fee, exchange rate, and any visible promotion.",
-      "Identity and transfer limits can vary by country.",
-      "Ria says users can send to 190+ countries, cash pickup is available in 190+ countries and territories, bank deposits are available to over 180 countries, and digital wallet transfers are available in 50+ countries."
+      "France residents: EUR 20 off for the friend and referrer after one qualifying EUR 50 international transfer.",
+      "United States residents: USD 10 off for the friend and USD 20 off for the referrer after one qualifying USD 50 international transfer.",
+      "Australia residents: AUD 30 off for the friend and referrer after one qualifying AUD 100 international transfer.",
+      "Ria does not document referral-program eligibility for residents of other countries in the official referral guidance checked on 5 September 2026."
     ],
     faq: [
       {
-        question: "Does BonusFoundry list a Ria referral code?",
+        question: "What Ria referral code does BonusFoundry list?",
         answer:
-          "Yes. BonusFoundry lists 9RMU-ENB7 as the Ria referral code. Public official Ria referral-code terms were not found in the pages reviewed, so use the code only if Ria accepts it in the live flow."
+          "BonusFoundry's publisher supplies Ria referral code 9RMU-ENB7. Ria's public pages confirm the referral program but do not independently identify that individual code, so confirm acceptance in the Ria app."
       },
       {
-        question: "Can a Ria promotion depend on the payout method?",
-        answer: "Yes. Provider rules may differ for bank deposit, wallet delivery, and cash pickup."
+        question:
+          "Which countries are eligible for Ria's refer-a-friend program?",
+        answer:
+          "Ria lists France, the United States, and Australia. Both people must be at least 18 and live in an eligible country."
       }
     ],
-    lastUpdated: "2026-07-09"
+    lastUpdated: "2026-09-05"
   },
   {
     name: "Western Union",
