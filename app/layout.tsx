@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     icon: siteConfig.icon,
     apple: siteConfig.icon
   },
+  other: {
+    "impact-site-verification": "eb6f5da5-eadd-4b72-a107-0cb37d4b88c7"
+  },
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
