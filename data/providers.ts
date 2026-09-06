@@ -141,7 +141,7 @@ export const providers: Provider[] = [
     currentOffer:
       "TapTap Send referral code SALAHEDD1933 currently shows a €10 or $10 bonus after a qualifying first transfer of at least €100 or $100. The TapTap Send app did not display an expiration date for the code during manual verification.",
     lastOfferUpdate: "2026-07-28",
-    lastManualReview: "2026-07-28",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "Taptap Send's official help centre explains that users can refer friends by sharing a personal code, and both users can receive bonus credit when the referred friend uses the code and sends with Taptap Send for the first time.",
@@ -264,7 +264,7 @@ export const providers: Provider[] = [
         "Minimum qualifying transfer €100 or $100",
         "No expiration date displayed"
       ],
-      lastVerified: "2026-07-28",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 5,
       manualProof: {
         providerAppOrAccount: "TapTap Send app",
@@ -367,7 +367,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Wise referral offers are not uniform across all countries. The public invite page reviewed required the live Wise invite/account flow, so the reward can depend on the inviting account, the new user's country, the product used, and the qualifying transfer or account action.",
     lastOfferUpdate: "2026-07-28",
-    lastManualReview: "2026-07-28",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "BonusFoundry lists a Wise invite link. Wise referral benefits are controlled by the live invitation and account flow rather than one public reward amount for every user.",
@@ -495,7 +495,7 @@ export const providers: Provider[] = [
         "Route-specific payment-method and availability caveats",
         "Wise help and support path"
       ],
-      lastVerified: "2026-07-28",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 6
     },
     updateHistory: [
@@ -583,7 +583,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Remitly's visible offer may be a referral reward, a first-transfer promotion, or no offer at all. Check the live transfer screen before sending because the bonus can be affected by destination country, payment method, and transfer amount.",
     lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-07-20",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "Remitly publishes referral program terms. Users can invite family and friends with a referral link or QR code, and referred friends must complete a qualified first transfer for the referral to qualify.",
@@ -728,7 +728,7 @@ export const providers: Provider[] = [
         "Qualified-referral restrictions and ineligible cases",
         "Verification and security dependencies"
       ],
-      lastVerified: "2026-07-20",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 6
     },
     updateHistory: [
@@ -816,7 +816,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-20",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "Sendwave may show referral, promo, or first-transfer offers in the app. BonusFoundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
@@ -921,7 +921,7 @@ export const providers: Provider[] = [
         "Debit-card payment and verification guidance",
         "Country-route availability caveats"
       ],
-      lastVerified: "2026-07-20",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 3
     },
     updateHistory: [
@@ -1033,7 +1033,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Ria officially documents country-specific refer-a-friend discounts for eligible residents of France, the United States, and Australia. BonusFoundry's publisher supplies code 9RMU-ENB7",
     lastOfferUpdate: "2026-08-18",
-    lastManualReview: "2026-09-05",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "Ria's official refer-a-friend program is available to eligible residents of France, the United States, and Australia. Both people must be at least 18, and the referrer must have completed a transfer in the Ria app.",
@@ -1044,7 +1044,7 @@ export const providers: Provider[] = [
       minimumTransfer:
         "EUR 50 in France, USD 50 in the United States, or AUD 100 in Australia, sent in one qualifying international transfer.",
       expiry:
-        "No fixed expiry was stated in the official referral pages checked on 5 September 2026; Ria offers and conditions can change.",
+        "No fixed expiry was stated in the official referral pages checked on 6 September 2026; Ria offers and conditions can change.",
       payoutTiming:
         "The friend's discount applies to the first qualifying international transfer. The referrer's discount applies to the next qualifying international transfer and may take up to two days to appear after the friend's transfer is paid to the recipient.",
       limitations: [
@@ -1327,7 +1327,7 @@ export const providers: Provider[] = [
         "Referral code 9RMU-ENB7 supplied by BonusFoundry's publisher",
         "Live Ria confirmation still required for acceptance of the individual code"
       ],
-      lastVerified: "2026-09-05",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 5
     },
     updateHistory: [
@@ -1374,7 +1374,7 @@ export const providers: Provider[] = [
       "France residents: EUR 20 off for the friend and referrer after one qualifying EUR 50 international transfer.",
       "United States residents: USD 10 off for the friend and USD 20 off for the referrer after one qualifying USD 50 international transfer.",
       "Australia residents: AUD 30 off for the friend and referrer after one qualifying AUD 100 international transfer.",
-      "Ria does not document referral-program eligibility for residents of other countries in the official referral guidance checked on 5 September 2026."
+      "Ria does not document referral-program eligibility for residents of other countries in the official referral guidance checked on 6 September 2026."
     ],
     faq: [
       {
@@ -1851,7 +1851,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Check WorldRemit's app, help, or checkout flow for any active promo-code, Refer a friend, or first-transfer offer before sending money. BonusFoundry does not list a separate WorldRemit code at this time.",
     lastOfferUpdate: "2026-06-28",
-    lastManualReview: "2026-07-20",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "WorldRemit's help surface includes Refer a friend and promo-code topics. Users should follow the offer shown by WorldRemit for their sender country, route, and payment method.",
@@ -2016,7 +2016,7 @@ export const providers: Provider[] = [
     currentOffer:
       "BonusFoundry lists a Paysend referral link. Paysend's official bonus page says invited friends get their first transfer fee-free and referrers earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent.",
     lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-07-20",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "Paysend publishes a public referral program through its bonus and referral pages.",
@@ -2153,7 +2153,7 @@ export const providers: Provider[] = [
         "12-transfer and 12-month reward window",
         "Published country exclusions and microdebit exclusion"
       ],
-      lastVerified: "2026-07-20",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 5
     },
     updateHistory: [
@@ -2246,7 +2246,7 @@ export const providers: Provider[] = [
     currentOffer:
       "The LemFi offer was manually verified as a €10 or $10 bonus after a qualifying transfer of €100 or $100, and the code remains valid. For Europe users, LemFi's invite-and-earn page says both accounts can receive EUR 10 when the invited friend signs up, verifies, and sends over EUR 100 in one transfer.",
     lastOfferUpdate: "2026-07-28",
-    lastManualReview: "2026-07-28",
+    lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
         "LemFi publishes an Invite and Earn page and Europe referral campaign terms for supported European users.",
@@ -2391,7 +2391,7 @@ export const providers: Provider[] = [
         "Minimum qualifying transfer €100 or $100",
         "Code remains valid"
       ],
-      lastVerified: "2026-07-16",
+      lastVerified: "2026-09-06",
       officialSourcesReviewed: 5,
       manualProof: {
         providerAppOrAccount: "LemFi app/account",

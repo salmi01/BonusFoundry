@@ -25,12 +25,12 @@ export default function FAQIndexPage() {
           description:
             "Answers to common questions about referral codes, promo codes, welcome bonuses, expiry, verification, and country-specific rules.",
           path: "/faq",
-          updatedAt: "2026-07-09"
+          updatedAt: "2026-09-06"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/faq", label: "FAQ" }]} />
-        <LastVerified date="July 9, 2026" />
+        <LastVerified date="September 6, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code FAQ</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           These answers help users apply referral codes, promo codes, welcome bonuses, and transfer offers correctly.

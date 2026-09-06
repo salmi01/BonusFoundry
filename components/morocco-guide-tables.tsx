@@ -29,7 +29,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/taptap-send/referral-code">SALAHEDD1933</Link>
             </td>
             <td className="px-4 py-3">EUR10 or $10 after a qualifying first transfer of at least EUR100 or $100, manually verified by BonusFoundry</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -43,7 +43,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/remitly/referral-code">Referral method: Personal referral link</Link>
             </td>
             <td className="px-4 py-3">Variable first-transfer or referral offer controlled by Remitly</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -57,7 +57,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/wise/referral-code">Referral method: Personal referral link</Link>
             </td>
             <td className="px-4 py-3">Wise invite benefits vary by account, country and current invitation flow</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -71,7 +71,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/lemfi/referral-code">SALABGWQ</Link>
             </td>
             <td className="px-4 py-3">EUR10 or $10 after a qualifying first transfer of at least EUR100 or $100, manually verified by BonusFoundry</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -82,10 +82,10 @@ export function MoroccoAppsAtGlanceTable() {
             <td className="px-4 py-3">US route verified; Ria also supports online, app and agent transfers where available</td>
             <td className="px-4 py-3">Live quote; payment can include bank, card, wallet payments or cash depending on route</td>
             <td className="px-4 py-3">
-              <Link href="/providers/ria/referral-code">9RMU-ENB7</Link>
+              <Link href="/providers/ria/referral-code">9RMU-ENB7 (publisher-supplied)</Link>
             </td>
-            <td className="px-4 py-3">BonusFoundry lists 9RMU-ENB7 as the Ria referral code; live eligibility must be checked in Ria</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">France: EUR20 each; US: USD10 for the friend and USD20 for the referrer; Australia: AUD30 each</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -99,7 +99,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/sendwave/referral-code">I4H9G</Link>
             </td>
             <td className="px-4 py-3">BonusFoundry lists I4H9G as the Sendwave referral code; live eligibility must be checked in Sendwave</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -113,7 +113,7 @@ export function MoroccoAppsAtGlanceTable() {
               <Link href="/providers/paysend/referral-code">Referral method: Personal referral link</Link>
             </td>
             <td className="px-4 py-3">Paysend referral program may reward invited transfers; terms and country equivalents vary</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="align-top">
             <td className="px-4 py-3">
@@ -125,7 +125,7 @@ export function MoroccoAppsAtGlanceTable() {
             <td className="px-4 py-3">Live quote; WorldRemit shows fees and exchange rate upfront</td>
             <td className="px-4 py-3">No verified code listed</td>
             <td className="px-4 py-3">No verified BonusFoundry referral code is currently listed for this provider.</td>
-            <td className="px-4 py-3">July 21, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
         </tbody>
       </table>
@@ -157,7 +157,7 @@ export function MoroccoReferralBonusesTable() {
               Manual BonusFoundry verification in the TapTap Send app; full instructions on the{" "}
               <Link href="/providers/taptap-send/referral-code">TapTap Send referral page</Link>
             </td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">LemFi</td>
@@ -168,15 +168,17 @@ export function MoroccoReferralBonusesTable() {
               Manual BonusFoundry verification in the LemFi app; full instructions on the{" "}
               <Link href="/providers/lemfi/referral-code">LemFi referral page</Link>
             </td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Ria</td>
             <td className="px-4 py-3">9RMU-ENB7</td>
-            <td className="px-4 py-3">Varies by live Ria flow</td>
-            <td className="px-4 py-3">Check Ria during signup or transfer</td>
-            <td className="px-4 py-3">Existing BonusFoundry structured provider data</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">France: EUR20 each; US: USD10 friend and USD20 referrer; Australia: AUD30 each</td>
+            <td className="px-4 py-3">EUR50 in France, USD50 in the US or AUD100 in Australia in one qualifying international transfer</td>
+            <td className="px-4 py-3">
+              Ria&apos;s official referral help and France referral page; 9RMU-ENB7 is supplied by BonusFoundry&apos;s publisher and is not independently identified by Ria
+            </td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Sendwave</td>
@@ -184,7 +186,7 @@ export function MoroccoReferralBonusesTable() {
             <td className="px-4 py-3">Varies by live Sendwave flow</td>
             <td className="px-4 py-3">Check Sendwave during signup or transfer</td>
             <td className="px-4 py-3">Existing BonusFoundry structured provider data</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Wise</td>
@@ -192,7 +194,7 @@ export function MoroccoReferralBonusesTable() {
             <td className="px-4 py-3">Varies by Wise invite/account flow</td>
             <td className="px-4 py-3">Depends on Wise invitation terms</td>
             <td className="px-4 py-3">Existing BonusFoundry structured provider data and Wise invite flow</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Remitly</td>
@@ -200,7 +202,7 @@ export function MoroccoReferralBonusesTable() {
             <td className="px-4 py-3">Varies by Remitly offer</td>
             <td className="px-4 py-3">Depends on Remitly referral terms</td>
             <td className="px-4 py-3">Existing BonusFoundry structured provider data and Remitly referral terms</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Paysend</td>
@@ -208,7 +210,7 @@ export function MoroccoReferralBonusesTable() {
             <td className="px-4 py-3">Paysend says referrers can earn per eligible friend transfer, up to local-equivalent caps</td>
             <td className="px-4 py-3">Depends on Paysend program terms</td>
             <td className="px-4 py-3">Existing BonusFoundry structured provider data and Paysend official bonus page</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
           <tr className="align-top">
             <td className="px-4 py-3">WorldRemit</td>
@@ -216,7 +218,7 @@ export function MoroccoReferralBonusesTable() {
             <td className="px-4 py-3">None listed by BonusFoundry</td>
             <td className="px-4 py-3">Not applicable</td>
             <td className="px-4 py-3">BonusFoundry provider data</td>
-            <td className="px-4 py-3">July 20, 2026</td>
+            <td className="px-4 py-3">September 6, 2026</td>
           </tr>
         </tbody>
       </table>

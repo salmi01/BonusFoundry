@@ -24,12 +24,12 @@ export default function CorridorsIndexPage() {
           description:
             "Browse corridor pages that compare providers, payment methods, delivery options, referral bonuses, promo offers, and first-transfer checks by route.",
           path: "/corridors",
-          updatedAt: "2026-07-09"
+          updatedAt: "2026-09-06"
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/corridors", label: "Corridors" }]} />
-        <LastVerified date="July 9, 2026" />
+        <LastVerified date="September 6, 2026" />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Money transfer corridor guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           Corridor pages explain which providers to check for a route, which referral or promo opportunities may apply,

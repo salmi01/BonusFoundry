@@ -23,12 +23,12 @@ export default function ProvidersIndexPage() {
           description:
             "Browse money transfer providers and compare referral codes, referral links, welcome bonus rules, eligibility, and first-transfer checks.",
           path: "/providers",
-          updatedAt: "2026-07-09"
+          updatedAt: "2026-09-06"
         })}
       />
       <Container className="py-6 sm:py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/providers", label: "Providers" }]} />
-        <LastVerified date="July 9, 2026" />
+        <LastVerified date="September 6, 2026" />
         <h1 className="mt-4 max-w-4xl break-words text-3xl font-bold tracking-normal sm:text-4xl">
           Money transfer referral codes and bonus guides
         </h1>
