@@ -17,6 +17,12 @@ export function ProviderCard({ provider }: { provider: Provider }) {
             {provider.referralCode ? `Code listed: ${provider.referralCode}` : "Check referral details"}
           </p>
           <Link
+            href={`/providers/${provider.slug}/referral-code`}
+            className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-primary"
+          >
+            {provider.name} referral details
+          </Link>
+          <Link
             href={`/providers/${provider.slug}`}
             className="-ml-2 mt-4 inline-flex min-h-11 w-fit max-w-full items-center gap-2 rounded-md px-2 py-2 text-sm font-semibold text-primary transition-colors hover:bg-muted sm:mt-5"
           >

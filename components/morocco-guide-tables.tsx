@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { taptapOffer, taptapFriendReward, taptapReferrerReward, taptapMinimum, taptapSource } from "@/data/taptap-send";
+import { formatDate } from "@/lib/utils";
 
 export function MoroccoAppsAtGlanceTable() {
   return (
@@ -21,15 +23,15 @@ export function MoroccoAppsAtGlanceTable() {
             <td className="px-4 py-3">
               <Link href="/providers/taptap-send">TapTap Send</Link>
             </td>
-            <td className="px-4 py-3">Verified referral code and Morocco cash pickup</td>
+            <td className="px-4 py-3">Morocco cash pickup and route-specific referral offer</td>
             <td className="px-4 py-3">Bank deposit, Cash Plus and Wafacash cash pickup</td>
-            <td className="px-4 py-3">EU, UK, US, Canada, UAE, Brazil and Australia listed on the official Morocco page</td>
+            <td className="px-4 py-3">Check sending-country guides; selected European countries and US state restrictions apply</td>
             <td className="px-4 py-3">Bank transfers are described as no-fee; cash pickup has small fees on the official Morocco page</td>
             <td className="px-4 py-3">
-              <Link href="/providers/taptap-send/referral-code">SALAHEDD1933</Link>
+              <Link href="/providers/taptap-send/referral-code">{taptapOffer.code}</Link>
             </td>
-            <td className="px-4 py-3">EUR10 or $10 after a qualifying first transfer of at least EUR100 or $100, manually verified by BonusFoundry</td>
-            <td className="px-4 py-3">September 6, 2026</td>
+            <td className="px-4 py-3">{taptapFriendReward} for the friend; {taptapReferrerReward} for the referrer in the owner’s app. Minimum and route eligibility must be checked.</td>
+            <td className="px-4 py-3">Referral rules: {formatDate(taptapOffer.officialCheckedAt)}</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">
@@ -150,14 +152,14 @@ export function MoroccoReferralBonusesTable() {
         <tbody className="text-muted-foreground">
           <tr className="border-b align-top">
             <td className="px-4 py-3">TapTap Send</td>
-            <td className="px-4 py-3">SALAHEDD1933</td>
-            <td className="px-4 py-3">EUR10 or $10</td>
-            <td className="px-4 py-3">EUR100 or $100 first qualifying transfer</td>
+            <td className="px-4 py-3">{taptapOffer.code}</td>
+            <td className="px-4 py-3">Friend: {taptapFriendReward}; referrer: {taptapReferrerReward} (captured offer)</td>
+            <td className="px-4 py-3">{taptapMinimum}</td>
             <td className="px-4 py-3">
-              Manual BonusFoundry verification in the TapTap Send app; full instructions on the{" "}
+              Owner’s September 7, 2026 referral-screen transcription; <a href={taptapSource("referrals").url}>official rules</a> and instructions on the{" "}
               <Link href="/providers/taptap-send/referral-code">TapTap Send referral page</Link>
             </td>
-            <td className="px-4 py-3">September 6, 2026</td>
+            <td className="px-4 py-3">{formatDate(taptapOffer.officialCheckedAt)}</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">LemFi</td>

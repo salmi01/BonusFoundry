@@ -3,6 +3,8 @@ import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-con
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import { indexReviewedAt } from "@/data/index-review";
+import { formatDate } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 import { getGuides } from "@/lib/content";
@@ -26,12 +28,12 @@ export default async function GuidesIndexPage() {
           description:
             "Detailed guides explaining how money transfer referral codes, welcome bonuses, promo codes, and first-transfer offers usually work.",
           path: "/guides",
-          updatedAt: "2026-09-06"
+          updatedAt: indexReviewedAt
         })}
       />
       <Container className="py-10">
         <Breadcrumb items={[{ href: "/", label: "Home" }, { href: "/guides", label: "Guides" }]} />
-        <LastVerified date="September 6, 2026" />
+        <LastVerified date={formatDate(indexReviewedAt)} />
         <h1 className="mt-4 text-4xl font-bold tracking-normal">Referral code and bonus guides</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
           These guides explain how referral codes, promo codes, signup bonuses, welcome bonuses, and transfer rewards

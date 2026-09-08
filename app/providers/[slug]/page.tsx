@@ -1,3 +1,4 @@
+import { TaptapSendPage } from "@/components/taptap-send-page";
 import { notFound } from "next/navigation";
 import {
   BestFor,
@@ -49,6 +50,14 @@ export async function generateMetadata({ params }: PageProps) {
   const provider = getProvider(slug);
   if (!provider) return {};
 
+  if (provider.slug === "taptap-send") {
+    return createMetadata({
+      title: "Taptap Send: countries, fees and transfer options",
+      description: provider.description,
+      path: "/providers/taptap-send"
+    });
+  }
+
   return createMetadata({
     title: `${provider.name} welcome bonus and referral program`,
     description: `Learn how the ${provider.name} welcome bonus and referral program work, including eligibility, requirements, supported countries, and referral details.`,
@@ -60,6 +69,7 @@ export default async function ProviderPage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+  if (provider.slug === "taptap-send") return <TaptapSendPage overview />;
   const authority = getProviderAuthority(provider);
   const guides = await getGuides();
   const relatedGuides = guides.filter((guide) => authority.relatedGuideSlugs.includes(guide.slug));
