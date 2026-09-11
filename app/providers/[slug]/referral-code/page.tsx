@@ -1,4 +1,6 @@
 import { TaptapSendPage } from "@/components/taptap-send-page";
+import { SendwaveReferralPage } from "@/components/sendwave-referral-page";
+import { sendwaveMetadata } from "@/data/sendwave";
 import { taptapMetadata } from "@/data/taptap-send";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -69,6 +71,9 @@ export default async function ReferralCodePage({ params }: PageProps) {
   if (!provider) notFound();
 
   const authority = getProviderAuthority(provider);
+  if (provider.slug === "sendwave") {
+    return <SendwaveReferralPage provider={provider} />;
+  }
   const guides = await getGuides();
 
   if (provider.slug === "ria") {
@@ -815,6 +820,7 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralPageMetadata(provider: Provider) {
+  if (provider.slug === "sendwave") return sendwaveMetadata;
   const providerName = referralMetadataProviderName(provider);
 
   if (provider.slug === "ria") {

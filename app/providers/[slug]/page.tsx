@@ -221,6 +221,9 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralEntryInstruction(provider: Provider) {
+  if (provider.slug === "sendwave") {
+    return `Enter BonusFoundry's Sendwave referral code ${provider.referralCode} in the Sendwave app before completing your first transaction.`;
+  }
   if (provider.referralCode) {
     return `Use BonusFoundry code ${provider.referralCode} when ${provider.name} shows a referral or promo-code field.`;
   }
@@ -248,7 +251,9 @@ function providerPageDirectAnswer(provider: Provider, authority: ProviderAuthori
 
 function providerQuickCardFacts(provider: Provider, authority: ProviderAuthority) {
   const minimumTransfer = authority.referral.minimumTransfer || "Check the provider's live offer for the qualifying transfer amount.";
-  const whereToEnterCode = provider.referralCode
+  const whereToEnterCode = provider.slug === "sendwave"
+    ? referralEntryInstruction(provider)
+    : provider.referralCode
     ? "Enter the BonusFoundry code in the referral or promo-code field before completing the qualifying transfer."
     : hasOwnedReferralLink(provider)
       ? "Open the BonusFoundry referral link before creating the account."
@@ -263,6 +268,9 @@ function providerQuickCardFacts(provider: Provider, authority: ProviderAuthority
 }
 
 function whereToEnterCodeSteps(provider: Provider) {
+  if (provider.slug === "sendwave") {
+    return ["Sendwave app", "Enter the referral code", "Before completing the first transaction"];
+  }
   if (provider.referralCode) {
     return ["Signup or first-transfer flow", "Referral or promo-code field", "Before completing the qualifying transfer"];
   }

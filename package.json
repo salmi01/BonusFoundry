@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "indexnow": "tsx scripts/submit-indexnow.ts",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx --ignore-pattern next-env.d.ts --ignore-pattern .next",
+    "lint": "eslint . --ext .ts,.tsx --ignore-pattern next-env.d.ts --ignore-pattern .next --ignore-pattern .next-dev",
     "typecheck": "tsc --noEmit",
+    "check:preview": "node scripts/check-preview.mjs",
     "format": "prettier --check .",
     "format:write": "prettier --write ."
   },

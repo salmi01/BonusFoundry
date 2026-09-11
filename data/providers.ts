@@ -1,4 +1,5 @@
 import { taptapProvider } from "@/data/taptap-send";
+import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
 
 export type Provider = {
   name: string;
@@ -95,9 +96,6 @@ export type Provider = {
   faq: { question: string; answer: string }[];
   lastUpdated: string;
 };
-
-const variableOffer =
-  "The offer may vary by country, time, provider campaign, transfer corridor, payment method, and user eligibility. Confirm the live terms in the provider app before sending money.";
 
 export const referralWarning =
   "Referral offers can vary by country, account, campaign, and provider terms. Always check the live offer in the provider app before sending money.";
@@ -560,48 +558,43 @@ export const providers: Provider[] = [
     website: "https://www.sendwave.com/",
     description:
       "Sendwave is a money transfer app used for sending funds to selected countries, often with mobile-focused delivery options.",
-    referralCode: "I4H9G",
+    referralCode: sendwaveCode,
     referralLink: null,
     welcomeBonus:
-      "BonusFoundry lists I4H9G as the Sendwave referral code. Use it during signup or the first-transfer flow if Sendwave shows a code field, then confirm the current reward and eligibility terms in the app.",
+      `The BonusFoundry Sendwave referral code is ${sendwaveCode}. ${sendwaveTiming} ${sendwaveReward}`,
     supportedCountries: ["United States", "United Kingdom", "France", "Senegal", "Ghana", "Kenya"],
-    eligibleUsers: "New users may be eligible only if Sendwave shows an active offer in their signup or transfer flow.",
+    eligibleUsers: sendwaveEligibility,
+    ineligibleUsers: ["Users who have already completed a Sendwave app transaction.", "Users whose country, transfer route, first transaction or KYC status does not meet Sendwave's applicable conditions."],
+    bonusChecklist: sendwaveSteps,
     requirements: [
       "Create a new account in a supported sender country.",
-      "Check whether Sendwave displays a referral or first-transfer promotion.",
+      sendwaveTiming,
       "Complete verification if required.",
       "Send to an eligible destination and meet any minimum transfer amount."
     ],
-    steps: [
-      "Open Sendwave and review the live signup offer.",
-      "Create your account before sending a first transfer.",
-      "Check fees, exchange rate, destination, payment method, and any visible promotion.",
-      "Complete the transfer only after confirming the current requirements."
-    ],
+    steps: sendwaveSteps,
     keyFacts: [
-      { label: "Referral code", value: "I4H9G, if Sendwave accepts a code in your signup flow." },
-      { label: "Offer status", value: "May vary by country and campaign." },
+      { label: "Referral code", value: `${sendwaveCode} (BonusFoundry owner-supplied)` },
+      { label: "Welcome credit", value: "€10 / $10 for eligible new users, depending on the offer currency." },
       { label: "Best check", value: "Review the Sendwave app before the first transfer." },
       { label: "Bonus certainty", value: "Confirm the live Sendwave offer before sending money." }
     ],
     currentOffer:
-      "BonusFoundry lists I4H9G as the Sendwave referral code. Enter it only when Sendwave shows a code field and review the live signup or transfer terms before sending money.",
-    lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-09-06",
+      `The BonusFoundry Sendwave referral code is ${sendwaveCode}. ${sendwaveTiming} ${sendwaveReward}`,
+    lastOfferUpdate: sendwaveReviewedAt,
+    lastManualReview: sendwaveReviewedAt,
     referral: {
       hasProgram:
-        "Sendwave may show referral, promo, or first-transfer offers in the app. BonusFoundry lists I4H9G as the code to try when the Sendwave flow accepts a code.",
-      code: "I4H9G",
+        "Sendwave operates a personal referral-code program. Its official app screen shows I4H9G and €10 credit for the new user. BonusFoundry's owner also reports a $10 offer.",
+      code: sendwaveCode,
       link: null,
-      welcomeBonus:
-        "Sendwave's public site highlights app transfers and wallet offers in select markets. Any referral reward should be treated as app-only unless Sendwave shows terms in the user's region.",
-      minimumTransfer: "",
-      expiry: "",
-      payoutTiming: "",
+      welcomeBonus: `${sendwaveReward} ${sendwaveRewardEvidence}`,
+      minimumTransfer: "Sendwave may set a minimum transfer for an eligible country or route; check the applicable amount in the app.",
+      expiry: sendwaveExpiry,
+      payoutTiming: sendwavePayout,
       limitations: [
-        "Confirm the reward amount, expiry, sender country, destination, and minimum transfer in the Sendwave app before relying on the code.",
-        "Sendwave Wallet is currently described as available for US senders, with better rates or cashback in select markets.",
-        "Sender and recipient availability varies by country route."
+        "Country, transfer corridor, minimum-transfer and KYC restrictions may apply.",
+        "Sendwave may withhold, reverse or cancel credits for fraud, abuse or rule violations, and may amend, suspend or terminate its referral program."
       ]
     },
     availability: {
@@ -642,11 +635,15 @@ export const providers: Provider[] = [
       helpCenter: "Sendwave's public site links to FAQs, Wallet FAQs, and Contact Us under Support."
     },
     officialResources: [
+      { label: "Sendwave referral-program terms", href: sendwaveSources.terms },
+      { label: "Sendwave referral-program article", href: sendwaveSources.program },
       { label: "Sendwave official website", href: "https://www.sendwave.com/en-us" },
       { label: "Sendwave countries page", href: "https://www.sendwave.com/en-us/countries" },
       { label: "Sendwave support", href: "https://www.sendwave.com/en-us/support" }
     ],
     sources: [
+      { label: "Sendwave referral-program terms", url: sendwaveSources.terms, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
+      { label: "Sendwave referral-program article", url: sendwaveSources.program, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
       {
         label: "Sendwave official website",
         url: "https://www.sendwave.com/en-us",
@@ -666,36 +663,38 @@ export const providers: Provider[] = [
         confidence: "official"
       },
       {
-        label: "Referral code supplied by BonusFoundry owner",
-        url: "https://www.sendwave.com/",
-        lastReviewed: "2026-07-20",
+        label: "Owner-supplied Sendwave app evidence: I4H9G and €10 new-user credit; $10 reported separately by owner",
+        url: "https://bonusfoundry.com/providers/sendwave/referral-code",
+        lastReviewed: sendwaveReviewedAt,
         confidence: "internal"
       }
     ],
     researchProfile: {
       completeness:
-        "Reviewed Sendwave's official homepage, structured organization data, wallet copy, countries page, support FAQ, sender/recipient route signals, verification FAQ, limits FAQ, cancellation/refund FAQ, and public referral signals.",
+        "Reviewed the owner-supplied official Sendwave app screenshot on 12 September 2026: I4H9G and €10 credit for the new user. The owner also reports $10; that currency is not displayed in the capture. Public referral terms were reviewed on 11 September 2026. Earlier service research retains its original dates.",
       confidence: "high",
-      sourcesReviewed: ["Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
+      sourcesReviewed: ["Sendwave referral-program terms", "Sendwave referral-program article", "Sendwave promo-code terms (separate campaign rules)", "Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
-        "Keep one transparency note: BonusFoundry did not find a public Sendwave referral reward table in the official public pages reviewed.",
-        "The I4H9G code should be confirmed in the Sendwave app before a user relies on any reward.",
+        "The $10 offer is owner-reported; the supplied official app screenshot documents only the €10 currency offer.",
+        "Check your account's eligible currency offer and transfer conditions in the Sendwave app.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
     },
     proprietaryVerification: {
       status: "Manually Verified",
-      verificationMethod: "Official Sendwave pages and BonusFoundry owner-supplied referral code",
+      verificationMethod: "Official Sendwave app screenshot supplied by the code owner plus published referral terms",
       verifiedFields: [
-        "Referral code I4H9G supplied by BonusFoundry owner",
-        "Sendwave app-only transfer context",
-        "Debit-card payment and verification guidance",
-        "Country-route availability caveats"
+        "Referral code I4H9G and €10 new-user credit displayed in the official Sendwave app screenshot",
+        "Code entry before the first transaction and new-user eligibility",
+        "12-month referral-credit validity unless otherwise specified",
+        "Country, corridor, minimum-transfer and KYC restrictions"
       ],
-      lastVerified: "2026-09-06",
+      lastVerified: sendwaveReviewedAt,
       officialSourcesReviewed: 3
     },
     updateHistory: [
+      { date: sendwaveReviewedAt, note: "Added €10 / $10 new-user welcome credit: €10 confirmed on the supplied official app screen, $10 reported by the owner. Content focuses on the new user's benefit." },
+      { date: sendwaveTermsReviewedAt, note: "Clarified owner-supplied code I4H9G, official referral eligibility and timing, variable credits, expiry, restrictions and the distinction from separate promotional campaign codes." },
       {
         date: "2026-07-05",
         note: "Verified Sendwave's public promo-code caveat, app-only sending, debit-card payment, identity verification, 3DS/card troubleshooting, limits, wrong-recipient warnings, cancellation/refund timing, support path, Wallet availability, and country-route caveats from official Sendwave pages."
@@ -717,7 +716,7 @@ export const providers: Provider[] = [
       "Sending to the wrong recipient details and expecting a guaranteed refund."
     ],
     missingBonus: [
-      "Check whether Sendwave showed an offer before signup or transfer.",
+      "Confirm that I4H9G was entered in the Sendwave app before completing your first transaction.",
       "Confirm that your first transfer met any displayed minimum amount.",
       "Check whether identity verification, 3DS, card authorization, or app-version issues blocked the transfer.",
       "Contact Sendwave support from the app with screenshots if you relied on a visible app offer."
@@ -728,17 +727,8 @@ export const providers: Provider[] = [
       "Check local transfer limits and verification requirements before sending.",
       "Sendwave support says every account has daily and monthly limits, and the maximum per transaction depends on receive country and delivery method."
     ],
-    faq: [
-      {
-        question: "Does BonusFoundry have a Sendwave referral code?",
-        answer: "Yes. BonusFoundry lists I4H9G as the Sendwave referral code. Confirm the live offer terms in Sendwave before sending money."
-      },
-      {
-        question: "Can Sendwave offers change?",
-        answer: variableOffer
-      }
-    ],
-    lastUpdated: "2026-07-05"
+    faq: sendwaveFaq,
+    lastUpdated: sendwaveReviewedAt
   },
   {
     name: "Ria",

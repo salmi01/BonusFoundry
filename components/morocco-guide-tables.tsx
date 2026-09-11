@@ -98,7 +98,7 @@ export function MoroccoAppsAtGlanceTable() {
             <td className="px-4 py-3">US, Canada, France and UK listed by Sendwave for Morocco</td>
             <td className="px-4 py-3">Small percentage in the exchange rate; charges shown before checkout in the app</td>
             <td className="px-4 py-3">
-              <Link href="/providers/sendwave/referral-code">I4H9G</Link>
+              <Link href="/providers/sendwave/referral-code">Sendwave referral code I4H9G</Link>
             </td>
             <td className="px-4 py-3">BonusFoundry lists I4H9G as the Sendwave referral code; live eligibility must be checked in Sendwave</td>
             <td className="px-4 py-3">September 6, 2026</td>
@@ -185,10 +185,10 @@ export function MoroccoReferralBonusesTable() {
           <tr className="border-b align-top">
             <td className="px-4 py-3">Sendwave</td>
             <td className="px-4 py-3">I4H9G</td>
-            <td className="px-4 py-3">Varies by live Sendwave flow</td>
-            <td className="px-4 py-3">Check Sendwave during signup or transfer</td>
-            <td className="px-4 py-3">Existing BonusFoundry structured provider data</td>
-            <td className="px-4 py-3">September 6, 2026</td>
+            <td className="px-4 py-3">€10 / $10 new-user credit, depending on the eligible currency offer</td>
+            <td className="px-4 py-3">Enter in the Sendwave app before completing the first transaction</td>
+            <td className="px-4 py-3">Official Sendwave app screenshot confirms €10 for the new user; $10 reported by the code owner</td>
+            <td className="px-4 py-3">September 12, 2026</td>
           </tr>
           <tr className="border-b align-top">
             <td className="px-4 py-3">Wise</td>

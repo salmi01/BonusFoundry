@@ -18,6 +18,20 @@ npm install
 npm run dev
 ```
 
+Open http://localhost:3000. The development command uses an explicit port so a
+second launch stops with `EADDRINUSE` instead of starting another server that
+overwrites the same generated files. If the server is already running, use it
+or stop it with Ctrl+C before restarting. Avoid bypassing this with a second
+`next dev` command or a different port in the same checkout.
+
+Development assets live in `.next-dev`; production build/start assets remain in
+`.next`. This prevents a production build from deleting CSS used by development.
+Keep browser test profiles outside both directories and close test browsers when
+finished. When checking the preview, verify its CSS responses as well as the HTML.
+
+With the dev server running, use `npm run check:preview` to check the home,
+providers and Sendwave pages plus their linked CSS and JavaScript assets.
+
 ## Validation
 
 ```bash

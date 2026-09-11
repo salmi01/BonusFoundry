@@ -18,6 +18,7 @@ BonusFoundry helps users understand eligibility, qualifying transfer rules, veri
 - [Ria](https://bonusfoundry.com/providers/ria)
 - [LemFi](https://bonusfoundry.com/providers/lemfi)
 - [Sendwave](https://bonusfoundry.com/providers/sendwave)
+- [Sendwave referral code I4H9G](https://bonusfoundry.com/providers/sendwave/referral-code): €10 / $10 welcome credit for eligible new users, depending on the currency offer. Owner-supplied official Sendwave app screenshot confirms €10; $10 is owner-reported. Enter the code before completing the first transaction; Sendwave terms apply.
 - [Remitly](https://bonusfoundry.com/providers/remitly)
 - [Wise](https://bonusfoundry.com/providers/wise)
 - [Paysend](https://bonusfoundry.com/providers/paysend)
