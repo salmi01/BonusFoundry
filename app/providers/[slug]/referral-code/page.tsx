@@ -367,7 +367,7 @@ function RiaReferralPage({
                   },
                   {
                     label: "Eligible residences",
-                    value: "France, United States, and Australia only"
+                    value: "France, United States, Australia, and Canada only"
                   },
                   { label: "Age", value: "Both people must be at least 18" },
                   {
@@ -429,8 +429,8 @@ function RiaReferralPage({
                     </h3>
                     <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
                       <li>
-                        Be at least 18 and live in France, the United States, or
-                        Australia.
+                        Be at least 18 and live in France, the United States,
+                        Australia, or Canada.
                       </li>
                       <li>
                         Complete at least one transfer in the Ria app before
@@ -455,7 +455,7 @@ function RiaReferralPage({
                   {
                     label: "Residence",
                     value:
-                      "Ria says both the referrer and friend must live in France, the United States, or Australia. Eligibility is not established for other countries."
+                      "Ria says both the referrer and friend must live in France, the United States, Australia, or Canada. Eligibility is not established for other countries."
                   },
                   {
                     label: "Age",
@@ -522,7 +522,7 @@ function RiaReferralPage({
                   {
                     problem: "The friend was not eligible",
                     possibleReason:
-                      "The friend was not resident in France, the United States, or Australia, or already had a Ria account or transfer history.",
+                      "The friend was not resident in France, the United States, Australia, or Canada, or already had a Ria account or transfer history.",
                     suggestedAction:
                       "Compare the account with Ria's new-customer and residence rules."
                   },
@@ -748,7 +748,7 @@ function riaReferralFaq(): FAQItem[] {
       question:
         "Which countries are eligible for Ria's refer-a-friend program?",
       answer:
-        "Ria lists France, the United States, and Australia. Both the referrer and referred friend must live in one of these eligible countries and be at least 18."
+        "Ria lists France, the United States, Australia, and Canada. Both the referrer and referred friend must live in one of these eligible countries and be at least 18."
     },
     {
       question: "When must a new customer enter the Ria referral code?",

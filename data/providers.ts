@@ -758,9 +758,9 @@ export const providers: Provider[] = [
       "Senegal"
     ],
     eligibleUsers:
-      "New Ria customers with no previous Ria account or transfer history may qualify when both people are at least 18 and live in France, the United States, or Australia.",
+      "New Ria customers with no previous Ria account or transfer history may qualify when both people are at least 18 and live in France, the United States, Australia, or Canada.",
     requirements: [
-      "Both the referrer and referred friend must be at least 18 and live in France, the United States, or Australia.",
+      "Both the referrer and referred friend must be at least 18 and live in France, the United States, Australia, or Canada.",
       "The referrer must have completed at least one transfer in the Ria app before referring friends.",
       "The friend must be a new Ria customer with no previous account or transfer history.",
       "The friend must enter the referral code before completing the first transfer.",
@@ -776,7 +776,7 @@ export const providers: Provider[] = [
       { label: "BonusFoundry referral code", value: "9RMU-ENB7" },
       {
         label: "Eligible residences",
-        value: "France, United States, and Australia"
+        value: "France, United States, Australia, and Canada"
       },
       {
         label: "France",
@@ -792,12 +792,12 @@ export const providers: Provider[] = [
       }
     ],
     currentOffer:
-      "Ria officially documents country-specific refer-a-friend discounts for eligible residents of France, the United States, and Australia. BonusFoundry's publisher supplies code 9RMU-ENB7",
+      "Ria officially documents country-specific refer-a-friend discounts for eligible residents of France, the United States, Australia, and Canada. BonusFoundry's publisher supplies code 9RMU-ENB7",
     lastOfferUpdate: "2026-08-18",
     lastManualReview: "2026-09-06",
     referral: {
       hasProgram:
-        "Ria's official refer-a-friend program is available to eligible residents of France, the United States, and Australia. Both people must be at least 18, and the referrer must have completed a transfer in the Ria app.",
+        "Ria's official refer-a-friend program is available to eligible residents of France, the United States, Australia, and Canada. Both people must be at least 18, and the referrer must have completed a transfer in the Ria app.",
       code: "9RMU-ENB7",
       link: null,
       welcomeBonus:
@@ -810,7 +810,7 @@ export const providers: Provider[] = [
         "The friend's discount applies to the first qualifying international transfer. The referrer's discount applies to the next qualifying international transfer and may take up to two days to appear after the friend's transfer is paid to the recipient.",
       limitations: [
         "BonusFoundry's publisher supplies code 9RMU-ENB7",
-        "The referral program is documented only for eligible residents of France, the United States, and Australia.",
+        "The referral program is documented only for eligible residents of France, the United States, Australia, and Canada.",
         "Domestic, canceled, unsuccessful, and below-minimum transfers do not qualify.",
         "The friend must enter the referral code before completing the first transfer; it cannot be applied retroactively or to a later transfer.",
         "Confirm the offer displayed in the Ria app because availability, amounts, and conditions can change."
@@ -1048,13 +1048,13 @@ export const providers: Provider[] = [
     ],
     ineligibleUsers: [
       "Existing Ria customers, including anyone with a previous Ria account or transfer history, cannot qualify as the referred friend.",
-      "People outside France, the United States, and Australia are not documented as eligible for Ria's refer-a-friend program.",
+      "People outside France, the United States, Australia, and Canada are not documented as eligible for Ria's refer-a-friend program.",
       "Anyone under 18 is ineligible.",
       "Domestic, canceled, unsuccessful, and below-minimum transfers do not qualify.",
       "A referral code entered after the first transfer cannot be applied retroactively or to a later transfer."
     ],
     bonusChecklist: [
-      "Confirm that both people are at least 18 and live in France, the United States, or Australia.",
+      "Confirm that both people are at least 18 and live in France, the United States, Australia, or Canada.",
       "Confirm that the friend has no previous Ria account or transfer history.",
       "Enter 9RMU-ENB7 during account creation or through Add promo code before completing the first transfer.",
       "Send at least EUR 50, USD 50, or AUD 100 in one international transfer for the applicable residence.",
@@ -1125,7 +1125,7 @@ export const providers: Provider[] = [
       "Using a domestic, canceled, or unsuccessful transfer and expecting it to qualify."
     ],
     missingBonus: [
-      "Check that the referred friend lives in France, the United States, or Australia and had no previous Ria account or transfer history.",
+      "Check that the referred friend lives in France, the United States, Australia, or Canada and had no previous Ria account or transfer history.",
       "Confirm that the referral code was entered before the first transfer was completed.",
       "Confirm that one international transfer met the applicable EUR 50, USD 50, or AUD 100 minimum.",
       "Check that the transfer completed successfully and was paid to the recipient.",
@@ -1135,7 +1135,7 @@ export const providers: Provider[] = [
       "France residents: EUR 20 off for the friend and referrer after one qualifying EUR 50 international transfer.",
       "United States residents: USD 10 off for the friend and USD 20 off for the referrer after one qualifying USD 50 international transfer.",
       "Australia residents: AUD 30 off for the friend and referrer after one qualifying AUD 100 international transfer.",
-      "Ria does not document referral-program eligibility for residents of other countries in the official referral guidance checked on 6 September 2026."
+      "Ria documents referral-program eligibility for residents of France, the United States, Australia, and Canada."
     ],
     faq: [
       {
@@ -1147,7 +1147,7 @@ export const providers: Provider[] = [
         question:
           "Which countries are eligible for Ria's refer-a-friend program?",
         answer:
-          "Ria lists France, the United States, and Australia. Both people must be at least 18 and live in an eligible country."
+          "Ria lists France, the United States, Australia, and Canada. Both people must be at least 18 and live in an eligible country."
       }
     ],
     lastUpdated: "2026-09-05"
