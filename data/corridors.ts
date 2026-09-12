@@ -660,6 +660,11 @@ export function getCorridorProviders(corridor: Corridor) {
   return providers.filter((provider) => corridor.providerSlugs.includes(provider.slug));
 }
 
+// Reverse the editorial shortlist so both page types use the same relationships.
+export function getProviderCorridors(providerSlug: string) {
+  return corridors.filter((corridor) => corridor.providerSlugs.includes(providerSlug));
+}
+
 export function getComparisonProviders() {
   return allComparisonProviderSlugs
     .map((slug) => providers.find((provider) => provider.slug === slug))

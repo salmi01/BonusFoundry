@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { CopyCodeButton } from "@/components/copy-code-button";
 import { JsonLd } from "@/components/json-ld";
+import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import {
   LastVerified,
   RelatedResources,
@@ -285,6 +286,7 @@ export function TaptapSendPage({
                 </Section>
               </>
             )}
+            <ProviderCorridorLinks provider={taptapProvider} />
             <Section title="Countries, fees and availability">
               {overview ? (
                 <>

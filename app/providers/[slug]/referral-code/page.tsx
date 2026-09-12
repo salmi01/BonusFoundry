@@ -30,8 +30,8 @@ import { CopyCodeButton } from "@/components/copy-code-button";
 import { Disclosure } from "@/components/disclosure";
 import { JsonLd } from "@/components/json-ld";
 import { ReferralBox } from "@/components/referral-box";
+import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { corridors } from "@/data/corridors";
 import { faqs } from "@/data/faqs";
 import { getProvider, getProviderAuthority, providers, type Provider, type ProviderAuthority } from "@/data/providers";
 import { getGuides } from "@/lib/content";
@@ -124,6 +124,7 @@ export default async function ReferralCodePage({ params }: PageProps) {
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-8">{quickAnswer}</p>
             <div className="mt-6 grid min-w-0 grid-cols-1 gap-5 sm:mt-8">
               <QuickAnswer answer={quickAnswer} />
+              <ProviderCorridorLinks provider={provider} />
               {provider.proprietaryVerification ? (
                 <VerificationStatus verification={provider.proprietaryVerification} />
               ) : null}
@@ -225,18 +226,6 @@ function RiaReferralPage({
       label: "Compare money transfer welcome bonuses",
       description:
         "Compare the full transfer result, not only the advertised reward."
-    },
-    {
-      href: "/corridors/france-to-morocco",
-      label: "France to Morocco transfer comparison",
-      description:
-        "Compare providers and payout methods for this France-origin corridor."
-    },
-    {
-      href: "/corridors/france-to-algeria",
-      label: "France to Algeria transfer comparison",
-      description:
-        "Check provider availability and transfer methods for Algeria."
     },
     {
       href: "/editorial-policy",
@@ -393,6 +382,7 @@ function RiaReferralPage({
               />
 
               <RiaCountryRewardTable />
+              <ProviderCorridorLinks provider={provider} />
 
               <section className="rounded-lg border bg-card p-5 shadow-sm">
                 <h2 className="text-xl font-semibold leading-tight">
@@ -799,15 +789,11 @@ function buildTaptapRelatedResources(
   const relatedGuides = guides
     .filter((guide) => authority.relatedGuideSlugs.includes(guide.slug))
     .map((guide) => ({ href: `/guides/${guide.slug}`, label: guide.title, description: guide.description }));
-  const relatedCorridors = corridors
-    .filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug))
-    .map((corridor) => ({ href: `/corridors/${corridor.slug}`, label: `${corridor.from} to ${corridor.to}`, description: corridor.summary }));
 
   return [
     { href: `/providers/${provider.slug}`, label: "TapTap Send provider page", description: "Service overview, countries, payment methods, delivery methods, verification, support, and provider details." },
     ...relatedGuides,
     { href: "/guides/why-bonus-was-not-received", label: "Referral code troubleshooting guide", description: "Checks to run when a signup bonus or referral reward does not appear." },
-    ...relatedCorridors,
     { href: "/disclosure", label: "Referral disclosure" }
   ];
 }
@@ -1009,15 +995,11 @@ function buildRelatedResources(provider: Provider, authority: ProviderAuthority,
   const relatedFaqs = faqs
     .filter((faq) => authority.relatedFaqSlugs.includes(faq.slug))
     .map((faq) => ({ href: `/faq/${faq.slug}`, label: faq.question, description: faq.answer }));
-  const relatedCorridors = corridors
-    .filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug))
-    .map((corridor) => ({ href: `/corridors/${corridor.slug}`, label: `${corridor.from} to ${corridor.to}`, description: corridor.summary }));
 
   return [
     { href: `/providers/${provider.slug}`, label: `${provider.name} provider page`, description: "Full reward, eligibility, verification, country, source, and support details." },
     ...relatedGuides,
     ...relatedFaqs,
-    ...relatedCorridors,
     { href: "/providers", label: "All provider bonus guides" },
     { href: "/faq", label: "Referral bonus FAQ" },
     { href: "/disclosure", label: "Referral disclosure" }

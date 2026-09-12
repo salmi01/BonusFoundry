@@ -6,6 +6,7 @@ import { CopyCodeButton } from "@/components/copy-code-button";
 import { JsonLd } from "@/components/json-ld";
 import { ProviderMiniFAQ } from "@/components/ai-content";
 import { ReferralBox } from "@/components/referral-box";
+import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import type { Provider } from "@/data/providers";
 import {
@@ -143,6 +144,7 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   {sendwaveRewardEvidence}
                 </p>
               </section>
+              <ProviderCorridorLinks provider={provider} />
               <Section title="How the Sendwave referral program works">
                 <p>
                   Sendwave&apos;s{" "}

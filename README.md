@@ -42,6 +42,14 @@ npm run build
 
 ## Content
 
+Corridor/provider links share one source of truth: each corridor's `providerSlugs`
+in `data/corridors.ts`. Provider overview and referral pages link back to every
+corridor that lists them, through `ProviderCorridorLinks`. These are comparison
+shortlists, not a guarantee of live route or referral availability. Corridor
+comparison tables link directly to each provider's transfer guide and referral
+terms. After `npm run build`, run `npm run check:internal-links` to verify every
+relationship in the server-rendered HTML, including custom provider pages.
+
 - Providers live in `data/providers.ts`.
 - Corridors live in `data/corridors.ts`.
 - FAQ entries live in `data/faqs.ts`.

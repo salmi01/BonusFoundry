@@ -62,7 +62,7 @@ export default async function CorridorPage({ params }: PageProps) {
 
   const relatedProviders = getCorridorProviders(corridor);
   const comparisonRows = relatedProviders.map((provider) => buildComparisonRow(provider, corridor));
-  const relatedLinks = buildRelatedLinks(corridor, relatedProviders);
+  const relatedLinks = buildRelatedLinks(corridor);
 
   return (
     <>
@@ -111,7 +111,7 @@ export default async function CorridorPage({ params }: PageProps) {
           <ProviderComparisonTable rows={comparisonRows} />
 
           <section>
-            <h2 className="text-2xl font-semibold">Provider cards</h2>
+            <h2 className="text-2xl font-semibold">Providers to compare for {corridor.from} to {corridor.to}</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground">
               These providers are a corridor-specific shortlist. Open a provider page for full referral, eligibility,
               verification, support, and official-source details.
@@ -164,14 +164,19 @@ function ProviderComparisonTable({ rows }: { rows: ComparisonRow[] }) {
           <tbody>
             {rows.map((row) => (
               <TableRow key={row.provider.slug}>
-                <TableHead className="w-[150px]">
+                <TableHead scope="row" className="w-[150px]">
                   <Link href={`/providers/${row.provider.slug}`} className="text-primary">
-                    {row.provider.name}
+                    {row.provider.name} transfer guide
                   </Link>
                 </TableHead>
                 <TableCell>{row.deliveryMethods}</TableCell>
                 <TableCell>{row.typicalSpeed}</TableCell>
-                <TableCell>{row.bonusAvailable}</TableCell>
+                <TableCell>
+                  <p>{row.bonusAvailable}</p>
+                  <Link href={`/providers/${row.provider.slug}/referral-code`} className="mt-2 inline-flex min-h-11 items-center font-medium text-primary underline">
+                    {row.provider.name} referral terms
+                  </Link>
+                </TableCell>
                 <TableCell>{row.bestFor}</TableCell>
               </TableRow>
             ))}
@@ -284,7 +289,7 @@ function buildTroubleshooting(corridor: Corridor): TroubleshootingItem[] {
   }));
 }
 
-function buildRelatedLinks(corridor: Corridor, providers: Provider[]): LinkItem[] {
+function buildRelatedLinks(corridor: Corridor): LinkItem[] {
   const countryHub = sendingCountryHubSlugs[corridor.from]
     ? [
         {
@@ -304,18 +309,6 @@ function buildRelatedLinks(corridor: Corridor, providers: Provider[]): LinkItem[
     }));
 
   return [
-    ...providers.flatMap((provider) => [
-      {
-        href: `/providers/${provider.slug}`,
-        label: `${provider.name} provider page`,
-        description: `Referral, eligibility, verification, and support details for ${provider.name}.`
-      },
-      {
-        href: `/providers/${provider.slug}/referral-code`,
-        label: `${provider.name} referral code`,
-        description: `Code, link, reward, and troubleshooting details for ${provider.name}.`
-      }
-    ]),
     ...corridor.relatedGuideSlugs.map((guideSlug) => ({
       href: `/guides/${guideSlug}`,
       label: guideLabels[guideSlug] ?? guideSlug,

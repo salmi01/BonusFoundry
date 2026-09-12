@@ -26,7 +26,7 @@ export function ProviderCard({ provider }: { provider: Provider }) {
             href={`/providers/${provider.slug}`}
             className="-ml-2 mt-4 inline-flex min-h-11 w-fit max-w-full items-center gap-2 rounded-md px-2 py-2 text-sm font-semibold text-primary transition-colors hover:bg-muted sm:mt-5"
           >
-            Read guide
+            {provider.name} transfer guide
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
         </CardContent>

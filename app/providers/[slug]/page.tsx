@@ -32,7 +32,7 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { JsonLd } from "@/components/json-ld";
 import { ReferralBox } from "@/components/referral-box";
-import { corridors } from "@/data/corridors";
+import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { faqs } from "@/data/faqs";
 import { getProvider, getProviderAuthority, providers, type Provider, type ProviderAuthority } from "@/data/providers";
 import { getGuides } from "@/lib/content";
@@ -74,11 +74,10 @@ export default async function ProviderPage({ params }: PageProps) {
   const guides = await getGuides();
   const relatedGuides = guides.filter((guide) => authority.relatedGuideSlugs.includes(guide.slug));
   const relatedFaqs = faqs.filter((faq) => authority.relatedFaqSlugs.includes(faq.slug));
-  const relatedCorridors = corridors.filter((corridor) => authority.relatedCorridorSlugs.includes(corridor.slug));
   const relatedProviders = providers.filter((item) => authority.relatedProviderSlugs.includes(item.slug));
   const quickCardFacts = providerQuickCardFacts(provider, authority);
   const providerFaq = buildProviderFaq(provider, authority);
-  const relatedResources = buildRelatedResources(provider, relatedGuides, relatedFaqs, relatedCorridors, relatedProviders);
+  const relatedResources = buildRelatedResources(provider, relatedGuides, relatedFaqs, relatedProviders);
   const officialSources = buildOfficialSources(authority);
   const troubleshooting = buildTroubleshooting(provider);
   const codePath = whereToEnterCodeSteps(provider);
@@ -141,6 +140,7 @@ export default async function ProviderPage({ params }: PageProps) {
                 officialSourcesReviewed={authority.researchProfile.sourcesReviewed.join(", ")}
               />
               <KeyTakeaways items={authority.bonusChecklist.slice(0, 5)} />
+              <ProviderCorridorLinks provider={provider} />
               <RewardSummary
                 rewardType={rewardType(provider, authority)}
                 rewardRange={authority.referral.welcomeBonus}
@@ -397,14 +397,12 @@ function buildRelatedResources(
   provider: Provider,
   guides: { slug: string; title: string }[],
   relatedFaqs: { slug: string; question: string }[],
-  relatedCorridors: { slug: string; from: string; to: string }[],
   relatedProviders: Provider[]
 ): LinkItem[] {
   return [
     { href: `/providers/${provider.slug}/referral-code`, label: `${provider.name} referral code`, description: "Detailed code, link, eligibility, and reward timing guide." },
     ...guides.map((guide) => ({ href: `/guides/${guide.slug}`, label: guide.title })),
     ...relatedFaqs.map((faq) => ({ href: `/faq/${faq.slug}`, label: faq.question })),
-    ...relatedCorridors.map((corridor) => ({ href: `/corridors/${corridor.slug}`, label: `${corridor.from} to ${corridor.to}` })),
     ...relatedProviders.map((item) => ({ href: `/providers/${item.slug}`, label: item.name })),
     { href: "/disclosure", label: "Referral disclosure" }
   ];

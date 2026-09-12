@@ -10,6 +10,7 @@
     "lint": "eslint . --ext .ts,.tsx --ignore-pattern next-env.d.ts --ignore-pattern .next --ignore-pattern .next-dev",
     "typecheck": "tsc --noEmit",
     "check:preview": "node scripts/check-preview.mjs",
+    "check:internal-links": "tsx scripts/verify-internal-links.ts",
     "format": "prettier --check .",
     "format:write": "prettier --write ."
   },
