@@ -1,6 +1,95 @@
 import Link from "next/link";
-import { taptapOffer, taptapFriendReward, taptapReferrerReward, taptapMinimum, taptapSource } from "@/data/taptap-send";
+import {
+  getMoroccoProvider,
+  type MoroccoProviderSlug
+} from "@/data/morocco-guide";
 import { formatDate } from "@/lib/utils";
+
+// These route-specific observations were reviewed separately from provider offers.
+const moroccoRoutes: {
+  slug: MoroccoProviderSlug;
+  bestFor: string;
+  delivery: string;
+  senders: string;
+  fees: string;
+}[] = [
+  {
+    slug: "taptap-send",
+    bestFor: "Morocco cash pickup and route-specific referral offer",
+    delivery: "Bank deposit, Cash Plus and Wafacash cash pickup",
+    senders:
+      "Check sending-country guides; selected European countries and US state restrictions apply",
+    fees: "Bank transfers are described as no-fee; cash pickup has small fees on the official Morocco page"
+  },
+  {
+    slug: "remitly",
+    bestFor: "Broad Morocco payout options from the US route",
+    delivery:
+      "Bank deposit, cash pickup and mobile wallet on the US-to-Morocco page",
+    senders:
+      "US route verified; other sender countries must be checked in Remitly",
+    fees: "Live quote; Remitly says cost varies by amount, payment method and delivery option"
+  },
+  {
+    slug: "wise",
+    bestFor: "Transparent bank-account pricing",
+    delivery: "Local bank account in Morocco",
+    senders:
+      "US-to-Morocco page verified; Wise has route-specific availability",
+    fees: "Upfront Wise fee plus mid-market exchange rate; live calculator controls current cost"
+  },
+  {
+    slug: "lemfi",
+    bestFor: "Verified referral code where the sender country is supported",
+    delivery:
+      "Direct bank account, mobile money and more options described by LemFi; Morocco destination verified",
+    senders:
+      "Canada, Europe, UK and US sender availability described by LemFi help",
+    fees: "Live app rate and fees; LemFi says rates change and users should check the app"
+  },
+  {
+    slug: "ria",
+    bestFor: "Agent network, cash pickup and bank deposit",
+    delivery:
+      "Cash pickup, bank deposit and mobile wallet on the US-to-Morocco page",
+    senders:
+      "US route verified; Ria also supports online, app and agent transfers where available",
+    fees: "Live quote; payment can include bank, card, wallet payments or cash depending on route"
+  },
+  {
+    slug: "sendwave",
+    bestFor: "Cash pickup only from listed sender countries",
+    delivery: "Cash pickup only for Morocco",
+    senders: "US, Canada, France and UK listed by Sendwave for Morocco",
+    fees: "Small percentage in the exchange rate; charges shown before checkout in the app"
+  },
+  {
+    slug: "paysend",
+    bestFor: "Card, bank-account and wallet delivery",
+    delivery: "Mastercard cards, bank accounts and digital wallets",
+    senders:
+      "US-to-Morocco page verified; route availability varies by sender country",
+    fees: "Live quote; official route page shows fee, rate and expected arrival before sending"
+  },
+  {
+    slug: "worldremit",
+    bestFor: "Multiple payout methods and cash pickup",
+    delivery:
+      "Bank transfer, cash pickup, mobile money, airtime top-up and debit-card deposit where available",
+    senders:
+      "US-to-Morocco page verified; debit-card deposit source lists selected European senders",
+    fees: "Live quote; WorldRemit shows fees and exchange rate upfront"
+  }
+];
+
+function ReferralMethod({ slug }: { slug: MoroccoProviderSlug }) {
+  const { referral, method } = getMoroccoProvider(slug);
+  return referral.code || referral.link ? (
+    <Link href={`/providers/${slug}/referral-code`}>{method}</Link>
+  ) : (
+    <span>{method}</span>
+  );
+}
 
 export function MoroccoAppsAtGlanceTable() {
   return (
@@ -8,127 +97,53 @@ export function MoroccoAppsAtGlanceTable() {
       <table className="w-full min-w-[980px] border-collapse text-left text-sm">
         <thead className="bg-muted text-foreground">
           <tr>
-            <th className="border-b px-4 py-3 font-semibold">Provider</th>
-            <th className="border-b px-4 py-3 font-semibold">Best for</th>
-            <th className="border-b px-4 py-3 font-semibold">Morocco delivery methods</th>
-            <th className="border-b px-4 py-3 font-semibold">Sending countries</th>
-            <th className="border-b px-4 py-3 font-semibold">Fee model</th>
-            <th className="border-b px-4 py-3 font-semibold">Referral or promo code</th>
-            <th className="border-b px-4 py-3 font-semibold">Bonus</th>
-            <th className="border-b px-4 py-3 font-semibold">Last verified</th>
+            {[
+              "Provider",
+              "Best for",
+              "Morocco delivery methods",
+              "Sending countries",
+              "Fee model",
+              "Referral or promo code",
+              "Bonus",
+              "Provider review"
+            ].map((label) => (
+              <th
+                key={label}
+                scope="col"
+                className="border-b px-4 py-3 font-semibold"
+              >
+                {label}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody className="text-muted-foreground">
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/taptap-send">TapTap Send</Link>
-            </td>
-            <td className="px-4 py-3">Morocco cash pickup and route-specific referral offer</td>
-            <td className="px-4 py-3">Bank deposit, Cash Plus and Wafacash cash pickup</td>
-            <td className="px-4 py-3">Check sending-country guides; selected European countries and US state restrictions apply</td>
-            <td className="px-4 py-3">Bank transfers are described as no-fee; cash pickup has small fees on the official Morocco page</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/taptap-send/referral-code">{taptapOffer.code}</Link>
-            </td>
-            <td className="px-4 py-3">{taptapFriendReward} for the friend; {taptapReferrerReward} for the referrer in the owner’s app. Minimum and route eligibility must be checked.</td>
-            <td className="px-4 py-3">Referral rules: {formatDate(taptapOffer.officialCheckedAt)}</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/remitly">Remitly</Link>
-            </td>
-            <td className="px-4 py-3">Broad Morocco payout options from the US route</td>
-            <td className="px-4 py-3">Bank deposit, cash pickup and mobile wallet on the US-to-Morocco page</td>
-            <td className="px-4 py-3">US route verified; other sender countries must be checked in Remitly</td>
-            <td className="px-4 py-3">Live quote; Remitly says cost varies by amount, payment method and delivery option</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/remitly/referral-code">Referral method: Personal referral link</Link>
-            </td>
-            <td className="px-4 py-3">Variable first-transfer or referral offer controlled by Remitly</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/wise">Wise</Link>
-            </td>
-            <td className="px-4 py-3">Transparent bank-account pricing</td>
-            <td className="px-4 py-3">Local bank account in Morocco</td>
-            <td className="px-4 py-3">US-to-Morocco page verified; Wise has route-specific availability</td>
-            <td className="px-4 py-3">Upfront Wise fee plus mid-market exchange rate; live calculator controls current cost</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/wise/referral-code">Referral method: Personal referral link</Link>
-            </td>
-            <td className="px-4 py-3">Wise invite benefits vary by account, country and current invitation flow</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/lemfi">LemFi</Link>
-            </td>
-            <td className="px-4 py-3">Verified referral code where the sender country is supported</td>
-            <td className="px-4 py-3">Direct bank account, mobile money and more options described by LemFi; Morocco destination verified</td>
-            <td className="px-4 py-3">Canada, Europe, UK and US sender availability described by LemFi help</td>
-            <td className="px-4 py-3">Live app rate and fees; LemFi says rates change and users should check the app</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/lemfi/referral-code">SALABGWQ</Link>
-            </td>
-            <td className="px-4 py-3">EUR10 or $10 after a qualifying first transfer of at least EUR100 or $100, manually verified by BonusFoundry</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/ria">Ria</Link>
-            </td>
-            <td className="px-4 py-3">Agent network, cash pickup and bank deposit</td>
-            <td className="px-4 py-3">Cash pickup, bank deposit and mobile wallet on the US-to-Morocco page</td>
-            <td className="px-4 py-3">US route verified; Ria also supports online, app and agent transfers where available</td>
-            <td className="px-4 py-3">Live quote; payment can include bank, card, wallet payments or cash depending on route</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/ria/referral-code">9RMU-ENB7 (publisher-supplied)</Link>
-            </td>
-            <td className="px-4 py-3">France: EUR20 each; US: USD10 for the friend and USD20 for the referrer; Australia: AUD30 each</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/sendwave">Sendwave</Link>
-            </td>
-            <td className="px-4 py-3">Cash pickup only from listed sender countries</td>
-            <td className="px-4 py-3">Cash pickup only for Morocco</td>
-            <td className="px-4 py-3">US, Canada, France and UK listed by Sendwave for Morocco</td>
-            <td className="px-4 py-3">Small percentage in the exchange rate; charges shown before checkout in the app</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/sendwave/referral-code">Sendwave referral code I4H9G</Link>
-            </td>
-            <td className="px-4 py-3">BonusFoundry lists I4H9G as the Sendwave referral code; live eligibility must be checked in Sendwave</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/paysend">Paysend</Link>
-            </td>
-            <td className="px-4 py-3">Card, bank-account and wallet delivery</td>
-            <td className="px-4 py-3">Mastercard cards, bank accounts and digital wallets</td>
-            <td className="px-4 py-3">US-to-Morocco page verified; route availability varies by sender country</td>
-            <td className="px-4 py-3">Live quote; official route page shows fee, rate and expected arrival before sending</td>
-            <td className="px-4 py-3">
-              <Link href="/providers/paysend/referral-code">Referral method: Personal referral link</Link>
-            </td>
-            <td className="px-4 py-3">Paysend referral program may reward invited transfers; terms and country equivalents vary</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="align-top">
-            <td className="px-4 py-3">
-              <Link href="/providers/worldremit">WorldRemit</Link>
-            </td>
-            <td className="px-4 py-3">Multiple payout methods and cash pickup</td>
-            <td className="px-4 py-3">Bank transfer, cash pickup, mobile money, airtime top-up and debit-card deposit where available</td>
-            <td className="px-4 py-3">US-to-Morocco page verified; debit-card deposit source lists selected European senders</td>
-            <td className="px-4 py-3">Live quote; WorldRemit shows fees and exchange rate upfront</td>
-            <td className="px-4 py-3">No verified code listed</td>
-            <td className="px-4 py-3">No verified BonusFoundry referral code is currently listed for this provider.</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
+          {moroccoRoutes.map((route) => {
+            const { provider, referral, authority } = getMoroccoProvider(
+              route.slug
+            );
+            return (
+              <tr
+                key={route.slug}
+                className="border-b align-top last:border-b-0"
+              >
+                <td className="px-4 py-3">
+                  <Link href={`/providers/${route.slug}`}>{provider.name}</Link>
+                </td>
+                <td className="px-4 py-3">{route.bestFor}</td>
+                <td className="px-4 py-3">{route.delivery}</td>
+                <td className="px-4 py-3">{route.senders}</td>
+                <td className="px-4 py-3">{route.fees}</td>
+                <td className="px-4 py-3">
+                  <ReferralMethod slug={route.slug} />
+                </td>
+                <td className="px-4 py-3">{referral.welcomeBonus}</td>
+                <td className="px-4 py-3">
+                  {formatDate(authority.lastManualReview)}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -136,94 +151,104 @@ export function MoroccoAppsAtGlanceTable() {
 }
 
 export function MoroccoReferralBonusesTable() {
+  const slugs: MoroccoProviderSlug[] = [
+    "taptap-send",
+    "lemfi",
+    "ria",
+    "sendwave",
+    "wise",
+    "remitly",
+    "paysend",
+    "worldremit"
+  ];
   return (
     <div className="mt-5 overflow-x-auto rounded-lg border">
       <table className="w-full min-w-[760px] border-collapse text-left text-sm">
         <thead className="bg-muted text-foreground">
           <tr>
-            <th className="border-b px-4 py-3 font-semibold">Provider</th>
-            <th className="border-b px-4 py-3 font-semibold">Referral or promo code</th>
-            <th className="border-b px-4 py-3 font-semibold">Bonus</th>
-            <th className="border-b px-4 py-3 font-semibold">Minimum transfer</th>
-            <th className="border-b px-4 py-3 font-semibold">Verified source</th>
-            <th className="border-b px-4 py-3 font-semibold">Last verified</th>
+            {[
+              "Provider",
+              "Referral or promo code",
+              "Bonus",
+              "Minimum transfer",
+              "Evidence and terms",
+              "Provider review"
+            ].map((label) => (
+              <th
+                key={label}
+                scope="col"
+                className="border-b px-4 py-3 font-semibold"
+              >
+                {label}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody className="text-muted-foreground">
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">TapTap Send</td>
-            <td className="px-4 py-3">{taptapOffer.code}</td>
-            <td className="px-4 py-3">Friend: {taptapFriendReward}; referrer: {taptapReferrerReward} (captured offer)</td>
-            <td className="px-4 py-3">{taptapMinimum}</td>
-            <td className="px-4 py-3">
-              Owner’s September 7, 2026 referral-screen transcription; <a href={taptapSource("referrals").url}>official rules</a> and instructions on the{" "}
-              <Link href="/providers/taptap-send/referral-code">TapTap Send referral page</Link>
-            </td>
-            <td className="px-4 py-3">{formatDate(taptapOffer.officialCheckedAt)}</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">LemFi</td>
-            <td className="px-4 py-3">SALABGWQ</td>
-            <td className="px-4 py-3">EUR10 or $10</td>
-            <td className="px-4 py-3">EUR100 or $100 first qualifying transfer</td>
-            <td className="px-4 py-3">
-              Manual BonusFoundry verification in the LemFi app; full instructions on the{" "}
-              <Link href="/providers/lemfi/referral-code">LemFi referral page</Link>
-            </td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">Ria</td>
-            <td className="px-4 py-3">9RMU-ENB7</td>
-            <td className="px-4 py-3">France: EUR20 each; US: USD10 friend and USD20 referrer; Australia: AUD30 each</td>
-            <td className="px-4 py-3">EUR50 in France, USD50 in the US or AUD100 in Australia in one qualifying international transfer</td>
-            <td className="px-4 py-3">
-              Ria&apos;s official referral help and France referral page; 9RMU-ENB7 is supplied by BonusFoundry&apos;s publisher and is not independently identified by Ria
-            </td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">Sendwave</td>
-            <td className="px-4 py-3">I4H9G</td>
-            <td className="px-4 py-3">€10 / $10 new-user credit, depending on the eligible currency offer</td>
-            <td className="px-4 py-3">Enter in the Sendwave app before completing the first transaction</td>
-            <td className="px-4 py-3">Official Sendwave app screenshot confirms €10 for the new user; $10 reported by the code owner</td>
-            <td className="px-4 py-3">September 12, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">Wise</td>
-            <td className="px-4 py-3">Referral method: Personal referral link</td>
-            <td className="px-4 py-3">Varies by Wise invite/account flow</td>
-            <td className="px-4 py-3">Depends on Wise invitation terms</td>
-            <td className="px-4 py-3">Existing BonusFoundry structured provider data and Wise invite flow</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">Remitly</td>
-            <td className="px-4 py-3">Referral method: Personal referral link</td>
-            <td className="px-4 py-3">Varies by Remitly offer</td>
-            <td className="px-4 py-3">Depends on Remitly referral terms</td>
-            <td className="px-4 py-3">Existing BonusFoundry structured provider data and Remitly referral terms</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="border-b align-top">
-            <td className="px-4 py-3">Paysend</td>
-            <td className="px-4 py-3">Referral method: Personal referral link</td>
-            <td className="px-4 py-3">Paysend says referrers can earn per eligible friend transfer, up to local-equivalent caps</td>
-            <td className="px-4 py-3">Depends on Paysend program terms</td>
-            <td className="px-4 py-3">Existing BonusFoundry structured provider data and Paysend official bonus page</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
-          <tr className="align-top">
-            <td className="px-4 py-3">WorldRemit</td>
-            <td className="px-4 py-3">No verified BonusFoundry referral code is currently listed for this provider.</td>
-            <td className="px-4 py-3">None listed by BonusFoundry</td>
-            <td className="px-4 py-3">Not applicable</td>
-            <td className="px-4 py-3">BonusFoundry provider data</td>
-            <td className="px-4 py-3">September 6, 2026</td>
-          </tr>
+          {slugs.map((slug) => {
+            const { provider, referral, authority, minimum } =
+              getMoroccoProvider(slug);
+            return (
+              <tr key={slug} className="border-b align-top last:border-b-0">
+                <td className="px-4 py-3">
+                  <Link href={`/providers/${slug}`}>{provider.name}</Link>
+                </td>
+                <td className="px-4 py-3">
+                  <ReferralMethod slug={slug} />
+                </td>
+                <td className="px-4 py-3">{referral.welcomeBonus}</td>
+                <td className="px-4 py-3">{minimum}</td>
+                <td className="px-4 py-3">
+                  {provider.proprietaryVerification?.verificationMethod ||
+                    "Provider's current offer and help pages"}
+                  .{" "}
+                  <Link href={`/providers/${slug}/referral-code`}>
+                    Sources and conditions
+                  </Link>
+                </td>
+                <td className="px-4 py-3">
+                  {formatDate(authority.lastManualReview)}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
+  );
+}
+
+export function MoroccoProviderReferralFacts({
+  slug
+}: {
+  slug: MoroccoProviderSlug;
+}) {
+  const { provider, referral, authority, minimum } = getMoroccoProvider(slug);
+  return (
+    <ul className="mt-4 list-disc space-y-2 pl-6 text-muted-foreground">
+      <li>
+        Referral method: <ReferralMethod slug={slug} />.
+      </li>
+      <li>Welcome offer: {referral.welcomeBonus}</li>
+      <li>Eligibility: {provider.eligibleUsers}</li>
+      <li>Minimum qualifying transfer: {minimum}</li>
+      {slug === "ria" && (
+        <li>
+          Canadian residents are included in eligibility; confirm the Canadian
+          reward and minimum in the Ria app.
+        </li>
+      )}
+      {referral.payoutTiming && <li>Reward timing: {referral.payoutTiming}</li>}
+      <li>
+        Provider review: {formatDate(authority.lastManualReview)}.{" "}
+        <Link
+          className="font-medium text-primary underline"
+          href={`/providers/${slug}/referral-code`}
+        >
+          Full {provider.name} offer conditions and sources
+        </Link>
+        .
+      </li>
+    </ul>
   );
 }
