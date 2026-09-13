@@ -1,4 +1,5 @@
 import { taptapProvider } from "@/data/taptap-send";
+import { paysendReferralLink, paysendOfferReviewedAt, paysendWelcomeOffer, paysendMinimumTransfer, paysendRewardTiming } from "@/data/paysend";
 import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
 
 export type Provider = {
@@ -1748,52 +1749,51 @@ export const providers: Provider[] = [
     description:
       "Paysend offers international transfers and card-to-card or account-based money movement in supported markets.",
     referralCode: null,
-    referralLink: "https://paysend.com/en/referral/06mvt6",
-    welcomeBonus:
-      "Paysend publishes a referral program where invited friends get their first transfer fee-free and referrers can earn bonuses for up to 12 successful transfers made by each friend within the friend's first 12 months. The published bonus is £1.50, €2.25, or $3 per eligible transfer, up to £18, €27, or $36 per friend, or the local equivalent.",
+    referralLink: paysendReferralLink,
+    welcomeBonus: paysendWelcomeOffer,
     supportedCountries: ["United Kingdom", "France", "Germany", "United States", "Morocco", "India"],
     eligibleUsers:
-      "New Paysend users who sign up through an eligible referral link, meet Paysend's country rules, complete verification if requested, and make a qualifying first transfer may be eligible.",
+      "New Paysend users who sign up through the referral link and meet the live offer's country, route and verification requirements. The first transfer is fee-free; the $5 USD bonus requires a second transfer of $100 USD or more.",
     requirements: [
       "Create a new Paysend account through the referral link before the first transfer.",
       "Confirm that the sender country is not excluded from Paysend's referral program.",
       "Verify identity if required.",
-      "Complete a qualifying first transfer; bonus withdrawals and card-verification microdebits do not count toward bonus eligibility."
+      "Complete the first transfer with the referral fee waiver applied.",
+      "Complete a second transfer of $100 USD or more to qualify for the $5 USD bonus."
     ],
     steps: [
       "Open the Paysend referral link before creating an account.",
       "Create a new Paysend account with accurate personal details.",
-      "Check the referral page and app for the current fee waiver, reward currency, and excluded countries.",
+      "Confirm the offer: first transfer fee-free, then $5 USD after the second transfer of $100 USD or more.",
       "Select the transfer route and review fee, exchange rate, delivery method, and verification prompts.",
-      "Complete the qualifying first transfer only if the displayed terms match your country and route."
+      "Complete your first transfer with the fee waiver shown in the quote.",
+      "Make your second transfer for $100 USD or more, then check the $5 USD bonus in Paysend."
     ],
     keyFacts: [
-      { label: "Referral link", value: "https://paysend.com/en/referral/06mvt6" },
-      { label: "New-user benefit", value: "First transfer fee-free, subject to Paysend terms." },
-      { label: "Referrer reward", value: "£1.50, €2.25, or $3 per eligible transfer for up to 12 transfers within 12 months, depending on registration country." },
-      { label: "Withdrawal minimum", value: "£5, €5, $5, or local equivalent." },
-      { label: "Main caution", value: "Program availability, withdrawal availability, and reward currency vary by country." }
+      { label: "Referral link", value: paysendReferralLink },
+      { label: "First transfer", value: "Fee-free when signing up through the referral link." },
+      { label: "Second-transfer bonus", value: "$5 USD after the second transfer of $100 USD or more." },
+      { label: "Qualifying minimum", value: paysendMinimumTransfer },
+      { label: "Offer currency", value: "USD; confirm that this invitation offer is available for your account and route." }
     ],
-    currentOffer:
-      "BonusFoundry lists a Paysend referral link. Paysend's official bonus page says invited friends get their first transfer fee-free and referrers earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent.",
-    lastOfferUpdate: "2026-07-05",
-    lastManualReview: "2026-09-06",
+    currentOffer: paysendWelcomeOffer,
+    lastOfferUpdate: paysendOfferReviewedAt,
+    lastManualReview: paysendOfferReviewedAt,
     referral: {
       hasProgram:
         "Paysend publishes a public referral program through its bonus and referral pages.",
       code: null,
-      link: "https://paysend.com/en/referral/06mvt6",
-      welcomeBonus:
-        "Paysend's official bonus page says the invited friend receives a fee waiver on the first transfer and the referrer earns per-transfer bonuses for eligible transfers made by the friend.",
-      minimumTransfer: "Paysend's static bonus page reviewed does not publish a minimum transfer amount; it excludes bonus withdrawals and card-verification microdebits from bonus eligibility.",
-      expiry: "Paysend referral terms can change; check the live referral page before signup.",
-      payoutTiming: "Paysend pays referrer bonuses for up to 12 successful transfers made by each friend within the friend's first 12 months.",
+      link: paysendReferralLink,
+      welcomeBonus: paysendWelcomeOffer,
+      minimumTransfer: paysendMinimumTransfer,
+      expiry: "The invitation does not state an expiry date; check the live Paysend offer before signup.",
+      payoutTiming: paysendRewardTiming,
       limitations: [
         "Paysend says the program is available to all Paysend customers except those registered in Brazil, Chile, Colombia, Kazakhstan, Moldova, Peru, and Uzbekistan.",
         "The first-transfer benefit is a fee waiver, not a guaranteed exchange-rate bonus.",
-        "The referrer reward depends on registration country: £1.50, €2.25, $3, or local equivalent per eligible transfer.",
+        "The $5 USD bonus requires a second transfer of $100 USD or more; the first transfer alone does not qualify for that bonus.",
         "Referral credit cannot be applied retroactively if the friend did not use the invite link during signup.",
-        "Bonus withdrawals are unavailable in some countries; Paysend lists Moldova, Ukraine, Belarus, and China as examples."
+        "This invitation quotes USD amounts; confirm the displayed offer for your sender country and route before relying on it."
       ]
     },
     availability: {
@@ -1838,7 +1838,7 @@ export const providers: Provider[] = [
       { label: "Paysend UK home", href: "https://paysend.com/en-gb" },
       { label: "Paysend US home", href: "https://paysend.com/en-us" },
       { label: "Paysend Help Center", href: "https://paysend.com/en-gb/help" },
-      { label: "Paysend referral link", href: "https://paysend.com/en/referral/06mvt6" }
+      { label: "Paysend referral invitation: fee-free first transfer and $5 USD bonus", href: paysendReferralLink }
     ],
     sources: [
       {
@@ -1872,14 +1872,15 @@ export const providers: Provider[] = [
         confidence: "official"
       },
       {
-        label: "Paysend referral link",
-        url: "https://paysend.com/en/referral/06mvt6",
-        lastReviewed: "2026-07-20",
+        label: "Paysend referral invitation: fee-free first transfer and $5 USD bonus",
+        url: paysendReferralLink,
+        lastReviewed: paysendOfferReviewedAt,
         confidence: "referral-link"
       }
     ],
     ineligibleUsers: [
-      "Existing Paysend users opening a second account to claim a first-transfer referral benefit.",
+      "Existing Paysend users opening a second account to claim the new-user referral offer.",
+      "Users who have not completed a second transfer of $100 USD or more do not qualify for the $5 USD bonus.",
       "Users registered in Brazil, Chile, Colombia, Kazakhstan, Moldova, Peru, or Uzbekistan under the official bonus page reviewed.",
       "Users who do not start from the referral link when the referral flow requires it.",
       "Transfers that fail Paysend's qualifying-transfer, verification, payment-method, route, or account-review rules.",
@@ -1889,38 +1890,41 @@ export const providers: Provider[] = [
       "Open the Paysend referral link before signup.",
       "Confirm the country exclusions and current reward currency on Paysend's live referral page.",
       "Verify that the first-transfer fee waiver appears before sending.",
-      "Check whether the friend is within the first 12 months after signup and whether the transfer counts toward the 12-transfer reward limit.",
+      "Complete a second transfer of $100 USD or more for the $5 USD bonus; do not add the first and second transfers together to meet the threshold.",
       "Complete identity verification if Paysend requests it.",
-      "Keep the referral page, transfer receipt, and any reward-credit screen."
+      "Keep the referral offer, both transfer receipts, and the $5 USD bonus screen."
     ],
     researchProfile: {
       completeness:
-        "Reviewed Paysend's official website, US bonus page, UK country page, US country page, Help Center, and public referral landing flow for referral, reward, eligibility, verification, countries, payment methods, troubleshooting, support, FAQ, and official documentation.",
+        "Checked the owner's supplied invitation against the official Paysend referral landing page on September 13, 2026: fee-free first transfer and $5 USD after a second transfer of $100 USD or more. General service and program research retains its earlier source dates.",
       confidence: "high",
       sourcesReviewed: ["Paysend official website", "Paysend US bonus page", "Paysend UK home", "Paysend US home", "Paysend Help Center", "Paysend referral link"],
       remainingItems: [
-        "Paysend's live referral terms should be rechecked before publishing a country-specific local-equivalent reward outside the £, €, and $ examples.",
-        "Bonus withdrawal availability should be verified for each sender country because Paysend only gives examples of unavailable countries.",
+        "Confirm whether the USD invitation applies to the user's country and route; no EUR or GBP equivalent is stated in this invitation.",
+        "The invitation does not specify the $5 USD crediting delay, withdrawal conditions, first-transfer minimum, or campaign expiry.",
         "Route-specific delivery methods and limits should be confirmed in the Paysend transfer flow."
       ]
     },
     proprietaryVerification: {
       status: "Officially Documented",
-      verificationMethod: "Paysend official bonus page and BonusFoundry-owned referral link",
+      verificationMethod: "Owner-supplied invitation confirmed against the official Paysend referral landing page",
       verifiedFields: [
         "BonusFoundry-owned Paysend referral link",
         "Fee-free first transfer for invited friends",
-        "Per-transfer referrer reward examples",
-        "12-transfer and 12-month reward window",
-        "Published country exclusions and microdebit exclusion"
+        "$5 USD bonus for the invited user after the second transfer",
+        "$100 USD minimum on the second transfer"
       ],
-      lastVerified: "2026-09-06",
-      officialSourcesReviewed: 5
+      lastVerified: paysendOfferReviewedAt,
+      officialSourcesReviewed: 6
     },
     updateHistory: [
       {
+        date: paysendOfferReviewedAt,
+        note: "Updated the new-user offer from the owner's invitation and confirmed it on the official referral landing page: first transfer fee-free, then $5 USD after the second transfer of $100 USD or more. Updated steps, minimum, timing, FAQs and shared comparison data."
+      },
+      {
         date: "2026-07-05",
-        note: "Verified Paysend's per-transfer bonus amounts, 12-transfer and 12-month reward window, withdrawal minimum, excluded registration countries, retroactive-credit rule, microdebit exclusion, and official support channels."
+        note: "Reviewed the general referral program. The current new-user offer is now described by the link-specific invitation reviewed on September 13, 2026."
       },
       {
         date: "2026-06-28",
@@ -1935,20 +1939,22 @@ export const providers: Provider[] = [
       "Assuming a code field means every public code is valid.",
       "Ignoring card or payment-method restrictions.",
       "Using a country-specific offer in the wrong market.",
-      "Treating the first-transfer fee waiver as a cash reward.",
+      "Treating the first-transfer fee waiver as the separate $5 USD bonus.",
+      "Expecting the $5 USD bonus after only one transfer, or making a second transfer below $100 USD.",
       "Trying to add the invite link after signup even though Paysend says referrals cannot be credited retroactively."
     ],
     missingBonus: [
       "Check whether the Paysend referral link was used before signup.",
       "Confirm that your country was not excluded by the referral terms.",
       "Confirm the transfer was not a bonus withdrawal or card-verification microdebit.",
-      "Confirm the transfer occurred within the friend's first 12 months and did not exceed the 12-transfer reward limit.",
+      "For the $5 USD bonus, confirm that the second transfer was completed for $100 USD or more.",
+      "For the first-transfer benefit, check that the fee waiver appeared before confirming the first transfer.",
       "Contact Paysend support with screenshots and transfer details."
     ],
     countryNotes: [
       "Paysend availability and transfer methods vary by country.",
       "Sender and recipient card rules can affect whether a transfer is eligible.",
-      "Referral reward amount, currency, withdrawal availability, and exclusions should be checked for the user's sender country."
+      "The invitation quotes a $5 USD bonus after a second transfer of $100 USD or more. Check that this USD offer is displayed for your sender country; other currencies are not specified."
     ],
     faq: [
       {
@@ -1957,18 +1963,26 @@ export const providers: Provider[] = [
       },
       {
         question: "Does Paysend waive the first transfer fee for referred users?",
-        answer: "Paysend's public referral page describes a fee-free first transfer for referred friends, subject to live terms and country exclusions."
+        answer: "Yes. Sign up through the BonusFoundry Paysend referral link to receive a fee-free first transfer. The $5 USD bonus is a separate benefit after your second transfer of $100 USD or more."
       },
       {
-        question: "How much can a Paysend referrer earn?",
-        answer: "Paysend's official bonus page says referrers can earn £1.50, €2.25, or $3 per eligible transfer for up to 12 successful transfers made by each friend within the first 12 months, up to £18, €27, or $36 per friend, or the local equivalent."
+        question: "How do I get the $5 USD Paysend bonus?",
+        answer: paysendWelcomeOffer
+      },
+      {
+        question: "Does the $100 USD minimum apply to my first or second transfer?",
+        answer: paysendMinimumTransfer
+      },
+      {
+        question: "When will I receive the Paysend referral benefits?",
+        answer: paysendRewardTiming
       },
       {
         question: "Can Paysend offers vary by product?",
         answer: "Yes. Transfer, card, and account features may have different promotional rules."
       }
     ],
-    lastUpdated: "2026-07-05"
+    lastUpdated: paysendOfferReviewedAt
   },
   {
     name: "LemFi",

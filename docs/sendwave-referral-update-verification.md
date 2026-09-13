@@ -4,7 +4,7 @@
 
 The owner supplied an official Sendwave app screenshot showing `I4H9G` and €10 credit for the new user, and separately reports a $10 offer. The page, shared provider data, FAQ, metadata, Morocco guide and llms.txt now present €10 / $10 welcome credit with that source distinction. Referrer reward details have been removed; a simple referral disclosure remains. See [the evidence record](sendwave-app-offer-evidence.md).
 
-The September 11 variable-only wording and checks below are historical, superseded by this new evidence and owner instruction. The app screenshot was reviewed on September 12; the public terms retain their September 11 review date. Prior `.next` audit artifacts were temporary and were cleared by development-server startup.
+The September 11 variable-only wording and checks below are historical, superseded by this new evidence and owner instruction. The app screenshot was reviewed on September 13; the public terms retain their September 11 review date. Prior `.next` audit artifacts were temporary and were cleared by development-server startup.
 
 Validation for this update: lint and TypeScript checks passed. The existing development server returned HTTP 200 for both Sendwave pages and the Morocco guide, including their CSS. Rendered HTML contains €10 / $10 and the source distinction; FAQ JSON-LD answers match visible content. The referral page has the updated title, one H1 and a facts table. Neither Sendwave page describes the referrer's reward. No second server or concurrent production build was started.
 

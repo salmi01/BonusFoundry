@@ -243,7 +243,7 @@ function providerPageDirectAnswer(provider: Provider, authority: ProviderAuthori
   }
 
   if (hasOwnedReferralLink(provider) && provider.referralLink) {
-    return `${provider.name} uses a BonusFoundry-owned referral link rather than a manual BonusFoundry code. ${authority.referral.welcomeBonus} Eligible users: ${provider.eligibleUsers} Last reviewed by BonusFoundry: ${lastVerified}.`;
+    return `${authority.referral.welcomeBonus} Eligible users: ${provider.eligibleUsers} Last reviewed by BonusFoundry: ${lastVerified}.`;
   }
 
   return `${provider.name} does not have a separate BonusFoundry referral code listed. ${provider.currentOffer} Last reviewed by BonusFoundry: ${lastVerified}.`;
