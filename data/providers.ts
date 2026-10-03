@@ -1778,7 +1778,7 @@ export const providers: Provider[] = [
     ],
     currentOffer: paysendWelcomeOffer,
     lastOfferUpdate: paysendOfferReviewedAt,
-    lastManualReview: paysendOfferReviewedAt,
+    lastManualReview: "2026-10-03",
     referral: {
       hasProgram:
         "Paysend publishes a public referral program through its bonus and referral pages.",
@@ -1982,7 +1982,7 @@ export const providers: Provider[] = [
         answer: "Yes. Transfer, card, and account features may have different promotional rules."
       }
     ],
-    lastUpdated: paysendOfferReviewedAt
+    lastUpdated: "2026-10-03"
   },
   {
     name: "LemFi",
