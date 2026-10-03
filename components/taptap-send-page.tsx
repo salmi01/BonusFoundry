@@ -356,7 +356,7 @@ export function TaptapSendPage({
                     France, Belgium, Germany and Spain. It is not an all-Europe
                     offer. <Source name="usa" /> lists state restrictions;
                     Nevada and the Virgin Islands were unavailable when checked
-                    on 8 September 2026.
+                    on 3 October 2026.
                   </p>
                   <h3 className="font-semibold text-foreground">
                     Paying and receiving are different
@@ -434,7 +434,7 @@ export function TaptapSendPage({
                   <p>
                     BonusFoundry reviewed the owner-supplied referral-screen
                     evidence dated 7 September 2026 and checked Taptap Send’s
-                    Help Center and referral terms on 8 September 2026. The
+                    Help Center and referral terms on 3 October 2026. The
                     verified transcription shows {taptapOffer.code},{" "}
                     {taptapFriendReward} for the friend and{" "}
                     {taptapReferrerReward} for the referrer. The original

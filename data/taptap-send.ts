@@ -8,9 +8,9 @@ export const taptapOffer = {
   minimumTransfer: null,
   eligibleCountries: null,
   campaignExpiresAt: null,
-  evidenceReviewedAt: "2026-09-07",
-  officialCheckedAt: "2026-09-08",
-  contentUpdatedAt: "2026-09-08",
+  evidenceReviewedAt: "2026-10-03",
+  officialCheckedAt: "2026-10-03",
+  contentUpdatedAt: "2026-10-03",
   evidenceFile: null,
   evidenceFilename: "WhatsApp Image 2026-09-07 at 20.26.36.jpeg"
 } as const;
@@ -109,7 +109,7 @@ export const taptapRewardRules = [
 export const taptapFaq = [
   {
     question: "What is the Taptap Send referral code?",
-    answer: `${taptapOffer.code} is the personal referral code displayed in the code owner's Taptap Send app, according to the offer evidence reviewed on 7 September 2026.`
+    answer: `${taptapOffer.code} is the personal referral code displayed in the code owner's Taptap Send app, according to the offer evidence reviewed on 3 October 2026.`
   },
   {
     question: "Does Taptap Send have a referral bonus?",
@@ -209,7 +209,7 @@ export const taptapProvider: Provider = {
     }
   ],
   lastManualReview: taptapOffer.officialCheckedAt,
-  lastOfferUpdate: taptapOffer.evidenceReviewedAt,
+  lastOfferUpdate: "2026-09-07",
   lastUpdated: taptapOffer.contentUpdatedAt,
   referral: {
     code: taptapOffer.code,
@@ -260,7 +260,7 @@ export const taptapProvider: Provider = {
       {
         country: "United States",
         supported:
-          "The official guide requires residence and physical presence in an available state at registration; Nevada and the Virgin Islands are listed as unavailable as checked on 8 September 2026.",
+          "The official guide requires residence and physical presence in an available state at registration; Nevada and the Virgin Islands are listed as unavailable as checked on 3 October 2026.",
         paymentMethods: [
           "Debit card",
           "Taptap Send wallet for eligible accounts"
@@ -296,7 +296,7 @@ export const taptapProvider: Provider = {
   })),
   researchProfile: {
     completeness:
-      "Official rules checked on 8 September 2026; owner-supplied transcription of the referral screen reviewed on 7 September 2026.",
+      "Official rules checked on 3 October 2026; owner-supplied transcription of the referral screen reviewed on 3 October 2026.",
     confidence: "high",
     sourcesReviewed: taptapSources.map((s) => s.label),
     remainingItems: [
@@ -326,12 +326,12 @@ export const taptapProvider: Provider = {
       expiration:
         "Code or campaign expiry not shown; credited rewards expire after 90 days",
       notes:
-        "Evidence reviewed 7 September 2026. Original image pending; no completed referral transaction is evidenced."
+        "Evidence reviewed 3 October 2026. Original image pending; no completed referral transaction is evidenced."
     }
   },
   updateHistory: [
     {
-      date: taptapOffer.contentUpdatedAt,
+      date: "2026-09-08",
       note: "Corrected the old role/currency/minimum claims from the owner's 7 September offer evidence and rechecked official referral, fees, countries and support rules. The original screenshot remains to be added."
     },
     {

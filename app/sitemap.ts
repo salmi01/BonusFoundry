@@ -3,6 +3,7 @@ import { corridors } from "@/data/corridors";
 import { faqs } from "@/data/faqs";
 import { indexReviewedAt } from "@/data/index-review";
 import { providers } from "@/data/providers";
+import { paysendReferralPath, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendingCountryHubs } from "@/data/sending-country-hubs";
 import { siteConfig } from "@/data/site";
 import { blogSlugs, guideSlugs, getGuides, getBlogPosts } from "@/lib/content";
@@ -38,6 +39,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       hub.lastUpdated
     ])
   ]);
+  // This page has its own review date; the provider overview retains its date.
+  modifiedDates.set(paysendReferralPath, paysendReferralReviewedAt);
   const routes = [
     "",
     "/providers",

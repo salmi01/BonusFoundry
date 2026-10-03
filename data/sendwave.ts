@@ -1,6 +1,6 @@
-// App screenshot reviewed on September 12; public terms reviewed on September 11.
-export const sendwaveReviewedAt = "2026-09-12";
-export const sendwaveTermsReviewedAt = "2026-09-11";
+// Latest manual review of the app offer and public referral terms.
+export const sendwaveReviewedAt = "2026-10-03";
+export const sendwaveTermsReviewedAt = "2026-10-03";
 export const sendwaveCode = "I4H9G";
 export const sendwaveSources = {
   program:

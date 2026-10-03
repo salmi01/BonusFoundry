@@ -1,5 +1,7 @@
 import { TaptapSendPage } from "@/components/taptap-send-page";
 import { SendwaveReferralPage } from "@/components/sendwave-referral-page";
+import { PaysendReferralPage } from "@/components/paysend-referral-page";
+import { paysendReferralMetadata, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendwaveMetadata } from "@/data/sendwave";
 import { taptapMetadata } from "@/data/taptap-send";
 import Link from "next/link";
@@ -54,8 +56,8 @@ export async function generateMetadata({ params }: PageProps) {
     title: metadata.title,
     description: metadata.description,
     path: `/providers/${provider.slug}/referral-code`,
-    type: "article",
-    modifiedTime: provider.lastUpdated
+    type: provider.slug === "paysend" ? "website" : "article",
+    modifiedTime: provider.slug === "paysend" ? paysendReferralReviewedAt : provider.lastUpdated
   });
 
   if (provider.slug === "ria") {
@@ -69,6 +71,10 @@ export default async function ReferralCodePage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+
+  if (provider.slug === "paysend") {
+    return <PaysendReferralPage />;
+  }
 
   const authority = getProviderAuthority(provider);
   if (provider.slug === "sendwave") {
@@ -295,8 +301,8 @@ function RiaReferralPage({
                     transfer. In France, Ria lists EUR 20 off the first
                     international transfer and EUR 20 off the referrer&apos;s
                     next transfer when at least EUR 50 is sent; rewards differ
-                    in the United States and Australia. Last verified 5
-                    September 2026 from Ria&apos;s{" "}
+                    in the United States and Australia. Last verified 3
+                    October 2026 from Ria&apos;s{" "}
                     <a
                       href={riaSources.program}
                       className="font-medium text-primary"
@@ -556,8 +562,8 @@ function RiaReferralPage({
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   BonusFoundry checked Ria&apos;s Help Center referral overview,
                   reward-claim instructions, missing-discount guidance,
-                  promo-code instructions, and France referral page on 5
-                  September 2026. Country rewards and conditions below are
+                  promo-code instructions, and France referral page on 3
+                  October 2026. Country rewards and conditions below are
                   attributed to Ria; code 9RMU-ENB7 is publisher-supplied and
                   was not independently identified by Ria&apos;s public pages.
                   Offers can change, so confirm the offer shown in the Ria app
@@ -710,7 +716,7 @@ function RiaCountryRewardTable() {
         >
           Ria&apos;s official refer-a-friend Help Center article
         </a>
-        , checked 5 September 2026. Confirm the offer shown in the Ria app
+        , checked 3 October 2026. Confirm the offer shown in the Ria app
         because amounts, availability, and conditions can change.
       </p>
     </section>
@@ -806,6 +812,7 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralPageMetadata(provider: Provider) {
+  if (provider.slug === "paysend") return paysendReferralMetadata;
   if (provider.slug === "sendwave") return sendwaveMetadata;
   const providerName = referralMetadataProviderName(provider);
 
@@ -813,7 +820,7 @@ function referralPageMetadata(provider: Provider) {
     return {
       title: "Ria Referral Code 2026: Rewards & Minimum Transfer",
       description:
-        "Ria referral code 9RMU-ENB7: France, United States and Australia rewards, minimum transfers, eligibility and timing. Verified September 2026."
+        "Ria referral code 9RMU-ENB7: France, United States and Australia rewards, minimum transfers, eligibility and timing. Verified October 2026."
     };
   }
 

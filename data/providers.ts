@@ -353,7 +353,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Remitly's visible offer may be a referral reward, a first-transfer promotion, or no offer at all. Check the live transfer screen before sending because the bonus can be affected by destination country, payment method, and transfer amount.",
     lastOfferUpdate: "2026-07-04",
-    lastManualReview: "2026-09-06",
+    lastManualReview: "2026-10-03",
     referral: {
       hasProgram:
         "Remitly publishes referral program terms. Users can invite family and friends with a referral link or QR code, and referred friends must complete a qualified first transfer for the referral to qualify.",
@@ -434,13 +434,13 @@ export const providers: Provider[] = [
       {
         label: "Remitly referral offer program",
         url: "https://www.remitly.com/us/en/home/referral-offer-program",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
         label: "Remitly referral program terms",
         url: "https://www.remitly.com/us/en/home/referral-program-tnc",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
@@ -452,7 +452,7 @@ export const providers: Provider[] = [
       {
         label: "Remitly referral link",
         url: "https://remit.ly/35sixkkg",
-        lastReviewed: "2026-07-20",
+        lastReviewed: "2026-10-03",
         confidence: "referral-link"
       }
     ],
@@ -498,7 +498,7 @@ export const providers: Provider[] = [
         "Qualified-referral restrictions and ineligible cases",
         "Verification and security dependencies"
       ],
-      lastVerified: "2026-09-06",
+      lastVerified: "2026-10-03",
       officialSourcesReviewed: 6
     },
     updateHistory: [
@@ -551,7 +551,7 @@ export const providers: Provider[] = [
           "Not always. A promotional exchange rate, fee discount, and referral reward can have different rules."
       }
     ],
-    lastUpdated: "2026-07-04"
+    lastUpdated: "2026-10-03"
   },
   {
     name: "Sendwave",
@@ -582,7 +582,7 @@ export const providers: Provider[] = [
     ],
     currentOffer:
       `The BonusFoundry Sendwave referral code is ${sendwaveCode}. ${sendwaveTiming} ${sendwaveReward}`,
-    lastOfferUpdate: sendwaveReviewedAt,
+    lastOfferUpdate: "2026-09-12",
     lastManualReview: sendwaveReviewedAt,
     referral: {
       hasProgram:
@@ -672,7 +672,7 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed the owner-supplied official Sendwave app screenshot on 12 September 2026: I4H9G and €10 credit for the new user. The owner also reports $10; that currency is not displayed in the capture. Public referral terms were reviewed on 11 September 2026. Earlier service research retains its original dates.",
+        "Reviewed the owner-supplied official Sendwave app screenshot on 3 October 2026: I4H9G and €10 credit for the new user. The owner also reports $10; that currency is not displayed in the capture. Public referral terms were reviewed on 3 October 2026. Earlier service research retains its original dates.",
       confidence: "high",
       sourcesReviewed: ["Sendwave referral-program terms", "Sendwave referral-program article", "Sendwave promo-code terms (separate campaign rules)", "Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
@@ -694,8 +694,8 @@ export const providers: Provider[] = [
       officialSourcesReviewed: 3
     },
     updateHistory: [
-      { date: sendwaveReviewedAt, note: "Added €10 / $10 new-user welcome credit: €10 confirmed on the supplied official app screen, $10 reported by the owner. Content focuses on the new user's benefit." },
-      { date: sendwaveTermsReviewedAt, note: "Clarified owner-supplied code I4H9G, official referral eligibility and timing, variable credits, expiry, restrictions and the distinction from separate promotional campaign codes." },
+      { date: "2026-09-12", note: "Added €10 / $10 new-user welcome credit: €10 confirmed on the supplied official app screen, $10 reported by the owner. Content focuses on the new user's benefit." },
+      { date: "2026-09-11", note: "Clarified owner-supplied code I4H9G, official referral eligibility and timing, variable credits, expiry, restrictions and the distinction from separate promotional campaign codes." },
       {
         date: "2026-07-05",
         note: "Verified Sendwave's public promo-code caveat, app-only sending, debit-card payment, identity verification, 3DS/card troubleshooting, limits, wrong-recipient warnings, cancellation/refund timing, support path, Wallet availability, and country-route caveats from official Sendwave pages."
@@ -795,7 +795,7 @@ export const providers: Provider[] = [
     currentOffer:
       "Ria officially documents country-specific refer-a-friend discounts for eligible residents of France, the United States, Australia, and Canada. BonusFoundry's publisher supplies code 9RMU-ENB7",
     lastOfferUpdate: "2026-08-18",
-    lastManualReview: "2026-09-06",
+    lastManualReview: "2026-10-03",
     referral: {
       hasProgram:
         "Ria's official refer-a-friend program is available to eligible residents of France, the United States, Australia, and Canada. Both people must be at least 18, and the referrer must have completed a transfer in the Ria app.",
@@ -806,7 +806,7 @@ export const providers: Provider[] = [
       minimumTransfer:
         "EUR 50 in France, USD 50 in the United States, or AUD 100 in Australia, sent in one qualifying international transfer.",
       expiry:
-        "No fixed expiry was stated in the official referral pages checked on 6 September 2026; Ria offers and conditions can change.",
+        "No fixed expiry was stated in the official referral pages checked on 3 October 2026; Ria offers and conditions can change.",
       payoutTiming:
         "The friend's discount applies to the first qualifying international transfer. The referrer's discount applies to the next qualifying international transfer and may take up to two days to appear after the friend's transfer is paid to the recipient.",
       limitations: [
@@ -971,31 +971,31 @@ export const providers: Provider[] = [
       {
         label: "Ria refer-a-friend program",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program",
-        lastReviewed: "2026-09-05",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
         label: "Ria France refer-a-friend",
         url: "https://www.riamoneytransfer.com/en-fr/refer-a-friend/",
-        lastReviewed: "2026-09-05",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
         label: "Claim a Ria referral reward",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward",
-        lastReviewed: "2026-09-05",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
         label: "Ria missing referral discount help",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount",
-        lastReviewed: "2026-09-05",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
         label: "Use a Ria promo code",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4406279777169-How-do-I-use-a-promo-code",
-        lastReviewed: "2026-09-05",
+        lastReviewed: "2026-10-03",
         confidence: "official"
       },
       {
@@ -1089,7 +1089,7 @@ export const providers: Provider[] = [
         "Referral code 9RMU-ENB7 supplied by BonusFoundry's publisher",
         "Live Ria confirmation still required for acceptance of the individual code"
       ],
-      lastVerified: "2026-09-06",
+      lastVerified: "2026-10-03",
       officialSourcesReviewed: 5
     },
     updateHistory: [
@@ -1151,7 +1151,7 @@ export const providers: Provider[] = [
           "Ria lists France, the United States, Australia, and Canada. Both people must be at least 18 and live in an eligible country."
       }
     ],
-    lastUpdated: "2026-09-05"
+    lastUpdated: "2026-10-03"
   },
   {
     name: "Western Union",
