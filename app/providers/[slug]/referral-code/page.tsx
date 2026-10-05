@@ -4,6 +4,7 @@ import { PaysendReferralPage } from "@/components/paysend-referral-page";
 import { paysendReferralMetadata, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendwaveMetadata } from "@/data/sendwave";
 import { taptapMetadata } from "@/data/taptap-send";
+import { riaCombiningRewards, riaCountryList, riaEligibleCountries, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReward, riaSources } from "@/data/ria-referral";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -187,18 +188,6 @@ export default async function ReferralCodePage({ params }: PageProps) {
 }
 
 
-const riaSources = {
-  program:
-    "https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program",
-  france: "https://www.riamoneytransfer.com/en-fr/refer-a-friend/",
-  claim:
-    "https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward",
-  missing:
-    "https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount",
-  promo:
-    "https://help.riamoneytransfer.com/hc/en-us/articles/4406279777169-How-do-I-use-a-promo-code"
-} as const;
-
 function RiaReferralPage({
   provider,
   authority
@@ -298,11 +287,11 @@ function RiaReferralPage({
                     BonusFoundry referral code{" "}
                     <strong className="text-foreground">9RMU-ENB7</strong> can
                     be entered by an eligible new Ria customer before the first
-                    transfer. In France, Ria lists EUR 20 off the first
-                    international transfer and EUR 20 off the referrer&apos;s
-                    next transfer when at least EUR 50 is sent; rewards differ
-                    in the United States and Australia. Last verified 3
-                    October 2026 from Ria&apos;s{" "}
+                    transfer. Ria lists 11 eligible countries, including France,
+                    Belgium, Germany, Spain, and the United Kingdom. Both people
+                    must be at least 18. Check the exact reward and qualifying
+                    minimum in the Ria app. Last verified{" "}
+                    {reviewDate} from Ria&apos;s{" "}
                     <a
                       href={riaSources.program}
                       className="font-medium text-primary"
@@ -352,17 +341,16 @@ function RiaReferralPage({
                     value: "9RMU-ENB7 (supplied by BonusFoundry's publisher)"
                   },
                   {
-                    label: "France reward",
-                    value:
-                      "EUR 20 off the friend's first transfer and EUR 20 off the referrer's next transfer"
+                    label: "Reward amount",
+                    value: riaReward
                   },
                   {
-                    label: "France minimum",
-                    value: "EUR 50 in one qualifying international transfer"
+                    label: "Minimum transfer",
+                    value: riaMinimum
                   },
                   {
                     label: "Eligible residences",
-                    value: "France, United States, Australia, and Canada only"
+                    value: riaCountryList
                   },
                   { label: "Age", value: "Both people must be at least 18" },
                   {
@@ -387,7 +375,7 @@ function RiaReferralPage({
                 ]}
               />
 
-              <RiaCountryRewardTable />
+              <RiaCountryRewardTable reviewDate={reviewDate} />
               <ProviderCorridorLinks provider={provider} />
 
               <section className="rounded-lg border bg-card p-5 shadow-sm">
@@ -406,12 +394,12 @@ function RiaReferralPage({
                       </li>
                       <li>
                         Enter the referral code during account creation or
-                        choose â€œAdd promo codeâ€ while preparing the first
+                        choose “Add promo code” while preparing the first
                         transfer.
                       </li>
                       <li>
-                        Send the country-specific minimum in one international
-                        transfer.
+                        Check the reward and minimum in your offer, then send
+                        at least that minimum in one international transfer.
                       </li>
                       <li>
                         Complete the transfer successfully so Ria can apply the
@@ -425,15 +413,13 @@ function RiaReferralPage({
                     </h3>
                     <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
                       <li>
-                        Be at least 18 and live in France, the United States,
-                        Australia, or Canada.
+                        {riaResidenceRule}
                       </li>
                       <li>
-                        Complete at least one transfer in the Ria app before
-                        inviting friends.
+                        {riaReferrerHistory}
                       </li>
                       <li>
-                        Open â€œRefer and Earnâ€ in the Ria app and share the
+                        Open “Refer and Earn” in the Ria app and share the
                         personal referral code.
                       </li>
                       <li>
@@ -450,8 +436,7 @@ function RiaReferralPage({
                 facts={[
                   {
                     label: "Residence",
-                    value:
-                      "Ria says both the referrer and friend must live in France, the United States, Australia, or Canada. Eligibility is not established for other countries."
+                    value: riaResidenceRule
                   },
                   {
                     label: "Age",
@@ -460,8 +445,7 @@ function RiaReferralPage({
                   },
                   {
                     label: "Referrer history",
-                    value:
-                      "The referrer must have completed at least one transfer in the Ria app before referring friends."
+                    value: riaReferrerHistory
                   },
                   {
                     label: "Friend's account",
@@ -475,8 +459,7 @@ function RiaReferralPage({
                   },
                   {
                     label: "Minimum amount",
-                    value:
-                      "The applicable country minimum must be sent in one qualifying transfer."
+                    value: riaMinimum
                   },
                   {
                     label: "Code timing",
@@ -506,8 +489,11 @@ function RiaReferralPage({
                   },
                   {
                     label: "Multiple referrals",
-                    value:
-                      "Ria says a referrer can refer multiple friends and receive a reward for each qualifying referral."
+                    value: riaMultipleReferrals
+                  },
+                  {
+                    label: "Combining rewards",
+                    value: riaCombiningRewards
                   }
                 ]}
               />
@@ -518,7 +504,7 @@ function RiaReferralPage({
                   {
                     problem: "The friend was not eligible",
                     possibleReason:
-                      "The friend was not resident in France, the United States, Australia, or Canada, or already had a Ria account or transfer history.",
+                      "The friend does not live in one of the 11 eligible countries listed above, is under 18, or already had a Ria account or transfer history.",
                     suggestedAction:
                       "Compare the account with Ria's new-customer and residence rules."
                   },
@@ -532,9 +518,15 @@ function RiaReferralPage({
                   {
                     problem: "The amount was too low",
                     possibleReason:
-                      "The single transfer was below EUR 50, USD 50, or AUD 100 for the applicable residence.",
+                      "The transfer did not meet the minimum required by the current offer, or the minimum was split across transfers.",
                     suggestedAction:
-                      "Check the country-specific minimum shown by Ria before sending."
+                      "Check the offer's minimum in the Ria app before sending; the current Help Center articles do not give a numeric amount."
+                  },
+                  {
+                    problem: "A promo code was combined with a referral reward",
+                    possibleReason: riaCombiningRewards,
+                    suggestedAction:
+                      "Use a referral reward without an additional promo code and check the discount before confirming the transfer."
                   },
                   {
                     problem: "The transfer did not qualify",
@@ -560,18 +552,18 @@ function RiaReferralPage({
                   Sources and verification methodology
                 </h2>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  BonusFoundry checked Ria&apos;s Help Center referral overview,
-                  reward-claim instructions, missing-discount guidance,
-                  promo-code instructions, and France referral page on 3
-                  October 2026. Country rewards and conditions below are
-                  attributed to Ria; code 9RMU-ENB7 is publisher-supplied and
+                  BonusFoundry checked the current Ria Help Center referral
+                  overview, reward-claim instructions, and troubleshooting
+                  guidance on {reviewDate}. Ria revised these articles on
+                  October 5, 2026: they now list 11 eligible countries and direct
+                  readers to the app for exact rewards. They still require a
+                  minimum transfer but no longer publish numeric minimums.
+                  Earlier country amounts should not be treated as current
+                  offers. Code 9RMU-ENB7 is publisher-supplied and
                   was not independently identified by Ria&apos;s public pages.
                   Offers can change, so confirm the offer shown in the Ria app
-                  before sending. Ria&apos;s France page uses a combined USD/EUR
-                  example in its FAQ, while Ria&apos;s newer Help Center country
-                  table lists the referred friend&apos;s United States reward as
-                  USD 10; BonusFoundry therefore uses the newer,
-                  country-specific Help Center value for the United States. Read
+                  before sending. The France referral page also directs readers
+                  to the app for current local-currency rewards. Read
                   the{" "}
                   <Link href="/about" className="font-medium text-primary">
                     BonusFoundry Editorial Team page
@@ -595,7 +587,7 @@ function RiaReferralPage({
                     type: "Official Ria Help Center",
                     url: riaSources.program,
                     reviewedInformation:
-                      "Eligible countries, age, referrer requirement, country reward table, international-transfer rule, reward timing, multiple referrals, and cancellation handling. Ria page updated 18 August 2026.",
+                      "11 eligible countries, age, prior transfer, exact rewards in the app, up to two earned rewards per transfer, no combination with promo codes, and cancellation rules. Ria article edited 5 October 2026.",
                     reviewDate
                   },
                   {
@@ -603,7 +595,7 @@ function RiaReferralPage({
                     type: "Official Ria France page",
                     url: riaSources.france,
                     reviewedInformation:
-                      "France EUR 20 friend and referrer credits, EUR 50 qualifying amount, and app referral steps.",
+                      "App referral steps, new-customer requirement, recipient payout, and guidance to check current local-currency rewards in the app.",
                     reviewDate
                   },
                   {
@@ -611,15 +603,15 @@ function RiaReferralPage({
                     type: "Official Ria Help Center",
                     url: riaSources.claim,
                     reviewedInformation:
-                      "Code-entry timing, Add promo code option, new-customer transfer rules, country rewards, one-transfer minimum, and cancellation handling. Ria page updated 18 August 2026.",
+                      "Code entry before the first transfer, discount at checkout, age, one-transfer minimum without published numeric amounts, and no combination with promo codes. Ria article edited 5 October 2026.",
                     reviewDate
                   },
                   {
-                    name: "Why a Ria referral discount may not be received",
+                    name: "Why a Ria promo code or referral reward may not work",
                     type: "Official Ria Help Center",
                     url: riaSources.missing,
                     reviewedInformation:
-                      "Residence, account-history, code-timing, minimum, domestic-transfer, cancellation, and successful-completion failure reasons. Ria page updated 21 July 2026.",
+                      "Eligibility, previous accounts, late code entry, minimums, incompatible promo codes, completed and paid transfers, and up to two earned rewards per transfer. Ria article edited 5 October 2026.",
                     reviewDate
                   },
                   {
@@ -627,7 +619,7 @@ function RiaReferralPage({
                     type: "Official Ria Help Center",
                     url: riaSources.promo,
                     reviewedInformation:
-                      "App and website promo-code entry before transfer confirmation. Ria page updated 11 March 2025.",
+                      "App and website promo-code entry before transfer confirmation. Ria article content last edited 11 March 2025; metadata updated 2 October 2026.",
                     reviewDate
                   }
                 ]}
@@ -645,22 +637,24 @@ function RiaReferralPage({
   );
 }
 
-function RiaCountryRewardTable() {
+function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
   return (
     <section>
       <h2 className="text-2xl font-semibold">
         Ria referral rewards by country
       </h2>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">
-        Ria publishes different rewards and minimum transfers according to
-        residence. Currency labels are part of each amount and should not be
-        combined across countries.
+        Ria lists the following 11 eligible countries of residence. Exact rewards
+        are shown in the Ria app. The current referral articles require a minimum
+        amount in one international transfer but do not publish numeric minimums.
+        Check the offer before sending; these are residence countries, not
+        transfer destinations.
       </p>
       <div className="mt-4 max-w-full overflow-x-auto rounded-lg border bg-card shadow-sm">
         <Table className="min-w-[760px]">
           <caption className="border-b bg-muted/30 px-4 py-3 text-left text-sm font-medium text-foreground">
-            Ria refer-a-friend rewards and minimum qualifying international
-            transfer by residence
+            Ria refer-a-friend eligibility and where to check rewards and
+            minimums by residence
           </caption>
           <thead>
             <TableRow>
@@ -673,36 +667,16 @@ function RiaCountryRewardTable() {
             </TableRow>
           </thead>
           <tbody>
-            <TableRow>
-              <TableHead scope="row" className="w-auto">
-                France
-              </TableHead>
-              <TableCell>
-                EUR 20 off the referrer&apos;s next transfer
-              </TableCell>
-              <TableCell>EUR 20 off the friend&apos;s first transfer</TableCell>
-              <TableCell>EUR 50</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableHead scope="row" className="w-auto">
-                United States
-              </TableHead>
-              <TableCell>
-                USD 20 off the referrer&apos;s next transfer
-              </TableCell>
-              <TableCell>USD 10 off the friend&apos;s first transfer</TableCell>
-              <TableCell>USD 50</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableHead scope="row" className="w-auto">
-                Australia
-              </TableHead>
-              <TableCell>
-                AUD 30 off the referrer&apos;s next transfer
-              </TableCell>
-              <TableCell>AUD 30 off the friend&apos;s first transfer</TableCell>
-              <TableCell>AUD 100</TableCell>
-            </TableRow>
+            {riaEligibleCountries.map((country) => (
+              <TableRow key={country}>
+                <TableHead scope="row" className="w-auto">
+                  {country}
+                </TableHead>
+                <TableCell>Exact reward in the Ria app</TableCell>
+                <TableCell>Exact reward in the Ria app</TableCell>
+                <TableCell>Check the current offer&apos;s minimum</TableCell>
+              </TableRow>
+            ))}
           </tbody>
         </Table>
       </div>
@@ -716,7 +690,7 @@ function RiaCountryRewardTable() {
         >
           Ria&apos;s official refer-a-friend Help Center article
         </a>
-        , checked 3 October 2026. Confirm the offer shown in the Ria app
+        , checked {reviewDate}. Confirm the offer shown in the Ria app
         because amounts, availability, and conditions can change.
       </p>
     </section>
@@ -733,18 +707,29 @@ function riaReferralFaq(): FAQItem[] {
     {
       question: "How much is the Ria referral reward in France?",
       answer:
-        "In France, Ria gives the referred friend EUR 20 off the first qualifying international transfer and the referrer EUR 20 off the next qualifying international transfer."
+        "France is eligible for Ria's refer-a-friend program. Ria now directs customers to the app for the exact reward; its current Help Center articles do not publish a fixed euro amount. Check your offer before sending."
     },
     {
       question: "What is the minimum transfer for the Ria referral offer?",
+      answer: riaMinimum
+    },
+    {
+      question: "How much is the Ria referral reward in Canada?",
       answer:
-        "The minimum qualifying international transfer is EUR 50 for France residents, USD 50 for United States residents, or AUD 100 for Australia residents, sent in one transfer."
+        "Canada is eligible for Ria's refer-a-friend program. The exact reward is shown in the Ria app. The current referral articles do not publish a fixed Canadian-dollar reward or minimum; check your offer before sending."
     },
     {
       question:
         "Which countries are eligible for Ria's refer-a-friend program?",
-      answer:
-        "Ria lists France, the United States, Australia, and Canada. Both the referrer and referred friend must live in one of these eligible countries and be at least 18."
+      answer: riaResidenceRule
+    },
+    {
+      question: "Can I combine Ria referral rewards or use a promo code?",
+      answer: riaCombiningRewards
+    },
+    {
+      question: "How many friends can I refer to Ria?",
+      answer: riaMultipleReferrals
     },
     {
       question: "When must a new customer enter the Ria referral code?",
@@ -769,7 +754,7 @@ function riaReferralFaq(): FAQItem[] {
     {
       question: "Why did a Ria referral discount not appear?",
       answer:
-        "Common reasons are ineligible residence, an existing Ria account or transfer history, late code entry, a transfer below the country minimum, a domestic transfer, or a canceled or unsuccessful transfer."
+        "Common reasons include ineligible residence or age, previous Ria account or transfer history, late code entry, a transfer below the offer's minimum, combining a referral reward with a promo code, or a domestic, canceled, or unpaid transfer."
     },
     {
       question: "Can an existing Ria customer use a referral code?",
@@ -820,7 +805,7 @@ function referralPageMetadata(provider: Provider) {
     return {
       title: "Ria Referral Code 2026: Rewards & Minimum Transfer",
       description:
-        "Ria referral code 9RMU-ENB7: France, United States and Australia rewards, minimum transfers, eligibility and timing. Verified October 2026."
+        "Ria referral code 9RMU-ENB7: 11 eligible countries, rewards to check in the app, minimum transfer rules and eligibility. Verified October 2026."
     };
   }
 
