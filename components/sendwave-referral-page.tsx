@@ -15,6 +15,7 @@ import {
   sendwaveExpiry,
   sendwaveFaq,
   sendwaveMetadata,
+  sendwaveMinimum,
   sendwavePayout,
   sendwaveReviewedAt,
   sendwaveReward,
@@ -43,20 +44,19 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 export function SendwaveReferralPage({ provider }: { provider: Provider }) {
   const facts = [
     ["Sendwave referral code", sendwaveCode],
-    ["Code source", "BonusFoundry owner-supplied referral code"],
     ["Eligible users", sendwaveEligibility],
     ["When to enter", "Before completing the first transaction"],
     ["Where to enter", "Sendwave app"],
-    ["Bonus amount", sendwaveReward],
-    ["Reward timing", sendwavePayout],
+    ["New-user bonus", "€20 transfer credit with an eligible first transfer"],
+    [
+      "Referrer credit",
+      "€20 after the friend's first transfer is successfully delivered"
+    ],
+    ["Minimum transfer", sendwaveMinimum],
     ["Credit validity", sendwaveExpiry],
     [
       "Restrictions",
       "Country, transfer corridor, minimum transfer and KYC conditions may apply."
-    ],
-    [
-      "Program changes",
-      "Sendwave may amend, suspend or terminate its referral program."
     ]
   ];
 
@@ -88,49 +88,66 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
         <div className="grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
           <article className="min-w-0">
             <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
-              Sendwave Referral Code {sendwaveCode}
+              Sendwave Referral Code {sendwaveCode}: €20 Bonus
             </h1>
             <div className="mt-4 space-y-3 leading-7">
-              <p className="text-lg font-semibold">
-                Sendwave referral code: {sendwaveCode}.
-              </p>
               <p className="text-muted-foreground">
-                The BonusFoundry Sendwave referral code is {sendwaveCode}.{" "}
-                {sendwaveReward} {sendwaveTiming} Sendwave&apos;s official
-                referral terms limit code use to new users who have never
-                completed a Sendwave app transaction.
+                Use <strong className="text-foreground">{sendwaveCode}</strong>{" "}
+                during signup to get{" "}
+                <strong className="text-foreground">€20 transfer credit</strong>{" "}
+                as an eligible new user completing a qualifying first transfer.
+                Enter the code before your first transaction. The referrer also
+                receives €20 credit after your transfer is successfully
+                delivered.
               </p>
             </div>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Updated on{" "}
+              <time dateTime={sendwaveReviewedAt}>
+                {formatDate(sendwaveReviewedAt)}
+              </time>
+              {" · "}
+              <Link
+                className="font-medium text-primary underline"
+                href="/about"
+              >
+                BonusFoundry Editorial Team
+              </Link>
+            </p>
             <div className="mt-6 grid min-w-0 grid-cols-1 gap-5">
               <Section title="Sendwave referral code">
                 <p className="font-mono text-3xl font-bold tracking-wide text-foreground">
                   {sendwaveCode}
                 </p>
-                <CopyCodeButton code={sendwaveCode} />
+                <CopyCodeButton
+                  code={sendwaveCode}
+                  label="Copy Sendwave code"
+                />
                 <p>
-                  This personal referral code is supplied by BonusFoundry&apos;s
-                  owner and appears on the supplied official Sendwave app screen
-                  alongside €10 credit for the new user. Sendwave determines
-                  eligibility.
+                  Copy {sendwaveCode} into the referral-code field when creating
+                  your Sendwave account, before completing your first transfer.
+                </p>
+                <p className="rounded-md border bg-muted/50 p-3">
+                  <strong className="text-foreground">
+                    Referral disclosure:
+                  </strong>{" "}
+                  BonusFoundry may receive €20 credit if you use this code and
+                  your first qualifying transfer is successfully delivered under
+                  Sendwave&apos;s referral terms.
                 </p>
               </Section>
-              <p className="text-sm leading-6 text-muted-foreground">
-                Code source: BonusFoundry owner-supplied referral code · €10
-                new-user credit confirmed on the supplied official app screen ·
-                Evidence reviewed:{" "}
-                <time dateTime={sendwaveReviewedAt}>
-                  {formatDate(sendwaveReviewedAt)}
-                </time>
-                .
-              </p>
               <section
                 className="overflow-hidden rounded-lg border bg-card shadow-sm"
                 aria-labelledby="sendwave-facts"
               >
                 <h2 id="sendwave-facts" className="p-5 text-xl font-semibold">
-                  Verified Sendwave referral facts
+                  Sendwave bonus at a glance
                 </h2>
                 <Table aria-labelledby="sendwave-facts">
+                  <caption className="sr-only">
+                    Sendwave code I4H9G: €20 referral rewards and qualifying
+                    conditions
+                  </caption>
                   <tbody>
                     {facts.map(([fact, answer]) => (
                       <TableRow key={fact}>
@@ -140,9 +157,6 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                     ))}
                   </tbody>
                 </Table>
-                <p className="p-5 text-sm leading-6 text-muted-foreground">
-                  {sendwaveRewardEvidence}
-                </p>
               </section>
               <ProviderCorridorLinks provider={provider} />
               <Section title="How the Sendwave referral program works">
@@ -155,8 +169,8 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                     referral-program article
                   </a>{" "}
                   describes personal codes used to refer friends. As a new user,
-                  enter {sendwaveCode} to claim the welcome credit shown for
-                  your eligible offer in the app.
+                  enter {sendwaveCode} at signup and complete an eligible first
+                  transfer for the €20 welcome credit.
                 </p>
                 <p>
                   The{" "}
@@ -166,7 +180,9 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   >
                     official Sendwave referral terms
                   </a>{" "}
-                  set the eligibility and code-entry rules. {sendwavePayout}
+                  set the eligibility and code-entry rules, including possible
+                  conditions for the sending country, destination and transfer
+                  amount.
                 </p>
               </Section>
               <Section
@@ -194,21 +210,29 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
               </Section>
               <Section title="How much is the Sendwave referral bonus?">
                 <p>{sendwaveReward}</p>
-                <p>{sendwaveRewardEvidence}</p>
                 <p>
-                  If you are looking for a Sendwave welcome bonus or first
-                  transfer bonus, review the benefit and qualifying conditions
-                  shown for your own account before sending.
+                  Each person receives their own €20 credit. The welcome bonus
+                  is promotional credit toward Sendwave transfers; fees and
+                  exchange-rate costs can still apply. Compare the total cost
+                  and the amount your recipient will receive before paying.
                 </p>
               </Section>
-              <Section
-                title={`Is ${sendwaveCode} a Sendwave promo code or referral code?`}
-              >
+              <Section title="What is the minimum transfer for the €20 offer?">
+                <p>{sendwaveMinimum}</p>
+              </Section>
+              <Section title="When do the friend and referrer receive their credit?">
+                <p>{sendwavePayout}</p>
                 <p>
-                  {sendwaveCode} is BonusFoundry&apos;s Sendwave referral code.
-                  People searching for a Sendwave bonus code, promo code or
-                  coupon code may mean either a personal referral or a separate
-                  promotional campaign.
+                  Track the transfer through successful delivery in the app and
+                  keep its reference if you need help with a missing credit.
+                </p>
+              </Section>
+              <Section title="Sendwave bonus code and promo code: which should I use?">
+                <p>
+                  If you are searching for a Sendwave bonus code or a Sendwave
+                  promo code for your first transfer, use {sendwaveCode} for the
+                  €20 referral offer as an eligible new user. Enter it at
+                  signup, before completing your first transaction.
                 </p>
                 <p>
                   Sendwave publishes separate{" "}
@@ -218,10 +242,36 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   >
                     Sendwave promo-code promotion terms
                   </a>
-                  . Referral codes and promotional campaign codes have different
-                  terms
-                  campaign code.
+                  . {sendwaveCode} is a personal referral code. A campaign code
+                  can have a different reward, eligibility period and qualifying
+                  transaction. Use the conditions attached to the code you
+                  enter.
                 </p>
+              </Section>
+              <Section title="Why has my Sendwave referral credit not appeared?">
+                <ol className="list-decimal space-y-2 pl-5">
+                  <li>
+                    Confirm that {sendwaveCode} was entered before the first
+                    transaction was completed.
+                  </li>
+                  <li>
+                    Check that the referred account is new and the first
+                    transfer was successfully delivered.
+                  </li>
+                  <li>
+                    Review the offer&apos;s country, destination and
+                    minimum-transfer conditions.
+                  </li>
+                  <li>
+                    Complete any identity verification still requested in the
+                    app.
+                  </li>
+                  <li>
+                    Contact Sendwave support in the app with the offer
+                    screenshot and transfer reference if the credit is still
+                    missing.
+                  </li>
+                </ol>
               </Section>
               <Section title="Referral credit validity and restrictions">
                 <p>
@@ -231,14 +281,13 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                 <p>
                   Sendwave may limit eligible countries and routes, require a
                   minimum transfer or KYC checks, cap the credit used on a
-                  transfer and carry unused credit forward. No universal minimum
-                  transfer is stated here.
+                  transfer and carry unused credit forward. The app shows the
+                  conditions for your transfer.
                 </p>
                 <p>
                   Sendwave may withhold, reverse or cancel credits for fraud,
                   abuse or rule violations. It may amend, suspend or terminate
-                  the referral program; check the current app conditions before
-                  relying on a reward.
+                  the referral program.
                 </p>
               </Section>
               <ProviderMiniFAQ
@@ -255,7 +304,7 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                       Sendwave referral-program article: refer a friend and earn
                       credits
                     </a>{" "}
-                    — program overview and variable rewards.
+                    — how personal referral codes work.
                   </li>
                   <li>
                     <a
@@ -267,12 +316,11 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                     — eligibility, code timing, reward credits and expiry.
                   </li>
                 </ul>
+                <p>{sendwaveRewardEvidence}</p>
                 <p>
-                  Separate promo-code terms are linked in the
-                  referral-versus-promo explanation above. These sources
-                  document the program. The supplied official Sendwave app
-                  screenshot documents {sendwaveCode} and the €10 new-user
-                  credit.
+                  The app offer supplies the €20 reward amount and successful
+                  delivery requirement. Public terms explain who qualifies and
+                  how credits can be used.
                 </p>
               </Section>
               <Section title="Referral disclosure and editorial review">
@@ -286,12 +334,11 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   <time dateTime={sendwaveTermsReviewedAt}>
                     {formatDate(sendwaveTermsReviewedAt)}
                   </time>
-                  . App evidence reviewed and this page updated on{" "}
+                  . This page updated on{" "}
                   <time dateTime={sendwaveReviewedAt}>
                     {formatDate(sendwaveReviewedAt)}
                   </time>
-                  . Check the currency and conditions shown for your own account
-                  in the app.
+                  .
                 </p>
                 <p>
                   <Link
@@ -315,6 +362,50 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                     Full referral disclosure
                   </Link>
                 </p>
+              </Section>
+              <Section title="Compare transfers and understand referral offers">
+                <ul className="list-disc space-y-2 pl-5">
+                  <li>
+                    <Link
+                      className="font-medium text-primary underline"
+                      href="/from/france"
+                    >
+                      Compare money transfer apps from France
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="font-medium text-primary underline"
+                      href="/providers"
+                    >
+                      Compare money transfer referral offers
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="font-medium text-primary underline"
+                      href="/guides/how-referral-codes-work"
+                    >
+                      How referral codes work
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="font-medium text-primary underline"
+                      href="/guides/why-bonus-was-not-received"
+                    >
+                      Check a missing welcome bonus
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="font-medium text-primary underline"
+                      href="/guides/how-to-compare-welcome-bonuses-between-transfer-apps"
+                    >
+                      Compare welcome bonuses and the full transfer cost
+                    </Link>
+                  </li>
+                </ul>
               </Section>
             </div>
           </article>

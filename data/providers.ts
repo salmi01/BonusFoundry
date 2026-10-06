@@ -1,7 +1,7 @@
 import { taptapProvider } from "@/data/taptap-send";
 import { riaCombiningRewards, riaCountryList, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
 import { paysendReferralLink, paysendOfferReviewedAt, paysendWelcomeOffer, paysendMinimumTransfer, paysendRewardTiming } from "@/data/paysend";
-import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
+import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwaveMinimum, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
 
 export type Provider = {
   name: string;
@@ -562,8 +562,7 @@ export const providers: Provider[] = [
       "Sendwave is a money transfer app used for sending funds to selected countries, often with mobile-focused delivery options.",
     referralCode: sendwaveCode,
     referralLink: null,
-    welcomeBonus:
-      `The BonusFoundry Sendwave referral code is ${sendwaveCode}. ${sendwaveTiming} ${sendwaveReward}`,
+    welcomeBonus: sendwaveReward,
     supportedCountries: ["United States", "United Kingdom", "France", "Senegal", "Ghana", "Kenya"],
     eligibleUsers: sendwaveEligibility,
     ineligibleUsers: ["Users who have already completed a Sendwave app transaction.", "Users whose country, transfer route, first transaction or KYC status does not meet Sendwave's applicable conditions."],
@@ -577,21 +576,21 @@ export const providers: Provider[] = [
     steps: sendwaveSteps,
     keyFacts: [
       { label: "Referral code", value: `${sendwaveCode} (BonusFoundry owner-supplied)` },
-      { label: "Welcome credit", value: "€10 / $10 for eligible new users, depending on the offer currency." },
-      { label: "Best check", value: "Review the Sendwave app before the first transfer." },
-      { label: "Bonus certainty", value: "Confirm the live Sendwave offer before sending money." }
+      { label: "Welcome credit", value: "€20 transfer credit for eligible new users entering I4H9G at signup and completing a qualifying first transfer." },
+      { label: "Referrer credit", value: "€20 after the friend's first qualifying transfer is successfully delivered, for the referrer's next transfer." },
+      { label: "Code timing", value: "Enter I4H9G at signup, before completing the first transaction." },
+      { label: "Qualifying transfer", value: "Meet the app's destination, transfer amount and identity-verification conditions." }
     ],
-    currentOffer:
-      `The BonusFoundry Sendwave referral code is ${sendwaveCode}. ${sendwaveTiming} ${sendwaveReward}`,
-    lastOfferUpdate: "2026-09-12",
+    currentOffer: sendwaveReward,
+    lastOfferUpdate: sendwaveReviewedAt,
     lastManualReview: sendwaveReviewedAt,
     referral: {
       hasProgram:
-        "Sendwave operates a personal referral-code program. Its official app screen shows I4H9G and €10 credit for the new user. BonusFoundry's owner also reports a $10 offer.",
+        "Sendwave operates a personal referral-code program. Code I4H9G offers €20 transfer credit to eligible new users with a qualifying first transfer, and €20 to the referrer after successful delivery.",
       code: sendwaveCode,
       link: null,
-      welcomeBonus: `${sendwaveReward} ${sendwaveRewardEvidence}`,
-      minimumTransfer: "Sendwave may set a minimum transfer for an eligible country or route; check the applicable amount in the app.",
+      welcomeBonus: sendwaveReward,
+      minimumTransfer: sendwaveMinimum,
       expiry: sendwaveExpiry,
       payoutTiming: sendwavePayout,
       limitations: [
@@ -645,7 +644,7 @@ export const providers: Provider[] = [
     ],
     sources: [
       { label: "Sendwave referral-program terms", url: sendwaveSources.terms, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
-      { label: "Sendwave referral-program article", url: sendwaveSources.program, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
+      { label: "Sendwave referral-program article", url: sendwaveSources.program, lastReviewed: "2026-10-05", confidence: "official" },
       {
         label: "Sendwave official website",
         url: "https://www.sendwave.com/en-us",
@@ -665,7 +664,7 @@ export const providers: Provider[] = [
         confidence: "official"
       },
       {
-        label: "Owner-supplied Sendwave app evidence: I4H9G and €10 new-user credit; $10 reported separately by owner",
+        label: "Sendwave app offer reviewed by BonusFoundry: I4H9G and €20 credit for each person",
         url: "https://bonusfoundry.com/providers/sendwave/referral-code",
         lastReviewed: sendwaveReviewedAt,
         confidence: "internal"
@@ -673,12 +672,11 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed the owner-supplied official Sendwave app screenshot on 3 October 2026: I4H9G and €10 credit for the new user. The owner also reports $10; that currency is not displayed in the capture. Public referral terms were reviewed on 3 October 2026. Earlier service research retains its original dates.",
+        `${sendwaveRewardEvidence} Public referral terms rechecked on 6 October 2026. Earlier service research retains its original dates.`,
       confidence: "high",
       sourcesReviewed: ["Sendwave referral-program terms", "Sendwave referral-program article", "Sendwave promo-code terms (separate campaign rules)", "Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
-        "The $10 offer is owner-reported; the supplied official app screenshot documents only the €10 currency offer.",
-        "Check your account's eligible currency offer and transfer conditions in the Sendwave app.",
+        "Check qualifying transfer amounts and recipient destinations in the Sendwave app.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
     },
@@ -686,7 +684,9 @@ export const providers: Provider[] = [
       status: "Manually Verified",
       verificationMethod: "Official Sendwave app screenshot supplied by the code owner plus published referral terms",
       verifiedFields: [
-        "Referral code I4H9G and €10 new-user credit displayed in the official Sendwave app screenshot",
+        "Referral code I4H9G, €20 new-user credit and €20 referrer credit displayed in the supplied Sendwave app screenshot",
+        "France registration confirmed by the publisher who supplied the screenshot",
+        "Referrer credit after successful delivery of the friend's first transfer; no completed reward payout independently tested",
         "Code entry before the first transaction and new-user eligibility",
         "12-month referral-credit validity unless otherwise specified",
         "Country, corridor, minimum-transfer and KYC restrictions"
@@ -695,6 +695,8 @@ export const providers: Provider[] = [
       officialSourcesReviewed: 3
     },
     updateHistory: [
+      { date: "2026-10-06", note: "Clarified the €20 new-user referral bonus, code-entry steps and answers for bonus-code and promo-code searches. Rechecked official referral terms and aligned visible answers, metadata and structured data." },
+      { date: "2026-10-05", note: "Updated the offer observed on a France-registered app account to €20 credit for the new user and €20 for the referrer after successful first-transfer delivery. Removed outdated currency claims, clarified the unconfirmed minimum, and rechecked public referral terms." },
       { date: "2026-09-12", note: "Added €10 / $10 new-user welcome credit: €10 confirmed on the supplied official app screen, $10 reported by the owner. Content focuses on the new user's benefit." },
       { date: "2026-09-11", note: "Clarified owner-supplied code I4H9G, official referral eligibility and timing, variable credits, expiry, restrictions and the distinction from separate promotional campaign codes." },
       {
