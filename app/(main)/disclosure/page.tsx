@@ -2,6 +2,8 @@ import { LastVerified, QuickAnswer, RelatedResources } from "@/components/ai-con
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
 import { JsonLd } from "@/components/json-ld";
+import Link from "next/link";
+import { bnpReferralPath } from "@/data/bnp-paribas-referral";
 import { breadcrumbJsonLd, createMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -46,6 +48,9 @@ export default function DisclosurePage() {
           </p>
         </div>
         <div className="mt-10 max-w-3xl">
+          <p className="mb-6 text-sm text-muted-foreground">
+            French banking referral offer: <Link href={bnpReferralPath} lang="fr" className="text-primary underline">Parrainage BNP Paribas : conditions et transparence</Link>.
+          </p>
           <RelatedResources
             links={[
               { href: "/about", label: "About BonusFoundry" },

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { bnpCampaign, bnpReferralPath } from "@/data/bnp-paribas-referral";
 import { corridors } from "@/data/corridors";
 import { faqs } from "@/data/faqs";
 import { indexReviewedAt } from "@/data/index-review";
@@ -41,7 +42,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   // This page has its own review date; the provider overview retains its date.
   modifiedDates.set(paysendReferralPath, paysendReferralReviewedAt);
+  modifiedDates.set(bnpReferralPath, bnpCampaign.contentModifiedAt);
   const routes = [
+    bnpReferralPath,
     "",
     "/providers",
     "/corridors",

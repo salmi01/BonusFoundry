@@ -3,11 +3,11 @@ import Image from "next/image";
 import { Container } from "@/components/container";
 import { navItems, siteConfig } from "@/data/site";
 
-export function Header() {
+export function Header({ french = false }: { french?: boolean }) {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/90 shadow-sm backdrop-blur">
       <Container className="flex min-h-16 flex-col items-stretch gap-2 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:py-0">
-        <Link href="/" className="flex items-center" aria-label={`${siteConfig.name} home`}>
+        <Link href="/" className="flex items-center" aria-label={french ? `Accueil ${siteConfig.name}` : `${siteConfig.name} home`}>
           <Image
             src={siteConfig.logo}
             alt={siteConfig.name}
@@ -18,10 +18,10 @@ export function Header() {
           />
         </Link>
         <nav
-          aria-label="Main navigation"
+          aria-label={french ? "Navigation principale" : "Main navigation"}
           className="flex flex-wrap items-center justify-center gap-1 rounded-lg border bg-card/80 p-1 text-sm shadow-sm sm:justify-end"
         >
-          {navItems.map((item) => (
+          {(french ? [{ href: "/", label: "Accueil" }, { href: "/fr/banques/bnp-paribas/parrainage", label: "Parrainage BNP Paribas" }] : navItems).map((item) => (
             <Link
               key={item.href}
               href={item.href}

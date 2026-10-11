@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 // Check the actual assets referenced by HTML, not just a successful page response.
 const origin = process.argv[2] || "http://localhost:3000";
 const assets = new Map();
+let tailwindPresent = false;
 for (const path of ["/", "/providers", "/providers/sendwave/referral-code"]) {
   const response = await fetch(new URL(path, origin));
   assert.equal(response.status, 200, `${path}: page unavailable`);
@@ -30,14 +31,13 @@ for (const [url, type] of assets) {
     `Unexpected content type: ${url}`
   );
   if (type === "css") {
-    assert(
-      (await response.text()).includes(".flex"),
-      `Tailwind utilities missing: ${url}`
-    );
+    // Multiple root layouts can split fonts and utilities into separate CSS assets.
+    tailwindPresent ||= (await response.text()).includes(".flex");
   } else {
     await response.arrayBuffer();
   }
 }
+assert(tailwindPresent, "Tailwind utilities missing from all linked stylesheets");
 console.log(
   `${assets.size} CSS/JavaScript assets returned 200; Tailwind CSS present.`
 );

@@ -4,7 +4,21 @@ import { Container } from "@/components/container";
 import { SocialLinks } from "@/components/social-links";
 import { navItems, siteConfig, trustLinks } from "@/data/site";
 
-export function Footer() {
+export function Footer({ french = false }: { french?: boolean }) {
+  if (french) {
+    return (
+      <footer className="mt-16 border-t bg-card/90">
+        <Container className="flex flex-col gap-4 py-8 sm:flex-row sm:items-start sm:justify-between">
+          <div className="max-w-xl">
+            <Image src={siteConfig.logo} alt={siteConfig.name} width={2172} height={724} className="h-9 w-auto" />
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">BonusFoundry est un site indépendant et n&apos;est pas affilié à BNP Paribas.</p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">Les liens de parrainage peuvent nous apporter une récompense si les conditions de la banque sont remplies.</p>
+          </div>
+          <a className="text-sm text-primary underline" href={`mailto:${siteConfig.email}`}>Contacter BonusFoundry</a>
+        </Container>
+      </footer>
+    );
+  }
   return (
     <footer className="mt-20 border-t bg-card/90">
       <Container className="grid gap-8 py-10 md:grid-cols-[1.3fr_0.8fr_1fr_1fr]">

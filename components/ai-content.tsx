@@ -409,28 +409,30 @@ export function LastVerified({
   date,
   label = "Last reviewed",
   contentUpdatedAt,
-  reviewedBy = defaultReviewedBy
+  reviewedBy = defaultReviewedBy,
+  french = false
 }: {
   date: string;
   label?: string;
   contentUpdatedAt?: string;
   reviewedBy?: string;
+  french?: boolean;
 }) {
   return (
     <div className="rounded-lg border bg-card px-4 py-3 text-sm shadow-sm">
       <p>
-        <span className="font-semibold text-foreground">Reviewed by: </span>
+        <span className="font-semibold text-foreground">{french ? "Relecture : " : "Reviewed by: "}</span>
         <span className="text-muted-foreground">{reviewedBy}</span>
       </p>
       <p>
         <span className="font-semibold text-foreground">{label}: </span>
         <time dateTime={date} className="text-muted-foreground">
-          {date}
+          {french ? new Intl.DateTimeFormat("fr-FR", { dateStyle: "long", timeZone: "UTC" }).format(new Date(date)) : date}
         </time>
       </p>
       {contentUpdatedAt ? (
         <p className="mt-1">
-          <span className="font-semibold text-foreground">Last content update: </span>
+          <span className="font-semibold text-foreground">{french ? "Dernière mise à jour du contenu : " : "Last content update: "}</span>
           <time dateTime={contentUpdatedAt} className="text-muted-foreground">
             {contentUpdatedAt}
           </time>
