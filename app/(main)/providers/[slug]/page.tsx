@@ -1,3 +1,4 @@
+import { AceMoneyTransferOverview } from "@/components/ace-money-transfer-page";
 import { TaptapSendPage } from "@/components/taptap-send-page";
 import { TransfergoOverview } from "@/components/transfergo-referral-page";
 import { notFound } from "next/navigation";
@@ -50,6 +51,11 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) return {};
+  if (provider.slug === "ace-money-transfer") return createMetadata({
+    title: "ACE Money Transfer: Service and Referral Overview",
+    description: provider.description,
+    path: "/providers/ace-money-transfer"
+  });
   if (provider.slug === "transfergo") return createMetadata({
     title: "TransferGo: International Transfer Checks",
     description: provider.description,
@@ -75,6 +81,7 @@ export default async function ProviderPage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+  if (provider.slug === "ace-money-transfer") return <AceMoneyTransferOverview />;
   if (provider.slug === "transfergo") return <TransfergoOverview />;
   if (provider.slug === "taptap-send") return <TaptapSendPage overview />;
   const authority = getProviderAuthority(provider);

@@ -1,3 +1,4 @@
+import { aceProvider } from "@/data/ace-money-transfer";
 import { taptapProvider } from "@/data/taptap-send";
 import { transfergoProvider } from "@/data/transfergo-referral";
 import { riaCombiningRewards, riaCountryList, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
@@ -2467,7 +2468,8 @@ export const providers: Provider[] = [
     ],
     lastUpdated: "2026-07-05"
   },
-  transfergoProvider
+  transfergoProvider,
+  aceProvider
 ];
 
 export function getProvider(slug: string) {

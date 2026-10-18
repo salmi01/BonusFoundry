@@ -1,3 +1,5 @@
+import { AceMoneyTransferPage } from "@/components/ace-money-transfer-page";
+import { aceMetadata } from "@/data/ace-money-transfer";
 import { TaptapSendPage } from "@/components/taptap-send-page";
 import { SendwaveReferralPage } from "@/components/sendwave-referral-page";
 import { PaysendReferralPage } from "@/components/paysend-referral-page";
@@ -59,11 +61,11 @@ export async function generateMetadata({ params }: PageProps) {
     title: metadata.title,
     description: metadata.description,
     path: `/providers/${provider.slug}/referral-code`,
-    type: ["paysend", "transfergo"].includes(provider.slug) ? "website" : "article",
+    type: ["paysend", "transfergo", "ace-money-transfer"].includes(provider.slug) ? "website" : "article",
     modifiedTime: provider.slug === "paysend" ? paysendReferralReviewedAt : provider.lastUpdated
   });
 
-  if (provider.slug === "ria") {
+  if (["ria", "ace-money-transfer"].includes(provider.slug)) {
     return { ...generatedMetadata, title: { absolute: metadata.title } };
   }
 
@@ -76,6 +78,8 @@ export default async function ReferralCodePage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+
+  if (provider.slug === "ace-money-transfer") return <AceMoneyTransferPage />;
 
   if (provider.slug === "paysend") {
     return <PaysendReferralPage />;
@@ -803,6 +807,7 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralPageMetadata(provider: Provider) {
+  if (provider.slug === "ace-money-transfer") return aceMetadata;
   if (provider.slug === "transfergo") return transfergoMetadata;
   if (provider.slug === "paysend") return paysendReferralMetadata;
   if (provider.slug === "sendwave") return sendwaveMetadata;
