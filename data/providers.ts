@@ -1,4 +1,5 @@
 import { taptapProvider } from "@/data/taptap-send";
+import { transfergoProvider } from "@/data/transfergo-referral";
 import { riaCombiningRewards, riaCountryList, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
 import { paysendReferralLink, paysendOfferReviewedAt, paysendWelcomeOffer, paysendMinimumTransfer, paysendRewardTiming } from "@/data/paysend";
 import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwaveMinimum, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
@@ -2465,7 +2466,8 @@ export const providers: Provider[] = [
       }
     ],
     lastUpdated: "2026-07-05"
-  }
+  },
+  transfergoProvider
 ];
 
 export function getProvider(slug: string) {

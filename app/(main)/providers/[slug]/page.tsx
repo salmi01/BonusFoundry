@@ -1,4 +1,5 @@
 import { TaptapSendPage } from "@/components/taptap-send-page";
+import { TransfergoOverview } from "@/components/transfergo-referral-page";
 import { notFound } from "next/navigation";
 import {
   BestFor,
@@ -49,6 +50,11 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) return {};
+  if (provider.slug === "transfergo") return createMetadata({
+    title: "TransferGo: International Transfer Checks",
+    description: provider.description,
+    path: "/providers/transfergo"
+  });
 
   if (provider.slug === "taptap-send") {
     return createMetadata({
@@ -69,6 +75,7 @@ export default async function ProviderPage({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) notFound();
+  if (provider.slug === "transfergo") return <TransfergoOverview />;
   if (provider.slug === "taptap-send") return <TaptapSendPage overview />;
   const authority = getProviderAuthority(provider);
   const guides = await getGuides();

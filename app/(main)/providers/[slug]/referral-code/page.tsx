@@ -1,6 +1,8 @@
 import { TaptapSendPage } from "@/components/taptap-send-page";
 import { SendwaveReferralPage } from "@/components/sendwave-referral-page";
 import { PaysendReferralPage } from "@/components/paysend-referral-page";
+import { TransfergoReferralPage } from "@/components/transfergo-referral-page";
+import { transfergoMetadata } from "@/data/transfergo-referral";
 import { paysendReferralMetadata, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendwaveMetadata } from "@/data/sendwave";
 import { taptapMetadata } from "@/data/taptap-send";
@@ -57,7 +59,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: metadata.title,
     description: metadata.description,
     path: `/providers/${provider.slug}/referral-code`,
-    type: provider.slug === "paysend" ? "website" : "article",
+    type: ["paysend", "transfergo"].includes(provider.slug) ? "website" : "article",
     modifiedTime: provider.slug === "paysend" ? paysendReferralReviewedAt : provider.lastUpdated
   });
 
@@ -65,7 +67,9 @@ export async function generateMetadata({ params }: PageProps) {
     return { ...generatedMetadata, title: { absolute: metadata.title } };
   }
 
-  return generatedMetadata;
+  return provider.slug === "transfergo"
+    ? { ...generatedMetadata, robots: { index: true, follow: true } }
+    : generatedMetadata;
 }
 
 export default async function ReferralCodePage({ params }: PageProps) {
@@ -76,6 +80,8 @@ export default async function ReferralCodePage({ params }: PageProps) {
   if (provider.slug === "paysend") {
     return <PaysendReferralPage />;
   }
+
+  if (provider.slug === "transfergo") return <TransfergoReferralPage />;
 
   const authority = getProviderAuthority(provider);
   if (provider.slug === "sendwave") {
@@ -797,6 +803,7 @@ function hasOwnedReferralLink(provider: Provider) {
 }
 
 function referralPageMetadata(provider: Provider) {
+  if (provider.slug === "transfergo") return transfergoMetadata;
   if (provider.slug === "paysend") return paysendReferralMetadata;
   if (provider.slug === "sendwave") return sendwaveMetadata;
   const providerName = referralMetadataProviderName(provider);

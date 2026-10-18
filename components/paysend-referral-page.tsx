@@ -338,6 +338,12 @@ export function PaysendReferralPage() {
               title="More help with referral offers"
               links={[
                 {
+                  href: "/providers/transfergo/referral-code",
+                  label: "TransferGo invite link and referral requirements",
+                  description:
+                    "Compare another invitation flow and check who receives a reward."
+                },
+                {
                   href: "/providers/paysend",
                   label: "Paysend provider overview",
                   description: "Service and transfer-method background."
