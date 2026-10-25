@@ -6,7 +6,7 @@ import { PaysendReferralPage } from "@/components/paysend-referral-page";
 import { TransfergoReferralPage } from "@/components/transfergo-referral-page";
 import { transfergoMetadata } from "@/data/transfergo-referral";
 import { paysendReferralMetadata, paysendReferralReviewedAt } from "@/data/paysend-referral";
-import { sendwaveMetadata } from "@/data/sendwave";
+import { sendwaveReferralMetadata as sendwaveMetadata, sendwaveReferralUpdatedAt } from "@/data/sendwave-referral";
 import { taptapMetadata } from "@/data/taptap-send";
 import { riaCombiningRewards, riaCountryList, riaEligibleCountries, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReward, riaSources } from "@/data/ria-referral";
 import Link from "next/link";
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: PageProps) {
     title: metadata.title,
     description: metadata.description,
     path: `/providers/${provider.slug}/referral-code`,
-    type: ["paysend", "transfergo", "ace-money-transfer"].includes(provider.slug) ? "website" : "article",
-    modifiedTime: provider.slug === "paysend" ? paysendReferralReviewedAt : provider.lastUpdated
+    type: ["paysend", "transfergo", "ace-money-transfer", "sendwave"].includes(provider.slug) ? "website" : "article",
+    modifiedTime: provider.slug === "sendwave" ? sendwaveReferralUpdatedAt : provider.slug === "paysend" ? paysendReferralReviewedAt : provider.lastUpdated
   });
 
   if (["ria", "ace-money-transfer"].includes(provider.slug)) {

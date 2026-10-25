@@ -6,6 +6,7 @@ import { indexReviewedAt } from "@/data/index-review";
 import { providers } from "@/data/providers";
 import { paysendReferralPath, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendingCountryHubs } from "@/data/sending-country-hubs";
+import { sendwaveReferralUpdatedAt } from "@/data/sendwave-referral";
 import { siteConfig } from "@/data/site";
 import { blogSlugs, guideSlugs, getGuides, getBlogPosts } from "@/lib/content";
 
@@ -42,6 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   // This page has its own review date; the provider overview retains its date.
   modifiedDates.set(paysendReferralPath, paysendReferralReviewedAt);
+  modifiedDates.set("/providers/sendwave/referral-code", sendwaveReferralUpdatedAt);
   modifiedDates.set(bnpReferralPath, bnpCampaign.contentModifiedAt);
   const routes = [
     bnpReferralPath,
