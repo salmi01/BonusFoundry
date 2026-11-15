@@ -9,8 +9,8 @@ export const taptapOffer = {
   eligibleCountries: null,
   campaignExpiresAt: null,
   evidenceReviewedAt: "2026-10-03",
-  officialCheckedAt: "2026-10-03",
-  contentUpdatedAt: "2026-10-03",
+  officialCheckedAt: "2026-11-15",
+  contentUpdatedAt: "2026-11-15",
   evidenceFile: null,
   evidenceFilename: "WhatsApp Image 2026-09-07 at 20.26.36.jpeg"
 } as const;
@@ -44,7 +44,7 @@ export const taptapSources = [
     key: "usa",
     label: "Sending from the United States",
     url: "https://help.taptapsend.com/en/sending-countries/how-do-i-send-money-from-the-usa",
-    updatedAt: "2026-08-25"
+    updatedAt: "2026-10-20"
   },
   {
     key: "fees",
@@ -74,7 +74,7 @@ export const taptapSources = [
     key: "support",
     label: "Contact Taptap Send support",
     url: "https://help.taptapsend.com/en/how-do-i-contact-taptap-send-support",
-    updatedAt: "2026-08-28"
+    updatedAt: "2026-11-09"
   }
 ] as const;
 
@@ -260,7 +260,7 @@ export const taptapProvider: Provider = {
       {
         country: "United States",
         supported:
-          "The official guide requires residence and physical presence in an available state at registration; Nevada and the Virgin Islands are listed as unavailable as checked on 3 October 2026.",
+          "The official guide requires residence and physical presence in an available state at registration; Nevada and the Virgin Islands are listed as unavailable as checked on 15 November 2026.",
         paymentMethods: [
           "Debit card",
           "Taptap Send wallet for eligible accounts"
@@ -296,7 +296,7 @@ export const taptapProvider: Provider = {
   })),
   researchProfile: {
     completeness:
-      "Official rules checked on 3 October 2026; owner-supplied transcription of the referral screen reviewed on 3 October 2026.",
+      "Official rules checked on 15 November 2026; owner-supplied transcription of the referral screen reviewed on 3 October 2026.",
     confidence: "high",
     sourcesReviewed: taptapSources.map((s) => s.label),
     remainingItems: [
