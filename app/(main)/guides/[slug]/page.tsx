@@ -48,8 +48,13 @@ export default async function GuidePage({ params }: PageProps) {
   const guide = await getGuide(slug);
   if (!guide) notFound();
   const { Content, meta } = guide;
+  const isMoroccoGuide = meta.slug === "best-money-transfer-apps-to-morocco";
   const guides = await getGuides();
-  const relatedResources = buildGuideRelatedResources(meta, guides);
+  const relatedResources = buildGuideRelatedResources(meta, guides).map((resource) => {
+    // Keep related snippets consistent with this guide's qualified offer evidence.
+    if (!isMoroccoGuide || !resource.href.startsWith("/providers/")) return resource;
+    return { ...resource, description: "Check the provider's invitation, eligibility and account-specific conditions." };
+  });
   const guideChecklist = guideChecklistItems(meta.slug);
 
   return (
@@ -57,7 +62,7 @@ export default async function GuidePage({ params }: PageProps) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", item: "/" },
-          { name: "Guides", item: `/guides/${meta.slug}` },
+          { name: "Guides", item: isMoroccoGuide ? "/guides" : `/guides/${meta.slug}` },
           { name: meta.title, item: `/guides/${meta.slug}` }
         ])}
       />
@@ -79,7 +84,7 @@ export default async function GuidePage({ params }: PageProps) {
           author: "BonusFoundry Editorial Team"
         })}
       />
-      {meta.faqs ? <JsonLd data={faqJsonLd(meta.faqs)} /> : null}
+      {meta.faqs && !isMoroccoGuide ? <JsonLd data={faqJsonLd(meta.faqs)} /> : null}
       <Container className="py-10">
         <Breadcrumb
           items={[
@@ -88,13 +93,13 @@ export default async function GuidePage({ params }: PageProps) {
           ]}
         />
         <article className="max-w-3xl">
-          <LastVerified date={formatDate(meta.updatedAt)} />
+          <LastVerified date={formatDate(meta.updatedAt)} contentUpdatedAt={isMoroccoGuide ? formatDate(meta.updatedAt) : undefined} />
           <h1 className="mt-4 text-4xl font-bold tracking-normal">{meta.h1 ?? meta.title}</h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{meta.description}</p>
           <div className="mt-8">
             <QuickAnswer answer={meta.quickAnswer ?? meta.description} />
           </div>
-          <div className="mt-5">
+          {!isMoroccoGuide && <div className="mt-5">
             <KeyTakeaways
               title="On this page"
               items={
@@ -107,16 +112,16 @@ export default async function GuidePage({ params }: PageProps) {
                 ]
               }
             />
-          </div>
-          <div className="mt-5">
+          </div>}
+          {!isMoroccoGuide && <div className="mt-5">
             <StepChecklist items={guideChecklist} title="Action checklist" />
-          </div>
+          </div>}
           <div className="mt-8">
             <Content />
           </div>
           <div className="mt-10 grid gap-5">
-            <CommonMistakes mistakes={guideCommonMistakes(meta.slug)} />
-            <Troubleshooting items={guideTroubleshooting(meta.slug)} />
+            {!isMoroccoGuide && <CommonMistakes mistakes={guideCommonMistakes(meta.slug)} />}
+            {!isMoroccoGuide && <Troubleshooting items={guideTroubleshooting(meta.slug)} />}
             <NextSteps links={guideNextSteps(meta.slug)} />
             <RelatedResources links={relatedResources} />
           </div>

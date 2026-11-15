@@ -1,7 +1,5 @@
-import { taptapSummary } from "@/data/taptap-send";
-
 import {
-  getMoroccoProvider,
+  moroccoBonuses,
   moroccoGuideUpdatedAt,
   moroccoQuickAnswer,
   moroccoCodeSummary,
@@ -11,7 +9,7 @@ import {
 import {
   MoroccoAppsAtGlanceTable,
   MoroccoReferralBonusesTable,
-  MoroccoProviderReferralFacts
+  MoroccoProviderReviews
 } from "@/components/morocco-guide-tables";
 
 export const meta = {
@@ -23,49 +21,43 @@ export const meta = {
   publishedAt: "2026-07-21",
   updatedAt: moroccoGuideUpdatedAt,
   quickAnswer: moroccoQuickAnswer,
-  keyTakeaways: [
-    "Compare the final MAD amount, not only the transfer fee.",
-    "Confirm that the app supports the sender country and Morocco before signup.",
-    "Choose bank deposit, cash pickup, mobile wallet, card deposit or wallet delivery based on the recipient's needs.",
-    `Codes listed by BonusFoundry: ${moroccoCodeSummary}. Confirm each live offer before sending.`,
-    "Save the quote and offer screen before confirming a first transfer."
-  ],
   faqs: [
     {
       question: "What is the best app to send money to Morocco?",
       answer:
-        "There is no universal best app for Morocco. Compare TapTap Send, Remitly, Wise, LemFi, Ria, Sendwave, Paysend and WorldRemit by sender country, payout method, total MAD received, speed and referral eligibility."
+        "There is no universal winner. Compare Taptap Send, Remitly, Wise, LemFi, Ria, Sendwave, Paysend, WorldRemit and Xoom by sender country, recipient payout method, MAD delivered for the same total budget and arrival estimate."
     },
     {
       question: "Which app is cheapest for sending money to Morocco?",
       answer:
-        "The cheapest app changes with the live quote. Compare the final MAD amount after transfer fee and exchange-rate margin instead of choosing only by advertised fee."
+        "Compare simultaneous quotes with the same total amount paid and the same payout method. Record fees, exchange rate and final MAD, including any receiving-bank charge. Compare a first-transfer discount separately from ordinary pricing."
     },
     {
       question: "Which app supports Moroccan bank deposits?",
       answer:
-        "Official sources reviewed show Morocco bank-account delivery from TapTap Send, Remitly, Wise, Ria, Paysend and WorldRemit. Availability still depends on sender country and live route."
+        "Reviewed official sources document bank delivery from Taptap Send, Wise, Remitly (France/US), Ria (US), Paysend (US) and Xoom. Sender-country availability still needs confirmation. WorldRemit's conflicting bank pages do not establish a usable bank-deposit route, so it is excluded from this recommendation. Wise requires the recipient's full name and 24-digit RIB."
     },
     {
       question: "Which app supports cash pickup in Morocco?",
       answer:
-        "Official sources reviewed show cash pickup in Morocco from TapTap Send, Remitly, Ria, Sendwave and WorldRemit. TapTap Send supports Cash Plus and Wafacash pickup according to official Taptap Send sources."
+        "Official documentation supports cash pickup from Taptap Send, Remitly, Ria, Sendwave, WorldRemit and Xoom, subject to the sender route. Taptap Send lists CashPlus, Wafacash, Barid Cash, Al Barid Bank, LanaCash and DamaneCash. Confirm the recipient's ID, pickup reference and partner opening hours."
     },
     {
       question: "What is the TapTap Send referral code?",
-      answer: taptapSummary
+      answer: `SALAHEDD1933 is the owner's personal Taptap Send code. ${moroccoBonuses["taptap-send"].offer} The evidence was reviewed October 3, 2026; no numeric qualifying minimum is established by that evidence.`
     },
     {
       question: "What is the LemFi referral code?",
-      answer: `The LemFi referral code is ${getMoroccoProvider("lemfi").method}. ${getMoroccoProvider("lemfi").referral.welcomeBonus}`
+      answer: `The listed LemFi code is SALABGWQ. ${moroccoBonuses.lemfi.offer} Confirm the live in-app terms before relying on a reward.`
     },
     {
       question: "What is the Sendwave welcome bonus?",
-      answer: getMoroccoProvider("sendwave").provider.welcomeBonus
+      answer: `Code I4H9G appears in the publisher account evidence reviewed November 15, 2026. ${moroccoBonuses.sendwave.offer} This is separate from general Morocco service availability.`
     },
     {
       question: "Can Canadian residents use Ria's referral program?",
-      answer: `${getMoroccoProvider("ria").referral.hasProgram} Confirm the Canadian reward and qualifying minimum in the Ria app.`
+      answer:
+        "Yes. The official article updated October 16, 2026 lists 10 eligible residences: Australia, Belgium, Canada, Chile, France, Germany, Italy, Spain, UK and US. Check the Canadian account's reward and minimum; the France-account €20 friend promo / €20 referrer example is not a Canadian offer."
     },
     {
       question: "Which money transfer apps offer signup bonuses?",
@@ -74,274 +66,120 @@ export const meta = {
     {
       question: "Can existing users use a referral code?",
       answer:
-        "Usually no. Referral and welcome offers normally target new users or first qualifying transfers, but each provider's current app terms control eligibility."
+        "Welcome offers normally require a new user or first qualifying transfer. Each accepted offer controls eligibility; an existing account should not assume it can add a new-user code later."
     },
     {
       question: "How long does a transfer to Morocco take?",
       answer:
-        "Timing varies by provider, payment method, payout method, verification and partner hours. Some providers describe minutes for certain methods, while Wise says MAD bank transfers usually take 1-3 working days after conversion."
+        "Timing depends on funding, payout, checks and partner hours. Taptap Send describes cash pickup/Orange Money as usually minutes and bank deposits as same/next business day, sometimes two working days. Wise describes 1–3 working days after receipt and conversion. Use the actual quote's arrival estimate."
     },
     {
       question: "What should I do if the bonus does not appear?",
       answer:
-        "Check that the correct code or link attached before signup or first transfer. Confirm the minimum transfer, route rules and verification status, then contact provider support with the offer screen and transfer receipt."
+        "Check the accepted offer, code/link attachment, new-user status, qualifying amount, route and successful delivery. Save the offer and transfer receipt before contacting provider support; a referral credit is separate from the recipient's transfer payout."
+    },
+    {
+      question: "Can I send to a Moroccan mobile wallet or card?",
+      answer:
+        "Taptap Send documents Orange Money, Ria's US route names Orange Money, and Remitly's France/US pages list mobile-wallet delivery. Paysend's US route lists Mastercard cards and digital wallets. Confirm the exact wallet/card and sender country; generic worldwide wallet coverage is not Morocco proof."
     }
   ]
 };
 
-TapTap Send, Remitly, Wise, LemFi, Ria, Sendwave, Paysend and WorldRemit are worth comparing for Morocco transfers in 2026. Do not choose one provider only because it advertises a low fee or a referral bonus. Compare the final Moroccan dirham amount, delivery method, payment method, verification status and live offer screen before sending.
-
-Guide updated September 13, 2026 to match the current provider offers and eligibility. Provider review dates appear alongside each offer; this update does not represent a new check of live rates or every Morocco route. Morocco service sources were reviewed September 6, with Taptap Send sources checked September 8.
+Official service documentation was reviewed on November 15, 2026. These are documented options, not live-price rankings or completed transfer tests; historical app-offer evidence is dated separately in the bonus table.
 
 ## Best money transfer apps to Morocco at a glance
 
 <MoroccoAppsAtGlanceTable />
 
+## Choose by how your recipient gets the money
+
+- **Moroccan bank account:** start with the recipient's full name and bank details. Wise specifically requires a **24-digit RIB**. Compare eligible bank quotes from Wise, Taptap Send, Remitly, Ria, Paysend and Xoom; check receiving-bank charges. WorldRemit bank delivery remains unconfirmed.
+- **Cash pickup:** choose a partner the recipient can reach during opening hours. Confirm the required ID, exact recipient name and pickup reference/PIN. Compare Taptap Send, Remitly, Ria, Sendwave, WorldRemit and Xoom on supported routes.
+- **Mobile wallet:** confirm the exact wallet, registration and limits. Taptap Send names **Orange Money**; Ria's US page names it too. Remitly's France/US routes list mobile-wallet delivery. Do not assume any Moroccan wallet works.
+- **Card deposit:** Paysend's US-to-Morocco page lists **Mastercard** delivery. Verify card eligibility and the sender route in the quote; this is different from paying for a transfer by card.
+
+For **France → Morocco**, Remitly's France page documents bank, cash and wallet choices. Taptap Send's Morocco help specifically prices France-origin cash pickup at **€2.99**; bank/Orange Money have no separate transfer fee but include an exchange-rate margin. Compare the final MAD for the same total EUR budget and the same payout method. These facts do not establish a cheapest provider or guarantee a particular app promotion.
+
+See the existing [France to Morocco](/corridors/france-to-morocco), [USA to Morocco](/corridors/usa-to-morocco), [Belgium to Morocco](/corridors/belgium-to-morocco), [Spain to Morocco](/corridors/spain-to-morocco) and [Canada to Morocco](/corridors/canada-to-morocco) route guides for origin-specific starting points. Confirm current availability in the provider's quote.
+
 ## How we compared the apps
 
-BonusFoundry compared official provider Morocco pages, help-center pages, referral pages and existing BonusFoundry structured provider data. The comparison favors verifiable facts over claims such as "cheapest" or "fastest".
+We reviewed official Morocco destination pages, country help and relevant referral terms. The comparison separates documented service availability, a live quote's actual price, and account-specific promotional evidence. Each provider below has the same fields and nearby official sources; the service table and reviews use the same route records.
 
-The checks covered sender country, Morocco payout method, payment method, fee model, exchange-rate disclosure, transfer-speed wording, referral method, verified code and last reviewed date. Live rates were not hard-coded because Morocco exchange rates and fees can change between quote sessions.
+We did not complete transfers, independently redeem codes or record simultaneous live quotes for this refresh. Consequently, there are no cheapest/fastest rankings or guaranteed arrival times. A source check dated November 15 does not mean a historical screenshot or private invitation was newly tested. Conflicting or insufficient sources are identified rather than treated as confirmed delivery methods.
 
 ## Best overall options
 
-There is no single best app to send money to Morocco. A France-to-Morocco cash pickup transfer can have a different best option from a US-to-Morocco bank deposit transfer.
-
-TapTap Send is a strong comparison candidate when the sender is in a supported market and the recipient wants Moroccan bank deposit, Cash Plus or Wafacash pickup. Remitly and Ria are useful to compare when the recipient needs cash pickup, bank deposit or mobile wallet from a route where those methods are visible. Wise is useful when the sender wants a transparent bank-account quote with a clear fee and exchange-rate model.
+The useful shortlist depends on the recipient. Compare Wise for an itemized bank quote, Taptap Send for its documented bank/Orange Money/cash choices, and Remitly or Ria for supported pickup routes. Include Xoom as another bank/cash comparison even though BonusFoundry has no dedicated provider page or verified referral offer for it. LemFi is an additional quote candidate once its app confirms the particular Morocco payout method.
 
 ## Best for bank deposits
 
-Wise is the clearest bank-deposit comparison point because its official MAD help page says Wise sends MAD to individual and business bank accounts in Morocco and requires the recipient's full name and 24-digit RIB.
+Wise's [MAD guide](https://wise.com/help/articles/2932363/guide-to-mad-transfers) describes local bank-account delivery and the 24-digit RIB requirement. Taptap Send, Remitly (France/US), Ria (US), Paysend (US) and Xoom also document bank delivery in the sources linked in their reviews. Confirm the sender route and recipient bank before selecting one.
 
-TapTap Send, Remitly, Ria, Paysend and WorldRemit also show Morocco bank-account delivery in official sources reviewed. Check the live route because bank names, limits and arrival estimates can vary.
+**WorldRemit bank deposits are not included:** its [general Morocco page](https://www.worldremit.com/en/morocco) advertises bank transfer, while its [dedicated bank page](https://www.worldremit.com/en/morocco/bank-transfer) says it is not supported. No current bank-payout route was independently established. Paying a provider from your bank does not mean the Moroccan recipient can receive a bank deposit.
 
 ## Best for cash pickup
 
-TapTap Send is a strong cash-pickup option for Morocco when the sender country is supported. Its official Morocco help page says cash pickup is available through Cash Plus or Wafacash with no cashout fees, and its Morocco landing page says small fees apply for cash pickup through partner agencies.
+Taptap Send's current help lists **CashPlus, Wafacash, Barid Cash, Al Barid Bank, LanaCash and DamaneCash**. Compare the sender fee and rate as well as any recipient cashout charge; these are different costs. The €2.99 France-origin pickup fee must not be generalized to other countries.
 
-Remitly, Ria, Sendwave and WorldRemit also show Morocco cash pickup in official sources. Sendwave is narrower because its Morocco FAQ says it can only send via cash pickup and lists the US, Canada, France and the UK as sender countries for Morocco.
+Remitly, Ria, WorldRemit and Xoom also document pickup options. Sendwave's [Morocco FAQ](https://www.sendwave.com/en/support?to=ma), rechecked November 15, lists cash pickup only from the US, Canada, France and UK. Partner availability, opening hours and identification rules matter as much as an advertised speed.
 
 ## Best for transparent fees
 
-Wise is the best comparison anchor for transparent bank-account pricing because it shows the transfer fee and exchange-rate approach before transfer confirmation. Wise says it uses the mid-market exchange rate and shows fees upfront.
+Wise provides a useful bank-quote reference with an upfront fee and mid-market exchange rate. That is a pricing model, not proof that it always delivers the most MAD. Compare the total debit and amount received against other providers' fee-inclusive quotes, including any receiving-bank cost.
 
-This does not mean Wise is always cheapest. Wise's own Morocco page says the total cost of a transfer is the fee plus exchange rate, and the live quote can show another provider with a higher or lower final MAD amount.
+<span id="morocco-bonuses" />
 
 ## Best for referral or signup bonuses
 
+Treat an eligible offer as one part of the quote. A fee waiver, transfer credit, promotional discount and withdrawable cash have different values and restrictions. The invitation must attach at the provider's required stage; service availability alone does not establish referral eligibility.
+
 <MoroccoReferralBonusesTable />
 
-No referral code is guaranteed for every user. Sender country, signup status, route, amount, payment method, recipient method and campaign rules can change eligibility.
+Paysend's [US public campaign](https://paysend.com/en-us/bonus) advertises a $10 new-user reward after $200+ within 30 days, with a fee-free first transfer and special rate, and a separate $50 referrer reward. The [BonusFoundry invitation](https://paysend.com/en/referral/06mvt6) visibly advertises a fee-free first transfer; its old $5-after-second-$100 metadata does not verify a current reward. Do not apply US campaign amounts to a different invitation or country.
+
+LemFi's [public France invitation](https://www.lemfi.com/en-fr/invite-and-earn) now describes LemFi Cash; its [earlier EU campaign](https://www.lemfi.com/en-fr/promotions/eu-referral-campaign) is marked expired. Neither establishes a current fixed Morocco reward for SALABGWQ. Check that code's accepted app offer before transferring.
 
 ## Individual provider reviews
 
-### TapTap Send
-
-Direct verdict: TapTap Send is a good Morocco option when the sender is in a supported country and the recipient wants Moroccan bank deposit, Cash Plus pickup or Wafacash pickup. Check the referral offer for your sending country and Morocco before relying on the captured EUR offer.
-
-Key facts:
-
-- Supported sender markets: consult Taptap Send’s current sending-country guides; Europe includes specifically listed countries, and US state restrictions apply. Service coverage does not establish referral eligibility.
-- Morocco payout methods: bank transfers and cash pickup through Cash Plus or Wafacash.
-- Payment methods: card payment is supported in the app; payment verification can include 3D Secure.
-- Transfer speed: the official Morocco landing page says 99% of Morocco transfers were received in under 5 minutes, based on Taptap Send internal data dated May 26, 2025.
-- Fees and exchange-rate approach: official sources say Morocco bank transfers have no fee; the Morocco landing page says small fees apply for cash pickup.
-
-<MoroccoProviderReferralFacts slug="taptap-send" />
-
-Best for: comparing Moroccan cash pickup and a route-specific referral offer.
-
-Limitations: cash-pickup fees and route availability should be checked in the app before transfer confirmation. Bank transfers are limited to eligible Moroccan account types described by Taptap Send.
-
-Referral sources: [current referral instructions](https://help.taptapsend.com/en/bonus-and-referrals/how-do-referral-codes-and-promo-codes-work), [referral terms](https://www.taptapsend.com/en/referrals-terms/referral-v4/referrals-en4). See [how to use Taptap Send code SALAHEDD1933](/providers/taptap-send/referral-code).
-
-Official service sources: [Taptap Send Morocco help](https://support.taptapsend.com/hc/en-gb/articles/1500004995482-Morocco), [Taptap Send Morocco page](https://www.taptapsend.com/fr/send-money-to/morocco), [Taptap Send limits](https://support.taptapsend.com/hc/en-gb/articles/4402258052371-How-much-can-I-send), [Taptap Send recipient methods](https://support.taptapsend.com/hc/en-gb/articles/360001303188-How-do-recipients-receive-their-money).
-
-### Remitly
-
-Direct verdict: Remitly is useful to compare for US-to-Morocco transfers when the recipient needs bank deposit, cash pickup or mobile wallet. It should not be treated as the best option without checking the live quote.
-
-Key facts:
-
-- Supported sender markets: US-to-Morocco route verified from Remitly's official route page.
-- Morocco payout methods: bank deposit, cash pickup and mobile wallet.
-- Payment methods: Remitly lists card, bank and local payment methods by sender country.
-- Transfer speed: Remitly says timing varies by payment method, delivery method, review and system availability.
-- Fees and exchange-rate approach: live quote; Remitly says cost varies by amount, payment method and delivery option.
-
-<MoroccoProviderReferralFacts slug="remitly" />
-
-Best for: US-to-Morocco users comparing several payout methods.
-
-Limitations: the US route page does not prove the same options for every sender country. New-customer offers and referral benefits can vary by account and route.
-
-Official sources: [Remitly US to Morocco](https://www.remitly.com/us/en/money-transfer/send-money-to-morocco), [Remitly referral program terms](https://www.remitly.com/us/en/home/referral-program-tnc), [Remitly payment methods on route FAQ](https://www.remitly.com/us/en/money-transfer/send-money-to-morocco).
-
-### Wise
-
-Direct verdict: Wise is useful for comparing transparent bank-account transfers to Morocco. It is not a cash-pickup provider for this route.
-
-Key facts:
-
-- Supported sender markets: US-to-Morocco route verified; Wise route availability should be checked by sender country.
-- Morocco payout methods: local bank account.
-- Payment methods: Wise route page lists bank transfer, debit card and credit card as examples for the US route.
-- Transfer speed: Wise's MAD help page says the money usually takes 1-3 working days to arrive after Wise receives and converts it.
-- Fees and exchange-rate approach: Wise says it uses the mid-market exchange rate and shows fees upfront.
-
-<MoroccoProviderReferralFacts slug="wise" />
-
-Best for: transparent fee and exchange-rate comparison for bank deposits.
-
-Limitations: Wise requires Moroccan bank-account details and does not support MAD as a sending currency. Some Moroccan banks may charge receiving fees.
-
-Official sources: [Wise send money to Morocco](https://wise.com/us/send-money/send-money-to-morocco), [Wise MAD transfer guide](https://wise.com/help/articles/2932363/guide-to-mad-transfers), [Wise invite page](https://wise.com/invite/).
-
-### LemFi
-
-Direct verdict: LemFi is useful to check when the sender is in Canada, Europe, the UK or the US and Morocco appears in the live LemFi flow. It also has a manually verified BonusFoundry referral code.
-
-Key facts:
-
-- Supported sender markets: LemFi help says users in Canada, Europe, the UK and the US can send to supported countries.
-- Morocco payout methods: LemFi states receiving options can include bank transfer, mobile money and local systems; the Morocco destination page says direct bank accounts, mobile money and more options.
-- Payment methods: LemFi says users can send from a funded wallet for the UK, US and Canada or without a LemFi wallet for all signup countries; exact methods vary.
-- Transfer speed: LemFi describes fast transfers usually completed in minutes, but users should confirm the live estimate before sending.
-- Fees and exchange-rate approach: LemFi says exchange rates are real-time and should be checked in the app; fees vary by currency.
-
-<MoroccoProviderReferralFacts slug="lemfi" />
-
-Best for: verified referral code where the sender country and Morocco route are available in the app.
-
-Limitations: official help says destination options depend on country of registration and app flow. Do not assume every sender country sees Morocco or every payout method.
-
-Official sources: [LemFi Morocco page](https://lemfi.com/en-us/international-money-transfer/morocco), [LemFi where can I send money](https://support.lemfi.com/hc/en-us/articles/4417242333329-Where-can-I-send-money), [LemFi how to send money](https://support.lemfi.com/hc/en-us/articles/15657831525777-Transfer-Funds-from-my-US-Wallet), [LemFi exchange rate help](https://support.lemfi.com/hc/en-us/articles/4417425349521-Is-the-exchange-rate-constant-or-does-it-change-daily).
-
-### Ria
-
-Direct verdict: Ria is useful for users who want a large Morocco cash-pickup and bank-deposit network. Its refer-a-friend program has country-specific eligibility, rewards and qualifying minimums.
-
-Key facts:
-
-- Supported sender markets: US-to-Morocco route verified from Ria's official page.
-- Morocco payout methods: cash pickup, bank deposit and mobile wallet.
-- Payment methods: Ria lists bank, credit or debit card, Google Pay, Apple Pay and cash, depending on route.
-- Transfer speed: Ria requires users to check the live route and tracking status.
-- Fees and exchange-rate approach: live quote; route page shows fee, total and exchange rate before transfer.
-
-<MoroccoProviderReferralFacts slug="ria" />
-
-Best for: cash pickup, bank deposit and mobile wallet comparison from a route where Ria supports Morocco.
-
-Limitations: domestic, canceled, unsuccessful and below-minimum transfers do not qualify. {getMoroccoProvider("ria").referral.hasProgram} Offers and conditions can change, so confirm the offer displayed in the Ria app before sending.
-
-Official sources: [Ria refer-a-friend program](https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program), [Ria France refer-a-friend page](https://www.riamoneytransfer.com/en-fr/refer-a-friend/), [how a referred customer claims the reward](https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward), [Ria missing-discount guidance](https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount), [Ria send money to Morocco](https://www.riamoneytransfer.com/en-us/send-money-to-morocco/).
-
-### Sendwave
-
-Direct verdict: Sendwave is a narrow but useful Morocco option when the sender is in the US, Canada, France or the UK and the recipient wants cash pickup. It should not be used for Moroccan bank deposits because Sendwave's Morocco FAQ says Morocco is cash pickup only.
-
-Key facts:
-
-- Supported sender markets: US, Canada, France and UK for Morocco.
-- Morocco payout methods: cash pickup only.
-- Payment methods: Sendwave FAQ says debit cards and some prepaid cards are accepted; credit cards and PayPal are not accepted.
-- Transfer speed: Sendwave sends delivery updates in the app; cash must be picked up within the stated collection window.
-- Fees and exchange-rate approach: Sendwave says it takes a small percentage in the exchange rate and shows charges before checkout.
-
-<MoroccoProviderReferralFacts slug="sendwave" />
-
-Best for: cash pickup from Sendwave's listed Morocco sender countries.
-
-Limitations: no Moroccan USD or business-account delivery; Morocco is cash pickup only according to Sendwave's FAQ.
-
-Official sources: [Sendwave Morocco FAQ](https://www.sendwave.com/en/support?to=ma), [Sendwave app page](https://www.sendwave.com/en-us/download-our-app).
-
-### Paysend
-
-Direct verdict: Paysend is useful to compare when the recipient wants Moroccan card, bank-account or wallet delivery. It uses a personal referral-link method in BonusFoundry data, not a manual code.
-
-Key facts:
-
-- Supported sender markets: US-to-Morocco route verified from Paysend's official route page.
-- Morocco payout methods: Mastercard cards, bank accounts and digital wallets.
-- Payment methods: Paysend asks users to set up a transfer and provide payment details in the flow.
-- Transfer speed: the official route page displays expected arrival in the live quote and says card and bank-account delivery are usually same day.
-- Fees and exchange-rate approach: live quote shows fee, rate and expected arrival.
-
-<MoroccoProviderReferralFacts slug="paysend" />
-
-Best for: Morocco card, bank-account and wallet delivery comparison.
-
-Limitations: route pricing and arrival time must be checked in the live Paysend quote. The first-transfer fee waiver does not guarantee the best exchange rate. Open the referral invitation before signup and check the country exclusions on the Paysend referral page.
-
-Official sources: [Paysend US to Morocco](https://paysend.com/en-us/send-money/from-the-united-states-of-america-to-morocco), [Paysend bonus page](https://paysend.com/en-us/bonus), [Paysend help center](https://paysend.com/en-gb/help).
-
-### WorldRemit
-
-Direct verdict: WorldRemit is useful for comparing multiple Morocco payout methods, especially where cash pickup or bank transfer is needed. BonusFoundry does not currently list a verified WorldRemit referral code.
-
-Key facts:
-
-- Supported sender markets: US-to-Morocco route verified; additional sender countries depend on WorldRemit's live flow.
-- Morocco payout methods: bank transfer, cash pickup, mobile money, airtime top-up and debit-card deposit where available.
-- Payment methods: WorldRemit says users can pay by bank transfer or debit/credit card, depending on route.
-- Transfer speed: WorldRemit says 90% of Morocco transfers are sent to local partners within minutes, with actual delivery depending on verification, payment and partner hours.
-- Fees and exchange-rate approach: WorldRemit says fees and exchange rates are shown upfront.
-
-<MoroccoProviderReferralFacts slug="worldremit" />
-
-Best for: comparing several Morocco payout methods where WorldRemit supports the sender country.
-
-Limitations: debit-card deposit sender countries and payout methods vary. Use the live transfer flow before relying on one delivery option.
-
-Official sources: [WorldRemit Morocco page](https://www.worldremit.com/en-us/morocco), [WorldRemit cash pickup countries](https://www.worldremit.com/en/faq/cash-pickup/available-countries), [WorldRemit bank transfer countries](https://www.worldremit.com/en/faq/bank-transfers/available-countries), [WorldRemit debit card deposits](https://www.worldremit.com/en-us/faq/debit-card-deposits).
+<MoroccoProviderReviews />
 
 ## How to compare the real cost
 
-Compare the amount the Moroccan recipient receives, not only the advertised fee.
+Use two quotes taken at roughly the same time, with the **same total budget in the sender's currency** and the **same Moroccan payout method**:
 
-```txt
-Amount paid
-- transfer fee
-- exchange-rate markup
-= final amount received in MAD
-```
+1. Set a total budget, for example **€100 including all sender fees**. If an app adds a fee on top, reduce its send amount so the total debit still equals €100.
+2. Record the total debit in EUR, transfer fee in EUR, quoted rate in MAD per EUR, final MAD promised, funding method and arrival estimate. Do not compare one bank-funded quote with a different card-funded quote without noting that difference.
+3. Compare **MAD actually delivered**, accounting for any separately disclosed recipient-bank or cashout charge. An FX margin is already reflected in the offered rate; do not subtract it again as if it were an amount of MAD or EUR.
+4. Check the result both with an eligible introductory offer and at ordinary pricing. Note whether a bonus reduces today's debit, increases today's delivery, or only provides later credit.
+5. Save the quote and check again before confirming: rates, fees and available methods can change.
 
-A provider can advertise no transfer fee and still be more expensive if the exchange rate is weaker. A provider with a visible fee can be better if the final MAD amount is higher.
+The €100 budget is a comparison method, not a live quote or promised MAD amount. A zero transfer fee can accompany a weaker exchange rate; the final payout is what makes equivalent quotes comparable.
 
 ## How to send money to Morocco
 
-1. Choose a provider that supports the sender country and Morocco.
-2. Create an account.
-3. Enter the referral or promo code before the qualifying transfer when applicable.
-4. Complete identity verification.
-5. Select bank deposit, cash pickup, mobile wallet, card deposit or another available delivery method.
-6. Enter the Moroccan recipient's information.
-7. Compare the final MAD amount and total cost.
-8. Confirm and track the transfer.
+1. Confirm the provider supports your sender country, Morocco and the recipient's required payout method.
+2. Open the appropriate invitation or apply the code at the required stage if using an eligible offer; then complete signup and identity checks.
+3. Enter the recipient's exact name and the relevant RIB, wallet/card details or cash-pickup information.
+4. Compare equivalent quotes, including total debit, final MAD and expected arrival.
+5. Confirm only when the details and any accepted promotion are correct; retain the receipt and track delivery.
 
-Code examples:
-
-{moroccoCodeSummary}
-
-Each code applies only to its own provider. Do not enter a TapTap Send code in LemFi, Ria or Sendwave.
+Listed codes: {moroccoCodeSummary}. Each belongs to its own provider. Redemption instructions belong on the individual [provider bonus pages](/providers), including the [Taptap Send referral guide](/providers/taptap-send/referral-code), [LemFi referral guide](/providers/lemfi/referral-code), [Ria referral guide](/providers/ria/referral-code) and [Sendwave referral guide](/providers/sendwave/referral-code).
 
 ## Common mistakes
 
-- Choosing the provider with the lowest visible fee without checking the final MAD amount.
-- Assuming a France-to-Morocco option is also available from the US, Canada, Belgium or Spain.
-- Selecting cash pickup when the recipient needs a Moroccan bank deposit.
-- Creating an account before entering the required referral code or opening the referral link.
-- Misspelling the recipient's name, RIB, bank details, phone number or pickup information.
+- Comparing a send amount excluding fees with another provider's total debit including fees.
+- Assuming a France payout method or US public campaign applies from every sending country.
+- Treating a funding method, airtime top-up or later referral credit as the recipient's cash payout.
+- Using an inaccurate recipient name, RIB, card number or wallet registration, or choosing a pickup location the recipient cannot reach.
+- Sending more to unlock an old promotion without checking the current accepted offer.
 
 ## Troubleshooting
 
-If the transfer is delayed, check the provider's transfer tracker first. Verification, payment authorization, bank processing, partner operating hours and recipient-detail errors can all affect timing.
+For a delayed transfer, check the provider tracker and quoted arrival first. Identity checks, payment authorization, bank processing, partner hours and incorrect recipient details can extend delivery. Contact the provider with the transaction reference before sending a duplicate payment.
 
-If a referral bonus does not appear, confirm that the code or link attached before signup or the first qualifying transfer. Save the offer screen, referral code, transfer receipt and recipient delivery status before contacting support.
-
-If a cash pickup recipient cannot collect the money, confirm that the name matches their ID and that they have the transaction reference or PIN required by the pickup partner.
+For failed cash collection, verify the recipient's ID/name, reference or PIN, location, opening hours and collection deadline. For a missing bonus, keep the accepted offer, signup details, code/link and successful-transfer receipt; ask support to check eligibility separately from the transfer's delivery. See [why a welcome bonus was not received](/guides/why-bonus-was-not-received).
 
 ## FAQ
 
@@ -355,15 +193,9 @@ If a cash pickup recipient cannot collect the money, confirm that the name match
 
 ## Official sources
 
-- TapTap Send: [Morocco help](https://support.taptapsend.com/hc/en-gb/articles/1500004995482-Morocco), [Morocco landing page](https://www.taptapsend.com/fr/send-money-to/morocco), [sending limits](https://support.taptapsend.com/hc/en-gb/articles/4402258052371-How-much-can-I-send).
-- Remitly: [US to Morocco route](https://www.remitly.com/us/en/money-transfer/send-money-to-morocco), [referral program terms](https://www.remitly.com/us/en/home/referral-program-tnc).
-- Wise: [US to Morocco route](https://wise.com/us/send-money/send-money-to-morocco), [MAD transfer guide](https://wise.com/help/articles/2932363/guide-to-mad-transfers), [invite page](https://wise.com/invite/).
-- LemFi: [Morocco page](https://lemfi.com/en-us/international-money-transfer/morocco), [where can I send money](https://support.lemfi.com/hc/en-us/articles/4417242333329-Where-can-I-send-money), [how to send money](https://support.lemfi.com/hc/en-us/articles/15657831525777-Transfer-Funds-from-my-US-Wallet), [exchange rate help](https://support.lemfi.com/hc/en-us/articles/4417425349521-Is-the-exchange-rate-constant-or-does-it-change-daily).
-- Ria: [US to Morocco route](https://www.riamoneytransfer.com/en-us/send-money-to-morocco/), [refer-a-friend program](https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program), [France refer-a-friend page](https://www.riamoneytransfer.com/en-fr/refer-a-friend/), [reward claim instructions](https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward), [missing-discount guidance](https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount).
-- Sendwave: [Morocco FAQ](https://www.sendwave.com/en/support?to=ma), [app page](https://www.sendwave.com/en-us/download-our-app).
-- Paysend: [US to Morocco route](https://paysend.com/en-us/send-money/from-the-united-states-of-america-to-morocco), [bonus page](https://paysend.com/en-us/bonus), [help center](https://paysend.com/en-gb/help).
-- WorldRemit: [Morocco page](https://www.worldremit.com/en-us/morocco), [cash pickup countries](https://www.worldremit.com/en/faq/cash-pickup/available-countries), [bank transfer countries](https://www.worldremit.com/en/faq/bank-transfers/available-countries), [debit-card deposits](https://www.worldremit.com/en-us/faq/debit-card-deposits).
-- Xoom checked but not included in the main table because BonusFoundry does not yet have shared provider data or a provider page for Xoom: [Xoom Morocco page](https://www.xoom.com/morocco/send-money?languagecode=en), [Xoom send-money help](https://help.xoom.com/s/article/how-can-i-send-money?language=en_US).
+All service pages linked in the provider reviews were accessed **November 15, 2026**. Referral checks and historical evidence dates are distinguished in the bonus table. Important source revisions: Taptap Send Morocco help **November 11, 2026**; Ria referral help **October 16, 2026**. Those revision dates are not the date of this editorial review.
+
+For service details, follow the nearby destination/help links in each review. For offer mechanics, use the linked provider terms and the exact invitation, rather than a different country's marketing campaign. Official documentation is evidence of the stated service, while the live quote confirms your transaction's current price and availability.
 
 ## Related routes and guides
 
@@ -374,16 +206,15 @@ If a cash pickup recipient cannot collect the money, confirm that the name match
 - [Canada to Morocco](/corridors/canada-to-morocco)
 - [France country hub](/from/france)
 - [USA country hub](/from/usa)
-- [TapTap Send referral code](/providers/taptap-send/referral-code)
-- [TapTap Send bonus-credit guide](/guides/how-to-use-taptap-send-bonus-credit)
+- [Taptap Send bonus-credit guide](/guides/how-to-use-taptap-send-bonus-credit)
 - [Referral code vs promo code](/guides/promo-code-vs-referral-code)
 - [Why a welcome bonus was not received](/guides/why-bonus-was-not-received)
 
 ## Editorial methodology
 
-BonusFoundry reviewed official provider websites, official Morocco route pages, help-center pages, referral pages and existing structured provider data. Selected referral offers were manually checked in provider apps and labelled as manual BonusFoundry verification.
+BonusFoundry Editorial Team compared official provider destination pages, help centers and current public referral terms. The historical owner-supplied Taptap Send transcription and publisher Ria/Sendwave account evidence support only the offers they show. They do not prove every reader's eligibility, a completed reward payout or current live pricing.
 
-This guide does not rank providers with scores. Each recommendation is tied to a use case, such as cash pickup, bank deposit, transparent pricing or verified referral-code availability.
+Recommendations describe recipient needs and documented routes, with no scores or first-hand transfer-testing claims. Unconfirmed methods and private offers are qualified explicitly. Providers are included for relevant Morocco delivery options, including Xoom without a BonusFoundry affiliate page. Source conflicts are retained visibly pending route-level confirmation.
 
 ## Disclosure
 
