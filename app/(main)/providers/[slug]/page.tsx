@@ -2,6 +2,7 @@ import { AceMoneyTransferOverview } from "@/components/ace-money-transfer-page";
 import { TaptapSendPage } from "@/components/taptap-send-page";
 import { TransfergoOverview } from "@/components/transfergo-referral-page";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import {
   BestFor,
   CommonMistakes,
@@ -37,6 +38,7 @@ import { ReferralBox } from "@/components/referral-box";
 import { RiaOfferScreenshot } from "@/components/ria-offer-screenshot";
 import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { faqs } from "@/data/faqs";
+import { sendwaveOverviewMetadata } from "@/data/sendwave";
 import { getProvider, getProviderAuthority, providers, type Provider, type ProviderAuthority } from "@/data/providers";
 import { getGuides } from "@/lib/content";
 import { breadcrumbJsonLd, createMetadata, faqJsonLd, webPageJsonLd } from "@/lib/seo";
@@ -52,6 +54,11 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const provider = getProvider(slug);
   if (!provider) return {};
+  if (provider.slug === "sendwave") return createMetadata({
+    ...sendwaveOverviewMetadata,
+    path: "/providers/sendwave",
+    modifiedTime: provider.lastUpdated
+  });
   if (provider.slug === "ace-money-transfer") return createMetadata({
     title: "ACE Money Transfer: Service and Referral Overview",
     description: provider.description,
@@ -107,7 +114,7 @@ export default async function ProviderPage({ params }: PageProps) {
 
   const breadcrumbs = [
     { name: "Home", item: "/" },
-    { name: "Providers", item: `/providers/${provider.slug}` },
+    { name: "Providers", item: provider.slug === "sendwave" ? "/providers" : `/providers/${provider.slug}` },
     { name: provider.name, item: `/providers/${provider.slug}` }
   ];
 
@@ -117,8 +124,8 @@ export default async function ProviderPage({ params }: PageProps) {
       <JsonLd data={faqJsonLd(providerFaq.map((item) => ({ question: item.question, answer: String(item.answer) })))} />
       <JsonLd
         data={webPageJsonLd({
-          title: `${provider.name} welcome bonus and referral program`,
-          description: provider.description,
+          title: provider.slug === "sendwave" ? sendwaveOverviewMetadata.title : `${provider.name} welcome bonus and referral program`,
+          description: provider.slug === "sendwave" ? sendwaveOverviewMetadata.description : provider.description,
           path: `/providers/${provider.slug}`,
           updatedAt: provider.lastUpdated
         })}
@@ -132,20 +139,28 @@ export default async function ProviderPage({ params }: PageProps) {
         />
         <div className="grid w-full min-w-0 max-w-full grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
           <article className="w-full min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-none">
-            <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} />
-            <h1 className="mt-4 break-words text-3xl font-bold tracking-normal sm:text-4xl">{provider.name} welcome bonus and referral program</h1>
+            <LastVerified date={formatDate(authority.lastManualReview)} contentUpdatedAt={formatDate(provider.lastUpdated)} label={provider.slug === "sendwave" ? "Last verified (referral rules and app evidence)" : undefined} />
+            <h1 className="mt-4 break-words text-3xl font-bold tracking-normal sm:text-4xl">{provider.slug === "sendwave" ? "Sendwave money transfers: eligibility and referral rules" : `${provider.name} welcome bonus and referral program`}</h1>
             <p className="mt-4 text-base leading-7 text-muted-foreground sm:mt-5 sm:text-lg sm:leading-8">
               {providerPageDirectAnswer(provider, authority)}
             </p>
 
             <div className="mt-6 grid min-w-0 grid-cols-1 gap-5 sm:mt-8">
-              <QuickAnswer answer={provider.currentOffer} />
+              <QuickAnswer answer={provider.slug === "sendwave" ? (
+                <p>
+                  Check the live quote for your exact route, payment method and
+                  delivery option before confirming a Sendwave transfer.
+                  Transfer availability and referral eligibility are separate.
+                  For code entry and the documented France/EUR offer, see the{" "}
+                  <Link href="/providers/sendwave/referral-code" className="font-medium text-primary underline">Sendwave referral-code guide</Link>.
+                </p>
+              ) : provider.currentOffer} />
               {provider.proprietaryVerification ? (
                 <VerificationStatus verification={provider.proprietaryVerification} />
               ) : null}
               <ProviderQuickCard
                 provider={provider.name}
-                reward={authority.referral.welcomeBonus}
+                reward={provider.slug === "sendwave" ? "Referral credits under the applicable in-app offer; a qualifying first transaction and eligibility checks are required." : authority.referral.welcomeBonus}
                 eligibility={provider.eligibleUsers}
                 minimumTransfer={quickCardFacts.minimumTransfer}
                 whereToEnterCode={quickCardFacts.whereToEnterCode}
@@ -154,11 +169,16 @@ export default async function ProviderPage({ params }: PageProps) {
                 lastVerified={formatDate(authority.lastManualReview)}
                 officialSourcesReviewed={authority.researchProfile.sourcesReviewed.join(", ")}
               />
-              <KeyTakeaways items={authority.bonusChecklist.slice(0, 5)} />
+              <KeyTakeaways items={provider.slug === "sendwave" ? [
+                "Check your sending country and recipient destination in the app; payment and delivery options depend on the route.",
+                "Compare fees, the exchange rate and the recipient's final amount before sending.",
+                "Complete any identity and payment checks requested for your account.",
+                "New-user referral eligibility is separate from ordinary transfer availability; the app determines the applicable reward."
+              ] : authority.bonusChecklist.slice(0, 5)} />
               <ProviderCorridorLinks provider={provider} />
               <RewardSummary
                 rewardType={rewardType(provider, authority)}
-                rewardRange={authority.referral.welcomeBonus}
+                rewardRange={provider.slug === "sendwave" ? "Amounts depend on the in-app offer. The supplied France/EUR account shows €20 credit for each participant; this does not establish a global reward." : authority.referral.welcomeBonus}
                 qualifyingTransfer={quickCardFacts.minimumTransfer}
                 notes={authority.referral.limitations[0] ?? "Review the live provider terms before relying on a reward."}
               >
@@ -172,7 +192,12 @@ export default async function ProviderPage({ params }: PageProps) {
                 countryRestrictions={countryRestrictionSummary(authority)}
                 verificationRequirements={authority.verification.identityRequired}
               />
-              <HowItWorks steps={provider.steps.map((step) => ({ label: step }))} title="How to claim the offer" />
+              <HowItWorks steps={(provider.slug === "sendwave" ? [
+                "Check that Sendwave supports your sending country, recipient destination and chosen delivery method.",
+                "Create or open your account and complete any identity and payment checks requested in the app.",
+                "Enter recipient details and review the full quote, exchange rate, fees and expected delivery before confirming.",
+                "Track the transfer in the app and keep its reference for official support. If using a referral offer, check its separate first-transaction conditions before sending."
+              ] : provider.steps).map((step) => ({ label: step }))} title={provider.slug === "sendwave" ? "How to check and send a transfer" : "How to claim the offer"} />
               <StepChecklist items={authority.bonusChecklist.map((item) => ({ label: item, status: "pending" }))} title="Referral checklist" />
               <KeyFacts
                 title="Provider facts"
@@ -255,6 +280,10 @@ function referralEntryInstruction(provider: Provider) {
 function providerPageDirectAnswer(provider: Provider, authority: ProviderAuthority) {
   const lastVerified = formatDate(authority.lastManualReview);
 
+  if (provider.slug === "sendwave") {
+    return "Sendwave is an app for international money transfers to supported destinations. Available payment and delivery methods depend on the route. This overview covers transfer checks, account verification and the general referral rules; the separate referral-code guide documents the publisher's EUR-denominated offer.";
+  }
+
   if (provider.referralCode) {
     return `${provider.name} referral code: ${provider.referralCode}. ${authority.referral.welcomeBonus} Eligible users: ${provider.eligibleUsers} Last reviewed by BonusFoundry: ${lastVerified}.`;
   }
@@ -329,6 +358,8 @@ function buildTroubleshooting(provider: Provider): TroubleshootingItem[] {
 }
 
 function buildProviderFaq(provider: Provider, authority: ProviderAuthority): FAQItem[] {
+  if (provider.slug === "sendwave") return provider.faq;
+
   const requiredFaq: FAQItem[] = [
     {
       question: `What is the ${provider.name} referral code?`,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { Container } from "@/components/container";
@@ -14,7 +15,9 @@ import {
   sendwaveReferralMetadata,
   sendwaveReferralUpdatedAt,
   sendwaveReferralTermsCheckedAt,
+  sendwaveReferralVerifiedAt,
   sendwaveOfferEvidenceAt,
+  sendwavePopupEvidenceAt,
   sendwaveQuickAnswer,
   sendwaveReferralMinimum,
   sendwaveReferralExpiry,
@@ -79,20 +82,20 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
     ],
     [
       "New customer reward",
-      "€20 credit for the friend who enters I4H9G at first signup, shown in the app screenshot reviewed on October 25, 2026. Eligibility and qualifying-transfer conditions apply."
+      "€20 off the first transfer of €50 or more in the supplied France/EUR account popup dated November 15, 2026. Enter I4H9G at signup and confirm your own accepted offer."
     ],
     [
       "Referrer reward",
-      "€20 credit once the friend’s first transfer is delivered successfully, toward the referrer’s next Sendwave transfer (October 25 screenshot)."
+      "€20 credit after the friend’s first transfer is delivered successfully, toward a later Sendwave transfer, in the November 15 France/EUR account screenshot. Other offers may differ."
     ],
     ["Minimum qualifying transfer", sendwaveReferralMinimum],
     [
       "Eligible sending countries",
-      "The publisher previously confirmed a France-registered account. The October 25 screenshot does not display a country or eligible-country list; check your app."
+      "France registration is confirmed by the publisher. The supplied EUR-account screenshots do not show an eligible-country list; check your own app offer."
     ],
     [
       "Eligible destinations",
-      "The October 25 screenshot does not identify a destination. Check your exact route; supported transfers can still be excluded from referral rewards."
+      "Neither supplied screenshot identifies an eligible destination list. Check your exact route; supported transfers can still be excluded from referral rewards."
     ],
     [
       "When to enter the code",
@@ -106,15 +109,18 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
     [
       "Last verified",
       <>
-        Public rules:{" "}
-        <time dateTime={sendwaveReferralTermsCheckedAt}>
-          {formatDate(sendwaveReferralTermsCheckedAt)}
+        <time dateTime={sendwaveReferralVerifiedAt}>
+          {formatDate(sendwaveReferralVerifiedAt)}
         </time>
-        . App screenshot reviewed:{" "}
+        {" "}for official referral and separate promo terms and both supplied
+        screenshots. Offer screenshots dated{" "}
         <time dateTime={sendwaveOfferEvidenceAt}>
           {formatDate(sendwaveOfferEvidenceAt)}
         </time>
-        . Code and both €20 rewards are visible in the supplied screenshot.
+        {" "}and{" "}
+        <time dateTime={sendwavePopupEvidenceAt}>
+          {formatDate(sendwavePopupEvidenceAt)}
+        </time>.
       </>
     ],
     [
@@ -168,13 +174,13 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
         <div className="grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
           <article className="min-w-0">
             <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
-              Sendwave Referral Code {sendwaveCode}: €20 Credit &amp;
-              Eligibility
+              Sendwave Referral Code {sendwaveCode}: €20 EUR Account Offer
             </h1>
             <p className="mt-4 leading-7 text-muted-foreground">
-              Sendwave is a money transfer provider. This independent
-              BonusFoundry guide explains the publisher’s personal referral
-              offer, who may qualify and how to check credit.
+              This independent BonusFoundry guide documents the publisher’s
+              France/EUR account offer. For supported routes, payment and
+              delivery checks and general program rules, read our{" "}
+              <Link href="/providers/sendwave" className="font-medium text-primary underline">Sendwave transfer overview</Link>.
             </p>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
               By{" "}
@@ -184,7 +190,7 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
               >
                 BonusFoundry Editorial Team
               </Link>{" "}
-              · Updated{" "}
+              · Last content update:{" "}
               <time dateTime={sendwaveReferralUpdatedAt}>
                 {formatDate(sendwaveReferralUpdatedAt)}
               </time>
@@ -234,8 +240,8 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                 </h2>
                 <Table className="table-fixed" aria-labelledby="sendwave-facts">
                   <caption className="sr-only">
-                    Sendwave I4H9G: October 25 app offer and public referral
-                    rules
+                    Sendwave I4H9G: observed France/EUR account offer and public
+                    referral rules
                   </caption>
                   <tbody>
                     {facts.map(([fact, answer]) => (
@@ -346,10 +352,11 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   When credit is awarded
                 </h3>
                 <p>
-                  The October 25 screenshot links the referrer’s €20 to
+                  The November 15 screenshot links the referrer’s €20 to
                   successful delivery of the friend’s first qualifying transfer,
-                  for use on the referrer’s next transfer. A separate deadline
-                  for the new user’s credit is not shown in the screenshot.
+                  for use on a later transfer. The November 15 popup describes
+                  €20 off the friend’s first transfer of €50 or more in this
+                  France/EUR account offer; other account offers may differ.
                   Check the app’s credit balance and redemption instructions; no
                   fixed processing time is verified here.
                 </p>
@@ -465,13 +472,16 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
               >
                 <p>
                   BonusFoundry distinguishes public program rules from the
-                  publisher’s personal app offer. The public pages were
-                  retrieved and reviewed on{" "}
+                  publisher’s personal app offer. The referral-program and
+                  separate promo-code terms were retrieved and reviewed on{" "}
                   <time dateTime={sendwaveReferralTermsCheckedAt}>
                     {formatDate(sendwaveReferralTermsCheckedAt)}
                   </time>
-                  . The publisher’s new app screenshot was also reviewed on
-                  October 25, 2026.
+                  . Both supplied screenshots were reviewed on{" "}
+                  <time dateTime={sendwaveReferralVerifiedAt}>
+                    {formatDate(sendwaveReferralVerifiedAt)}
+                  </time>; their observation date is November 15,
+                  2026. Earlier review dates remain in historical records.
                 </p>
                 <ul className="list-disc space-y-2 pl-5">
                   <li>
@@ -499,30 +509,60 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
                   </li>
                 </ul>
                 <h3 className="font-semibold text-foreground">
-                  App screenshot reviewed October 25, 2026
+                  App offer screenshots: November 15, 2026
                 </h3>
                 <p>
                   The publisher supplied a Sendwave “Refer a Friend” screenshot
-                  reviewed on{" "}
+                  dated{" "}
                   <time dateTime={sendwaveOfferEvidenceAt}>
                     {formatDate(sendwaveOfferEvidenceAt)}
                   </time>
                   . It shows code I4H9G, €20 credit for the friend entering it
                   at first signup, and €20 for the referrer once the friend’s
                   first transfer is delivered successfully, toward the
-                  referrer’s next Sendwave transfer. The publisher previously
-                  confirmed a France-registered account; the screenshot itself
-                  does not display a country.
+                  referrer’s next Sendwave transfer. The publisher confirms a
+                  France-registered account; the screenshot itself does not
+                  display a country.
+                </p>
+                <figure className="w-full max-w-[330px]">
+                  <Image
+                    src="/images/providers/sendwave/offer-details-2026-10-24.jpg"
+                    alt="Sendwave app showing I4H9G, €20 credit for a new friend and €20 for the referrer after successful delivery"
+                    width={872}
+                    height={1536}
+                    sizes="(max-width: 360px) 100vw, 330px"
+                    loading="lazy"
+                    className="h-auto w-full rounded-lg border"
+                  />
+                  <figcaption className="mt-2 text-xs leading-5">
+                    Offer displayed in a EUR-denominated Sendwave account,
+                    screenshot dated {formatDate(sendwaveOfferEvidenceAt)};
+                    availability and conditions may vary.
+                  </figcaption>
+                </figure>
+                <p>
+                  The{" "}
+                  <a href="/images/providers/sendwave/referral-code-2026-11-04.jpg" className="font-medium text-primary underline">
+                    supporting popup dated {formatDate(sendwavePopupEvidenceAt)}
+                  </a>{" "}
+                  says the friend gets €20 off their first transfer and must send
+                  €50 or more. This is a condition shown in the supplied
+                  France/EUR account offer, rather than a universal threshold.
+                  Offer displayed in a EUR-denominated Sendwave account,
+                  screenshot dated {formatDate(sendwavePopupEvidenceAt)};
+                  availability and conditions may vary.
                 </p>
                 <h3 className="font-semibold text-foreground">
                   What is not independently verified
                 </h3>
                 <p>
                   Acceptance of I4H9G on a new account and a completed reward
-                  payout were not independently tested. The screenshot does not
-                  show a numeric minimum, a destination list, a separate
-                  new-user credit deadline, an offer expiry date or availability
-                  in every country. Public terms do not identify this personal
+                  payout were not independently tested. The November 15 image
+                  does not show a numeric minimum; the November 15 popup shows
+                  €50 or more for that account offer. Neither image establishes
+                  an eligible-destination list, a fixed credit-processing
+                  deadline, an offer expiry date or availability in every
+                  country. Public terms do not identify this personal
                   code or promise €20 for every account. Confirm your live offer
                   before sending money.
                 </p>
@@ -612,7 +652,7 @@ export function SendwaveReferralPage({ provider }: { provider: Provider }) {
               provider={{
                 ...provider,
                 welcomeBonus:
-                  "The app screenshot reviewed on October 25, 2026 shows €20 credit for an eligible new user entering I4H9G at first signup. Complete a qualifying first transfer and confirm the conditions in your app."
+                  "The supplied France/EUR account offer shows €20 off the friend’s first transfer of €50 or more, with I4H9G entered at signup. Rewards and conditions may differ for your account; check the accepted offer in your app."
               }}
             />
           </div>

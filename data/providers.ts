@@ -3,7 +3,7 @@ import { taptapProvider } from "@/data/taptap-send";
 import { transfergoProvider } from "@/data/transfergo-referral";
 import { riaCombiningRewards, riaCountryList, riaFranceReward, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
 import { paysendReferralLink, paysendOfferReviewedAt, paysendWelcomeOffer, paysendMinimumTransfer, paysendRewardTiming } from "@/data/paysend";
-import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwaveMinimum, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
+import { sendwaveCode, sendwaveContentUpdatedAt, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwaveMinimum, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
 
 export type Provider = {
   name: string;
@@ -578,8 +578,8 @@ export const providers: Provider[] = [
     steps: sendwaveSteps,
     keyFacts: [
       { label: "Referral code", value: `${sendwaveCode} (BonusFoundry owner-supplied)` },
-      { label: "Welcome credit", value: "€20 transfer credit for eligible new users entering I4H9G at signup and completing a qualifying first transfer." },
-      { label: "Referrer credit", value: "€20 after the friend's first qualifying transfer is successfully delivered, for the referrer's next transfer." },
+      { label: "Welcome credit", value: "€20 off a first transfer of €50 or more in the supplied France/EUR account popup dated November 15, 2026; other account offers may differ." },
+      { label: "Referrer credit", value: "The November 15, 2026 France/EUR account screenshot shows €20 after successful delivery of the friend's first transfer, toward a later transfer; other offers may differ." },
       { label: "Code timing", value: "Enter I4H9G at signup, before completing the first transaction." },
       { label: "Qualifying transfer", value: "Meet the app's destination, transfer amount and identity-verification conditions." }
     ],
@@ -588,7 +588,7 @@ export const providers: Provider[] = [
     lastManualReview: sendwaveReviewedAt,
     referral: {
       hasProgram:
-        "Sendwave operates a personal referral-code program. Code I4H9G offers €20 transfer credit to eligible new users with a qualifying first transfer, and €20 to the referrer after successful delivery.",
+        "Sendwave operates a personal referral-code program for new users completing a first eligible transaction. Rewards depend on the in-app offer; sending-country, destination, minimum-transfer and KYC restrictions may apply.",
       code: sendwaveCode,
       link: null,
       welcomeBonus: sendwaveReward,
@@ -639,6 +639,7 @@ export const providers: Provider[] = [
     },
     officialResources: [
       { label: "Sendwave referral-program terms", href: sendwaveSources.terms },
+      { label: "Sendwave promo-code terms (separate campaigns)", href: sendwaveSources.promo },
       { label: "Sendwave referral-program article", href: sendwaveSources.program },
       { label: "Sendwave official website", href: "https://www.sendwave.com/en-us" },
       { label: "Sendwave countries page", href: "https://www.sendwave.com/en-us/countries" },
@@ -646,6 +647,7 @@ export const providers: Provider[] = [
     ],
     sources: [
       { label: "Sendwave referral-program terms", url: sendwaveSources.terms, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
+      { label: "Sendwave promo-code terms (separate campaigns)", url: sendwaveSources.promo, lastReviewed: sendwaveTermsReviewedAt, confidence: "official" },
       { label: "Sendwave referral-program article", url: sendwaveSources.program, lastReviewed: "2026-10-05", confidence: "official" },
       {
         label: "Sendwave official website",
@@ -674,29 +676,31 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        `${sendwaveRewardEvidence} Public referral terms rechecked on 6 October 2026. Earlier service research retains its original dates.`,
+        `${sendwaveRewardEvidence} Public referral and separate promo-code terms rechecked on November 15, 2026. Earlier service research retains its original dates.`,
       confidence: "high",
       sourcesReviewed: ["Sendwave referral-program terms", "Sendwave referral-program article", "Sendwave promo-code terms (separate campaign rules)", "Sendwave official website", "Sendwave countries page", "Sendwave support FAQ", "BonusFoundry owner-supplied referral code"],
       remainingItems: [
-        "Check qualifying transfer amounts and recipient destinations in the Sendwave app.",
+        "The €50 condition is documented for one France/EUR account offer, not every account or route. Confirm the current accepted offer and destination in the app.",
         "Route-specific transfer limits and payout methods should be checked in Sendwave's live app flow."
       ]
     },
     proprietaryVerification: {
       status: "Manually Verified",
-      verificationMethod: "Official Sendwave app screenshot supplied by the code owner plus published referral terms",
+      verificationMethod: "Publisher-supplied Sendwave screenshots dated November 15, 2026 plus official referral and separate promo terms checked November 15, 2026; earlier transfer-service research retains its source dates",
       verifiedFields: [
         "Referral code I4H9G, €20 new-user credit and €20 referrer credit displayed in the supplied Sendwave app screenshot",
         "France registration confirmed by the publisher who supplied the screenshot",
+        "November 15 popup shows €20 off the friend's first transfer of €50 or more in that France/EUR account offer; this is not a universal minimum or reward",
         "Referrer credit after successful delivery of the friend's first transfer; no completed reward payout independently tested",
         "Code entry before the first transaction and new-user eligibility",
         "12-month referral-credit validity unless otherwise specified",
         "Country, corridor, minimum-transfer and KYC restrictions"
       ],
       lastVerified: sendwaveReviewedAt,
-      officialSourcesReviewed: 3
+      officialSourcesReviewed: 2
     },
     updateHistory: [
+      { date: sendwaveContentUpdatedAt, note: "Separated the provider overview from the referral-code guide, reviewed official referral and separate promo terms, and added the November 15 EUR-account evidence. Qualified the €20 offer and €50 minimum as account-specific; no third-party code redemption or completed payout independently tested." },
       { date: "2026-10-06", note: "Clarified the €20 new-user referral bonus, code-entry steps and answers for bonus-code and promo-code searches. Rechecked official referral terms and aligned visible answers, metadata and structured data." },
       { date: "2026-10-05", note: "Updated the offer observed on a France-registered app account to €20 credit for the new user and €20 for the referrer after successful first-transfer delivery. Removed outdated currency claims, clarified the unconfirmed minimum, and rechecked public referral terms." },
       { date: "2026-09-12", note: "Added €10 / $10 new-user welcome credit: €10 confirmed on the supplied official app screen, $10 reported by the owner. Content focuses on the new user's benefit." },
@@ -734,7 +738,7 @@ export const providers: Provider[] = [
       "Sendwave support says every account has daily and monthly limits, and the maximum per transaction depends on receive country and delivery method."
     ],
     faq: sendwaveFaq,
-    lastUpdated: sendwaveReviewedAt
+    lastUpdated: sendwaveContentUpdatedAt
   },
   {
     name: "Ria",

@@ -1,30 +1,31 @@
-// Page-specific research. Shared provider summaries retain their own review dates.
-import { sendwaveCode, sendwaveSources } from "@/data/sendwave";
+// Offer observation dates stay distinct from this content and terms review.
+import { sendwaveCode, sendwaveSources, sendwaveContentUpdatedAt, sendwaveReviewedAt, sendwaveTermsReviewedAt, sendwaveScreenshotAt, sendwavePopupAt, sendwaveMinimum } from "@/data/sendwave";
 
 export { sendwaveCode, sendwaveSources };
-export const sendwaveReferralUpdatedAt = "2026-10-25";
-export const sendwaveReferralTermsCheckedAt = "2026-10-25";
-export const sendwaveOfferEvidenceAt = "2026-10-25";
+export const sendwaveReferralUpdatedAt = sendwaveContentUpdatedAt;
+export const sendwaveReferralTermsCheckedAt = sendwaveTermsReviewedAt;
+export const sendwaveReferralVerifiedAt = sendwaveReviewedAt;
+export const sendwaveOfferEvidenceAt = sendwaveScreenshotAt;
+export const sendwavePopupEvidenceAt = sendwavePopupAt;
 export const sendwaveReferralMetadata = {
-  title: `Sendwave Referral Code ${sendwaveCode}: €20 Credit & Eligibility`,
-  description: `Sendwave referral code ${sendwaveCode}: €20 credit for eligible new users. App screenshot reviewed October 25, 2026. See signup steps and referral conditions.`
+  title: `Sendwave Referral Code ${sendwaveCode}: €20 EUR Offer`,
+  description: `Sendwave referral code ${sendwaveCode}: €20 credit shown in a France/EUR account offer with a €50+ first transfer. See screenshots, eligibility and signup steps.`
 };
 export const sendwaveQuickAnswer =
-  "Use Sendwave referral code I4H9G during your first signup for €20 transfer credit, subject to eligibility and a qualifying first transfer. The publisher’s app screenshot reviewed on October 25, 2026 shows I4H9G and €20 credit for the new user. The referrer receives €20 credit after that transfer is delivered successfully, toward their next Sendwave transfer. Check your sending country, destination and any minimum in the app before paying.";
-export const sendwaveReferralMinimum =
-  "The app screenshot reviewed on October 25, 2026 does not show a numeric minimum. Sendwave may set a minimum for your sending country and destination, including an amount at least equal to the credit. Check your app before paying; €20 is the reward, not a confirmed transfer minimum.";
+  "Sendwave referral code I4H9G is entered at signup, before your first transaction. The supplied France/EUR account offer shows €20 off the friend’s first transfer of €50 or more in the November 15, 2026 popup. This offer is account-specific: confirm the reward, route eligibility and conditions in your own app before sending.";
+export const sendwaveReferralMinimum = sendwaveMinimum;
 export const sendwaveReferralExpiry =
   "Sendwave’s public referral terms give credit a validity of 12 months from the date it is credited, unless Sendwave specifies otherwise. Check the expiry in your app. This is a credit-use deadline, not a confirmed expiry date for code I4H9G or the €20 offer.";
 export const sendwaveFriendSteps = [
   "Create a new Sendwave account if eligible. Referred users must have no previous completed Sendwave app transaction.",
   "Enter I4H9G during signup, before completing the first transaction. Confirm that the app accepts the code and displays your applicable reward.",
-  "Check the sending country, destination and any qualifying minimum. Complete identity verification requested by Sendwave and review fees, the exchange rate and recipient details.",
+  "Check the sending country, destination and qualifying minimum. The November 15 popup shows €50 or more for this France/EUR account offer; do not assume that threshold applies to another account. Complete requested identity checks and review fees, the exchange rate and recipient details.",
   "Complete the first qualifying transfer and track successful delivery. Check the app’s credit balance and redemption instructions; keep the offer and transfer reference."
 ];
 export const sendwaveReferrerSteps = [
-  "Open Earn in Sendwave and select Refer a Friend, as shown in the supplied screenshot, then share your personal code.",
+  "Open Refer a Friend in Sendwave and share your personal code. The current referral terms place this option under Me; app navigation can vary by version.",
   "The friend must enter the code before completing their first qualifying transaction and meet Sendwave’s eligibility rules.",
-  "After the friend’s first transfer is delivered successfully, check your account for €20 credit toward your next Sendwave transfer, as shown in the screenshot reviewed on October 25, 2026. Your own app offer determines your reward."
+  "After the friend’s first transfer is delivered successfully, check your account for the credit toward a later Sendwave transfer. The November 15, 2026 screenshot shows €20 for the supplied France/EUR account; your own app offer determines your reward."
 ];
 export const sendwaveReferralFaq = [
   {
@@ -35,17 +36,17 @@ export const sendwaveReferralFaq = [
   {
     question: "How do I get the Sendwave €20 bonus?",
     answer:
-      "Enter I4H9G when signing up to Sendwave for the first time, before completing your first transaction. The publisher’s app screenshot reviewed on October 25, 2026 shows €20 credit for the new user. Complete a qualifying first transfer and meet the country, destination, minimum-transfer and verification conditions shown in your app."
+      "Enter I4H9G at signup, before your first transaction. The supplied France/EUR account popup dated November 15, 2026 shows €20 off the first transfer when sending €50 or more. This does not establish the reward or minimum for every account: confirm the accepted offer, sending country, destination and identity requirements in your app."
   },
   {
     question: "Where and when do I enter a Sendwave referral code?",
     answer:
-      "Enter I4H9G in the Sendwave app’s referral-code field during signup. The screenshot reviewed on October 25, 2026 instructs the friend to enter the code when signing up for the first time. Sendwave’s public referral terms require entry before completing the first transaction; separate promo-code campaigns can use a different field."
+      "Enter I4H9G in the Sendwave app’s referral-code field during signup. The November 15, 2026 screenshot instructs the friend to enter the code at first signup. Public referral terms require entry before completing the first transaction; separate promo-code campaigns have their own entry instructions."
   },
   {
     question: "Can I use Sendwave referral code I4H9G in France?",
     answer:
-      "The publisher previously confirmed a France-registered Sendwave account. The screenshot reviewed on October 25, 2026 confirms I4H9G and the €20 offer but does not display a country or destination list. Confirm acceptance and the applicable reward in your app before completing your first transfer from France."
+      "The publisher confirms the supplied EUR-denominated account is registered in France. Its November 15 screenshot shows I4H9G and €20 credit, and its November 15 popup shows a €50 minimum. These images do not prove acceptance on every French account or an eligible-destination list. Confirm your app’s offer before your first transfer."
   },
   {
     question: "What is the minimum transfer for the Sendwave €20 offer?",
@@ -59,7 +60,7 @@ export const sendwaveReferralFaq = [
   {
     question: "When will I receive my Sendwave referral credit?",
     answer:
-      "The screenshot reviewed on October 25, 2026 says the referrer receives €20 credit once the friend’s first transfer is delivered successfully, toward the referrer’s next transfer. It shows €20 for the friend entering the code at first signup but gives no separate deadline for that credit. Check your app’s reward and redemption instructions; no fixed number of hours or days is verified here."
+      "The November 15 popup describes €20 off the friend’s first transfer of €50 or more under the supplied France/EUR offer. The November 15 screenshot links the referrer’s €20 credit to successful delivery of that first transfer, for a later transfer. No fixed processing time is established for either account; check your app’s credit and redemption instructions."
   },
   {
     question: "Why did I not receive my Sendwave credit?",
@@ -73,7 +74,7 @@ export const sendwaveReferralFaq = [
   {
     question: "Is the Sendwave bonus cash or transfer credit?",
     answer:
-      "The €20 reward shown in the screenshot reviewed on October 25, 2026 is transfer credit. The screen explicitly says the referrer can put it toward their next Sendwave transfer; it does not describe a cash payment to a bank account. Fees and exchange-rate costs can still apply."
+      "It is promotional transfer credit under the supplied France/EUR offer. The November 15 popup describes €20 off the friend’s first transfer, and the November 15 screenshot says the referrer’s credit goes toward a later Sendwave transfer. Neither image documents a cash payment to a bank account. Fees and exchange-rate costs can still apply."
   }
 ];
 export const sendwaveTroubleshooting = [

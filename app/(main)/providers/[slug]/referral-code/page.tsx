@@ -673,7 +673,7 @@ function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
           </caption>
           <thead>
             <TableRow>
-              <TableHead className="w-auto">Residence</TableHead>
+              <TableHead className="w-auto whitespace-nowrap">Residence</TableHead>
               <TableHead className="w-auto">Referrer reward</TableHead>
               <TableHead className="w-auto">Referred friend reward</TableHead>
               <TableHead className="w-auto">
@@ -684,7 +684,7 @@ function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
           <tbody>
             {riaEligibleCountries.map((country) => (
               <TableRow key={country}>
-                <TableHead scope="row" className="w-auto">
+                <TableHead scope="row" className="w-auto whitespace-nowrap">
                   {country}
                 </TableHead>
                 <TableCell>
