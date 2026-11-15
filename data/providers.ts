@@ -1,7 +1,7 @@
 import { aceProvider } from "@/data/ace-money-transfer";
 import { taptapProvider } from "@/data/taptap-send";
 import { transfergoProvider } from "@/data/transfergo-referral";
-import { riaCombiningRewards, riaCountryList, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
+import { riaCombiningRewards, riaCountryList, riaFranceReward, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReviewedAt, riaReward, riaRewardTiming } from "@/data/ria-referral";
 import { paysendReferralLink, paysendOfferReviewedAt, paysendWelcomeOffer, paysendMinimumTransfer, paysendRewardTiming } from "@/data/paysend";
 import { sendwaveCode, sendwaveEligibility, sendwaveExpiry, sendwaveFaq, sendwaveMinimum, sendwavePayout, sendwaveReviewedAt, sendwaveReward, sendwaveRewardEvidence, sendwaveSources, sendwaveSteps, sendwaveTermsReviewedAt, sendwaveTiming } from "@/data/sendwave";
 
@@ -799,18 +799,18 @@ export const providers: Provider[] = [
       }
     ],
     currentOffer:
-      `Ria documents refer-a-friend eligibility in 11 countries: ${riaCountryList}. Exact rewards are shown in the Ria app. BonusFoundry's publisher supplies code 9RMU-ENB7.`,
+      `Ria documents refer-a-friend eligibility in 10 countries: ${riaCountryList}. Exact rewards are shown in the Ria app. BonusFoundry's publisher supplies code 9RMU-ENB7.`,
     lastOfferUpdate: riaReviewedAt,
     lastManualReview: riaReviewedAt,
     referral: {
       hasProgram:
-        `Ria's refer-a-friend program is available in 11 countries. ${riaResidenceRule} ${riaReferrerHistory}`,
+        `Ria's refer-a-friend program is available in 10 countries. ${riaResidenceRule} ${riaReferrerHistory}`,
       code: "9RMU-ENB7",
       link: null,
-      welcomeBonus: riaReward,
+      welcomeBonus: `${riaReward} ${riaFranceReward}`,
       minimumTransfer: riaMinimum,
       expiry:
-        "No fixed expiry was stated in the official referral pages checked on 5 October 2026; Ria offers and conditions can change.",
+        "No fixed expiry was stated in the official referral pages checked on 15 November 2026; Ria offers and conditions can change.",
       payoutTiming: riaRewardTiming,
       limitations: [
         "BonusFoundry's publisher supplies code 9RMU-ENB7",
@@ -976,31 +976,31 @@ export const providers: Provider[] = [
       {
         label: "Ria refer-a-friend program",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4416994463633-Ria-s-refer-a-friend-program",
-        lastReviewed: "2026-10-05",
+        lastReviewed: riaReviewedAt,
         confidence: "official"
       },
       {
         label: "Ria France refer-a-friend",
         url: "https://www.riamoneytransfer.com/en-fr/refer-a-friend/",
-        lastReviewed: "2026-10-05",
+        lastReviewed: riaReviewedAt,
         confidence: "official"
       },
       {
         label: "Claim a Ria referral reward",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4407688298385-I-was-referred-to-Ria-how-do-I-claim-my-reward",
-        lastReviewed: "2026-10-05",
+        lastReviewed: riaReviewedAt,
         confidence: "official"
       },
       {
         label: "Ria missing referral discount help",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/36107077964561-Why-didn-t-I-receive-a-referral-discount",
-        lastReviewed: "2026-10-05",
+        lastReviewed: riaReviewedAt,
         confidence: "official"
       },
       {
         label: "Use a Ria promo code",
         url: "https://help.riamoneytransfer.com/hc/en-us/articles/4406279777169-How-do-I-use-a-promo-code",
-        lastReviewed: "2026-10-05",
+        lastReviewed: riaReviewedAt,
         confidence: "official"
       },
       {
@@ -1054,7 +1054,7 @@ export const providers: Provider[] = [
     ],
     ineligibleUsers: [
       "Existing Ria customers, including anyone with a previous Ria account or transfer history, cannot qualify as the referred friend.",
-      `People outside these 11 countries are not documented as eligible for Ria's refer-a-friend program: ${riaCountryList}.`,
+      `People outside these 10 countries are not documented as eligible for Ria's refer-a-friend program: ${riaCountryList}.`,
       "Anyone under 18 is ineligible.",
       "Domestic, canceled, unsuccessful, and below-minimum transfers do not qualify.",
       "A referral code entered after the first transfer cannot be applied retroactively or to a later transfer."
@@ -1070,7 +1070,7 @@ export const providers: Provider[] = [
     ],
     researchProfile: {
       completeness:
-        "Reviewed Ria's current referral overview, reward-claim instructions, troubleshooting guidance, promo-code instructions, and France referral page. The current referral articles list 11 eligible countries, direct customers to the app for exact rewards, and require a minimum without publishing numeric amounts.",
+        "Reviewed Ria's current referral overview, reward-claim instructions, troubleshooting guidance, promo-code instructions, and France referral page. The current referral articles list 10 eligible countries, direct customers to the app for exact rewards, and require a minimum without publishing numeric amounts. BonusFoundry's own France-based app screenshot documents the account-specific €20 referrer reward and €20 friend promo code, plus other eligible offers.",
       confidence: "high",
       sourcesReviewed: [
         "Ria refer-a-friend program",
@@ -1088,18 +1088,22 @@ export const providers: Provider[] = [
     proprietaryVerification: {
       status: "Officially Documented",
       verificationMethod:
-        "Current official Ria Help Center guidance plus BonusFoundry publisher-supplied referral code",
+        "Current official Ria Help Center guidance plus BonusFoundry's own France-based Ria-app screenshot and publisher-supplied referral code",
       verifiedFields: [
-        "Eligibility in 11 countries officially documented; exact rewards must be checked in the Ria app and numeric minimums are not published in the current referral articles",
+        "Eligibility in 10 countries officially documented; exact rewards must be checked in the Ria app and numeric minimums are not published in the current referral articles",
         "Age, residence, new-customer, international-transfer, code-timing, payout-timing, and cancellation rules officially documented",
         "Up to two earned rewards per qualifying transfer; no combination with promo codes; no limit on the number of friends referred",
-        "Referral code 9RMU-ENB7 supplied by BonusFoundry's publisher",
+        "BonusFoundry's own France-based Ria-app screenshot shows code 9RMU-ENB7, a €20 referrer reward and a €20 friend promo code, plus other eligible offers; amounts may vary by account, location, and time",
         "Live Ria confirmation still required for acceptance of the individual code"
       ],
-      lastVerified: "2026-10-05",
+      lastVerified: riaReviewedAt,
       officialSourcesReviewed: 5
     },
     updateHistory: [
+      {
+        date: riaReviewedAt,
+        note: "Rechecked Ria's referral guidance: 10 eligible countries in the main article updated October 16, 2026. Added BonusFoundry's unedited France-based app screenshot documenting a €20 referrer reward and €20 friend promo code, plus other eligible offers, with account-specific qualifications."
+      },
       {
         date: "2026-10-05",
         note: "Verified Ria's current Help Center content directly: 11 eligible countries, exact rewards in the app, minimum amount to check in the offer, up to two earned rewards per transfer, and no combination with promo codes. Replaced the outdated four-country reward table while preserving URLs and titles."

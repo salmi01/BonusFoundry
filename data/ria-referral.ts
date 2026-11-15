@@ -1,6 +1,6 @@
-// Checked against the current Ria Help Center article bodies via its public
-// Zendesk API on 2026-10-05. The search fetch still returned September content.
-export const riaReviewedAt = "2026-10-05";
+// Checked against current official Ria guidance and BonusFoundry's own
+// France-based Ria-app screenshot on 2026-11-15.
+export const riaReviewedAt = "2026-11-15";
 export const riaEligibleCountries = [
   "Australia",
   "Belgium",
@@ -9,7 +9,6 @@ export const riaEligibleCountries = [
   "France",
   "Germany",
   "Italy",
-  "Malaysia",
   "Spain",
   "United Kingdom",
   "United States"
@@ -21,6 +20,8 @@ export const riaReferrerHistory =
   "The referrer must have completed at least one transfer with Ria before referring friends.";
 export const riaReward =
   "Both people receive a discount on a qualifying international transfer. Ria shows the exact reward in the app; the friend's reward depends on their country of residence.";
+export const riaFranceReward =
+  "BonusFoundry's own Ria-app screenshot, checked November 15, 2026 on one France-based account, shows a €20 reward for the referrer for each friend who completes their first international transfer, and a €20 promo code for the friend on their first international transfer, plus other eligible offers. Offers may vary by account, location, and time; confirm your offer in the Ria app.";
 export const riaMinimum =
   "Send at least the offer's minimum amount in one international transfer. Ria's current referral articles do not publish numeric minimums; check your offer in the Ria app before sending.";
 export const riaRewardTiming =

@@ -9,11 +9,13 @@ export type KeyFactRow = {
 export function KeyFacts({
   facts,
   title = "Key facts",
-  description
+  description,
+  children
 }: {
   facts: KeyFactRow[];
   title?: string;
   description?: string;
+  children?: ReactNode;
 }) {
   return (
     <section className="min-w-0">
@@ -31,6 +33,7 @@ export function KeyFacts({
           </tbody>
         </Table>
       </div>
+      {children}
     </section>
   );
 }

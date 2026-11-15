@@ -34,6 +34,7 @@ import { Container } from "@/components/container";
 import { Disclosure } from "@/components/disclosure";
 import { JsonLd } from "@/components/json-ld";
 import { ReferralBox } from "@/components/referral-box";
+import { RiaOfferScreenshot } from "@/components/ria-offer-screenshot";
 import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { faqs } from "@/data/faqs";
 import { getProvider, getProviderAuthority, providers, type Provider, type ProviderAuthority } from "@/data/providers";
@@ -160,7 +161,9 @@ export default async function ProviderPage({ params }: PageProps) {
                 rewardRange={authority.referral.welcomeBonus}
                 qualifyingTransfer={quickCardFacts.minimumTransfer}
                 notes={authority.referral.limitations[0] ?? "Review the live provider terms before relying on a reward."}
-              />
+              >
+                {provider.slug === "ria" ? <RiaOfferScreenshot /> : null}
+              </RewardSummary>
               <MinimumTransfer amount={quickCardFacts.minimumTransfer} notes="If no fixed amount is listed here, check the provider's live offer before sending the first transfer." />
               <WhereToEnterCode steps={codePath} />
               <EligibilitySummary

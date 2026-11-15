@@ -8,7 +8,7 @@ import { transfergoMetadata } from "@/data/transfergo-referral";
 import { paysendReferralMetadata, paysendReferralReviewedAt } from "@/data/paysend-referral";
 import { sendwaveReferralMetadata as sendwaveMetadata, sendwaveReferralUpdatedAt } from "@/data/sendwave-referral";
 import { taptapMetadata } from "@/data/taptap-send";
-import { riaCombiningRewards, riaCountryList, riaEligibleCountries, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReward, riaSources } from "@/data/ria-referral";
+import { riaCombiningRewards, riaCountryList, riaEligibleCountries, riaFranceReward, riaMinimum, riaMultipleReferrals, riaReferrerHistory, riaResidenceRule, riaReward, riaSources } from "@/data/ria-referral";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -37,6 +37,7 @@ import { CopyCodeButton } from "@/components/copy-code-button";
 import { Disclosure } from "@/components/disclosure";
 import { JsonLd } from "@/components/json-ld";
 import { ReferralBox } from "@/components/referral-box";
+import { RiaOfferScreenshot } from "@/components/ria-offer-screenshot";
 import { ProviderCorridorLinks } from "@/components/provider-corridor-links";
 import { Table, TableCell, TableHead, TableRow } from "@/components/ui/table";
 import { faqs } from "@/data/faqs";
@@ -297,7 +298,7 @@ function RiaReferralPage({
                     BonusFoundry referral code{" "}
                     <strong className="text-foreground">9RMU-ENB7</strong> can
                     be entered by an eligible new Ria customer before the first
-                    transfer. Ria lists 11 eligible countries, including France,
+                    transfer. Ria lists 10 eligible countries, including France,
                     Belgium, Germany, Spain, and the United Kingdom. Both people
                     must be at least 18. Check the exact reward and qualifying
                     minimum in the Ria app. Last verified{" "}
@@ -514,7 +515,7 @@ function RiaReferralPage({
                   {
                     problem: "The friend was not eligible",
                     possibleReason:
-                      "The friend does not live in one of the 11 eligible countries listed above, is under 18, or already had a Ria account or transfer history.",
+                      "The friend does not live in one of the 10 eligible countries listed above, is under 18, or already had a Ria account or transfer history.",
                     suggestedAction:
                       "Compare the account with Ria's new-customer and residence rules."
                   },
@@ -564,12 +565,16 @@ function RiaReferralPage({
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
                   BonusFoundry checked the current Ria Help Center referral
                   overview, reward-claim instructions, and troubleshooting
-                  guidance on {reviewDate}. Ria revised these articles on
-                  October 5, 2026: they now list 11 eligible countries and direct
+                  guidance on {reviewDate}. Ria revised the main program article on
+                  October 16, 2026: it now lists 10 eligible countries and directs
                   readers to the app for exact rewards. They still require a
                   minimum transfer but no longer publish numeric minimums.
                   Earlier country amounts should not be treated as current
-                  offers. Code 9RMU-ENB7 is publisher-supplied and
+                  offers. BonusFoundry&apos;s own Ria-app screenshot, checked on
+                  {" "}{reviewDate}, shows the €20 referrer reward and €20 friend
+                  promo code, plus other eligible offers, on one France-based
+                  account; amounts may vary by account, location, and time.
+                  Code 9RMU-ENB7 is publisher-supplied and
                   was not independently identified by Ria&apos;s public pages.
                   Offers can change, so confirm the offer shown in the Ria app
                   before sending. The France referral page also directs readers
@@ -597,7 +602,7 @@ function RiaReferralPage({
                     type: "Official Ria Help Center",
                     url: riaSources.program,
                     reviewedInformation:
-                      "11 eligible countries, age, prior transfer, exact rewards in the app, up to two earned rewards per transfer, no combination with promo codes, and cancellation rules. Ria article edited 5 October 2026.",
+                      "10 eligible countries, age, prior transfer, exact rewards in the app, up to two earned rewards per transfer, no combination with promo codes, and cancellation rules. Ria article updated 16 October 2026.",
                     reviewDate
                   },
                   {
@@ -654,7 +659,7 @@ function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
         Ria referral rewards by country
       </h2>
       <p className="mt-2 text-sm leading-6 text-muted-foreground">
-        Ria lists the following 11 eligible countries of residence. Exact rewards
+        Ria lists the following 10 eligible countries of residence. Exact rewards
         are shown in the Ria app. The current referral articles require a minimum
         amount in one international transfer but do not publish numeric minimums.
         Check the offer before sending; these are residence countries, not
@@ -682,8 +687,16 @@ function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
                 <TableHead scope="row" className="w-auto">
                   {country}
                 </TableHead>
-                <TableCell>Exact reward in the Ria app</TableCell>
-                <TableCell>Exact reward in the Ria app</TableCell>
+                <TableCell>
+                  {country === "France"
+                    ? "€20 for each friend who completes their first international transfer (account shown below)"
+                    : "Exact reward in the Ria app"}
+                </TableCell>
+                <TableCell>
+                  {country === "France"
+                    ? "€20 promo code on the first international transfer, plus other eligible offers (account shown below)"
+                    : "Exact reward in the Ria app"}
+                </TableCell>
                 <TableCell>Check the current offer&apos;s minimum</TableCell>
               </TableRow>
             ))}
@@ -700,9 +713,13 @@ function RiaCountryRewardTable({ reviewDate }: { reviewDate: string }) {
         >
           Ria&apos;s official refer-a-friend Help Center article
         </a>
-        , checked {reviewDate}. Confirm the offer shown in the Ria app
-        because amounts, availability, and conditions can change.
+        , checked {reviewDate}, for general program rules. France amounts are
+        from BonusFoundry&apos;s own Ria-app screenshot below, checked {reviewDate}
+        {" "}on one France-based account. Confirm the offer shown in the Ria app
+        because amounts, eligibility, and conditions may vary by account,
+        location, and time.
       </p>
+      <RiaOfferScreenshot />
     </section>
   );
 }
@@ -716,8 +733,7 @@ function riaReferralFaq(): FAQItem[] {
     },
     {
       question: "How much is the Ria referral reward in France?",
-      answer:
-        "France is eligible for Ria's refer-a-friend program. Ria now directs customers to the app for the exact reward; its current Help Center articles do not publish a fixed euro amount. Check your offer before sending."
+      answer: riaFranceReward
     },
     {
       question: "What is the minimum transfer for the Ria referral offer?",
@@ -817,7 +833,7 @@ function referralPageMetadata(provider: Provider) {
     return {
       title: "Ria Referral Code 2026: Rewards & Minimum Transfer",
       description:
-        "Ria referral code 9RMU-ENB7: 11 eligible countries, rewards to check in the app, minimum transfer rules and eligibility. Verified October 2026."
+        "Ria referral code 9RMU-ENB7: 10 eligible countries, rewards to check in the app, minimum transfer rules and eligibility. Verified November 2026."
     };
   }
 

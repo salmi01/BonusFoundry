@@ -238,12 +238,14 @@ export function RewardSummary({
   rewardRange,
   qualifyingTransfer,
   notes,
+  children,
   title = "Reward summary"
 }: {
   rewardType: ReactNode;
   rewardRange: ReactNode;
   qualifyingTransfer: ReactNode;
   notes?: ReactNode;
+  children?: ReactNode;
   title?: string;
 }) {
   return (
@@ -255,7 +257,9 @@ export function RewardSummary({
         { label: "Qualifying transfer", value: qualifyingTransfer },
         { label: "Important notes", value: notes ?? "Check the provider's current promotion terms before transfer." }
       ]}
-    />
+    >
+      {children}
+    </KeyFacts>
   );
 }
 
